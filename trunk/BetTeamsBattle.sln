@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{866A503C-6D2A-430E-B1D2-AC4325BA93ED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Model", "Data\Data.Model\Data.Model.csproj", "{88B06194-D4B3-4504-B688-6314D5D7FE18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories", "Data\Data.Repositories\Data.Repositories.csproj", "{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,8 +19,20 @@ Global
 		{866A503C-6D2A-430E-B1D2-AC4325BA93ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{866A503C-6D2A-430E-B1D2-AC4325BA93ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{866A503C-6D2A-430E-B1D2-AC4325BA93ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B06194-D4B3-4504-B688-6314D5D7FE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B06194-D4B3-4504-B688-6314D5D7FE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B06194-D4B3-4504-B688-6314D5D7FE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B06194-D4B3-4504-B688-6314D5D7FE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88B06194-D4B3-4504-B688-6314D5D7FE18} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
+		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
 	EndGlobalSection
 EndGlobal
