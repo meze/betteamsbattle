@@ -1,4 +1,5 @@
 ﻿using System.Data.Objects;
+using BetTeamsBattle.Data.Model.Entities;
 
 namespace BetTeamsBattle.Data.Model
 {

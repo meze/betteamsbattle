@@ -1,12 +1,16 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using BetTeamsBattle.Data.Repositories.DI;
+using BetTeamsBattle.Frontend.DI;
+using Ninject;
+using Ninject.Web.Mvc;
 
 namespace BetTeamsBattle.Frontend
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : NinjectHttpApplication
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
@@ -22,7 +26,6 @@ namespace BetTeamsBattle.Frontend
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()
@@ -31,6 +34,11 @@ namespace BetTeamsBattle.Frontend
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected override IKernel CreateKernel()
+        {
+            return new StandardKernel(new DataRepositoriesNinjectModule(), new FrontendNinjectModule());
         }
     }
 }

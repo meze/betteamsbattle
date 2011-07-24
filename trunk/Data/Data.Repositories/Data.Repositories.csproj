@@ -38,6 +38,9 @@
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\..\Libaries\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -48,10 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Battles\BattlesRepository.cs" />
+    <Compile Include="Battles\Interfaces\IBattlesRepository.cs" />
+    <Compile Include="Battles\Specifications\BattleSpecifications.cs" />
+    <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrators\DataRepositoriesRegistrator.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="Repository\Repository.cs" />
     <Compile Include="Users\Interfaces\IUsersRepository.cs" />
     <Compile Include="Users\UsersRepository.cs" />
   </ItemGroup>
@@ -62,7 +68,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
     <Folder Include="Users\Specifications\" />
   </ItemGroup>
   <ItemGroup>
