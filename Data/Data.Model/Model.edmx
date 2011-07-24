@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="battles" EntityType="Model.Store.battles" store:Type="Tables" Schema="betteamsbattle" />
+          <EntitySet Name="battlesusers" EntityType="Model.Store.battlesusers" store:Type="Tables" Schema="betteamsbattle" />
+          <EntitySet Name="users" EntityType="Model.Store.users" store:Type="Tables" Schema="betteamsbattle" />
+          <AssociationSet Name="battlesusers_ibfk_1" Association="Model.Store.battlesusers_ibfk_1">
+            <End Role="battles" EntitySet="battles" />
+            <End Role="battlesusers" EntitySet="battlesusers" />
+          </AssociationSet>
+          <AssociationSet Name="battlesusers_ibfk_2" Association="Model.Store.battlesusers_ibfk_2">
+            <End Role="users" EntitySet="users" />
+            <End Role="battlesusers" EntitySet="battlesusers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="battles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="battlesusers">
+          <Key>
+            <PropertyRef Name="BattleId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="BattleId" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LastSeen" Type="datetime" Nullable="false" />
+          <Property Name="Login" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="battlesusers_ibfk_1">
+          <End Role="battles" Type="Model.Store.battles" Multiplicity="1" />
+          <End Role="battlesusers" Type="Model.Store.battlesusers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="battles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="battlesusers">
+              <PropertyRef Name="BattleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="battlesusers_ibfk_2">
+          <End Role="users" Type="Model.Store.users" Multiplicity="1" />
+          <End Role="battlesusers" Type="Model.Store.battlesusers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="battlesusers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Battles1" EntityType="Model.Battle" />
+          <EntitySet Name="Users1" EntityType="Model.User" />
+          <AssociationSet Name="battlesusers" Association="Model.battlesusers">
+            <End Role="battle" EntitySet="Battles1" />
+            <End Role="user" EntitySet="Users1" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Battle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Model.battlesusers" FromRole="battle" ToRole="user" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="LastSeen" Nullable="false" />
+          <Property Type="String" Name="Login" Nullable="false" />
+          <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
+          <NavigationProperty Name="Battles" Relationship="Model.battlesusers" FromRole="user" ToRole="battle" />
+        </EntityType>
+        <Association Name="battlesusers">
+          <End Type="Model.Battle" Role="battle" Multiplicity="*" />
+          <End Type="Model.User" Role="user" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model" />
+        <Alias Key="Target" Value="Model.Store" />
+        <EntityContainerMapping CdmEntityContainer="ModelContainer" StorageEntityContainer="ModelStoreContainer">
+          <EntitySetMapping Name="Battles1">
+            <EntityTypeMapping TypeName="Model.Battle">
+              <MappingFragment StoreEntitySet="battles">
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users1">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="LastSeen" ColumnName="LastSeen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="battlesusers" TypeName="Model.battlesusers" StoreEntitySet="battlesusers">
+            <EndProperty Name="user">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="battle">
+              <ScalarProperty Name="Id" ColumnName="BattleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" >
+        <EntityTypeShape EntityType="Model.Battle" Width="1.5" PointX="0.75" PointY="1.125" Height="1.5956835937499994" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="0.875" Height="1.9802864583333317" />
+        <AssociationConnector Association="Model.battlesusers" >
+          <ConnectorPoint PointX="2.25" PointY="1.9228417968749998" />
+          <ConnectorPoint PointX="3" PointY="1.9228417968749998" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
