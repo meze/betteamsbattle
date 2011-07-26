@@ -2,7 +2,7 @@
 using LinqSpecs;
 using System;
 
-namespace BetTeamsBattle.Data.Repositories.Battles.Specifications
+namespace BetTeamsBattle.Data.Repositories.Specifications
 {
     internal class BattleSpecifications
     {

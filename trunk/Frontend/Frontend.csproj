@@ -39,6 +39,9 @@
     <Reference Include="FluentValidation.Mvc">
       <HintPath>..\packages\FluentValidation.MVC3.3.0.0.1\lib\Net40\FluentValidation.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="LinqSpecs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqSpecs.1.0\lib\LinqSpecs.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
@@ -79,9 +82,17 @@
     <Compile Include="App_Start\NinjectMVC3.cs" />
     <Compile Include="Controllers\BattlesController.cs" />
     <Compile Include="DI\FrontendNinjectModule.cs" />
+    <Compile Include="FrontendConstants.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Localization\Infrastructure\CurrrentLanguage.cs" />
+    <Compile Include="Localization\Infrastructure\IP\Interfaces\IIpToLanguageConverter.cs" />
+    <Compile Include="Localization\Infrastructure\IP\Interfaces\IIpToNumberConverter.cs" />
+    <Compile Include="Localization\Infrastructure\IP\IpToLanguageConverter.cs" />
+    <Compile Include="Localization\Infrastructure\IP\IpToNumberConverter.cs" />
+    <Compile Include="Localization\Infrastructure\LanguageMapping\LanguageMappingHelper.cs" />
+    <Compile Include="Localization\Infrastructure\Url\UrlCountryCodeHelper.cs" />
     <Compile Include="Localization\Metadata\Localizers\InDays\InDaysEnglishLocalizer.cs" />
     <Compile Include="Localization\Metadata\Localizers\InDays\InDaysRussianLocalizer.cs" />
     <Compile Include="Localization\Metadata\Localizers\InDays\Interfaces\IInDaysLocalizer.cs" />
@@ -126,7 +137,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Localization\Infrastructure\" />
     <Folder Include="Scripts\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -143,6 +153,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.Model\Data.Model.csproj">
+      <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
+      <Name>Data.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.Repositories\Data.Repositories.csproj">
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
