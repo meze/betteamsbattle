@@ -1,7 +1,4 @@
-﻿using BetTeamsBattle.Data.Repositories.Battles;
-using BetTeamsBattle.Data.Repositories.Battles.Interfaces;
-using BetTeamsBattle.Data.Repositories.Users;
-using BetTeamsBattle.Data.Repositories.Users.Interfaces;
+﻿using BetTeamsBattle.Data.Repositories.Base;
 using Ninject.Modules;
 
 namespace BetTeamsBattle.Data.Repositories.DI
@@ -10,8 +7,7 @@ namespace BetTeamsBattle.Data.Repositories.DI
     {
         public override void Load()
         {
-            Bind<IUsersRepository>().To<UsersRepository>();
-            Bind<IBattlesRepository>().To<BattlesRepository>();
+            Bind(typeof (IRepository<>)).To(typeof (Repository<>));
         }
     }
 }

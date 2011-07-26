@@ -8,6 +8,7 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="battles" EntityType="Model.Store.battles" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="battlesusers" EntityType="Model.Store.battlesusers" store:Type="Tables" Schema="betteamsbattle" />
+          <EntitySet Name="iptocountry" EntityType="Model.Store.iptocountry" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="users" EntityType="Model.Store.users" store:Type="Tables" Schema="betteamsbattle" />
           <AssociationSet Name="battlesusers_ibfk_1" Association="Model.Store.battlesusers_ibfk_1">
             <End Role="battles" EntitySet="battles" />
@@ -32,6 +33,17 @@
           </Key>
           <Property Name="BattleId" Type="bigint" Nullable="false" />
           <Property Name="UserId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iptocountry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="CountryCode" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="CountryName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IpEnd" Type="bigint" Nullable="false" />
+          <Property Name="IpStart" Type="bigint" Nullable="false" />
+          <Property Name="LongCountryCode" Type="varchar" Nullable="false" MaxLength="3" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -77,6 +89,7 @@
             <End Role="battle" EntitySet="Battles1" />
             <End Role="user" EntitySet="Users1" />
           </AssociationSet>
+          <EntitySet Name="IpToCountries1" EntityType="Model.IpToCountry" />
         </EntityContainer>
         <EntityType Name="Battle">
           <Key>
@@ -100,6 +113,17 @@
           <End Type="Model.Battle" Role="battle" Multiplicity="*" />
           <End Type="Model.User" Role="user" Multiplicity="*" />
         </Association>
+        <EntityType Name="IpToCountry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="CountryCode" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="IpEnd" Nullable="false" />
+          <Property Type="Int64" Name="IpStart" Nullable="false" />
+          <Property Type="String" Name="LongCountryCode" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -134,6 +158,18 @@
               <ScalarProperty Name="Id" ColumnName="BattleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="IpToCountries1">
+            <EntityTypeMapping TypeName="Model.IpToCountry">
+              <MappingFragment StoreEntitySet="iptocountry">
+                <ScalarProperty Name="LongCountryCode" ColumnName="LongCountryCode" />
+                <ScalarProperty Name="IpStart" ColumnName="IpStart" />
+                <ScalarProperty Name="IpEnd" ColumnName="IpEnd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -162,6 +198,7 @@
           <ConnectorPoint PointX="2.25" PointY="1.9228417968749998" />
           <ConnectorPoint PointX="3" PointY="1.9228417968749998" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Model.IpToCountry" Width="1.5" PointX="0.75" PointY="3.75" Height="2.1725878906249996" />
       </Diagram>
     </Diagrams>
   </Designer>
