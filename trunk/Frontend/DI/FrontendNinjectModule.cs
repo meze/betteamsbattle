@@ -1,4 +1,6 @@
-﻿using Ninject.Modules;
+﻿using BetTeamsBattle.Frontend.Localization.Localizers.InDays;
+using BetTeamsBattle.Frontend.Localization.Localizers.InDays.Interfaces;
+using Ninject.Modules;
 
 namespace BetTeamsBattle.Frontend.DI
 {
@@ -6,7 +8,7 @@ namespace BetTeamsBattle.Frontend.DI
     {
         public override void Load()
         {
-            
+            Bind<IInDaysLocalizer>().To<InDaysEnglishLocalizer>().When().
         }
     }
 }

@@ -8,7 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BetTeamsBattle.Frontend.Localization.Resources.Views.Battles {
+namespace Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -36,7 +39,7 @@ namespace BetTeamsBattle.Frontend.Localization.Resources.Views.Battles {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Localizations.Resources.Views.Battles.Battles", typeof(Battles).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Localization.Metadata.Resources.Views.Battles.Battles", typeof(Battles).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
