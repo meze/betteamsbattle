@@ -82,16 +82,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Localization\Localizers\Days\InDaysEnglishLocalizer.cs" />
-    <Compile Include="Localization\Localizers\Days\InDaysRussianLocalizer.cs" />
+    <Compile Include="Localization\Metadata\Localizers\InDays\InDaysEnglishLocalizer.cs" />
+    <Compile Include="Localization\Metadata\Localizers\InDays\InDaysRussianLocalizer.cs" />
+    <Compile Include="Localization\Metadata\Localizers\InDays\Interfaces\IInDaysLocalizer.cs" />
     <Compile Include="Models\Views\Battle\NextBattleStartsInViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Localization\Resources\Views\Battles\Battles.Designer.cs">
+    <Compile Include="Localization\Metadata\Resources\Views\Battles\Battles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Battles.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\Resources\Views\Battles\Battles.ru.Designer.cs">
+    <Compile Include="Localization\Metadata\Resources\Views\Battles\Battles.ru.Designer.cs">
       <DependentUpon>Battles.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +125,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Localization\Infrastructure\" />
     <Folder Include="Scripts\" />
     <Folder Include="Services\" />
   </ItemGroup>
@@ -146,12 +149,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Resources\Views\Battles\Battles.resx">
+    <EmbeddedResource Include="Localization\Metadata\Resources\Views\Battles\Battles.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Battles.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\Resources\Views\Battles\Battles.ru.resx">
+    <EmbeddedResource Include="Localization\Metadata\Resources\Views\Battles\Battles.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Battles.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>

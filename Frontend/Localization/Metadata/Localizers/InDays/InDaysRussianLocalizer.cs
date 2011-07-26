@@ -1,6 +1,8 @@
-﻿namespace BetTeamsBattle.Frontend.Localization.Localizers.Days
+﻿using BetTeamsBattle.Frontend.Localization.Localizers.InDays.Interfaces;
+
+namespace BetTeamsBattle.Frontend.Localization.Localizers.InDays
 {
-    internal class InDaysRussianLocalizer
+    internal class InDaysRussianLocalizer : IInDaysLocalizer
     {
         public string Localize(int days)
         {
