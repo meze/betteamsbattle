@@ -21,9 +21,12 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
 namespace BetTeamsBattle.Frontend.Controllers {
-    public partial class BattlesController {
+    public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected BattlesController(Dummy d) { }
+        public HomeController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected HomeController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -33,18 +36,18 @@ namespace BetTeamsBattle.Frontend.Controllers {
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public BattlesController Actions { get { return MVC.Battles; } }
+        public HomeController Actions { get { return MVC.Home; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Battles";
+        public readonly string Name = "Home";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string NextBattleStartsIn = "NextBattleStartsIn";
+            public readonly string Index = "Index";
         }
 
 
@@ -53,16 +56,16 @@ namespace BetTeamsBattle.Frontend.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string NextBattleStartsIn = "~/Views/Battles/NextBattleStartsIn.cshtml";
+            public readonly string Index = "~/Views/Home/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_BattlesController: BetTeamsBattle.Frontend.Controllers.BattlesController {
-        public T4MVC_BattlesController() : base(Dummy.Instance) { }
+    public class T4MVC_HomeController: BetTeamsBattle.Frontend.Controllers.HomeController {
+        public T4MVC_HomeController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ViewResult NextBattleStartsIn() {
-            var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.NextBattleStartsIn);
+        public override System.Web.Mvc.ActionResult Index() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             return callInfo;
         }
 

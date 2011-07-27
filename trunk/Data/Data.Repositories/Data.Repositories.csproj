@@ -57,6 +57,7 @@
     <Compile Include="Specifications\IpToCountrySpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\Repository.cs" />
+    <Compile Include="Specifications\UserSpecifications.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data.Model\Data.Model.csproj">

@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.3.0.0.1\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
@@ -46,7 +47,7 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Web.Mvc">
+    <Reference Include="Ninject.Web.Mvc, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.MVC3.2.2.2.0\lib\net40-Full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Mvc.FluentValidation">
@@ -80,18 +81,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectMVC3.cs" />
+    <Compile Include="AspNetMvc\ActionFilters\AdminRightsGlobalFilter.cs" />
+    <Compile Include="AspNetMvc\ActionFilters\LanguageGlobalActionFilter.cs" />
+    <Compile Include="AspNetMvc\Routes\RegexRouteConstraint.cs" />
+    <Compile Include="Authentication\CurrentUser.cs" />
     <Compile Include="Controllers\BattlesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DI\FrontendNinjectModule.cs" />
     <Compile Include="FrontendConstants.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DomainHelper.cs" />
+    <Compile Include="Localization\Infrastructure\Cookies\CookiesService.cs" />
+    <Compile Include="Localization\Infrastructure\Cookies\Interfaces\ICookiesService.cs" />
     <Compile Include="Localization\Infrastructure\CurrrentLanguage.cs" />
     <Compile Include="Localization\Infrastructure\IP\Interfaces\IIpToLanguageConverter.cs" />
     <Compile Include="Localization\Infrastructure\IP\Interfaces\IIpToNumberConverter.cs" />
     <Compile Include="Localization\Infrastructure\IP\IpToLanguageConverter.cs" />
     <Compile Include="Localization\Infrastructure\IP\IpToNumberConverter.cs" />
     <Compile Include="Localization\Infrastructure\LanguageMapping\LanguageMappingHelper.cs" />
+    <Compile Include="Localization\Infrastructure\LanguageService\Interfaces\ILanguageService.cs" />
+    <Compile Include="Localization\Infrastructure\LanguageService\LanguageService.cs" />
     <Compile Include="Localization\Infrastructure\Url\UrlCountryCodeHelper.cs" />
     <Compile Include="Localization\Metadata\Localizers\InDays\InDaysEnglishLocalizer.cs" />
     <Compile Include="Localization\Metadata\Localizers\InDays\InDaysRussianLocalizer.cs" />
@@ -109,6 +120,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="T4MVC\BattlesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
@@ -136,9 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -147,7 +159,8 @@
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
     <None Include="T4MVC\T4MVC.tt.settings.t4" />
-    <Content Include="Views\Battles\_NextBattleStartsIn.cshtml" />
+    <Content Include="Views\Battles\NextBattleStartsIn.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

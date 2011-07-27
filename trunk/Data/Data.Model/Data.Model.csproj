@@ -45,8 +45,10 @@
   <ItemGroup>
     <Compile Include="Entities\Battle.cs" />
     <Compile Include="Entities\IpToCountry.cs" />
-    <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Enums\Language.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

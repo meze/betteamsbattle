@@ -5,6 +5,7 @@
 #endregion
 
 using BetTeamsBattle.Data.Model.Entities;
+using BetTeamsBattle.Data.Model.Enums;
 
 namespace BetTeamsBattle.Frontend.Localization.Infrastructure.IP.Interfaces
 {

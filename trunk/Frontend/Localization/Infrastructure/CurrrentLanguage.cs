@@ -2,6 +2,7 @@
 
 using System.Web;
 using BetTeamsBattle.Data.Model.Entities;
+using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageMapping;
 
 #endregion

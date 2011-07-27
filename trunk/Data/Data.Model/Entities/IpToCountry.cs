@@ -1,6 +1,8 @@
-﻿namespace BetTeamsBattle.Data.Model.Entities
+﻿using BetTeamsBattle.Data.Model.Interfaces;
+
+namespace BetTeamsBattle.Data.Model.Entities
 {
-    public class IpToCountry
+    public class IpToCountry : IEntity
     {
         public virtual long Id { get; set; }
         public virtual long IpEnd { get; set; }

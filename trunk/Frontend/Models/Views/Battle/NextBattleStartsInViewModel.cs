@@ -3,9 +3,9 @@
     public class NextBattleStartsInViewModel
     {
         public int Days { get; set; }
-        public int DaysCaption { get; set; }
+        public string DaysCaption { get; set; }
 
-        public NextBattleStartsInViewModel(int days, int daysCaption)
+        public NextBattleStartsInViewModel(int days, string daysCaption)
         {
             Days = days;
             DaysCaption = daysCaption;
