@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using BetTeamsBattle.Data.Model.Entities;
+using BetTeamsBattle.Data.Model.Enums;
 
 #endregion
 

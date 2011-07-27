@@ -10,6 +10,7 @@
           <EntitySet Name="battlesusers" EntityType="Model.Store.battlesusers" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="iptocountry" EntityType="Model.Store.iptocountry" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="users" EntityType="Model.Store.users" store:Type="Tables" Schema="betteamsbattle" />
+          <EntitySet Name="usersprofiles" EntityType="Model.Store.usersprofiles" store:Type="Tables" Schema="betteamsbattle" />
           <AssociationSet Name="battlesusers_ibfk_1" Association="Model.Store.battlesusers_ibfk_1">
             <End Role="battles" EntitySet="battles" />
             <End Role="battlesusers" EntitySet="battlesusers" />
@@ -17,6 +18,10 @@
           <AssociationSet Name="battlesusers_ibfk_2" Association="Model.Store.battlesusers_ibfk_2">
             <End Role="users" EntitySet="users" />
             <End Role="battlesusers" EntitySet="battlesusers" />
+          </AssociationSet>
+          <AssociationSet Name="usersprofiles_ibfk_1" Association="Model.Store.usersprofiles_ibfk_1">
+            <End Role="users" EntitySet="users" />
+            <End Role="usersprofiles" EntitySet="usersprofiles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="battles">
@@ -54,6 +59,13 @@
           <Property Name="Login" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="usersprofiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="tinyint" />
+        </EntityType>
         <Association Name="battlesusers_ibfk_1">
           <End Role="battles" Type="Model.Store.battles" Multiplicity="1" />
           <End Role="battlesusers" Type="Model.Store.battlesusers" Multiplicity="*" />
@@ -78,6 +90,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="usersprofiles_ibfk_1">
+          <End Role="users" Type="Model.Store.users" Multiplicity="1" />
+          <End Role="usersprofiles" Type="Model.Store.usersprofiles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usersprofiles">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -90,6 +114,11 @@
             <End Role="user" EntitySet="Users1" />
           </AssociationSet>
           <EntitySet Name="IpToCountries1" EntityType="Model.IpToCountry" />
+          <EntitySet Name="UserProfiles" EntityType="Model.UserProfile" />
+          <AssociationSet Name="usersprofiles_ibfk_1" Association="Model.usersprofiles_ibfk_1">
+            <End Role="User" EntitySet="Users1" />
+            <End Role="usersprofile" EntitySet="UserProfiles" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Battle">
           <Key>
@@ -108,6 +137,7 @@
           <Property Type="String" Name="Login" Nullable="false" />
           <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
           <NavigationProperty Name="Battles" Relationship="Model.battlesusers" FromRole="user" ToRole="battle" />
+          <NavigationProperty Name="UserProfile" Relationship="Model.usersprofiles_ibfk_1" FromRole="User" ToRole="usersprofile" />
         </EntityType>
         <Association Name="battlesusers">
           <End Type="Model.Battle" Role="battle" Multiplicity="*" />
@@ -124,6 +154,26 @@
           <Property Type="Int64" Name="IpStart" Nullable="false" />
           <Property Type="String" Name="LongCountryCode" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="SByte" Name="Language" />
+          <NavigationProperty Name="User" Relationship="Model.usersprofiles_ibfk_1" FromRole="usersprofile" ToRole="User" />
+        </EntityType>
+        <Association Name="usersprofiles_ibfk_1">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.UserProfile" Role="usersprofile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usersprofile">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -170,6 +220,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="Model.UserProfile">
+              <MappingFragment StoreEntitySet="usersprofiles">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -199,7 +257,12 @@
           <ConnectorPoint PointX="3" PointY="1.9228417968749998" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.IpToCountry" Width="1.5" PointX="0.75" PointY="3.75" Height="2.1725878906249996" />
-      </Diagram>
+        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="5.25" PointY="0.875" Height="1.5956835937499994" />
+        <AssociationConnector Association="Model.usersprofiles_ibfk_1" >
+          <ConnectorPoint PointX="4.5" PointY="1.6728417968749998" />
+          <ConnectorPoint PointX="5.25" PointY="1.6728417968749998" />
+        </AssociationConnector>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

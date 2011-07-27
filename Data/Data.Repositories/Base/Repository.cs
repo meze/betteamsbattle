@@ -10,7 +10,7 @@ namespace BetTeamsBattle.Data.Repositories.Base
     {
         protected ModelContext Context { get; set; }
 
-        public IQueryable<T> All(Specification<T> filterSpecification)
+        public IQueryable<T> FindAll(Specification<T> filterSpecification)
         {
             return Context.CreateObjectSet<T>().Where(filterSpecification.IsSatisfiedBy());
         }

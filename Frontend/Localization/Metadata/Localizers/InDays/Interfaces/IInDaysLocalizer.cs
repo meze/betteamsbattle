@@ -1,7 +1,7 @@
 ﻿namespace BetTeamsBattle.Frontend.Localization.Localizers.InDays.Interfaces
 {
-    internal interface IInDaysLocalizer
+    public interface IInDaysLocalizer
     {
-         
+        string Localize(int days);
     }
 }

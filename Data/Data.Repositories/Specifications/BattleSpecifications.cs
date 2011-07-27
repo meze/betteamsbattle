@@ -4,9 +4,9 @@ using System;
 
 namespace BetTeamsBattle.Data.Repositories.Specifications
 {
-    internal class BattleSpecifications
+    public class BattleSpecifications
     {
-        public static Specification<Battle> FilterFutureBattles()
+        public static Specification<Battle> StartDateIsInFuture()
         {
             return new AdHocSpecification<Battle>(b => b.StartDate > DateTime.Now);
         }
