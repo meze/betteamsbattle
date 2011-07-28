@@ -80,6 +80,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="AspNetMvc\ActionFilters\AdminRightsGlobalFilter.cs" />
     <Compile Include="AspNetMvc\ActionFilters\LanguageGlobalActionFilter.cs" />
     <Compile Include="AspNetMvc\Routes\RegexRouteConstraint.cs" />
@@ -148,11 +150,19 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\NotAdmin\Controllers\" />
+    <Folder Include="Areas\NotAdmin\Models\" />
+    <Folder Include="Areas\NotAdmin\Views\Shared\" />
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\NotAdmin\Views\Web.config" />
     <None Include="T4MVC\T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
