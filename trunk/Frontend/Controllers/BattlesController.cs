@@ -22,15 +22,18 @@ namespace BetTeamsBattle.Frontend.Controllers
             _inDaysLocalizer = inDaysLocalizer;
         }
 
-        public virtual ViewResult NextBattleStartsIn()
+        public virtual ActionResult NextBattleStartsIn()
         {
             //ToDo: Order by here is part of query logic. May be put it in Repository/BattlesRepository?
-            var nextBattleDate = _repositoryOfBattle.FindAll(BattleSpecifications.StartDateIsInFuture()).OrderBy(b => b.StartDate).Select(b => b.StartDate).FirstOrDefault();
+            var nextBattleDate = _repositoryOfBattle.Filter(BattleSpecifications.StartDateIsInFuture()).OrderBy(b => b.StartDate).Select(b => b.StartDate).FirstOrDefault();
+            if (nextBattleDate == default(DateTime))
+                return new EmptyResult();
+
             var inDays = (nextBattleDate - DateTime.Now).Days;
             var inDaysCaption = _inDaysLocalizer.Localize(inDays);
             var inDaysViewModel = new NextBattleStartsInViewModel(inDays, inDaysCaption);
 
-            return View();
+            return View(inDaysViewModel);
         }
     }
 }

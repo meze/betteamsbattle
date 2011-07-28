@@ -5,7 +5,7 @@ namespace BetTeamsBattle.Data.Model
 {
     public class ModelContext : ObjectContext
     {
-        public ModelContext() : base("name=ModelEntities")
+        public ModelContext() : base("name=ModelContainer")
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Model.Interfaces;
 
 namespace BetTeamsBattle.Data.Model.Entities
@@ -8,6 +9,13 @@ namespace BetTeamsBattle.Data.Model.Entities
     {
         public virtual long Id { get; set; }
         public virtual DateTime StartDate { get; set; }
+        public virtual sbyte BattleType { get; set; }
+        public virtual BattleType BattleTypeEnum 
+        {
+            get { return (BattleType)BattleType; }
+            set { BattleType = (sbyte) value; } 
+        }
+        public virtual int Budget { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }

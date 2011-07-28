@@ -47,7 +47,7 @@ namespace BetTeamsBattle.Frontend.Localization.Infrastructure.IP
        public Language GetLanguage(string ipAddress)
       {
          long ipNumber = _ipToNumberConverter.IpToNumber(ipAddress);
-         string countryCode = _repositoryOfIpToCountry.FindAll(IpToCountrySpecifications.IpIsInRange(ipNumber)).Select(ip => ip.CountryCode).SingleOrDefault();
+         string countryCode = _repositoryOfIpToCountry.Filter(IpToCountrySpecifications.IpIsInRange(ipNumber)).Select(ip => ip.CountryCode).SingleOrDefault();
 
          if (countryCode == null)
             return _defaultLanguage;
