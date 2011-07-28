@@ -15,6 +15,8 @@ namespace BetTeamsBattle.Frontend.Localization.Infrastructure
         {
             get
             {
+                if (!HttpContext.Current.Items.Contains(FrontendConstants.LanguageKey))
+                    return Language.Indeterminate;
                 return (Language) HttpContext.Current.Items[FrontendConstants.LanguageKey];
             }
         }

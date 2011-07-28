@@ -61,8 +61,8 @@ namespace BetTeamsBattle.Frontend.Controllers {
     public class T4MVC_BattlesController: BetTeamsBattle.Frontend.Controllers.BattlesController {
         public T4MVC_BattlesController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ViewResult NextBattleStartsIn() {
-            var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.NextBattleStartsIn);
+        public override System.Web.Mvc.ActionResult NextBattleStartsIn() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.NextBattleStartsIn);
             return callInfo;
         }
 

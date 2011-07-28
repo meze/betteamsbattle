@@ -28,6 +28,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="BattleType" Type="tinyint" Nullable="false" />
+          <Property Name="Budget" Type="int" Nullable="false" />
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -127,6 +129,8 @@
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="DateTime" Name="StartDate" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Model.battlesusers" FromRole="battle" ToRole="user" />
+          <Property Type="SByte" Name="BattleType" Nullable="false" />
+          <Property Type="Int32" Name="Budget" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -137,7 +141,7 @@
           <Property Type="String" Name="Login" Nullable="false" />
           <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
           <NavigationProperty Name="Battles" Relationship="Model.battlesusers" FromRole="user" ToRole="battle" />
-          <NavigationProperty Name="UserProfile" Relationship="Model.usersprofiles_ibfk_1" FromRole="User" ToRole="usersprofile" />
+          <NavigationProperty Name="Profile" Relationship="Model.usersprofiles_ibfk_1" FromRole="User" ToRole="usersprofile" />
         </EntityType>
         <Association Name="battlesusers">
           <End Type="Model.Battle" Role="battle" Multiplicity="*" />
@@ -185,6 +189,8 @@
           <EntitySetMapping Name="Battles1">
             <EntityTypeMapping TypeName="Model.Battle">
               <MappingFragment StoreEntitySet="battles">
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="BattleType" ColumnName="BattleType" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

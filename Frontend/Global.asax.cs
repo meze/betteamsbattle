@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
+using BetTeamsBattle.Data.Model.DI;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.DI;
@@ -19,19 +20,12 @@ namespace BetTeamsBattle.Frontend
 {
     public class MvcApplication : NinjectHttpApplication
     {
-        public void RegisterGlobalFilters(GlobalFilterCollection filters)
-        {
-            filters.Add(new AdminRightsGlobalFilter());
-            filters.Add(new LanguageGlobalActionFilter(Kernel.Get<ILanguageService>()));
-            filters.Add(new HandleErrorAttribute());
-        }
-
         public void RegisterRoutes(RouteCollection routes)
         {
             var languageConstraint = new RegexRouteConstraint("^(en|ru)$");
             var startsNotFromLanguageConstraint = new RegexRouteConstraint("^(?!((en|ru)($|/)))");
 
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}" );
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("",
                             "{language}/{controller}/{action}",
@@ -56,11 +50,12 @@ namespace BetTeamsBattle.Frontend
             #endregion Language-inspecific queries
         }
 
-        protected void Application_Start()
+        protected override void OnApplicationStarted()
         {
+            base.OnApplicationStarted();
+
             AreaRegistration.RegisterAllAreas();
 
-            RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
 
@@ -71,21 +66,18 @@ namespace BetTeamsBattle.Frontend
 
         protected void Application_AuthenticateRequest()
         {
-            string login = null;
             if (User != null && User.Identity != null)
-                login = User.Identity.Name;
-            User user;
-            if (login != null)
             {
+                var login = User.Identity.Name;
                 var repositoryOfUser = Kernel.Get<IRepository<User>>();
-                user = repositoryOfUser.FindAll(UserSpecifications.LoginIsEqual(login)).Include(u => u.Profile).Single();
+                var user = repositoryOfUser.Filter(UserSpecifications.LoginIsEqual(login)).Include(u => u.Profile).Single();
                 Context.Items[FrontendConstants.UserKey] = user;
             }
         }
 
         protected override IKernel CreateKernel()
         {
-            return new StandardKernel(new DataRepositoriesNinjectModule(), new FrontendNinjectModule());
+            return new StandardKernel(new DataModelNinjectModule(), new DataRepositoriesNinjectModule(), new FrontendNinjectModule());
         }
     }
 }
