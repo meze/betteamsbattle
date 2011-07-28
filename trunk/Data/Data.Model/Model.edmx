@@ -30,6 +30,7 @@
           </Key>
           <Property Name="BattleType" Type="tinyint" Nullable="false" />
           <Property Name="Budget" Type="int" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -131,6 +132,7 @@
           <NavigationProperty Name="Users" Relationship="Model.battlesusers" FromRole="battle" ToRole="user" />
           <Property Type="SByte" Name="BattleType" Nullable="false" />
           <Property Type="Int32" Name="Budget" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -189,6 +191,7 @@
           <EntitySetMapping Name="Battles1">
             <EntityTypeMapping TypeName="Model.Battle">
               <MappingFragment StoreEntitySet="battles">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Budget" ColumnName="Budget" />
                 <ScalarProperty Name="BattleType" ColumnName="BattleType" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />

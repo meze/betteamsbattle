@@ -9,6 +9,7 @@ namespace BetTeamsBattle.Data.Model.Entities
     {
         public virtual long Id { get; set; }
         public virtual DateTime StartDate { get; set; }
+        public virtual DateTime EndDate { get; set; }
         public virtual sbyte BattleType { get; set; }
         public virtual BattleType BattleTypeEnum 
         {
