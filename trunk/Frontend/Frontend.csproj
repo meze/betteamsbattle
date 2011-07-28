@@ -80,7 +80,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\NinjectMVC3.cs" />
     <Compile Include="AspNetMvc\ActionFilters\AdminRightsGlobalFilter.cs" />
     <Compile Include="AspNetMvc\ActionFilters\LanguageGlobalActionFilter.cs" />
     <Compile Include="AspNetMvc\Routes\RegexRouteConstraint.cs" />
