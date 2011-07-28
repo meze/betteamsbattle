@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Specifications;
-using BetTeamsBattle.Frontend.Localization.Localizers.InDays.Interfaces;
+using BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays.Interfaces;
 using BetTeamsBattle.Frontend.Models.Views.Battle;
 
 namespace BetTeamsBattle.Frontend.Controllers
