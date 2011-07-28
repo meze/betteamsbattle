@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.Frontend.Localization.Localizers.InDays.Interfaces
+﻿namespace BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays.Interfaces
 {
     public interface IInDaysLocalizer
     {
