@@ -1,6 +1,6 @@
-﻿using BetTeamsBattle.Frontend.Localization.Localizers.InDays.Interfaces;
+﻿using BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays.Interfaces;
 
-namespace BetTeamsBattle.Frontend.Localization.Localizers.InDays
+namespace BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays
 {
     internal class InDaysRussianLocalizer : IInDaysLocalizer
     {
