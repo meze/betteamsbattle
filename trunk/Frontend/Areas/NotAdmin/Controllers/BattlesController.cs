@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle;
 using BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays.Interfaces;
-using BetTeamsBattle.Frontend.Models.Views.Battle;
 
-namespace BetTeamsBattle.Frontend.Controllers
+namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 {
     public partial class BattlesController : Controller
     {
@@ -22,6 +20,7 @@ namespace BetTeamsBattle.Frontend.Controllers
             _inDaysLocalizer = inDaysLocalizer;
         }
 
+        [ChildActionOnly]
         public virtual ActionResult NextBattleStartsIn()
         {
             //ToDo: Order by here is part of query logic. May be put it in Repository/BattlesRepository?
@@ -33,7 +32,7 @@ namespace BetTeamsBattle.Frontend.Controllers
             var inDaysCaption = _inDaysLocalizer.Localize(inDays);
             var inDaysViewModel = new NextBattleStartsInViewModel(inDays, inDaysCaption);
 
-            return View(inDaysViewModel);
+            return View(MVC.NotAdmin.Battles.Views.NextBattleStartsIn, inDaysViewModel);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Reflection;
+using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Frontend.AspNetMvc.ActionFilters;
@@ -11,6 +12,7 @@ using BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService.Interfaces;
 using BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays;
 using BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays.Interfaces;
+using FluentValidation;
 using Ninject.Modules;
 using Ninject.Web.Mvc.FilterBindingSyntax;
 
@@ -30,9 +32,12 @@ namespace BetTeamsBattle.Frontend.DI
             Bind<IInDaysLocalizer>().To<InDaysEnglishLocalizer>().When(r => CurrentLanguage.Language == Language.English);
             Bind<IInDaysLocalizer>().To<InDaysRussianLocalizer>().When(r => CurrentLanguage.Language == Language.Russian);
 
+            AssemblyScanner.FindValidatorsInAssembly(Assembly.GetExecutingAssembly()).
+                ForEach(match => Bind(match.InterfaceType).To(match.ValidatorType));
+
             this.BindFilter<HandleErrorAttribute>(FilterScope.Global, 0);
-            this.BindFilter<LanguageGlobalActionFilter>(FilterScope.Global, 0);
-            this.BindFilter<AdminRightsGlobalFilter>(FilterScope.Global, 0);
+            this.BindFilter<LanguageActionFilter>(FilterScope.Global, 0);
+            //this.BindFilter<AdminRightsActionFilter>(FilterScope.Global, 0);
         }
     }
 }

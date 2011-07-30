@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using BetTeamsBattle.Frontend.AspNetMvc.Routes;
 
 namespace BetTeamsBattle.Frontend.Areas.Admin
 {
@@ -14,11 +15,10 @@ namespace BetTeamsBattle.Frontend.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+            #region BattlesController
+            context.MapLanguageRoute("admin/battles", MVC.Admin.AdminBattles.Actions.GetBattles());
+            context.MapLanguageRoute("admin/battles/create", MVC.Admin.AdminBattles.Actions.CreateBattle());
+            #endregion
         }
     }
 }

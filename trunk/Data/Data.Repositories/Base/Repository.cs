@@ -12,12 +12,22 @@ namespace BetTeamsBattle.Data.Repositories.Base
         [Inject]
         public ModelContext Context { get; set; }
 
+        public IQueryable<T> All()
+        {
+            return Context.CreateObjectSet<T>();
+        }
+
         public IQueryable<T> Filter(Specification<T> filterSpecification)
         {
             return Context.CreateObjectSet<T>().Where(filterSpecification.IsSatisfiedBy());
         }
 
-        public void Save()
+        public void Add(T entity)
+        {
+            Context.CreateObjectSet<T>().AddObject(entity);
+        }
+
+        public void SaveChanges()
         {
             Context.SaveChanges();
         }

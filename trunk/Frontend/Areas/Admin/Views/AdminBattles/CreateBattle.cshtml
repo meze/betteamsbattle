@@ -1,0 +1,22 @@
+﻿@using BetTeamsBattle.Frontend.Areas.Admin.Models
+@model BattleViewModel
+@{
+    Layout = MVC.Shared.Views._Layout;
+    ViewBag.Title = "CreateBattle";
+}
+<h2>CreateBattle</h2>
+@Html.ValidationSummary(true)
+@using (@Html.BeginForm(MVC.Admin.AdminBattles.CreateBattle(), FormMethod.Post))
+{ 
+    <text> 
+    Start date @Html.TextBoxFor(b => b.StartDate) @Html.ValidationMessageFor(b => b.StartDate)
+    <br />
+    End date @Html.TextBoxFor(b => b.EndDate) @Html.ValidationMessageFor(b => b.EndDate)
+    <br />
+    Battle type @Html.DropDownListFor(b => b.BattleType, Model.BattleTypes) @Html.ValidationMessageFor(b => b.BattleType)
+    <br />
+    Budget @Html.TextBoxFor(b => b.Budget) @Html.ValidationMessageFor(b => b.Budget)
+    <br />
+    <input type="submit" name="Create" />
+    </text>
+}

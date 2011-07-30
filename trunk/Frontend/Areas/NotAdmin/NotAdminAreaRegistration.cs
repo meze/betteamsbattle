@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using BetTeamsBattle.Frontend.AspNetMvc.Routes;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin
 {
@@ -14,11 +15,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
-                "NotAdmin_default",
-                "NotAdmin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+            #region HomeController
+            context.MapLanguageRoute("", MVC.NotAdmin.Home.Index());
+            #endregion
+
+            #region BattlesController
+            context.MapLanguageRoute("battles/nextbattlestartsin", MVC.NotAdmin.Battles.NextBattleStartsIn());
+            #endregion
         }
     }
 }
