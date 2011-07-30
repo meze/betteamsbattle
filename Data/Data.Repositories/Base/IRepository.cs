@@ -9,6 +9,8 @@ namespace BetTeamsBattle.Data.Repositories.Base
     public interface IRepository<T>
     {
         IQueryable<T> Filter(Specification<T> filterSpecification);
-        void Save();
+        void SaveChanges();
+        IQueryable<T> All();
+        void Add(T entity);
     }
 }

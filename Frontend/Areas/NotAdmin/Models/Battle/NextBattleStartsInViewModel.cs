@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.Frontend.Models.Views.Battle
+﻿namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 {
     public class NextBattleStartsInViewModel
     {

@@ -37,9 +37,7 @@ namespace BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService
             Language language;
 
             string pathCountryCode;
-            UrlCountryCodeHelper.GetPathCountryCodeParts(
-                request.Url.GetComponents(UriComponents.Path, UriFormat.Unescaped),
-                out pathCountryCode);
+            UrlCountryCodeHelper.GetPathCountryCodeParts(request.Url.GetComponents(UriComponents.Path, UriFormat.Unescaped), out pathCountryCode);
             
             if (LanguageMappingHelper.CountryCodeIsSupported(pathCountryCode))
             {
@@ -82,12 +80,6 @@ namespace BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService
                 var newUrl = UrlCountryCodeHelper.ChangeUrlCountryCodePart(request.Url, language);
                 response.Redirect(newUrl);
             }
-
-            HttpContext.Current.Items[FrontendConstants.LanguageKey] = language;
-            var cultureInfo = LanguageMappingHelper.GetDefaultCultureInfo(language);
-
-            Thread.CurrentThread.CurrentUICulture = cultureInfo;
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(cultureInfo.Name);
 
             return language;
         }

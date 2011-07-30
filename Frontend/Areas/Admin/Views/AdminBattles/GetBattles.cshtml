@@ -1,0 +1,24 @@
+﻿@using BetTeamsBattle.Data.Model.Entities
+@model IEnumerable<Battle>
+@{
+    Layout = MVC.Shared.Views._Layout;
+    ViewBag.Title = "Battles";
+}
+<h2>
+    Battles</h2>
+@foreach (var battle in Model)
+{
+    <text> Id @battle.Id
+    <br />
+    Start date @battle.StartDate
+    <br />
+    End date @battle.EndDate
+    <br />
+    Battle type @battle.BattleType
+    <br />
+    Budget @battle.Budget
+    <br />
+    <br />
+    <br />
+    </text>
+}

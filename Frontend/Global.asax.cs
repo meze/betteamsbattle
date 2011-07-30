@@ -13,8 +13,10 @@ using BetTeamsBattle.Frontend.AspNetMvc.Routes;
 using BetTeamsBattle.Frontend.DI;
 using BetTeamsBattle.Frontend.Helpers;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService.Interfaces;
+using FluentValidation.Mvc;
 using Ninject;
 using Ninject.Web.Mvc;
+using Ninject.Web.Mvc.FluentValidation;
 
 namespace BetTeamsBattle.Frontend
 {
@@ -22,30 +24,14 @@ namespace BetTeamsBattle.Frontend
     {
         public void RegisterRoutes(RouteCollection routes)
         {
-            var languageConstraint = new RegexRouteConstraint("^(en|ru)$");
-            var startsNotFromLanguageConstraint = new RegexRouteConstraint("^(?!((en|ru)($|/)))");
-
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute("",
-                            "{language}/{controller}/{action}",
-                            (object)null,
-                            new { language = languageConstraint });
+            routes.IgnoreRoute("Content/{*pathInfo}");
 
             #region Language-inspecific queries
-            //These routes are catched by LanguageGlobalActionFilter and redirected to page with specific language
-            //Really the second route should work for empty string (when user comes to root - thingface.com) but it doesn't - 
-            //I have created a special route for this case
+            //This route is catched by LanguageActionFilter and redirected to page with specific language
             //None of these routes will really come to Home.Index action
-            routes.MapRoute("Root",
-                            "",
-                            MVC.Home.Index());
 
-            routes.MapRoute("",
-                            "{*something}",
-                            MVC.Home.Index(),
-                            null,
-                            new { something = startsNotFromLanguageConstraint }); //doesn't start from country code
+            routes.MapRoute("{*something}", MVC.NotAdmin.Home.Index(), new { something = RegexRouteConstraints.StartsNotFromLanguageConstraint }); //doesn't start from language
 
             #endregion Language-inspecific queries
         }
@@ -55,8 +41,16 @@ namespace BetTeamsBattle.Frontend
             base.OnApplicationStarted();
 
             AreaRegistration.RegisterAllAreas();
-
             RegisterRoutes(RouteTable.Routes);
+
+            ViewEngines.Engines.RemoveAt(0); //Remove WebForms ViewEngine
+
+            var validatorFactory = new NinjectValidatorFactory(Kernel);
+            FluentValidationModelValidatorProvider.Configure(x =>
+                {
+                    x.ValidatorFactory = validatorFactory;
+                    x.AddImplicitRequiredValidator = false;
+                });
         }
 
         protected void Application_BeginRequest()
