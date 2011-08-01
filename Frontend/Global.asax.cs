@@ -7,6 +7,7 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.DI;
 using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Data.Services.DI;
 using BetTeamsBattle.Frontend.AspNetMvc;
 using BetTeamsBattle.Frontend.AspNetMvc.ActionFilters;
 using BetTeamsBattle.Frontend.AspNetMvc.Routes;
@@ -26,6 +27,7 @@ namespace BetTeamsBattle.Frontend
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("Content/{*pathInfo}");
+            routes.IgnoreRoute("Scripts/{*pathInfo}");
 
             #region Language-inspecific queries
             //This route is catched by LanguageActionFilter and redirected to page with specific language
@@ -64,14 +66,15 @@ namespace BetTeamsBattle.Frontend
             {
                 var login = User.Identity.Name;
                 var repositoryOfUser = Kernel.Get<IRepository<User>>();
-                var user = repositoryOfUser.Filter(UserSpecifications.LoginIsEqual(login)).Include(u => u.Profile).Single();
+                var user = repositoryOfUser.Get(UserSpecifications.LoginIsEqual(login)).Include(u => u.Profile).Single();
                 Context.Items[FrontendConstants.UserKey] = user;
             }
         }
 
         protected override IKernel CreateKernel()
         {
-            return new StandardKernel(new DataModelNinjectModule(), new DataRepositoriesNinjectModule(), new FrontendNinjectModule());
+            return new StandardKernel(new DataModelNinjectModule(), new DataRepositoriesNinjectModule(),
+                                      new DataServicesNinjectModule(), new FrontendNinjectModule());
         }
     }
 }

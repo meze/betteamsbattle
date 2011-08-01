@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Web.Routing;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace BetTeamsBattle.Frontend.AspNetMvc.Routes
 {
@@ -8,12 +8,12 @@ namespace BetTeamsBattle.Frontend.AspNetMvc.Routes
     {
         public static void MapRoute(this RouteCollection routes, string url, ActionResult actionResult)
         {
-            routes.MapRoute(GetRouteName(), url, actionResult);
+            T4Extensions.MapRoute(routes, GetRouteName(), url, actionResult);
         }
 
         public static void MapRoute(this RouteCollection routes, string url, ActionResult actionResult, object constraints)
         {
-            routes.MapRoute(GetRouteName(), url, actionResult, null, constraints);
+            T4Extensions.MapRoute(routes, GetRouteName(), url, (ActionResult) actionResult, null, constraints);
         }
 
         public static void MapLanguageRoute(this AreaRegistrationContext context, string url, ActionResult actionResult)

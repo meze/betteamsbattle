@@ -19,5 +19,17 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual int Budget { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
+
+        public Battle()
+        {
+        }
+
+        public Battle(DateTime startDate, DateTime endDate, BattleType battleType, int budget)
+        {
+            StartDate = startDate;
+            EndDate = endDate;
+            BattleTypeEnum = battleType;
+            Budget = budget;
+        }
     }
 }

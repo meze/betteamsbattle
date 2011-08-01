@@ -1,0 +1,18 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Accounts
+@using Resources
+@model SignUpViewModel
+           
+@Accounts.OpenIdUrlFirstTime
+
+@Html.ValidationSummary(true)
+@using (Html.BeginForm(MVC.NotAdmin.Accounts.SignUp(), FormMethod.Post))
+{
+    <text>
+    @Accounts.Login @Html.TextBoxFor(m => m.Login, Model.Login)
+    @Html.ValidationMessageFor(m => m.Login)
+    <br />
+    @Html.HiddenFor(m => m.OpenIdUrl, Model.OpenIdUrl)
+    <br />
+    <input type="submit" value="@Accounts.SignUp" />
+    </text>
+}

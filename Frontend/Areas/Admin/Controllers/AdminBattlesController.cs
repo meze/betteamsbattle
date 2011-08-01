@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.Admin.Models;
 
 namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
@@ -13,16 +14,17 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
     public partial class AdminBattlesController : Controller
     {
         private readonly IRepository<Battle> _repositoryOfBattles;
+        private readonly IBattlesService _battlesService;
 
-        public AdminBattlesController(IRepository<Battle> repositoryOfBattles)
+        public AdminBattlesController(IRepository<Battle> repositoryOfBattles, IBattlesService battlesService)
         {
             _repositoryOfBattles = repositoryOfBattles;
+            _battlesService = battlesService;
         }
 
         [HttpGet]
         public virtual ActionResult CreateBattle()
         {
-            var fixedBudgetBattleType = BattleType.FixedBudget;
             var battleViewModel = new BattleViewModel();
 
             return View(battleViewModel);
@@ -34,22 +36,14 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(battleViewModel);
 
-            var battle = new Battle()
-                             {
-                                 StartDate = battleViewModel.StartDate,
-                                 EndDate = battleViewModel.EndDate,
-                                 BattleTypeEnum = battleViewModel.BattleType,
-                                 Budget = battleViewModel.Budget
-                             };
-            _repositoryOfBattles.Add(battle);
-            _repositoryOfBattles.SaveChanges();
+            _battlesService.Create(battleViewModel.StartDate, battleViewModel.EndDate, battleViewModel.BattleType, battleViewModel.Budget);
 
             return RedirectToAction(MVC.Admin.AdminBattles.GetBattles());
         }
 
         public virtual ActionResult GetBattles()
         {
-            var battles = _repositoryOfBattles.All().ToList();
+            var battles = _repositoryOfBattles.GetAll().ToList();
 
             return View(battles);
         }

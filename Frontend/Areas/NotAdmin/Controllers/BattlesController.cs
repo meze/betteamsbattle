@@ -24,7 +24,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         public virtual ActionResult NextBattleStartsIn()
         {
             //ToDo: Order by here is part of query logic. May be put it in Repository/BattlesRepository?
-            var nextBattleDate = _repositoryOfBattle.Filter(BattleSpecifications.StartDateIsInFuture()).OrderBy(b => b.StartDate).Select(b => b.StartDate).FirstOrDefault();
+            var nextBattleDate = _repositoryOfBattle.Get(BattleSpecifications.StartDateIsInFuture()).OrderBy(b => b.StartDate).Select(b => b.StartDate).FirstOrDefault();
             if (nextBattleDate == default(DateTime))
                 return new EmptyResult();
 
