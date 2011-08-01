@@ -60,13 +60,16 @@
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="LastSeen" Type="datetime" Nullable="false" />
           <Property Name="Login" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="OpenIdUrl" Type="varchar" MaxLength="500" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="20" />
+          <Property Name="PasswordSalt" Type="int" />
           <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="usersprofiles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="bigint" Nullable="false" />
           <Property Name="Language" Type="tinyint" />
         </EntityType>
         <Association Name="battlesusers_ibfk_1">
@@ -144,6 +147,9 @@
           <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
           <NavigationProperty Name="Battles" Relationship="Model.battlesusers" FromRole="user" ToRole="battle" />
           <NavigationProperty Name="Profile" Relationship="Model.usersprofiles_ibfk_1" FromRole="User" ToRole="usersprofile" />
+          <Property Type="String" Name="OpenIdUrl" />
+          <Property Type="String" Name="PasswordHash" />
+          <Property Type="Int32" Name="PasswordSalt" />
         </EntityType>
         <Association Name="battlesusers">
           <End Type="Model.Battle" Role="battle" Multiplicity="*" />
@@ -164,7 +170,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Type="SByte" Name="Language" />
           <NavigationProperty Name="User" Relationship="Model.usersprofiles_ibfk_1" FromRole="usersprofile" ToRole="User" />
         </EntityType>
@@ -202,6 +208,9 @@
           <EntitySetMapping Name="Users1">
             <EntityTypeMapping TypeName="Model.User">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="OpenIdUrl" ColumnName="OpenIdUrl" />
                 <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="LastSeen" ColumnName="LastSeen" />
@@ -260,10 +269,10 @@
     <Diagrams>
       <Diagram Name="Model" >
         <EntityTypeShape EntityType="Model.Battle" Width="1.5" PointX="0.75" PointY="1.125" Height="1.5956835937499994" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="0.875" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="0.875" Height="2.7494921874999996" />
         <AssociationConnector Association="Model.battlesusers" >
-          <ConnectorPoint PointX="2.25" PointY="1.9228417968749998" />
-          <ConnectorPoint PointX="3" PointY="1.9228417968749998" />
+          <ConnectorPoint PointX="2.25" PointY="2.2112939453125" />
+          <ConnectorPoint PointX="3" PointY="2.2112939453125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.IpToCountry" Width="1.5" PointX="0.75" PointY="3.75" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="5.25" PointY="0.875" Height="1.5956835937499994" />

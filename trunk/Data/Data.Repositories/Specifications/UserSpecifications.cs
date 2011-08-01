@@ -9,5 +9,10 @@ namespace BetTeamsBattle.Data.Repositories.Specifications
         {
             return new AdHocSpecification<User>(u => u.Login == login);
         }
+
+        public static Specification<User> OpenIdUrlIsEqual(string openIdUrl)
+        {
+            return new AdHocSpecification<User>(u => u.OpenIdUrl == openIdUrl);
+        }
     }
 }

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetOpenAuth">
+      <HintPath>..\packages\DotNetOpenAuth.3.4.7.11121\lib\DotNetOpenAuth.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.3.0.0.1\lib\Net40\FluentValidation.dll</HintPath>
@@ -90,7 +93,22 @@
     <Compile Include="Areas\Admin\Controllers\AdminBattlesController.cs" />
     <Compile Include="Areas\Admin\Models\BattleViewModel.cs" />
     <Compile Include="Areas\Admin\Validators\BattleViewModelValidator.cs" />
+    <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Accounts\Accounts.Designer.cs">
+      <DependentUpon>Accounts.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Accounts\Accounts.ru.Designer.cs">
+      <DependentUpon>Accounts.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Models\Accounts\SignInViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Accounts\SignUpViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
+    <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
     <Compile Include="AspNetMvc\ActionFilters\AdminRightsActionFilter.cs" />
     <Compile Include="AspNetMvc\ActionFilters\LanguageActionFilter.cs" />
     <Compile Include="AspNetMvc\Routes\LanguagelessMvcRouteHandler.cs" />
@@ -100,6 +118,8 @@
     <Compile Include="Authentication\CurrentUser.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\BattlesController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\HomeController.cs" />
+    <Compile Include="Authentication\Services\FormsAuthenticationService.cs" />
+    <Compile Include="Authentication\Services\Interfaces\IFormsAuthenticationService.cs" />
     <Compile Include="DI\FrontendNinjectModule.cs" />
     <Compile Include="FrontendConstants.cs" />
     <Compile Include="Global.asax.cs">
@@ -117,17 +137,17 @@
     <Compile Include="Localization\Infrastructure\LanguageService\Interfaces\ILanguageService.cs" />
     <Compile Include="Localization\Infrastructure\LanguageService\LanguageService.cs" />
     <Compile Include="Localization\Infrastructure\Url\UrlCountryCodeHelper.cs" />
-    <Compile Include="Localization\Metadata\Localizers\InDays\InDaysEnglishLocalizer.cs" />
-    <Compile Include="Localization\Metadata\Localizers\InDays\InDaysRussianLocalizer.cs" />
-    <Compile Include="Localization\Metadata\Localizers\InDays\Interfaces\IInDaysLocalizer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Localizers\InDays\InDaysEnglishLocalizer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Localizers\InDays\InDaysRussianLocalizer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Localizers\InDays\Interfaces\IInDaysLocalizer.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battle\NextBattleStartsInViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Localization\Metadata\Resources\Views\Battles\Battles.Designer.cs">
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Battles\Battles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Battles.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\Metadata\Resources\Views\Battles\Battles.ru.Designer.cs">
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Battles\Battles.ru.Designer.cs">
       <DependentUpon>Battles.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +156,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Admin.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\NotAdmin.AccountsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\NotAdmin.BattlesController.generated.cs">
@@ -166,6 +189,113 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\openid-selector\css\openid-shadow.css" />
+    <Content Include="Scripts\openid-selector\css\openid.css" />
+    <Content Include="Scripts\openid-selector\demo-mootools.html" />
+    <Content Include="Scripts\openid-selector\demo-prototype.html" />
+    <Content Include="Scripts\openid-selector\demo-ru.html" />
+    <Content Include="Scripts\openid-selector\demo-uk.html" />
+    <Content Include="Scripts\openid-selector\demo.html" />
+    <Content Include="Scripts\openid-selector\generate-sprite.js" />
+    <Content Include="Scripts\openid-selector\images.large\aol.gif" />
+    <Content Include="Scripts\openid-selector\images.large\facebook.gif" />
+    <Content Include="Scripts\openid-selector\images.large\google.gif" />
+    <Content Include="Scripts\openid-selector\images.large\mailru.gif" />
+    <Content Include="Scripts\openid-selector\images.large\myopenid.gif" />
+    <Content Include="Scripts\openid-selector\images.large\openid.gif" />
+    <Content Include="Scripts\openid-selector\images.large\rambler.gif" />
+    <Content Include="Scripts\openid-selector\images.large\verisign.gif" />
+    <Content Include="Scripts\openid-selector\images.large\vkontakte.gif" />
+    <Content Include="Scripts\openid-selector\images.large\yahoo.gif" />
+    <Content Include="Scripts\openid-selector\images.large\yandex.gif" />
+    <Content Include="Scripts\openid-selector\images.small\aol.ico" />
+    <Content Include="Scripts\openid-selector\images.small\aol.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\aol.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\blogger.ico" />
+    <Content Include="Scripts\openid-selector\images.small\blogger.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\blogger.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\claimid.ico" />
+    <Content Include="Scripts\openid-selector\images.small\claimid.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\claimid.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\clickpass.ico" />
+    <Content Include="Scripts\openid-selector\images.small\clickpass.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\clickpass.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\facebook.ico" />
+    <Content Include="Scripts\openid-selector\images.small\facebook.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\facebook.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\flickr.ico" />
+    <Content Include="Scripts\openid-selector\images.small\flickr.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\flickr.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\google.ico" />
+    <Content Include="Scripts\openid-selector\images.small\google.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\google.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\google_profile.ico" />
+    <Content Include="Scripts\openid-selector\images.small\google_profile.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\google_profile.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\launchpad.ico" />
+    <Content Include="Scripts\openid-selector\images.small\launchpad.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\launchpad.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\linkedin.ico" />
+    <Content Include="Scripts\openid-selector\images.small\linkedin.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\linkedin.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\livejournal.ico" />
+    <Content Include="Scripts\openid-selector\images.small\livejournal.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\livejournal.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\mailru.ico" />
+    <Content Include="Scripts\openid-selector\images.small\mailru.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\mailru.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\myopenid.ico" />
+    <Content Include="Scripts\openid-selector\images.small\myopenid.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\myopenid.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\openid.ico" />
+    <Content Include="Scripts\openid-selector\images.small\openid.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\openid.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\rambler.ico" />
+    <Content Include="Scripts\openid-selector\images.small\rambler.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\rambler.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\technorati.ico" />
+    <Content Include="Scripts\openid-selector\images.small\technorati.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\technorati.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\twitter.ico" />
+    <Content Include="Scripts\openid-selector\images.small\twitter.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\twitter.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\verisign.ico" />
+    <Content Include="Scripts\openid-selector\images.small\verisign.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\verisign.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\vidoop.ico" />
+    <Content Include="Scripts\openid-selector\images.small\vidoop.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\vidoop.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\vkontakte.ico" />
+    <Content Include="Scripts\openid-selector\images.small\vkontakte.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\vkontakte.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\winliveid.ico" />
+    <Content Include="Scripts\openid-selector\images.small\winliveid.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\winliveid.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\wordpress.ico" />
+    <Content Include="Scripts\openid-selector\images.small\wordpress.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\wordpress.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\yahoo.ico" />
+    <Content Include="Scripts\openid-selector\images.small\yahoo.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\yahoo.ico.png" />
+    <Content Include="Scripts\openid-selector\images.small\yandex.ico" />
+    <Content Include="Scripts\openid-selector\images.small\yandex.ico.gif" />
+    <Content Include="Scripts\openid-selector\images.small\yandex.ico.png" />
+    <Content Include="Scripts\openid-selector\images\openid-inputicon.gif" />
+    <Content Include="Scripts\openid-selector\images\openid-providers-en.png" />
+    <Content Include="Scripts\openid-selector\images\openid-providers-ru.png" />
+    <Content Include="Scripts\openid-selector\js\jquery-1.2.6.min.js" />
+    <Content Include="Scripts\openid-selector\js\mootools-core.js" />
+    <Content Include="Scripts\openid-selector\js\mootools-more.js" />
+    <Content Include="Scripts\openid-selector\js\openid-de.js" />
+    <Content Include="Scripts\openid-selector\js\openid-en.js" />
+    <Content Include="Scripts\openid-selector\js\openid-jp.js" />
+    <Content Include="Scripts\openid-selector\js\openid-jquery.js" />
+    <Content Include="Scripts\openid-selector\js\openid-mootools.js" />
+    <Content Include="Scripts\openid-selector\js\openid-prototype.js" />
+    <Content Include="Scripts\openid-selector\js\openid-ru.js" />
+    <Content Include="Scripts\openid-selector\js\openid-uk.js" />
+    <Content Include="Scripts\openid-selector\js\prototype.js" />
+    <Content Include="Scripts\openid-selector\README.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,10 +309,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Localization\Metadata\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\NotAdmin\Views\Shared\" />
     <Folder Include="Content\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Localization\Metadata\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +323,14 @@
     <Content Include="Areas\NotAdmin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\AdminBattles\CreateBattle.cshtml" />
     <Content Include="Areas\Admin\Views\AdminBattles\GetBattles.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Accounts\SignIn.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Accounts\SignUp.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Accounts\AuthenticationLink.cshtml" />
+    <None Include="Scripts\openid-selector\generate-sprite.rb" />
+    <None Include="Scripts\openid-selector\generate-sprite.sh" />
+    <None Include="Scripts\openid-selector\remcomments.sed" />
     <None Include="T4MVC\T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
@@ -203,6 +343,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.Services\Data.Services.csproj">
+      <Project>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</Project>
+      <Name>Data.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.Model\Data.Model.csproj">
       <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
       <Name>Data.Model</Name>
@@ -213,12 +357,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Metadata\Resources\Views\Battles\Battles.resx">
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Accounts\Accounts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Accounts.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Accounts\Accounts.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Accounts.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Battles\Battles.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Battles.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\Metadata\Resources\Views\Battles\Battles.ru.resx">
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Battles\Battles.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Battles.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>

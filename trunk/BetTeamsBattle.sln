@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Model", "Data\Data.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories", "Data\Data.Repositories\Data.Repositories.csproj", "{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Services", "Data.Services\Data.Services.csproj", "{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -34,5 +40,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{88B06194-D4B3-4504-B688-6314D5D7FE18} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
 		{3C778D2D-88DA-4EC4-A637-E7FE298F75FE} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
+		{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
 	EndGlobalSection
 EndGlobal

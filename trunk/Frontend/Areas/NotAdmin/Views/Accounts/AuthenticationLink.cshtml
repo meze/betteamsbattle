@@ -1,0 +1,15 @@
+﻿@using Resources
+@model dynamic
+
+@if (User.Identity.IsAuthenticated)
+{
+	<text>
+    @Html.ActionLink(Accounts.SignOut, MVC.NotAdmin.Accounts.SignOut())
+    </text>
+}
+else
+{
+    <text>
+    @Html.ActionLink(Accounts.SignIn, MVC.NotAdmin.Accounts.SignIn())
+    </text>
+}

@@ -6,11 +6,12 @@ using LinqSpecs;
 
 namespace BetTeamsBattle.Data.Repositories.Base
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : class
     {
-        IQueryable<T> Filter(Specification<T> filterSpecification);
-        void SaveChanges();
-        IQueryable<T> All();
+        IQueryable<T> GetAll();
+        IQueryable<T> Get(Specification<T> filterSpecification);
+        bool Exists(Specification<T> filterSpecification);
         void Add(T entity);
+        void SaveChanges();
     }
 }
