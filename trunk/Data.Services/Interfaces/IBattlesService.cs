@@ -5,6 +5,6 @@ namespace BetTeamsBattle.Data.Services.Interfaces
 {
     public interface IBattlesService
     {
-        void Create(DateTime startDate, DateTime endDate, BattleType battleType, int budget);
+        void CreateBattle(DateTime startDate, DateTime endDate, BattleType battleType, int budget);
     }
 }

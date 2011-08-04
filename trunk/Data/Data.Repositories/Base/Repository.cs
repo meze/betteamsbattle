@@ -12,11 +12,6 @@ namespace BetTeamsBattle.Data.Repositories.Base
         [Inject]
         public ModelContext Context { get; set; }
 
-        public IQueryable<T> GetAll()
-        {
-            return Context.CreateObjectSet<T>();
-        }
-
         public IQueryable<T> Get(Specification<T> filterSpecification)
         {
             return Context.CreateObjectSet<T>().Where(filterSpecification.IsSatisfiedBy());

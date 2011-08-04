@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.Admin.Models;
 
@@ -36,14 +37,14 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(battleViewModel);
 
-            _battlesService.Create(battleViewModel.StartDate, battleViewModel.EndDate, battleViewModel.BattleType, battleViewModel.Budget);
+            _battlesService.CreateBattle(battleViewModel.StartDate, battleViewModel.EndDate, battleViewModel.BattleType, battleViewModel.Budget);
 
             return RedirectToAction(MVC.Admin.AdminBattles.GetBattles());
         }
 
         public virtual ActionResult GetBattles()
         {
-            var battles = _repositoryOfBattles.GetAll().ToList();
+            var battles = _repositoryOfBattles.Get(BooleanSpecifications<Battle>.True()).ToList();
 
             return View(battles);
         }

@@ -36,10 +36,12 @@
         </EntityType>
         <EntityType Name="battlesusers">
           <Key>
-            <PropertyRef Name="BattleId" />
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Action" Type="tinyint" Nullable="false" />
           <Property Name="BattleId" Type="bigint" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="iptocountry">
@@ -113,48 +115,24 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Battles1" EntityType="Model.Battle" />
-          <EntitySet Name="Users1" EntityType="Model.User" />
-          <AssociationSet Name="battlesusers" Association="Model.battlesusers">
-            <End Role="battle" EntitySet="Battles1" />
-            <End Role="user" EntitySet="Users1" />
-          </AssociationSet>
           <EntitySet Name="IpToCountries1" EntityType="Model.IpToCountry" />
           <EntitySet Name="UserProfiles" EntityType="Model.UserProfile" />
+          <EntitySet Name="Battles" EntityType="Model.Battle" />
+          <EntitySet Name="BattlesUsers" EntityType="Model.BattleUser" />
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <AssociationSet Name="battlesusers_ibfk_1" Association="Model.battlesusers_ibfk_1">
+            <End Role="battle" EntitySet="Battles" />
+            <End Role="battlesuser" EntitySet="BattlesUsers" />
+          </AssociationSet>
+          <AssociationSet Name="battlesusers_ibfk_2" Association="Model.battlesusers_ibfk_2">
+            <End Role="user" EntitySet="Users" />
+            <End Role="battlesuser" EntitySet="BattlesUsers" />
+          </AssociationSet>
           <AssociationSet Name="usersprofiles_ibfk_1" Association="Model.usersprofiles_ibfk_1">
-            <End Role="User" EntitySet="Users1" />
-            <End Role="usersprofile" EntitySet="UserProfiles" />
+            <End Role="user" EntitySet="Users" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Battle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="StartDate" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Model.battlesusers" FromRole="battle" ToRole="user" />
-          <Property Type="SByte" Name="BattleType" Nullable="false" />
-          <Property Type="Int32" Name="Budget" Nullable="false" />
-          <Property Type="DateTime" Name="EndDate" Nullable="false" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="LastSeen" Nullable="false" />
-          <Property Type="String" Name="Login" Nullable="false" />
-          <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
-          <NavigationProperty Name="Battles" Relationship="Model.battlesusers" FromRole="user" ToRole="battle" />
-          <NavigationProperty Name="Profile" Relationship="Model.usersprofiles_ibfk_1" FromRole="User" ToRole="usersprofile" />
-          <Property Type="String" Name="OpenIdUrl" />
-          <Property Type="String" Name="PasswordHash" />
-          <Property Type="Int32" Name="PasswordSalt" />
-        </EntityType>
-        <Association Name="battlesusers">
-          <End Type="Model.Battle" Role="battle" Multiplicity="*" />
-          <End Type="Model.User" Role="user" Multiplicity="*" />
-        </Association>
         <EntityType Name="IpToCountry">
           <Key>
             <PropertyRef Name="Id" />
@@ -172,16 +150,77 @@
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Type="SByte" Name="Language" />
-          <NavigationProperty Name="User" Relationship="Model.usersprofiles_ibfk_1" FromRole="usersprofile" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Model.usersprofiles_ibfk_1" FromRole="UserProfile" ToRole="user" />
         </EntityType>
-        <Association Name="usersprofiles_ibfk_1">
-          <End Type="Model.User" Role="User" Multiplicity="1" />
-          <End Type="Model.UserProfile" Role="usersprofile" Multiplicity="0..1" />
+        <EntityType Name="Battle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="SByte" Name="BattleType" Nullable="false" />
+          <Property Type="Int32" Name="Budget" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <NavigationProperty Name="BattleUsers" Relationship="Model.battlesusers_ibfk_1" FromRole="battle" ToRole="battlesuser" />
+        </EntityType>
+        <EntityType Name="BattleUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="BattleId" Nullable="false" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <NavigationProperty Name="Battle" Relationship="Model.battlesusers_ibfk_1" FromRole="battlesuser" ToRole="battle" />
+          <NavigationProperty Name="User" Relationship="Model.battlesusers_ibfk_2" FromRole="battlesuser" ToRole="user" />
+          <Property Type="SByte" Name="Action" Nullable="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="LastSeen" Nullable="false" />
+          <Property Type="String" Name="Login" Nullable="false" />
+          <Property Type="String" Name="OpenIdUrl" />
+          <Property Type="String" Name="PasswordHash" />
+          <Property Type="Int32" Name="PasswordSalt" />
+          <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
+          <NavigationProperty Name="UserBattles" Relationship="Model.battlesusers_ibfk_2" FromRole="user" ToRole="battlesuser" />
+          <NavigationProperty Name="UsersProfile" Relationship="Model.usersprofiles_ibfk_1" FromRole="user" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="battlesusers_ibfk_1">
+          <End Type="Model.Battle" Role="battle" Multiplicity="1" />
+          <End Type="Model.BattleUser" Role="battlesuser" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="battle">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="usersprofile">
+            <Dependent Role="battlesuser">
+              <PropertyRef Name="BattleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="battlesusers_ibfk_2">
+          <End Type="Model.User" Role="user" Multiplicity="1" />
+          <End Type="Model.BattleUser" Role="battlesuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="battlesuser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usersprofiles_ibfk_1">
+          <End Type="Model.User" Role="user" Multiplicity="1" />
+          <End Type="Model.UserProfile" Role="UserProfile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -194,38 +233,6 @@
         <Alias Key="Model" Value="Model" />
         <Alias Key="Target" Value="Model.Store" />
         <EntityContainerMapping CdmEntityContainer="ModelContainer" StorageEntityContainer="ModelStoreContainer">
-          <EntitySetMapping Name="Battles1">
-            <EntityTypeMapping TypeName="Model.Battle">
-              <MappingFragment StoreEntitySet="battles">
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="Budget" ColumnName="Budget" />
-                <ScalarProperty Name="BattleType" ColumnName="BattleType" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users1">
-            <EntityTypeMapping TypeName="Model.User">
-              <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="OpenIdUrl" ColumnName="OpenIdUrl" />
-                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="LastSeen" ColumnName="LastSeen" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="battlesusers" TypeName="Model.battlesusers" StoreEntitySet="battlesusers">
-            <EndProperty Name="user">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="battle">
-              <ScalarProperty Name="Id" ColumnName="BattleId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="IpToCountries1">
             <EntityTypeMapping TypeName="Model.IpToCountry">
               <MappingFragment StoreEntitySet="iptocountry">
@@ -242,6 +249,41 @@
             <EntityTypeMapping TypeName="Model.UserProfile">
               <MappingFragment StoreEntitySet="usersprofiles">
                 <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Battles">
+            <EntityTypeMapping TypeName="Model.Battle">
+              <MappingFragment StoreEntitySet="battles">
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="BattleType" ColumnName="BattleType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BattlesUsers">
+            <EntityTypeMapping TypeName="Model.BattleUser">
+              <MappingFragment StoreEntitySet="battlesusers">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BattleId" ColumnName="BattleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="OpenIdUrl" ColumnName="OpenIdUrl" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="LastSeen" ColumnName="LastSeen" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -268,17 +310,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model" >
-        <EntityTypeShape EntityType="Model.Battle" Width="1.5" PointX="0.75" PointY="1.125" Height="1.5956835937499994" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="0.875" Height="2.7494921874999996" />
-        <AssociationConnector Association="Model.battlesusers" >
-          <ConnectorPoint PointX="2.25" PointY="2.2112939453125" />
-          <ConnectorPoint PointX="3" PointY="2.2112939453125" />
+        <EntityTypeShape EntityType="Model.IpToCountry" Width="1.5" PointX="7" PointY="4" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="0.5" PointY="4.375" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Model.Battle" Width="1.5" PointX="5.375" PointY="1.125" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Model.BattleUser" Width="1.5" PointX="3" PointY="1.125" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="0.5" PointY="1.125" Height="2.7494921874999987" />
+        <AssociationConnector Association="Model.battlesusers_ibfk_1" >
+          <ConnectorPoint PointX="5.375" PointY="2.1151432291666663" />
+          <ConnectorPoint PointX="4.5" PointY="2.1151432291666663" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.IpToCountry" Width="1.5" PointX="0.75" PointY="3.75" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="5.25" PointY="0.875" Height="1.5956835937499994" />
+        <AssociationConnector Association="Model.battlesusers_ibfk_2" >
+          <ConnectorPoint PointX="2" PointY="2.1151432291666663" />
+          <ConnectorPoint PointX="3" PointY="2.1151432291666663" />
+        </AssociationConnector>
         <AssociationConnector Association="Model.usersprofiles_ibfk_1" >
-          <ConnectorPoint PointX="4.5" PointY="1.6728417968749998" />
-          <ConnectorPoint PointX="5.25" PointY="1.6728417968749998" />
+          <ConnectorPoint PointX="1.25" PointY="3.8744921874999987" />
+          <ConnectorPoint PointX="1.25" PointY="4.375" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

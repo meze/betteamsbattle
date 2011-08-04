@@ -51,9 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextScope\ContextScope.cs" />
     <Compile Include="Specifications\BattleSpecifications.cs" />
     <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
     <Compile Include="Base\IRepository.cs" />
+    <Compile Include="Specifications\BooleanSpecifications.cs" />
+    <Compile Include="Specifications\EntitySpecifications.cs" />
     <Compile Include="Specifications\IpToCountrySpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\Repository.cs" />
@@ -65,7 +68,9 @@
       <Name>Data.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ContextScope\Interfaces\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
