@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
+using BetTeamsBattle.Data.Model;
 using BetTeamsBattle.Data.Model.DI;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
@@ -58,6 +59,12 @@ namespace BetTeamsBattle.Frontend
         protected void Application_BeginRequest()
         {
             DomainHelper.RedirectToNonWww();
+        }
+
+        protected void Application_EndRequest()
+        {
+            var modelContext = Kernel.Get<ModelContext>();
+            modelContext.SaveChanges();
         }
 
         protected void Application_AuthenticateRequest()

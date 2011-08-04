@@ -34,5 +34,19 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 
             return View(MVC.NotAdmin.Battles.Views.NextBattleStartsIn, inDaysViewModel);
         }
+
+        public virtual ActionResult ActualBattles()
+        {
+            var actualBattles = _repositoryOfBattle.Get(BattleSpecifications.NotFinishedOrNotStarted()).OrderBy(b => b.StartDate).ToList();
+
+            return View(actualBattles);
+        }
+
+        public virtual ActionResult Join(long battleId)
+        {
+
+
+            return View();
+        }
     }
 }
