@@ -2,7 +2,7 @@
 {
     public enum BattleAction
     {
-        Joined = 1,
-        Left = 2
+        Join = 1,
+        Leave = 2
     }
 }

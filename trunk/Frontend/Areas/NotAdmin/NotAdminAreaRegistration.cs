@@ -21,6 +21,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
 
             #region BattlesController
             context.MapLanguageRoute("battles/nextbattlestartsin", MVC.NotAdmin.Battles.NextBattleStartsIn());
+            context.MapLanguageRoute("battles/actual", MVC.NotAdmin.Battles.ActualBattles());
+            context.MapLanguageRoute("battles/{battleId}/join", MVC.NotAdmin.Battles.JoinBattle());
+            context.MapLanguageRoute("battles/{battleId}/leave", MVC.NotAdmin.Battles.LeaveBattle());
             #endregion
 
             #region AccountsController

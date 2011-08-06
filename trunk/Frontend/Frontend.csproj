@@ -43,9 +43,6 @@
     <Reference Include="FluentValidation.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentValidation.MVC3.3.0.0.1\lib\Net40\FluentValidation.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="LinqSpecs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LinqSpecs.1.0\lib\LinqSpecs.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
@@ -108,10 +105,12 @@
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignInViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignUpViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Battle\ActualBattleViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\Battles\BattlesViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\Battles\Interfaces\IBattlesViewService.cs" />
     <Compile Include="AspNetMvc\ActionFilters\AdminRightsActionFilter.cs" />
-    <Compile Include="AspNetMvc\ActionFilters\LanguageActionFilter.cs" />
     <Compile Include="AspNetMvc\Routes\LanguagelessMvcRouteHandler.cs" />
     <Compile Include="AspNetMvc\Routes\RegexRouteConstraint.cs" />
     <Compile Include="AspNetMvc\Routes\RegexRouteConstraints.cs" />
@@ -329,6 +328,7 @@
     <Content Include="Areas\NotAdmin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AuthenticationLink.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Battles\ActualBattles.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -344,7 +344,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.Services\Data.Services.csproj">
+    <ProjectReference Include="..\Data\Data.Repositories.Infrastructure\Data.Repositories.Infrastructure.csproj">
+      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
+      <Name>Data.Repositories.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.Services\Data.Services.csproj">
       <Project>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</Project>
       <Name>Data.Services</Name>
     </ProjectReference>

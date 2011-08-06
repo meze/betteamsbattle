@@ -1,19 +1,20 @@
 ﻿using BetTeamsBattle.Data.Model.Entities;
-using LinqSpecs;
 using System;
 
 namespace BetTeamsBattle.Data.Repositories.Specifications
 {
     public class BattleSpecifications
     {
-        public static Specification<Battle> StartDateIsInFuture()
+        public static LinqSpec<Battle> StartDateIsInFuture()
         {
-            return new AdHocSpecification<Battle>(b => b.StartDate > DateTime.UtcNow);
+            var now = DateTime.UtcNow;
+            return LinqSpec.For<Battle>(b => b.StartDate > now);
         }
 
-        public static Specification<Battle> NotFinishedOrNotStarted()
+        public static LinqSpec<Battle> NotFinishedOrNotStarted()
         {
-            return new AdHocSpecification<Battle>(b => b.EndDate < DateTime.UtcNow || b.StartDate > DateTime.UtcNow);
+            var now = DateTime.UtcNow;
+            return LinqSpec.For<Battle>(b => b.EndDate < now || b.StartDate > now);
         }
     }
 }

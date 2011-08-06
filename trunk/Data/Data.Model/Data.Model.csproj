@@ -55,6 +55,7 @@
     <Compile Include="Enums\BattleType.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Helpers\EntityHelper.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Model.Designer.cs">
       <AutoGen>True</AutoGen>

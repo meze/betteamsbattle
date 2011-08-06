@@ -40,7 +40,6 @@ namespace BetTeamsBattle.Frontend.DI
                 ForEach(match => Bind(match.InterfaceType).To(match.ValidatorType));
 
             this.BindFilter<HandleErrorAttribute>(FilterScope.Global, 0);
-            this.BindFilter<LanguageActionFilter>(FilterScope.Global, 0);
             this.BindFilter<AdminRightsActionFilter>(FilterScope.Global, 0);
         }
     }

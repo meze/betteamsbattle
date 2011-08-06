@@ -1,12 +1,10 @@
-﻿using LinqSpecs;
-
-namespace BetTeamsBattle.Data.Repositories.Specifications
+﻿namespace BetTeamsBattle.Data.Repositories.Specifications
 {
     public class BooleanSpecifications<T>
     {
-         public static Specification<T> True()
+         public static LinqSpec<T> True()
          {
-             return new AdHocSpecification<T>(e => true);
+             return LinqSpec.For<T>(e => true);
          }
     }
 }

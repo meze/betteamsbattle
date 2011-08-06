@@ -4,7 +4,10 @@ using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
+using BetTeamsBattle.Frontend.Authentication;
 using BetTeamsBattle.Frontend.Localization.Metadata.Localizers.InDays.Interfaces;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
@@ -12,12 +15,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
     public partial class BattlesController : Controller
     {
         private readonly IRepository<Battle> _repositoryOfBattle;
+        private readonly IBattlesService _battlesService;
+        private readonly IBattlesViewService _battlesViewService;
         private readonly IInDaysLocalizer _inDaysLocalizer;
 
-        public BattlesController(IRepository<Battle> repositoryOfBattle, IInDaysLocalizer inDaysLocalizer)
+        public BattlesController(IRepository<Battle> repositoryOfBattle, IBattlesService battlesService, IBattlesViewService battlesViewService)
         {
             _repositoryOfBattle = repositoryOfBattle;
-            _inDaysLocalizer = inDaysLocalizer;
+            _battlesService = battlesService;
+            _battlesViewService = battlesViewService;
         }
 
         [ChildActionOnly]
@@ -37,16 +43,25 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 
         public virtual ActionResult ActualBattles()
         {
-            var actualBattles = _repositoryOfBattle.Get(BattleSpecifications.NotFinishedOrNotStarted()).OrderBy(b => b.StartDate).ToList();
+            var actualBattlesViewModels = _battlesViewService.ActualBattlesViewModels(CurrentUser.UserId);
 
-            return View(actualBattles);
+            return View(actualBattlesViewModels);
         }
 
-        public virtual ActionResult Join(long battleId)
+        [HttpGet]
+        public virtual JsonResult JoinBattle(long battleId)
         {
+            _battlesService.JoinToBattle(battleId, CurrentUser.UserId);
 
+            return Json(null);
+        }
 
-            return View();
+        [HttpGet]
+        public virtual JsonResult LeaveBattle(long battleId)
+        {
+            _battlesService.LeaveBattle(battleId, CurrentUser.UserId);
+
+            return Json(null);
         }
     }
 }

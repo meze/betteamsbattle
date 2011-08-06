@@ -12,6 +12,7 @@ using BetTeamsBattle.Data.Services.DI;
 using BetTeamsBattle.Frontend.AspNetMvc;
 using BetTeamsBattle.Frontend.AspNetMvc.ActionFilters;
 using BetTeamsBattle.Frontend.AspNetMvc.Routes;
+using BetTeamsBattle.Frontend.Authentication;
 using BetTeamsBattle.Frontend.DI;
 using BetTeamsBattle.Frontend.Helpers;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService.Interfaces;
@@ -73,9 +74,12 @@ namespace BetTeamsBattle.Frontend
             {
                 var login = User.Identity.Name;
                 var repositoryOfUser = Kernel.Get<IRepository<User>>();
-                var user = repositoryOfUser.Get(UserSpecifications.LoginIsEqual(login)).Include(u => u.Profile).Single();
+                var user = repositoryOfUser.Get(UserSpecifications.LoginIsEqual(login)).Include(u => u.UserProfile).Single();
                 Context.Items[FrontendConstants.UserKey] = user;
             }
+
+            var languageService = Kernel.Get<ILanguageService>(); 
+            languageService.ProccessLanguageForRequest(CurrentUser.User, Request, Response);
         }
 
         protected override IKernel CreateKernel()

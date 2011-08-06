@@ -51,11 +51,11 @@
     <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.Model\Data.Model.csproj">
+    <ProjectReference Include="..\Data.Model\Data.Model.csproj">
       <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
       <Name>Data.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data\Data.Repositories\Data.Repositories.csproj">
+    <ProjectReference Include="..\Data.Repositories\Data.Repositories.csproj">
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
     </ProjectReference>
