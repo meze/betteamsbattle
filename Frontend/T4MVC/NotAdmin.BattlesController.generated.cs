@@ -33,13 +33,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.JsonResult JoinBattle() {
-            return new T4MVC_JsonResult(Area, Name, ActionNames.JoinBattle);
+        public System.Web.Mvc.ActionResult JoinBattle() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.JoinBattle);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.JsonResult LeaveBattle() {
-            return new T4MVC_JsonResult(Area, Name, ActionNames.LeaveBattle);
+        public System.Web.Mvc.ActionResult LeaveBattle() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LeaveBattle);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -67,6 +67,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string ActualBattles = "~/Areas/NotAdmin/Views/Battles/ActualBattles.cshtml";
+            public readonly string JoinOrLeaveBattle = "~/Areas/NotAdmin/Views/Battles/JoinOrLeaveBattle.cshtml";
             public readonly string NextBattleStartsIn = "~/Areas/NotAdmin/Views/Battles/NextBattleStartsIn.cshtml";
         }
     }
@@ -85,14 +86,14 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.JsonResult JoinBattle(long battleId) {
-            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.JoinBattle);
+        public override System.Web.Mvc.ActionResult JoinBattle(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.JoinBattle);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.JsonResult LeaveBattle(long battleId) {
-            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.LeaveBattle);
+        public override System.Web.Mvc.ActionResult LeaveBattle(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LeaveBattle);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }

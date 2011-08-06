@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
 using BetTeamsBattle.Frontend.AspNetMvc.ActionFilters;
 using BetTeamsBattle.Frontend.Authentication.Services;
 using BetTeamsBattle.Frontend.Authentication.Services.Interfaces;
@@ -32,6 +34,8 @@ namespace BetTeamsBattle.Frontend.DI
             Bind<ILanguageService>().To<LanguageService>();
 
             Bind<IFormsAuthenticationService>().To<FormsAuthenticationService>();
+
+            Bind<IBattlesViewService>().To<BattlesViewService>();
 
             Bind<IInDaysLocalizer>().To<InDaysEnglishLocalizer>().When(r => CurrentLanguage.Language == Language.English);
             Bind<IInDaysLocalizer>().To<InDaysRussianLocalizer>().When(r => CurrentLanguage.Language == Language.Russian);

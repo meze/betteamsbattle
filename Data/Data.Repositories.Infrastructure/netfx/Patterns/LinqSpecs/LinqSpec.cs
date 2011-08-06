@@ -28,37 +28,37 @@ public static partial class LinqSpec
 	{
 		return specification;
 	}
+}
 
-	private class AdHocSpec<T> : LinqSpec<T>, IEquatable<AdHocSpec<T>>
-	{
-		private readonly Expression<Func<T, bool>> specification;
+class AdHocSpec<T> : LinqSpec<T>, IEquatable<AdHocSpec<T>>
+{
+    private readonly Expression<Func<T, bool>> specification;
 
-		public AdHocSpec(Expression<Func<T, bool>> specification)
-		{
-			this.specification = specification;
-		}
+    public AdHocSpec(Expression<Func<T, bool>> specification)
+    {
+        this.specification = specification;
+    }
 
-		public override Expression<Func<T, bool>> Expression { get { return this.specification; } }
+    public override Expression<Func<T, bool>> Expression { get { return this.specification; } }
 
-		public override bool Equals(object obj)
-		{
-			if (Object.ReferenceEquals(null, obj)) return false;
-			if (Object.ReferenceEquals(this, obj)) return true;
-			if (obj.GetType() != this.GetType()) return false;
+    public override bool Equals(object obj)
+    {
+        if (Object.ReferenceEquals(null, obj)) return false;
+        if (Object.ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
 
-			return Equals((AdHocSpec<T>)obj);
-		}
+        return Equals((AdHocSpec<T>)obj);
+    }
 
-		public override int GetHashCode()
-		{
-			return this.specification.GetHashCode();
-		}
+    public override int GetHashCode()
+    {
+        return this.specification.GetHashCode();
+    }
 
-		public bool Equals(AdHocSpec<T> other)
-		{
-			return this.specification.Equals(other.specification);
-		}
-	}
+    public bool Equals(AdHocSpec<T> other)
+    {
+        return this.specification.Equals(other.specification);
+    }
 }
 
 /// <summary>
@@ -122,7 +122,7 @@ public abstract partial class LinqSpec<T>
 	/// </summary>
 	public static implicit operator LinqSpec<T>(Expression<Func<T, bool>> expression)
 	{
-		return expression.Spec();
+	    return new AdHocSpec<T>(expression);
 	}
 
 	/// <summary>

@@ -28,8 +28,8 @@ namespace BetTeamsBattle.Frontend
         public void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("Content/{*pathInfo}");
-            routes.IgnoreRoute("Scripts/{*pathInfo}");
+            //routes.IgnoreRoute("Content/{*pathInfo}");
+            //routes.IgnoreRoute("Scripts/{*pathInfo}");
 
             #region Language-inspecific queries
             //This route is catched by LanguageActionFilter and redirected to page with specific language
@@ -64,8 +64,6 @@ namespace BetTeamsBattle.Frontend
 
         protected void Application_EndRequest()
         {
-            var modelContext = Kernel.Get<ModelContext>();
-            modelContext.SaveChanges();
         }
 
         protected void Application_AuthenticateRequest()
@@ -78,8 +76,14 @@ namespace BetTeamsBattle.Frontend
                 Context.Items[FrontendConstants.UserKey] = user;
             }
 
-            var languageService = Kernel.Get<ILanguageService>(); 
-            languageService.ProccessLanguageForRequest(CurrentUser.User, Request, Response);
+            var requestUrlPath = Request.Url.PathAndQuery;
+            if (requestUrlPath.StartsWith("/"))
+                requestUrlPath = requestUrlPath.Substring(1);
+            if (!requestUrlPath.StartsWith("Content") && !requestUrlPath.StartsWith("Scripts"))
+            {
+                var languageService = Kernel.Get<ILanguageService>();
+                languageService.ProccessLanguageForRequest(CurrentUser.User, Request, Response);
+            }
         }
 
         protected override IKernel CreateKernel()

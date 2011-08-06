@@ -5,7 +5,7 @@ using BetTeamsBattle.Data.Model.Enums;
 
 namespace BetTeamsBattle.Frontend.Areas.Admin.Models
 {
-    public class BattleViewModel
+    public class CreateBattleViewModel
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -26,5 +26,14 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Models
             }
         }
         public int Budget { get; set; }
+
+        public CreateBattleViewModel()
+        {
+            var beginOfToday = DateTime.UtcNow;
+            beginOfToday = beginOfToday.Add(-beginOfToday.TimeOfDay);
+
+            StartDate = beginOfToday;
+            EndDate = beginOfToday;
+        }
     }
 }

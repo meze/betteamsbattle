@@ -24,6 +24,8 @@ namespace Data.Repositories.Tests.Specific
         [SetUp]
         public void Setup()
         {
+            HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
+
             _transactionScope = new TransactionScope();
 
             var contextScope = new ContextScope();
@@ -88,7 +90,7 @@ namespace Data.Repositories.Tests.Specific
         [Test]
         public void GetLastBattleUsers_SeveralBattles_LastForEachBattleIsChosen()
         {
-            var battleUsers = _battleUserRepository.GetLastBattleUsers(_user1.Id, new List<long> { _battle1.Id }).ToList();
+            var battleUsers = _battleUserRepository.GetLastBattleUsers(_user1.Id, new List<long> { _battle1.Id, _battle2.Id }).ToList();
 
             CollectionAssert.AreEquivalent(new List<long>() {_battleUser2.Id, _battleUser4.Id},
                                            battleUsers.Select(bu => bu.Id).ToList());

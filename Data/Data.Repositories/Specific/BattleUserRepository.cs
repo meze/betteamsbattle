@@ -12,9 +12,10 @@ namespace BetTeamsBattle.Data.Repositories.Specific
          public IQueryable<BattleUser> GetLastBattleUsers(long userId, IEnumerable<long> battlesIds)
          {
              //ToDo: Report to MySQL team that query with GroupBy().Select(g.OrderByDescending(DateTime).FirstOrDefault()) doesn't work
-             return Get(BattleUserSpecifications.UserIdIsEqualTo(userId) & BattleUserSpecifications.UserIdIsEqualTo(userId)).
+             return Get(BattleUserSpecifications.UserIdIsEqualTo(userId) &&
+                        BattleUserSpecifications.BattleIdIsContainedIn(battlesIds)).
                  Where(bu => bu.DateTime == Context.BattlesUsers.
-                                                Where(bu1 => bu1.UserId == userId && bu1.BattleId == bu.BattleId).
+                                                Where(BattleUserSpecifications.BattleIdAndUserIdAreEqualTo(bu.BattleId, userId)).
                                                 Max(bu1 => bu1.DateTime));
          }
     }
