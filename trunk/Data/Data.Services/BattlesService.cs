@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Transactions;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
@@ -11,11 +12,15 @@ namespace BetTeamsBattle.Data.Services
     {
         private readonly IRepository<Battle> _repositoryOfBattles;
         private readonly IRepository<BattleUser> _repositoryOfBattlesUsers;
+        private readonly IRepository<BattleBet> _repositoryOfBattleBet;
+        private readonly IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
 
-        public BattlesService(IRepository<Battle> repositoryOfBattles, IRepository<BattleUser> repositoryOfBattlesUsers)
+        public BattlesService(IRepository<Battle> repositoryOfBattles, IRepository<BattleUser> repositoryOfBattlesUsers, IRepository<BattleBet> repositoryOfBattleBet, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl)
         {
             _repositoryOfBattles = repositoryOfBattles;
             _repositoryOfBattlesUsers = repositoryOfBattlesUsers;
+            _repositoryOfBattleBet = repositoryOfBattleBet;
+            _repositoryOfQueuedBetUrl = repositoryOfQueuedBetUrl;
         }
 
         public void CreateBattle(DateTime startDate, DateTime endDate, BattleType battleType, int budget)
@@ -51,6 +56,25 @@ namespace BetTeamsBattle.Data.Services
                 _repositoryOfBattlesUsers.Add(battleUser);
 
                 contextScope.SaveChanges();
+            }
+        }
+
+        public void MakeBattleBet(long battleId, long userId, double bet, double coefficient, string url)
+        {
+            using (var transactionScope = new TransactionScope())
+            {
+                using (var contextScope = new ContextScope())
+                {
+                    var battleBet = new BattleBet(battleId, userId, bet, coefficient, url);
+                    _repositoryOfBattleBet.Add(battleBet);
+                    contextScope.SaveChanges();
+
+                    var queuedBetUrl = new QueuedBetUrl(battleBet.Id, url, QueuedBetUrlType.Open);
+                    _repositoryOfQueuedBetUrl.Add(queuedBetUrl);
+                    contextScope.SaveChanges();
+                }
+
+                transactionScope.Complete();
             }
         }
     }

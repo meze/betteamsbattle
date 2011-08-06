@@ -51,11 +51,13 @@
     <Compile Include="Entities\BattleBet.cs" />
     <Compile Include="Entities\BattleUser.cs" />
     <Compile Include="Entities\IpToCountry.cs" />
+    <Compile Include="Entities\QueuedBetUrl.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Enums\BattleUserAction.cs" />
     <Compile Include="Enums\BattleType.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Enums\QueuedBetUrlType.cs" />
     <Compile Include="Helpers\EntityHelper.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Model.Designer.cs">
