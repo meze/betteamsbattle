@@ -1,16 +1,15 @@
-﻿@model IEnumerable<Battle>
+﻿@model IEnumerable<ActualBattleViewModel>
 @using BetTeamsBattle.Data.Model.Entities
+@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 @using Resources
 @{
     Layout = MVC.Shared.Views._Layout;
 }
-
 <h2>@Battles.ActualBattles</h2>
-
 @foreach (var battle in Model)
 {
     <text>
-        
+    @battle.StartDate-@battle.EndDate @battle.Budget
+    @Html.Partial(MVC.NotAdmin.Battles.Views.JoinOrLeaveBattle, battle)
     </text>
 }
-

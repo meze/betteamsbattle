@@ -41,27 +41,30 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             return View(MVC.NotAdmin.Battles.Views.NextBattleStartsIn, inDaysViewModel);
         }
 
+        [HttpGet]
         public virtual ActionResult ActualBattles()
         {
-            var actualBattlesViewModels = _battlesViewService.ActualBattlesViewModels(CurrentUser.UserId);
+            var actualBattlesViewModels = _battlesViewService.ActualBattlesViewModels(CurrentUser.NullableUserId);
 
             return View(actualBattlesViewModels);
         }
 
         [HttpGet]
-        public virtual JsonResult JoinBattle(long battleId)
+        [Authorize]
+        public virtual ActionResult JoinBattle(long battleId)
         {
             _battlesService.JoinToBattle(battleId, CurrentUser.UserId);
 
-            return Json(null);
+            return RedirectToAction(Actions.ActualBattles());
         }
 
         [HttpGet]
-        public virtual JsonResult LeaveBattle(long battleId)
+        [Authorize]
+        public virtual ActionResult LeaveBattle(long battleId)
         {
             _battlesService.LeaveBattle(battleId, CurrentUser.UserId);
 
-            return Json(null);
+            return RedirectToAction(Actions.ActualBattles());
         }
     }
 }

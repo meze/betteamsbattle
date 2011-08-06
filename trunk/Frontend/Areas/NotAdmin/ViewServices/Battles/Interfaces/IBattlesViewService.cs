@@ -5,6 +5,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces
 {
     public interface IBattlesViewService
     {
-        IEnumerable<ActualBattleViewModel> ActualBattlesViewModels(long userId);
+        IEnumerable<ActualBattleViewModel> ActualBattlesViewModels(long? userId);
     }
 }

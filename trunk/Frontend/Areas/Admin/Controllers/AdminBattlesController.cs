@@ -26,18 +26,18 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
         [HttpGet]
         public virtual ActionResult CreateBattle()
         {
-            var battleViewModel = new BattleViewModel();
+            var battleViewModel = new CreateBattleViewModel();
 
             return View(battleViewModel);
         }
 
         [HttpPost]
-        public virtual ActionResult CreateBattle(BattleViewModel battleViewModel)
+        public virtual ActionResult CreateBattle(CreateBattleViewModel createBattleViewModel)
         {
             if (!ModelState.IsValid)
-                return View(battleViewModel);
+                return View(createBattleViewModel);
 
-            _battlesService.CreateBattle(battleViewModel.StartDate, battleViewModel.EndDate, battleViewModel.BattleType, battleViewModel.Budget);
+            _battlesService.CreateBattle(createBattleViewModel.StartDate, createBattleViewModel.EndDate, createBattleViewModel.BattleType, createBattleViewModel.Budget);
 
             return RedirectToAction(MVC.Admin.AdminBattles.GetBattles());
         }
