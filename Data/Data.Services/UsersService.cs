@@ -20,7 +20,7 @@ namespace BetTeamsBattle.Data.Services
             using (var contextScope = new ContextScope())
             {
                 var user = new User(login, openIdUrl);
-                user.Profile = new UserProfile() {LanguageEnum = language};
+                user.UserProfile = new UserProfile() {LanguageEnum = language};
 
                 _repositoryOfUser.Add(user);
 

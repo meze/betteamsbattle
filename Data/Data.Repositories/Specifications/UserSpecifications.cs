@@ -1,18 +1,17 @@
 ﻿using BetTeamsBattle.Data.Model.Entities;
-using LinqSpecs;
 
 namespace BetTeamsBattle.Data.Repositories.Specifications
 {
     public class UserSpecifications
     {
-        public static Specification<User> LoginIsEqual(string login)
+        public static LinqSpec<User> LoginIsEqual(string login)
         {
-            return new AdHocSpecification<User>(u => u.Login == login);
+            return LinqSpec.For<User>(u => u.Login == login);
         }
 
-        public static Specification<User> OpenIdUrlIsEqual(string openIdUrl)
+        public static LinqSpec<User> OpenIdUrlIsEqual(string openIdUrl)
         {
-            return new AdHocSpecification<User>(u => u.OpenIdUrl == openIdUrl);
+            return LinqSpec.For<User>(u => u.OpenIdUrl == openIdUrl);
         }
     }
 }

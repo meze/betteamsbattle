@@ -30,9 +30,28 @@ namespace BetTeamsBattle.Data.Services
             }
         }
 
-        public void JoinToBattle(long userId, long battleId)
+        public void JoinToBattle(long battleId, long userId)
         {
-            //var battle = _repositoryOfBattles.Get(EntitySpecification.)
+            using (var contextScope = new ContextScope())
+            {
+                var battleUser = new BattleUser(battleId, userId, BattleAction.Join);
+
+                _repositoryOfBattlesUsers.Add(battleUser);
+
+                contextScope.SaveChanges();
+            }
+        }
+
+        public void LeaveBattle(long battleId, long userId)
+        {
+            using (var contextScope = new ContextScope())
+            {
+                var battleUser = new BattleUser(battleId, userId, BattleAction.Leave);
+
+                _repositoryOfBattlesUsers.Add(battleUser);
+
+                contextScope.SaveChanges();
+            }
         }
     }
 }

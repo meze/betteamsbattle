@@ -81,6 +81,12 @@ namespace BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService
                 response.Redirect(newUrl);
             }
 
+            HttpContext.Current.Items[FrontendConstants.LanguageKey] = language;
+
+            var cultureInfo = LanguageMappingHelper.GetDefaultCultureInfo(language);
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+
             return language;
         }
 
@@ -94,7 +100,7 @@ namespace BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService
 
         private Language? GetAuthenticatedUserLanguage(User user)
         {
-            return user.Profile.LanguageEnum;
+            return user.UserProfile.LanguageEnum;
         }
 
         private Language? GetNonAuthenticatedUserLanguage(HttpRequest request)
@@ -122,7 +128,7 @@ namespace BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageService
 
         private void ChangeAuthenticatedUserLanguage(User user, Language newLanguage)
         {
-            user.Profile.LanguageEnum = newLanguage;
+            user.UserProfile.LanguageEnum = newLanguage;
         }
 
         private void ChangeNonAuthenticatedUserLanguage(Language newLanguage, HttpResponse response)

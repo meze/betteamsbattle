@@ -62,6 +62,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Actual battles.
+        /// </summary>
+        public static string ActualBattles {
+            get {
+                return ResourceManager.GetString("ActualBattles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join.
+        /// </summary>
+        public static string Join {
+            get {
+                return ResourceManager.GetString("Join", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave.
+        /// </summary>
+        public static string Leave {
+            get {
+                return ResourceManager.GetString("Leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next battle starts in.
         /// </summary>
         public static string NextBattleStartsIn {

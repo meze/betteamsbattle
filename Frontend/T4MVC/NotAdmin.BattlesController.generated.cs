@@ -31,6 +31,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult JoinBattle() {
+            return new T4MVC_JsonResult(Area, Name, ActionNames.JoinBattle);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult LeaveBattle() {
+            return new T4MVC_JsonResult(Area, Name, ActionNames.LeaveBattle);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public BattlesController Actions { get { return MVC.NotAdmin.Battles; } }
@@ -45,6 +55,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string NextBattleStartsIn = ("NextBattleStartsIn").ToLowerInvariant();
+            public readonly string ActualBattles = ("ActualBattles").ToLowerInvariant();
+            public readonly string JoinBattle = ("JoinBattle").ToLowerInvariant();
+            public readonly string LeaveBattle = ("LeaveBattle").ToLowerInvariant();
         }
 
 
@@ -53,6 +66,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string ActualBattles = "~/Areas/NotAdmin/Views/Battles/ActualBattles.cshtml";
             public readonly string NextBattleStartsIn = "~/Areas/NotAdmin/Views/Battles/NextBattleStartsIn.cshtml";
         }
     }
@@ -63,6 +77,23 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         public override System.Web.Mvc.ActionResult NextBattleStartsIn() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.NextBattleStartsIn);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult ActualBattles() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.ActualBattles);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.JsonResult JoinBattle(long battleId) {
+            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.JoinBattle);
+            callInfo.RouteValueDictionary.Add("battleId", battleId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.JsonResult LeaveBattle(long battleId) {
+            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.LeaveBattle);
+            callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }
 

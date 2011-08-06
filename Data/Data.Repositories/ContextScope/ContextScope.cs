@@ -17,15 +17,12 @@ namespace BetTeamsBattle.Data.Repositories.ContextScope
 
         public void SaveChanges()
         {
-            _savedChanges = true;
+            CurrentContext.SaveChanges();
         }
 
         public void Dispose()
         {
-            if (_savedChanges)
-                CurrentContext.SaveChanges();
             CurrentContext.Dispose();
-            CurrentContext = null;
         }
     }
 }

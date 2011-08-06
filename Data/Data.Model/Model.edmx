@@ -187,7 +187,7 @@
           <Property Type="Int32" Name="PasswordSalt" />
           <Property Type="DateTime" Name="RegistrationDate" Nullable="false" />
           <NavigationProperty Name="UserBattles" Relationship="Model.battlesusers_ibfk_2" FromRole="user" ToRole="battlesuser" />
-          <NavigationProperty Name="UsersProfile" Relationship="Model.usersprofiles_ibfk_1" FromRole="user" ToRole="UserProfile" />
+          <NavigationProperty Name="UserProfile" Relationship="Model.usersprofiles_ibfk_1" FromRole="user" ToRole="UserProfile" />
         </EntityType>
         <Association Name="battlesusers_ibfk_1">
           <End Type="Model.Battle" Role="battle" Multiplicity="1" />
