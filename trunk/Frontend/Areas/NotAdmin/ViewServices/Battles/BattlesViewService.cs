@@ -48,7 +48,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
 
                 var battleUser = actualBattlesUsers.Where(bu => bu.BattleId == battle.Id).SingleOrDefault();
 
-                if (battleUser == null || battleUser.ActionEnum == BattleAction.Leave)
+                if (battleUser == null || battleUser.UserActionEnum == BattleUserAction.Leave)
                 {
                     actualBattleViewModel.IsJoined = false;
                     actualBattleViewModel.JoinOrLeaveActionResult = userId.HasValue

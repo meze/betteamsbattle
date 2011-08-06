@@ -16,6 +16,7 @@ namespace BetTeamsBattle.Data.Model.Entities
 
         public virtual UserProfile UserProfile { get; set; } 
         public virtual ICollection<BattleUser> UserBattles { get; set; }
+        public virtual ICollection<BattleBet> UserBets { get; set; } 
 
         public User()
         {

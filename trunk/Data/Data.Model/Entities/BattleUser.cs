@@ -11,9 +11,9 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual long UserId { get; set; }
         public virtual DateTime DateTime { get; set; }
         public virtual sbyte Action { get; set; }
-        public virtual BattleAction ActionEnum
+        public virtual BattleUserAction UserActionEnum
         {
-            get { return (BattleAction) Action; }
+            get { return (BattleUserAction) Action; }
             set { Action = (sbyte) value; }
         }
 
@@ -24,12 +24,12 @@ namespace BetTeamsBattle.Data.Model.Entities
         {
         }
 
-        public BattleUser(long battleId, long userId, BattleAction battleAction)
+        public BattleUser(long battleId, long userId, BattleUserAction battleUserAction)
         {
             BattleId = battleId;
             UserId = userId;
             DateTime = DateTime.UtcNow;
-            ActionEnum = battleAction;
+            UserActionEnum = battleUserAction;
         }
     }
 }
