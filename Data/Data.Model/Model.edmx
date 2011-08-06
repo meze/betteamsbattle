@@ -10,6 +10,7 @@
           <EntitySet Name="battlesbets" EntityType="Model.Store.battlesbets" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="battlesusers" EntityType="Model.Store.battlesusers" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="iptocountry" EntityType="Model.Store.iptocountry" store:Type="Tables" Schema="betteamsbattle" />
+          <EntitySet Name="queuedbeturls" EntityType="Model.Store.queuedbeturls" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="users" EntityType="Model.Store.users" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="usersprofiles" EntityType="Model.Store.usersprofiles" store:Type="Tables" Schema="betteamsbattle" />
           <AssociationSet Name="battlesbets_ibfk_1" Association="Model.Store.battlesbets_ibfk_1">
@@ -27,6 +28,10 @@
           <AssociationSet Name="battlesusers_ibfk_2" Association="Model.Store.battlesusers_ibfk_2">
             <End Role="users" EntitySet="users" />
             <End Role="battlesusers" EntitySet="battlesusers" />
+          </AssociationSet>
+          <AssociationSet Name="queuedbeturls_ibfk_1" Association="Model.Store.queuedbeturls_ibfk_1">
+            <End Role="battlesbets" EntitySet="battlesbets" />
+            <End Role="queuedbeturls" EntitySet="queuedbeturls" />
           </AssociationSet>
           <AssociationSet Name="usersprofiles_ibfk_1" Association="Model.Store.usersprofiles_ibfk_1">
             <End Role="users" EntitySet="users" />
@@ -55,6 +60,7 @@
           <Property Name="Bet" Type="double" Nullable="false" />
           <Property Name="Coefficient" Type="double" Nullable="false" />
           <Property Name="Url" Type="varchar" Nullable="false" />
+          <Property Name="Success" Type="bool" />
         </EntityType>
         <EntityType Name="battlesusers">
           <Key>
@@ -76,6 +82,17 @@
           <Property Name="CountryCode" Type="varchar" Nullable="false" MaxLength="2" />
           <Property Name="LongCountryCode" Type="varchar" Nullable="false" MaxLength="3" />
           <Property Name="CountryName" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="queuedbeturls">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BattleBetId" Type="bigint" Nullable="false" />
+          <Property Name="Url" Type="varchar" Nullable="false" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+          <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+          <Property Name="FinishDateTime" Type="datetime" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -144,6 +161,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="queuedbeturls_ibfk_1">
+          <End Role="battlesbets" Type="Model.Store.battlesbets" Multiplicity="1" />
+          <End Role="queuedbeturls" Type="Model.Store.queuedbeturls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="battlesbets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="queuedbeturls">
+              <PropertyRef Name="BattleBetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="usersprofiles_ibfk_1">
           <End Role="users" Type="Model.Store.users" Multiplicity="1" />
           <End Role="usersprofiles" Type="Model.Store.usersprofiles" Multiplicity="0..1" />
@@ -186,6 +215,11 @@
           <AssociationSet Name="battlesbets_ibfk_2" Association="Model.battlesbets_ibfk_2">
             <End Role="User" EntitySet="Users" />
             <End Role="battlesbet" EntitySet="BattlesBets" />
+          </AssociationSet>
+          <EntitySet Name="QueuedBetUrls" EntityType="Model.QueuedBetUrl" />
+          <AssociationSet Name="queuedbeturls_ibfk_1" Association="Model.queuedbeturls_ibfk_1">
+            <End Role="BattleBet" EntitySet="BattlesBets" />
+            <End Role="queuedbeturl" EntitySet="QueuedBetUrls" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="IpToCountry">
@@ -296,6 +330,8 @@
           <Property Type="DateTime" Name="OpenDateTime" Nullable="false" />
           <Property Type="DateTime" Name="CloseDateTime" />
           <Property Type="Double" Name="Coefficient" Nullable="false" />
+          <NavigationProperty Name="QueuedBetUrls" Relationship="Model.queuedbeturls_ibfk_1" FromRole="BattleBet" ToRole="queuedbeturl" />
+          <Property Type="Boolean" Name="Success" />
         </EntityType>
         <Association Name="battlesbets_ibfk_1">
           <End Type="Model.Battle" Role="Battle" Multiplicity="1" />
@@ -318,6 +354,30 @@
             </Principal>
             <Dependent Role="battlesbet">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="QueuedBetUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="BattleBetId" Nullable="false" />
+          <Property Type="String" Name="Url" Nullable="false" />
+          <Property Type="DateTime" Name="StartDateTime" Nullable="false" />
+          <Property Type="DateTime" Name="FinishDateTime" />
+          <NavigationProperty Name="BattleBet" Relationship="Model.queuedbeturls_ibfk_1" FromRole="queuedbeturl" ToRole="BattleBet" />
+          <Property Type="SByte" Name="Type" Nullable="false" />
+        </EntityType>
+        <Association Name="queuedbeturls_ibfk_1">
+          <End Type="Model.BattleBet" Role="BattleBet" Multiplicity="1" />
+          <End Type="Model.QueuedBetUrl" Role="queuedbeturl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BattleBet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="queuedbeturl">
+              <PropertyRef Name="BattleBetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -387,6 +447,7 @@
           <EntitySetMapping Name="BattlesBets">
             <EntityTypeMapping TypeName="Model.BattleBet">
               <MappingFragment StoreEntitySet="battlesbets">
+                <ScalarProperty Name="Success" ColumnName="Success" />
                 <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
                 <ScalarProperty Name="CloseDateTime" ColumnName="CloseDateTime" />
                 <ScalarProperty Name="OpenDateTime" ColumnName="OpenDateTime" />
@@ -394,6 +455,18 @@
                 <ScalarProperty Name="Bet" ColumnName="Bet" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="BattleId" ColumnName="BattleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueuedBetUrls">
+            <EntityTypeMapping TypeName="Model.QueuedBetUrl">
+              <MappingFragment StoreEntitySet="queuedbeturls">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FinishDateTime" ColumnName="FinishDateTime" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="BattleBetId" ColumnName="BattleBetId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -420,8 +493,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model" >
-        <EntityTypeShape EntityType="Model.IpToCountry" Width="1.5" PointX="0.5" PointY="6.625" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="0.5" PointY="4.625" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Model.IpToCountry" Width="1.5" PointX="0.5" PointY="7.25" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="0.5" PointY="4.875" Height="1.59568359375" />
         <EntityTypeShape EntityType="Model.Battle" Width="1.5" PointX="5.5" PointY="1.375" Height="2.3648893229166661" />
         <EntityTypeShape EntityType="Model.BattleUser" Width="1.5" PointX="2.875" PointY="0.5" Height="2.3648893229166661" />
         <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="0.5" PointY="1.25" Height="2.9417936197916665" />
@@ -435,16 +508,21 @@
         </AssociationConnector>
         <AssociationConnector Association="Model.usersprofiles_ibfk_1" >
           <ConnectorPoint PointX="1.25" PointY="4.1917936197916665" />
-          <ConnectorPoint PointX="1.25" PointY="4.625" />
+          <ConnectorPoint PointX="1.25" PointY="4.875" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.BattleBet" Width="1.5" PointX="2.875" PointY="3.375" Height="2.7494921874999987" />
         <AssociationConnector Association="Model.battlesbets_ibfk_1" >
-          <ConnectorPoint PointX="5.5" PointY="3.5574446614583333" />
-          <ConnectorPoint PointX="4.375" PointY="3.5574446614583333" />
+          <ConnectorPoint PointX="5.5" PointY="3.5574446614583324" />
+          <ConnectorPoint PointX="4.375" PointY="3.5574446614583324" />
         </AssociationConnector>
         <AssociationConnector Association="Model.battlesbets_ibfk_2" >
-          <ConnectorPoint PointX="2" PointY="3.7833968098958337" />
-          <ConnectorPoint PointX="2.875" PointY="3.7833968098958337" />
+          <ConnectorPoint PointX="2" PointY="3.7833968098958333" />
+          <ConnectorPoint PointX="2.875" PointY="3.7833968098958333" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.QueuedBetUrl" Width="1.5" PointX="2.875" PointY="7.25" Height="2.1725878906249996" />
+        <AssociationConnector Association="Model.queuedbeturls_ibfk_1" >
+          <ConnectorPoint PointX="3.625" PointY="6.701396484375" />
+          <ConnectorPoint PointX="3.625" PointY="7.25" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>
