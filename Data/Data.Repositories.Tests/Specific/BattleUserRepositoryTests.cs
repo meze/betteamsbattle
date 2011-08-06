@@ -48,14 +48,14 @@ namespace Data.Repositories.Tests.Specific
 
             contextScope.SaveChanges();
 
-            _battleUser1 = new BattleUser(_battle1.Id, _user1.Id, BattleAction.Join) { DateTime = DateTime.Now };
+            _battleUser1 = new BattleUser(_battle1.Id, _user1.Id, BattleUserAction.Join) { DateTime = DateTime.Now };
             _battleUserRepository.Add(_battleUser1);
-            _battleUser2 = new BattleUser(_battle1.Id, _user1.Id, BattleAction.Leave) { DateTime = DateTime.Now.AddSeconds(5) };
+            _battleUser2 = new BattleUser(_battle1.Id, _user1.Id, BattleUserAction.Leave) { DateTime = DateTime.Now.AddSeconds(5) };
             _battleUserRepository.Add(_battleUser2);
-            _battleUser3 = new BattleUser(_battle1.Id, _user2.Id, BattleAction.Join) { DateTime = DateTime.Now.AddSeconds(10) };
+            _battleUser3 = new BattleUser(_battle1.Id, _user2.Id, BattleUserAction.Join) { DateTime = DateTime.Now.AddSeconds(10) };
             _battleUserRepository.Add(_battleUser3);
 
-            _battleUser4 = new BattleUser(_battle2.Id, _user1.Id, BattleAction.Join) { DateTime = DateTime.Now };
+            _battleUser4 = new BattleUser(_battle2.Id, _user1.Id, BattleUserAction.Join) { DateTime = DateTime.Now };
             _battleUserRepository.Add(_battleUser4);
 
             contextScope.SaveChanges();

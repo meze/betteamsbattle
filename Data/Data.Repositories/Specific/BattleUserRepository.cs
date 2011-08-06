@@ -15,7 +15,7 @@ namespace BetTeamsBattle.Data.Repositories.Specific
              return Get(BattleUserSpecifications.UserIdIsEqualTo(userId) &&
                         BattleUserSpecifications.BattleIdIsContainedIn(battlesIds)).
                  Where(bu => bu.DateTime == Context.BattlesUsers.
-                                                Where(BattleUserSpecifications.BattleIdAndUserIdAreEqualTo(bu.BattleId, userId)).
+                                                Where(bu1 => bu1.BattleId == bu.BattleId && bu1.UserId == userId).
                                                 Max(bu1 => bu1.DateTime));
          }
     }

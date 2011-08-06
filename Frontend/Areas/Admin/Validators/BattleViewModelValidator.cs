@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace BetTeamsBattle.Frontend.Areas.Admin.Validators
 {
-    public class BattleViewModelValidator : AbstractValidator<BattleViewModel>
+    public class BattleViewModelValidator : AbstractValidator<CreateBattleViewModel>
     {
         public BattleViewModelValidator()
         {

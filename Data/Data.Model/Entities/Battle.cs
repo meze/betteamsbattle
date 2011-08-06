@@ -19,6 +19,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual int Budget { get; set; }
 
         public virtual ICollection<BattleUser> BattleUsers { get; set; }
+        public virtual ICollection<BattleBet> BattleBets { get; set; } 
 
         public Battle()
         {

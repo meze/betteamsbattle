@@ -34,7 +34,7 @@ namespace BetTeamsBattle.Data.Services
         {
             using (var contextScope = new ContextScope())
             {
-                var battleUser = new BattleUser(battleId, userId, BattleAction.Join);
+                var battleUser = new BattleUser(battleId, userId, BattleUserAction.Join);
 
                 _repositoryOfBattlesUsers.Add(battleUser);
 
@@ -46,7 +46,7 @@ namespace BetTeamsBattle.Data.Services
         {
             using (var contextScope = new ContextScope())
             {
-                var battleUser = new BattleUser(battleId, userId, BattleAction.Leave);
+                var battleUser = new BattleUser(battleId, userId, BattleUserAction.Leave);
 
                 _repositoryOfBattlesUsers.Add(battleUser);
 
