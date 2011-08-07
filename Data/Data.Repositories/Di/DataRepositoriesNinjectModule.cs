@@ -6,7 +6,7 @@ using Ninject.Modules;
 
 namespace BetTeamsBattle.Data.Repositories.DI
 {
-    public class DataModelNinjectModule : NinjectModule
+    public class DataRepositoriesNinjectModule : NinjectModule
     {
         public override void Load()
         {

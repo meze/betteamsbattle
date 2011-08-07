@@ -1,20 +1,22 @@
 ﻿using System;
 using BetTeamsBattle.Data.Model.Enums;
+using BetTeamsBattle.Data.Model.Interfaces;
 
 namespace BetTeamsBattle.Data.Model.Entities
 {
-    public class QueuedBetUrl
+    public class QueuedBetUrl : IEntity
     {
         public virtual long Id { get; set; }
         public virtual long BattleBetId { get; set; }
         public virtual string Url { get; set; }
         public virtual sbyte Type { get; set; }
-        private QueuedBetUrlType TypeEnum
+        public QueuedBetUrlType TypeEnum
         {
             get { return (QueuedBetUrlType) Type; }
             set { Type = (sbyte) value; }
         }
-        public virtual DateTime StartDateTime { get; set; }
+        public virtual DateTime CreationDateTime { get; set; }
+        public virtual DateTime? StartDateTime { get; set; }
         public virtual DateTime? FinishDateTime { get; set; }
 
         public virtual BattleBet BattleBet { get; set; }
@@ -28,7 +30,7 @@ namespace BetTeamsBattle.Data.Model.Entities
             BattleBetId = battleBetId;
             Url = url;
             TypeEnum = type;
-            StartDateTime = DateTime.UtcNow;
+            CreationDateTime = DateTime.UtcNow;
         }
     }
 }

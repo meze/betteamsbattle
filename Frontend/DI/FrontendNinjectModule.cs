@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Web.Mvc;
+using BetTeamsBattle.Data.Model;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles;
@@ -26,6 +27,8 @@ namespace BetTeamsBattle.Frontend.DI
     {
         public override void Load()
         {
+            Bind<ModelContext>().To<ModelContext>().InRequestScope();
+
             Bind<ICookiesService>().To<CookiesService>();
 
             Bind<IIpToNumberConverter>().To<IpToNumberConverter>();
