@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 using BetTeamsBattle.Data.Model;
-using BetTeamsBattle.Data.Model.DI;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.DI;
@@ -88,8 +87,8 @@ namespace BetTeamsBattle.Frontend
 
         protected override IKernel CreateKernel()
         {
-            return new StandardKernel(new DataModelNinjectModule(), new DataRepositoriesNinjectModule(),
-                                      new DataServicesNinjectModule(), new FrontendNinjectModule());
+            return new StandardKernel(new DataRepositoriesNinjectModule(), new DataServicesNinjectModule(),
+                                      new FrontendNinjectModule());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BetTeamsBattle.Data.Model.Interfaces;
 
 namespace BetTeamsBattle.Data.Model.Entities
@@ -17,7 +18,7 @@ namespace BetTeamsBattle.Data.Model.Entities
 
         public virtual Battle Battle { get; set; }
         public virtual User User { get; set; }
-        public virtual QueuedBetUrl QueuedBetUrl { get; set; }
+        public virtual ICollection<QueuedBetUrl> QueuedBetUrls { get; set; }
 
         public BattleBet()
         {
