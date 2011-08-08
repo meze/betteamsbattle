@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.Data.Repositories.ContextScope.Interfaces
+﻿namespace BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces
 {
     public interface IUnitOfWork
     {
