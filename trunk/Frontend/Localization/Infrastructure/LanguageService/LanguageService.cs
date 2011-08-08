@@ -7,6 +7,7 @@ using System.Web;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.Cookies.Interfaces;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.IP.Interfaces;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.LanguageMapping;

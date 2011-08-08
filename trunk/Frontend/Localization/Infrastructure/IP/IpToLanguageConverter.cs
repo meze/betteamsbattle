@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
-using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
+using BetTeamsBattle.Data.Repositories.Specific.IpToCountry;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.IP.Interfaces;
 
 #endregion

@@ -2,7 +2,7 @@
 using System.Linq;
 using BetTeamsBattle.Data.Model.Interfaces;
 
-namespace BetTeamsBattle.Data.Repositories.Specifications
+namespace BetTeamsBattle.Data.Repositories.Specific.Entity
 {
     public class EntitySpecifications
     {

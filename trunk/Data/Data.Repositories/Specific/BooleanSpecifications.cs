@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.Data.Repositories.Specifications
+﻿namespace BetTeamsBattle.Data.Repositories.Specific
 {
     public class BooleanSpecifications<T>
     {

@@ -1,9 +1,7 @@
-﻿using System;
-using BetTeamsBattle.Data.Model;
-using BetTeamsBattle.Data.Repositories.Base;
-using BetTeamsBattle.Data.Repositories.ContextScope.Interfaces;
+﻿using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 
-namespace BetTeamsBattle.Data.Repositories.ContextScope
+namespace BetTeamsBattle.Data.Repositories.UnitOfWork
 {
     internal class UnitOfWork : ContextManagerBase, IUnitOfWork
     {
