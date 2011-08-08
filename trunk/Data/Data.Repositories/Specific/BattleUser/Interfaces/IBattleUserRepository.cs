@@ -2,6 +2,7 @@
 using System.Linq;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 
 namespace BetTeamsBattle.Data.Repositories.Specific.Interfaces
 {

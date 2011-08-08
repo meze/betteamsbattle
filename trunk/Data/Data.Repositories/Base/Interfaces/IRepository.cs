@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq;
 
-namespace BetTeamsBattle.Data.Repositories.Base
+namespace BetTeamsBattle.Data.Repositories.Base.Interfaces
 {
     public interface IRepository<T> where T : class
     {
         IQueryable<T> Get(LinqSpec<T> filterSpecification);
         bool Exists(LinqSpec<T> filterSpecification);
         void Add(T entity);
-        void SaveChanges();
     }
 }

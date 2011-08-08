@@ -1,5 +1,6 @@
 ﻿using BetTeamsBattle.Data.Model;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specific;
 using BetTeamsBattle.Data.Repositories.Specific.Interfaces;
 using Ninject.Modules;
