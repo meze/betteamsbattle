@@ -4,7 +4,7 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.ContextScope;
+using BetTeamsBattle.Data.Repositories.UnitOfWork;
 using BetTeamsBattle.Data.Services.Interfaces;
 
 namespace BetTeamsBattle.Data.Services
