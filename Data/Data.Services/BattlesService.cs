@@ -3,6 +3,7 @@ using System.Transactions;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.ContextScope;
 using BetTeamsBattle.Data.Services.Interfaces;
 
@@ -25,7 +26,7 @@ namespace BetTeamsBattle.Data.Services
 
         public void CreateBattle(DateTime startDate, DateTime endDate, BattleType battleType, int budget)
         {
-            using (var contextScope = new ContextScope())
+            using (var contextScope = new UnitOfWorkScope())
             {
                 var battle = new Battle(startDate, endDate, battleType, budget);
 
@@ -37,7 +38,7 @@ namespace BetTeamsBattle.Data.Services
 
         public void JoinToBattle(long battleId, long userId)
         {
-            using (var contextScope = new ContextScope())
+            using (var contextScope = new UnitOfWorkScope())
             {
                 var battleUser = new BattleUser(battleId, userId, BattleUserAction.Join);
 
@@ -49,7 +50,7 @@ namespace BetTeamsBattle.Data.Services
 
         public void LeaveBattle(long battleId, long userId)
         {
-            using (var contextScope = new ContextScope())
+            using (var contextScope = new UnitOfWorkScope())
             {
                 var battleUser = new BattleUser(battleId, userId, BattleUserAction.Leave);
 
@@ -63,7 +64,7 @@ namespace BetTeamsBattle.Data.Services
         {
             using (var transactionScope = new TransactionScope())
             {
-                using (var contextScope = new ContextScope())
+                using (var contextScope = new UnitOfWorkScope())
                 {
                     var battleBet = new BattleBet(battleId, userId, bet, coefficient, url);
                     _repositoryOfBattleBet.Add(battleBet);

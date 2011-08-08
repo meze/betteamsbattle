@@ -3,14 +3,12 @@ using BetTeamsBattle.Data.Model;
 
 namespace BetTeamsBattle.Data.Repositories.ContextScope
 {
-    public class ContextScope : IDisposable
+    public class UnitOfWorkScope : IDisposable
     {
         [ThreadStatic]
         public static ModelContext CurrentContext;
 
-        private bool _savedChanges = false;
-
-        public ContextScope()
+        public UnitOfWorkScope()
         {
             CurrentContext = new ModelContext();
         }

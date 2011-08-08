@@ -9,6 +9,7 @@ using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.ContextScope;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces;
@@ -34,7 +35,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
         {
             using (var transactionScope = new TransactionScope())
             {
-                using (var contextScope = new ContextScope())
+                using (var contextScope = new UnitOfWorkScope())
                 {
                     QueuedBetUrl queuedBetUrl =
                         _repositoryOfQueuedBetUrl.Get(

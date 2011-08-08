@@ -5,6 +5,7 @@ using System.Web.Routing;
 using BetTeamsBattle.Data.Model;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.DI;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Services.DI;
