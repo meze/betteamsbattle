@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BetTeamsBattle.Data.Repositories.DI;
+using BetTeamsBattle.ScreenShotsMaker.DI;
+using BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager.Interfaces;
 using Ninject;
-using ScreenShotsMaker.DI;
-using ScreenShotsMaker.Interfaces;
 
-namespace ScreenShotsMaker
+namespace BetTeamsBattle.ScreenShotsMaker
 {
     public partial class MainForm : Form
     {

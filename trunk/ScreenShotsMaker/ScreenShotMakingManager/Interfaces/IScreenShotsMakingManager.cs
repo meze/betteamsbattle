@@ -1,4 +1,4 @@
-﻿namespace ScreenShotsMaker.Interfaces
+﻿namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager.Interfaces
 {
     public interface IScreenShotsMakingManager
     {
