@@ -1,5 +1,5 @@
 ﻿using BetTeamsBattle.Data.Model;
-using BetTeamsBattle.Data.Repositories.ContextScope;
+using BetTeamsBattle.Data.Repositories.UnitOfWork;
 using Ninject;
 
 namespace BetTeamsBattle.Data.Repositories.Base

@@ -2,7 +2,6 @@
 using System.Linq;
 using BetTeamsBattle.Data.Model;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.ContextScope;
 using Ninject;
 
 namespace BetTeamsBattle.Data.Repositories.Base

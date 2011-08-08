@@ -5,8 +5,9 @@ using System.Transactions;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
-using BetTeamsBattle.Data.Repositories.ContextScope;
-using BetTeamsBattle.Data.Repositories.Specific.Interfaces;
+using BetTeamsBattle.Data.Repositories.Specific.BattleUser;
+using BetTeamsBattle.Data.Repositories.Specific.BattleUser.Interfaces;
+using BetTeamsBattle.Data.Repositories.UnitOfWork;
 using NUnit.Framework;
 using BetTeamsBattle.Data.Repositories.Specific;
 
@@ -28,7 +29,7 @@ namespace Data.Repositories.Tests.Specific
 
             _transactionScope = new TransactionScope();
 
-            var contextScope = new ContextScope();
+            var contextScope = new UnitOfWorkScope();
 
             _battleUserRepository = new BattleUserRepository();
 
