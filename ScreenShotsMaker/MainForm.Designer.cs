@@ -1,4 +1,4 @@
-﻿namespace ScreenShotsMaker
+﻿namespace BetTeamsBattle.ScreenShotsMaker
 {
     partial class MainForm
     {

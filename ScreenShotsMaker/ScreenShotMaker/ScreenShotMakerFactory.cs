@@ -1,7 +1,7 @@
-﻿using Ninject;
-using ScreenShotsMaker.Interfaces;
+﻿using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
+using Ninject;
 
-namespace ScreenShotsMaker
+namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker
 {
     internal class ScreenShotMakerFactory : IScreenShotMakerFactory
     {
@@ -12,9 +12,13 @@ namespace ScreenShotsMaker
             _kernel = kernel;
         }
 
+        #region IScreenShotMakerFactory Members
+
         public IScreenShotMaker Create()
         {
             return _kernel.Get<IScreenShotMaker>();
         }
+
+        #endregion
     }
 }
