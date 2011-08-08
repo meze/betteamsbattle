@@ -1,19 +1,18 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using BetTeamsBattle.Data.Model.Entities;
 
-namespace BetTeamsBattle.Data.Repositories.Specifications
+namespace BetTeamsBattle.Data.Repositories.Specific.QueuedBetUrl
 {
     public class QueuedBetUrlSpecifications
     {
-        public static LinqSpec<QueuedBetUrl> NotProcessed()
+        public static LinqSpec<Model.Entities.QueuedBetUrl> NotProcessed()
         {
-            return LinqSpec.For<QueuedBetUrl>(qbu => qbu.FinishDateTime == null);
+            return LinqSpec.For<Model.Entities.QueuedBetUrl>(qbu => qbu.FinishDateTime == null);
         }
 
-        public static LinqSpec<QueuedBetUrl> IdIsNotContainedIn(IEnumerable<long> queuedBetUrlsIds)
+        public static LinqSpec<Model.Entities.QueuedBetUrl> IdIsNotContainedIn(IEnumerable<long> queuedBetUrlsIds)
         {
-            return LinqSpec.For<QueuedBetUrl>(qbu => !queuedBetUrlsIds.Contains(qbu.Id));
+            return LinqSpec.For<Model.Entities.QueuedBetUrl>(qbu => !queuedBetUrlsIds.Contains(qbu.Id));
         }
     }
 }

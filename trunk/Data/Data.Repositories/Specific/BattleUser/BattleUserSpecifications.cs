@@ -1,31 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using BetTeamsBattle.Data.Model.Entities;
 
-namespace BetTeamsBattle.Data.Repositories.Specifications
+namespace BetTeamsBattle.Data.Repositories.Specific.BattleUser
 {
     public class BattleUserSpecifications
     {
-        public static LinqSpec<BattleUser> UserIdIsEqualTo(long userId)
+        public static LinqSpec<Model.Entities.BattleUser> UserIdIsEqualTo(long userId)
         {
-            return LinqSpec.For<BattleUser>(bu => bu.UserId == userId);
+            return LinqSpec.For<Model.Entities.BattleUser>(bu => bu.UserId == userId);
         }
 
-        public static LinqSpec<BattleUser> BattleIdIsEqualTo(long battleId)
+        public static LinqSpec<Model.Entities.BattleUser> BattleIdIsEqualTo(long battleId)
         {
-            return LinqSpec.For<BattleUser>(bu => bu.BattleId == battleId);
+            return LinqSpec.For<Model.Entities.BattleUser>(bu => bu.BattleId == battleId);
         }
 
-        public static LinqSpec<BattleUser> BattleIdAndUserIdAreEqualTo(long battleId, long userId)
+        public static LinqSpec<Model.Entities.BattleUser> BattleIdAndUserIdAreEqualTo(long battleId, long userId)
         {
             return BattleIdIsEqualTo(battleId) && UserIdIsEqualTo(userId);
         }
 
-        public static LinqSpec<BattleUser> BattleIdIsContainedIn(IEnumerable<long> battlesIds)
+        public static LinqSpec<Model.Entities.BattleUser> BattleIdIsContainedIn(IEnumerable<long> battlesIds)
         {
-            return LinqSpec.For<BattleUser>(bu => battlesIds.Contains(bu.BattleId));
+            return LinqSpec.For<Model.Entities.BattleUser>(bu => battlesIds.Contains(bu.BattleId));
         }
     }
 }

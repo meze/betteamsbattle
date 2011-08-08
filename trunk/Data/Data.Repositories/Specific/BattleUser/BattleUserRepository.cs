@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
-using BetTeamsBattle.Data.Repositories.Specific.Interfaces;
-using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Data.Repositories.Specific.BattleUser.Interfaces;
 
-namespace BetTeamsBattle.Data.Repositories.Specific
+namespace BetTeamsBattle.Data.Repositories.Specific.BattleUser
 {
-    internal class BattleUserRepository : Repository<BattleUser>, IBattleUserRepository
+    internal class BattleUserRepository : Repository<Model.Entities.BattleUser>, IBattleUserRepository
     {
-         public IQueryable<BattleUser> GetLastBattleUsers(long userId, IEnumerable<long> battlesIds)
+         public IQueryable<Model.Entities.BattleUser> GetLastBattleUsers(long userId, IEnumerable<long> battlesIds)
          {
              //ToDo: Report to MySQL team that query with GroupBy().Select(g.OrderByDescending(DateTime).FirstOrDefault()) doesn't work
              return Get(BattleUserSpecifications.UserIdIsEqualTo(userId) &&

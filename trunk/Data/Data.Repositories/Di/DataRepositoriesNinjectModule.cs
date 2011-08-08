@@ -2,7 +2,8 @@
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specific;
-using BetTeamsBattle.Data.Repositories.Specific.Interfaces;
+using BetTeamsBattle.Data.Repositories.Specific.BattleUser;
+using BetTeamsBattle.Data.Repositories.Specific.BattleUser.Interfaces;
 using Ninject.Modules;
 
 namespace BetTeamsBattle.Data.Repositories.DI
