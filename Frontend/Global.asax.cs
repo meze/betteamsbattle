@@ -7,7 +7,7 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.DI;
-using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Data.Repositories.Specific.User;
 using BetTeamsBattle.Data.Services.DI;
 using BetTeamsBattle.Frontend.AspNetMvc;
 using BetTeamsBattle.Frontend.AspNetMvc.ActionFilters;
