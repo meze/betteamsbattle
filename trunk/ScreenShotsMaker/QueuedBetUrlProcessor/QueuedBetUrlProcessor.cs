@@ -58,9 +58,9 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
 
                     queuedBetUrl.FinishDateTime = DateTime.UtcNow;
                     contextScope.SaveChanges();
-
-                    transactionScope.Complete();
                 }
+
+                transactionScope.Complete();
             }
         }
     }
