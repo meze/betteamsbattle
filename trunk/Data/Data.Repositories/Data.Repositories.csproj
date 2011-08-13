@@ -49,11 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\ContextManagerBase.cs" />
+    <Compile Include="ExpressionVisitorExtensions.cs" />
+    <Compile Include="LinqSpecExtensions.cs" />
+    <Compile Include="Specific\BattleBet\BattleBetSpecifications.cs" />
+    <Compile Include="Specific\BattleUserStatistics\BattleUserStatisticsSpecifications.cs" />
     <Compile Include="Specific\Battle\BattleSpecifications.cs" />
     <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
     <Compile Include="Base\Interfaces\IRepository.cs" />
     <Compile Include="Specific\BattleUser\BattleUserSpecifications.cs" />
-    <Compile Include="Specific\BooleanSpecifications.cs" />
     <Compile Include="Specific\Entity\EntitySpecifications.cs" />
     <Compile Include="Specific\IpToCountry\IpToCountrySpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,8 +66,11 @@
     <Compile Include="Specific\BattleUser\BattleUserRepository.cs" />
     <Compile Include="Specific\BattleUser\Interfaces\IBattleUserRepository.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScope.cs" />
+    <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScopeFactory.cs" />
     <Compile Include="UnitOfWork\UnitOfWorkScope.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWorkScopeFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data.Model\Data.Model.csproj">
@@ -76,7 +82,9 @@
       <Name>Data.Repositories.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Specifications\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

@@ -70,7 +70,7 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult CreateBattle(BetTeamsBattle.Frontend.Areas.Admin.Models.CreateBattleViewModel createBattleViewModel) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateBattle);
-            callInfo.RouteValueDictionary.Add("battleViewModel", createBattleViewModel);
+            callInfo.RouteValueDictionary.Add("createBattleViewModel", createBattleViewModel);
             return callInfo;
         }
 

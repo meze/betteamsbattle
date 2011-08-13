@@ -9,7 +9,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Budget { get; set; }
-        public int Earned { get; set; }
+        public double Earned { get; set; }
+        public double EarnedPercents { get; set; }
         public int TotalBetsCount { get; set; }
         public int OpenBetsCount { get; set; }
 

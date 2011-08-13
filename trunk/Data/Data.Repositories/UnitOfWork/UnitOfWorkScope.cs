@@ -1,9 +1,10 @@
 ﻿using System;
 using BetTeamsBattle.Data.Model;
+using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 
 namespace BetTeamsBattle.Data.Repositories.UnitOfWork
 {
-    public class UnitOfWorkScope : IDisposable
+    public class UnitOfWorkScope : IUnitOfWorkScope
     {
         [ThreadStatic]
         public static ModelContext CurrentContext;
@@ -21,6 +22,7 @@ namespace BetTeamsBattle.Data.Repositories.UnitOfWork
         public void Dispose()
         {
             CurrentContext.Dispose();
+            CurrentContext = null;
         }
     }
 }

@@ -120,11 +120,20 @@
   <data name="ActualBattles" xml:space="preserve">
     <value>Actual battles</value>
   </data>
+  <data name="CloseAsFailed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="CloseAsSucceeded" xml:space="preserve">
+    <value>Succeeded</value>
+  </data>
   <data name="Join" xml:space="preserve">
     <value>Join</value>
   </data>
   <data name="Leave" xml:space="preserve">
     <value>Leave</value>
+  </data>
+  <data name="MyBets" xml:space="preserve">
+    <value>My bets</value>
   </data>
   <data name="NextBattleStartsIn" xml:space="preserve">
     <value>Next battle starts in</value>

@@ -18,13 +18,19 @@ namespace BetTeamsBattle.Data.Model.Entities
 
         public virtual Battle Battle { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<QueuedBetUrl> QueuedBetUrls { get; set; }
+        private ICollection<QueuedBetUrl> _queuedBetUrls;
+        public virtual ICollection<QueuedBetUrl> QueuedBetUrls
+        {
+            get { return _queuedBetUrls; }
+            set { _queuedBetUrls = value; }
+        }
 
         public BattleBet()
         {
+            _queuedBetUrls = new List<QueuedBetUrl>();  
         }
 
-        public BattleBet(long battleId, long userId, double bet, double coefficient, string url)
+        public BattleBet(long battleId, long userId, double bet, double coefficient, string url) : this()
         {
             BattleId = battleId;
             UserId = userId;

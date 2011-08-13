@@ -1,0 +1,222 @@
+﻿using System.Linq;
+using System.Threading;
+using System.Transactions;
+using BetTeamsBattle.Data.Model.Entities;
+using BetTeamsBattle.Data.Model.Enums;
+using BetTeamsBattle.Data.Repositories.Base.Interfaces;
+using BetTeamsBattle.Data.Repositories.UnitOfWork;
+using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
+using BetTeamsBattle.Data.Services.Interfaces;
+using BetTeamsBattle.Data.Services.Tests.DI;
+using BetTeamsBattle.Data.Services.Tests.Helpers;
+using NUnit.Framework;
+using Ninject;
+using System;
+
+namespace BetTeamsBattle.Data.Services.Tests
+{
+    [TestFixture]
+    public class BattlesServiceTests
+    {
+        private TransactionScope _transactionScope;
+        private IUnitOfWork _unitOfWork;
+        private Creator _creator;
+
+        private IRepository<Battle> _repositoryOfBattle;
+        private IRepository<User> _repositoryOfUser;
+        private IRepository<BattleUser> _repositoryOfBattleUser;
+        private IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
+        private IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
+        private IRepository<BattleBet> _repositoryOfBattleBet;
+
+        private IBattlesService _battlesService;
+        
+        [SetUp]
+        public void Setup()
+        {
+            _transactionScope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() {  IsolationLevel = IsolationLevel.ReadCommitted });
+
+            var kernel = TestNinjectKernel.Kernel;
+            _unitOfWork = kernel.Get<IUnitOfWork>();
+            _creator = kernel.Get<Creator>();
+
+            _repositoryOfBattle = kernel.Get<IRepository<Battle>>();
+            _repositoryOfUser = kernel.Get<IRepository<User>>();
+            _repositoryOfBattleUser = kernel.Get<IRepository<BattleUser>>();
+            _repositoryOfBattleUserStatistics = kernel.Get<IRepository<BattleUserStatistics>>();
+            _repositoryOfQueuedBetUrl = kernel.Get<IRepository<QueuedBetUrl>>();
+            _repositoryOfBattleBet = kernel.Get<IRepository<BattleBet>>();
+
+            _battlesService = kernel.Get<IBattlesService>();
+         }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _transactionScope.Dispose();
+        }
+
+        [Test]
+        public void CreateBattle()
+        {
+            var startDate = DateTime.UtcNow;
+            var endDate = DateTime.UtcNow;
+            var battleType = BattleType.FixedBudget;
+            var budget = 10000;
+
+            _battlesService.CreateBattle(startDate, endDate, battleType, budget);
+
+            _repositoryOfBattle.All().Where(b => b.StartDate == startDate && b.EndDate == endDate && b.BattleType == (sbyte) battleType && b.Budget == budget).Single();
+        }
+
+        [Test]
+        public void JoinBattle_FirstJoin_JoinAndInitializeStatistics()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            _battlesService.JoinToBattle(battle.Id, user.Id);
+
+            _repositoryOfBattleUser.All().Where(bu => bu.BattleId == battle.Id && bu.UserId == user.Id && bu.Action == (sbyte) BattleUserAction.Join).Single();
+            _repositoryOfBattleUserStatistics.All().Where(bus => bus.BattleId == battle.Id && bus.UserId == user.Id && bus.Balance == battle.Budget && bus.OpenedBetsCount == 0 && bus.ClosedBetsCount == 0).Single();
+        }
+
+        [Test]
+        public void JoinBattle_SecondJoin_JoinAndStillOneStatistics()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            _battlesService.JoinToBattle(battle.Id, user.Id);
+            _battlesService.JoinToBattle(battle.Id, user.Id);
+
+            Assert.AreEqual(2, _repositoryOfBattleUser.All().Where(bu => bu.BattleId == battle.Id && bu.UserId == user.Id && bu.Action == (sbyte)BattleUserAction.Join).Count());
+            _repositoryOfBattleUserStatistics.All().Where(bus => bus.BattleId == battle.Id && bus.UserId == user.Id && bus.Balance == battle.Budget && bus.OpenedBetsCount == 0 && bus.ClosedBetsCount == 0).Single();
+        }
+
+        [Test]
+        public void LeaveBattle()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            _battlesService.LeaveBattle(battle.Id, user.Id);
+
+            _repositoryOfBattleUser.All().Where(bu => bu.BattleId == battle.Id && bu.UserId == user.Id && bu.Action == (sbyte)BattleUserAction.Leave).Single();
+        }
+
+        [Test]
+        public void OpenBattleBet()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            const double bet = 100;
+            const double coefficient = 2.5;
+            const string url = "http://url";
+
+            _battlesService.JoinToBattle(battle.Id, user.Id);
+            var battleBetId = _battlesService.OpenBattleBet(battle.Id, user.Id, bet, coefficient, url);
+
+            _repositoryOfBattleBet.All().Where(bb => bb.BattleId == battle.Id && bb.UserId == user.Id && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url).Single();
+            _repositoryOfBattleUserStatistics.All().Where(bus => bus.BattleId == battle.Id && bus.UserId == user.Id && bus.Balance == battle.Budget - bet && bus.OpenedBetsCount == 1 && bus.ClosedBetsCount == 0).Single();
+            _repositoryOfQueuedBetUrl.All().Where(qbu => qbu.BattleBetId == battleBetId && qbu.Type == (sbyte)QueuedBetUrlType.Open && qbu.Url == url).Single();
+        }
+
+        [Test]
+        public void OpenBattleBet_UserIsNotJoinedToThisBattle_Exception()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            const double bet = 100;
+            const double coefficient = 2.5;
+            const string url = "http://url";
+
+            Assert.Throws<ArgumentException>(() => _battlesService.OpenBattleBet(battle.Id, user.Id, bet, coefficient, url));
+        }
+
+        [Test]
+        public void CloseBattleBetAsSucceeded()
+        {
+            TestCloseBattleBet(true, null);
+        }
+
+        [Test]
+        public void CloseBattleBetAsFailed()
+        {
+            TestCloseBattleBet(false, null);
+        }
+
+        [Test]
+        public void CloseBattleBetAsFailed_NotMineBattleBet_Exception()
+        {
+            var user = _creator.CreateUser("login1", "openIdUrl1");
+            Assert.Throws<ArgumentException>(() => TestCloseBattleBet(false, user.Id));
+        }
+
+        private void TestCloseBattleBet(bool success, long? userId)
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            if (!userId.HasValue)
+                userId = user.Id;
+
+            const double bet = 100;
+            const double coefficient = 150;
+            const string url = "http://url";
+
+            _battlesService.JoinToBattle(battle.Id, user.Id);
+            var battleBetId = _battlesService.OpenBattleBet(battle.Id, user.Id, bet, coefficient, url);
+            long battleId;
+            if (success)
+                _battlesService.CloseBattleBetAsSucceeded(battleBetId, userId.Value, out battleId);
+            else
+                _battlesService.CloseBattleBetAsFailed(battleBetId, userId.Value, out battleId);
+
+            var newBalance = battle.Budget - bet;
+            if (success)
+                newBalance += bet*coefficient;
+
+            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.Success == success).Single();
+            _repositoryOfBattleUserStatistics.All().Where(bus => bus.BattleId == battle.Id && bus.UserId == user.Id && bus.Balance == newBalance && bus.OpenedBetsCount == 0 && bus.ClosedBetsCount == 1).Single();
+        }
+
+        [Test]
+        public void UserIsJoinedToBattle_NotJoined_False()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            var result = _battlesService.UserIsJoinedToBattle(user.Id, battle.Id);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void UserIsJoinedToBattle_Joined_True()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            _battlesService.JoinToBattle(battle.Id, user.Id);
+            var result = _battlesService.UserIsJoinedToBattle(user.Id, battle.Id);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void UserIsJoinedToBattle_Left_False()
+        {
+            var battle = _creator.CreateBattle();
+            var user = _creator.CreateUser();
+
+            _battlesService.JoinToBattle(battle.Id, user.Id);
+            _battlesService.LeaveBattle(battle.Id, user.Id);
+            var result = _battlesService.UserIsJoinedToBattle(user.Id, battle.Id);
+
+            Assert.IsFalse(result);
+        }
+    }
+}

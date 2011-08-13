@@ -71,6 +71,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string CloseAsFailed {
+            get {
+                return ResourceManager.GetString("CloseAsFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Succeeded.
+        /// </summary>
+        public static string CloseAsSucceeded {
+            get {
+                return ResourceManager.GetString("CloseAsSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Join.
         /// </summary>
         public static string Join {
@@ -85,6 +103,15 @@ namespace Resources {
         public static string Leave {
             get {
                 return ResourceManager.GetString("Leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My bets.
+        /// </summary>
+        public static string MyBets {
+            get {
+                return ResourceManager.GetString("MyBets", resourceCulture);
             }
         }
         
