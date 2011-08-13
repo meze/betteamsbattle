@@ -9,7 +9,6 @@ using BetTeamsBattle.Data.Repositories.EntityRepositories;
 using BetTeamsBattle.Data.Repositories.EntityRepositories.Interfaces;
 using BetTeamsBattle.Data.Repositories.UnitOfWork;
 using NUnit.Framework;
-using BetTeamsBattle.Data.Repositories.Specific;
 
 namespace Data.Repositories.Tests.Specific
 {

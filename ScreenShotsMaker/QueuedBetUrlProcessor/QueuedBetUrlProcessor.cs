@@ -41,14 +41,14 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
         {
             using (var transactionScope = _transactionScopeFactory.Create())
             {
-                using (var contextScope = _unitOfWorkScopeFactory.Create())
+                using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
                 {
                     QueuedBetUrl queuedBetUrl =
                         _repositoryOfQueuedBetUrl.Get(
                             EntitySpecifications.EntityIdIsEqualTo<QueuedBetUrl>(queuedBetUrlId)).Single();
 
                     queuedBetUrl.StartDateTime = DateTime.UtcNow;
-                    contextScope.SaveChanges();
+                    unitOfWorkScope.SaveChanges();
 
                     var screenShotMaker = _screenShotMakerFactory.Create();
 
@@ -57,7 +57,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
                     _screenshotAmazonS3Putter.PutScreenshot(amazonS3Client, queuedBetUrl, screenshotPngStream);
 
                     queuedBetUrl.FinishDateTime = DateTime.UtcNow;
-                    contextScope.SaveChanges();
+                    unitOfWorkScope.SaveChanges();
                 }
 
                 transactionScope.Complete();
