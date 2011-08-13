@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.Specific.Battle;
+using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;

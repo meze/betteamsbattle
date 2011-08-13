@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using BetTeamsBattle.Data.Model.Interfaces;
-using BetTeamsBattle.Data.Repositories;
 
-namespace BetTeamsBattle.Data.Repositories.Specific.Entity
+namespace BetTeamsBattle.Data.Repositories.Specifications
 {
     public class EntitySpecifications
     {
