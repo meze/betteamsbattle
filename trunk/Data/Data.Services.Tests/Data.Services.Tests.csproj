@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattlesServiceTests.cs" />
-    <Compile Include="BattleUsersServiceTests.cs" />
     <Compile Include="DI\TestNinjectKernel.cs" />
     <Compile Include="Helpers\Creator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
