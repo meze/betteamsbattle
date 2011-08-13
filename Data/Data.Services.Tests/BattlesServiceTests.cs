@@ -34,7 +34,7 @@ namespace BetTeamsBattle.Data.Services.Tests
         [SetUp]
         public void Setup()
         {
-            _transactionScope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() {  IsolationLevel = IsolationLevel.ReadCommitted });
+            _transactionScope = new TransactionScope();
 
             var kernel = TestNinjectKernel.Kernel;
             _unitOfWork = kernel.Get<IUnitOfWork>();

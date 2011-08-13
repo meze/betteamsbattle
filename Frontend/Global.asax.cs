@@ -7,6 +7,7 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.DI;
+using BetTeamsBattle.Data.Repositories.Infrastructure.DI;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Services.DI;
 using BetTeamsBattle.Frontend.AspNetMvc;
@@ -89,6 +90,7 @@ namespace BetTeamsBattle.Frontend
         protected override IKernel CreateKernel()
         {
             return new StandardKernel(new DataRepositoriesNinjectModule(), new DataServicesNinjectModule(),
+                                      new DataRepositoriesInfrastructureNinjectModule(),
                                       new FrontendNinjectModule());
         }
     }
