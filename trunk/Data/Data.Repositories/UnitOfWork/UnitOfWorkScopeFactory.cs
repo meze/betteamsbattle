@@ -12,9 +12,13 @@ namespace BetTeamsBattle.Data.Repositories.UnitOfWork
             _kernel = kernel;
         }
 
+        #region IUnitOfWorkScopeFactory Members
+
         public IUnitOfWorkScope Create()
         {
             return _kernel.Get<UnitOfWorkScope>();
         }
+
+        #endregion
     }
 }

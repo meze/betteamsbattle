@@ -6,13 +6,14 @@ namespace BetTeamsBattle.Data.Repositories.UnitOfWork
 {
     public class UnitOfWorkScope : IUnitOfWorkScope
     {
-        [ThreadStatic]
-        public static ModelContext CurrentContext;
+        [ThreadStatic] public static ModelContext CurrentContext;
 
         public UnitOfWorkScope()
         {
             CurrentContext = new ModelContext();
         }
+
+        #region IUnitOfWorkScope Members
 
         public void SaveChanges()
         {
@@ -24,5 +25,7 @@ namespace BetTeamsBattle.Data.Repositories.UnitOfWork
             CurrentContext.Dispose();
             CurrentContext = null;
         }
+
+        #endregion
     }
 }

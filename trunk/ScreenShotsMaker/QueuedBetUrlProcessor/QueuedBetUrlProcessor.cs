@@ -10,7 +10,7 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.Specific.Entity;
+using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Repositories.UnitOfWork;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 using BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces;

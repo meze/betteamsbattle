@@ -51,20 +51,20 @@
     <Compile Include="Base\ContextManagerBase.cs" />
     <Compile Include="ExpressionVisitorExtensions.cs" />
     <Compile Include="LinqSpecExtensions.cs" />
-    <Compile Include="Specific\BattleBet\BattleBetSpecifications.cs" />
-    <Compile Include="Specific\BattleUserStatistics\BattleUserStatisticsSpecifications.cs" />
-    <Compile Include="Specific\Battle\BattleSpecifications.cs" />
+    <Compile Include="Specifications\BattleBetSpecifications.cs" />
+    <Compile Include="Specifications\BattleUserStatisticsSpecifications.cs" />
+    <Compile Include="Specifications\BattleSpecifications.cs" />
     <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
     <Compile Include="Base\Interfaces\IRepository.cs" />
-    <Compile Include="Specific\BattleUser\BattleUserSpecifications.cs" />
-    <Compile Include="Specific\Entity\EntitySpecifications.cs" />
-    <Compile Include="Specific\IpToCountry\IpToCountrySpecifications.cs" />
+    <Compile Include="Specifications\BattleUserSpecifications.cs" />
+    <Compile Include="Specifications\EntitySpecifications.cs" />
+    <Compile Include="Specifications\IpToCountrySpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\Repository.cs" />
-    <Compile Include="Specific\QueuedBetUrl\QueuedBetUrlSpecifications.cs" />
-    <Compile Include="Specific\User\UserSpecifications.cs" />
-    <Compile Include="Specific\BattleUser\BattleUserRepository.cs" />
-    <Compile Include="Specific\BattleUser\Interfaces\IBattleUserRepository.cs" />
+    <Compile Include="Specifications\QueuedBetUrlSpecifications.cs" />
+    <Compile Include="Specifications\UserSpecifications.cs" />
+    <Compile Include="EntityRepositories\BattleUserRepository.cs" />
+    <Compile Include="EntityRepositories\Interfaces\IBattleUserRepository.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScope.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScopeFactory.cs" />
@@ -82,9 +82,7 @@
       <Name>Data.Repositories.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Specifications\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

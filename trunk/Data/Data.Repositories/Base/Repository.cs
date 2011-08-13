@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using BetTeamsBattle.Data.Model;
+﻿using System.Linq;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using Ninject;
 
 namespace BetTeamsBattle.Data.Repositories.Base
 {
     //ToDo: put here a link to an article why IQueryable-based (limited to Select, OrderBy and ToList/Single/First) approach was chosen
     internal class Repository<T> : ContextManagerBase, IRepository<T> where T : class
     {
+        #region IRepository<T> Members
+
         public IQueryable<T> All()
         {
             return Context.CreateObjectSet<T>();
@@ -48,5 +47,7 @@ namespace BetTeamsBattle.Data.Repositories.Base
         {
             Context.CreateObjectSet<T>().AddObject(entity);
         }
+
+        #endregion
     }
 }

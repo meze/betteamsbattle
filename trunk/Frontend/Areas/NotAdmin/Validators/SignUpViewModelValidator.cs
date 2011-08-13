@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.Specific.User;
+using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Accounts;
 using BetTeamsBattle.Frontend.Localization.Infrastructure;
 using FluentValidation;
