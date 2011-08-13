@@ -11,5 +11,14 @@
     <text>
     @battle.StartDate-@battle.EndDate @battle.Budget
     @Html.Partial(MVC.NotAdmin.Battles.Views.JoinOrLeaveBattle, battle)
+    @Html.ActionLink(battle.JoinOrLeaveTitle, battle.JoinOrLeaveActionResult)
+    @if (battle.IsJoined)
+    {
+        <text>
+        @battle.Earned @battle.EarnedPercents (@battle.TotalBetsCount/@battle.OpenBetsCount)
+        @Html.ActionLink(Battles.MyBets, MVC.NotAdmin.BattleBets.MyBets(battle.Id))
+        </text>
+    }
+    
     </text>
 }

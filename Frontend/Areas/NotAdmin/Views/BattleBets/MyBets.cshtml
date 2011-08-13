@@ -1,0 +1,24 @@
+﻿@using BetTeamsBattle.Data.Model.Entities
+@using Resources
+@model IEnumerable<BattleBet>
+
+@foreach (var battleBet in Model)
+{
+    <text>
+    @battleBet.OpenDateTime @battleBet.Bet$ @battleBet.Coefficient @battleBet.Url <br />
+    @if (battleBet.CloseDateTime.HasValue)
+    {
+        <text>
+        @battleBet.CloseDateTime <br />
+        @battleBet.Success <br />
+        </text>
+    }
+    else
+    {
+        <text>
+        @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BattleBetFailed(battleBet.Id))
+        @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BattleBetSucceeded(battleBet.Id))
+        </text>
+    }
+    </text>
+}

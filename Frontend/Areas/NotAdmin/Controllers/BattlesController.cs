@@ -20,17 +20,17 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         private readonly IBattlesViewService _battlesViewService;
         private readonly IInDaysLocalizer _inDaysLocalizer;
 
-        public BattlesController(IRepository<Battle> repositoryOfBattle, IBattlesService battlesService, IBattlesViewService battlesViewService)
+        public BattlesController(IRepository<Battle> repositoryOfBattle, IBattlesService battlesService, IBattlesViewService battlesViewService, IInDaysLocalizer inDaysLocalizer)
         {
             _repositoryOfBattle = repositoryOfBattle;
             _battlesService = battlesService;
             _battlesViewService = battlesViewService;
+            _inDaysLocalizer = inDaysLocalizer;
         }
 
         [ChildActionOnly]
         public virtual ActionResult NextBattleStartsIn()
         {
-            //ToDo: Order by here is part of query logic. May be put it in Repository/BattlesRepository?
             var nextBattleDate = _repositoryOfBattle.Get(BattleSpecifications.StartDateIsInFuture()).OrderBy(b => b.StartDate).Select(b => b.StartDate).FirstOrDefault();
             if (nextBattleDate == default(DateTime))
                 return new EmptyResult();

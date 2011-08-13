@@ -31,8 +31,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +54,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattlesServiceTests.cs" />
+    <Compile Include="BattleUsersServiceTests.cs" />
+    <Compile Include="DI\TestNinjectKernel.cs" />
+    <Compile Include="Helpers\Creator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Model\Data.Model.csproj">
+      <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
+      <Name>Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.Repositories.Infrastructure\Data.Repositories.Infrastructure.csproj">
+      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
+      <Name>Data.Repositories.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.Repositories\Data.Repositories.csproj">
+      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
+      <Name>Data.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.Services\Data.Services.csproj">
+      <Project>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</Project>
+      <Name>Data.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

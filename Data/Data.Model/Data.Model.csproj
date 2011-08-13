@@ -46,6 +46,7 @@
     <Compile Include="Entities\Battle.cs" />
     <Compile Include="Entities\BattleBet.cs" />
     <Compile Include="Entities\BattleUser.cs" />
+    <Compile Include="Entities\BattleUserStatistics.cs" />
     <Compile Include="Entities\IpToCountry.cs" />
     <Compile Include="Entities\QueuedBetUrl.cs" />
     <Compile Include="Entities\UserProfile.cs" />

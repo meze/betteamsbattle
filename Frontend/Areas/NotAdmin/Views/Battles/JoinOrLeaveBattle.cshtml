@@ -1,9 +1,3 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 @model ActualBattleViewModel
-@if (Model.IsJoined)
-{
-    <text>
-    @Model.Earned (@Model.TotalBetsCount/@Model.OpenBetsCount)
-    </text>
-}
-@Html.ActionLink(Model.JoinOrLeaveTitle, Model.JoinOrLeaveActionResult)
+

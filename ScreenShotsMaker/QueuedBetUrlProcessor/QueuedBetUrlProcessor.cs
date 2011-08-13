@@ -12,20 +12,26 @@ using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specific.Entity;
 using BetTeamsBattle.Data.Repositories.UnitOfWork;
+using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 using BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces;
 using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
 using NLog;
+using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interfaces;
 
 namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
 {
     internal class QueuedBetUrlProcessor : IQueuedBetUrlProcessor
     {
+        private readonly ITransactionScopeFactory _transactionScopeFactory;
+        private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
         private readonly IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
         private readonly IScreenShotMakerFactory _screenShotMakerFactory;
         private readonly IScreenshotAmazonS3Putter _screenshotAmazonS3Putter;
 
-        public QueuedBetUrlProcessor(IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IScreenShotMakerFactory screenShotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter)
+        public QueuedBetUrlProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IScreenShotMakerFactory screenShotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter)
         {
+            _transactionScopeFactory = transactionScopeFactory;
+            _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
             _repositoryOfQueuedBetUrl = repositoryOfQueuedBetUrl;
             _screenShotMakerFactory = screenShotMakerFactory;
             _screenshotAmazonS3Putter = screenshotAmazonS3Putter;
@@ -33,9 +39,9 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
 
         public void Process(long queuedBetUrlId, AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext)
         {
-            using (var transactionScope = new TransactionScope())
+            using (var transactionScope = _transactionScopeFactory.Create())
             {
-                using (var contextScope = new UnitOfWorkScope())
+                using (var contextScope = _unitOfWorkScopeFactory.Create())
                 {
                     QueuedBetUrl queuedBetUrl =
                         _repositoryOfQueuedBetUrl.Get(
@@ -56,7 +62,6 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
                     transactionScope.Complete();
                 }
             }
-
         }
     }
 }

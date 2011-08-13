@@ -45,7 +45,7 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
 
         public virtual ActionResult GetBattles()
         {
-            var battles = _repositoryOfBattles.Get(BooleanSpecifications<Battle>.True()).ToList();
+            var battles = _repositoryOfBattles.All().ToList();
 
             return View(battles);
         }

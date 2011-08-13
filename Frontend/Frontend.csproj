@@ -92,6 +92,7 @@
     <Compile Include="Areas\Admin\Models\CreateBattleViewModel.cs" />
     <Compile Include="Areas\Admin\Validators\BattleViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Accounts\Accounts.Designer.cs">
       <DependentUpon>Accounts.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -99,6 +100,16 @@
     </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Accounts\Accounts.ru.Designer.cs">
       <DependentUpon>Accounts.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\BattleBets\BattleBets.Designer.cs">
+      <DependentUpon>BattleBets.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\BattleBets\BattleBets.ru.Designer.cs">
+      <DependentUpon>BattleBets.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -159,6 +170,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\NotAdmin.AccountsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\NotAdmin.BattleBetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\NotAdmin.BattlesController.generated.cs">
@@ -330,6 +344,7 @@
     <Content Include="Areas\NotAdmin\Views\Accounts\AuthenticationLink.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\ActualBattles.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\JoinOrLeaveBattle.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\BattleBets\MyBets.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -345,6 +360,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Configuration\Configuration.csproj">
+      <Project>{A7C451BA-6138-489D-B91C-D66DF03BE3D3}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.Repositories.Infrastructure\Data.Repositories.Infrastructure.csproj">
       <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
       <Name>Data.Repositories.Infrastructure</Name>
@@ -371,6 +390,16 @@
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Accounts\Accounts.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Accounts.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\BattleBets\BattleBets.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BattleBets.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\BattleBets\BattleBets.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BattleBets.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Battles\Battles.resx">

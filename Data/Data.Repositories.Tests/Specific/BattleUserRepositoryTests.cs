@@ -29,7 +29,7 @@ namespace Data.Repositories.Tests.Specific
 
             _transactionScope = new TransactionScope();
 
-            var contextScope = new UnitOfWorkScope();
+            var unitOfWorkScope = new UnitOfWorkScope();
 
             _battleUserRepository = new BattleUserRepository();
 
@@ -47,7 +47,7 @@ namespace Data.Repositories.Tests.Specific
             _user3 = new User("login3", "openIdUrl3");
             repositoryOfUser.Add(_user3);
 
-            contextScope.SaveChanges();
+            unitOfWorkScope.SaveChanges();
 
             _battleUser1 = new BattleUser(_battle1.Id, _user1.Id, BattleUserAction.Join) { DateTime = DateTime.Now };
             _battleUserRepository.Add(_battleUser1);
@@ -59,7 +59,7 @@ namespace Data.Repositories.Tests.Specific
             _battleUser4 = new BattleUser(_battle2.Id, _user1.Id, BattleUserAction.Join) { DateTime = DateTime.Now };
             _battleUserRepository.Add(_battleUser4);
 
-            contextScope.SaveChanges();
+            unitOfWorkScope.SaveChanges();
         }
 
         [Test]
