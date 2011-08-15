@@ -85,14 +85,14 @@ namespace BetTeamsBattle.Data.Services
             return true;
         }
 
-        public long MakeBet(long battleId, long userId, double bet, double coefficient, string url)
+        public long MakeBet(long battleId, long userId, string title, double bet, double coefficient, string url, bool isPrivate)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
                 if (!UserIsJoinedToBattle(userId, battleId))
                     throw new ArgumentException("User is not joined to the battle");
 
-                var battleBet = new BattleBet(battleId, userId, bet, coefficient, url);
+                var battleBet = new BattleBet(battleId, userId, title, bet, coefficient, url, isPrivate);
                 
                 var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).Single();
                 battleUserStatistics.Balance -= bet;
