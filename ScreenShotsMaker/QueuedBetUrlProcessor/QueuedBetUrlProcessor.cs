@@ -48,7 +48,6 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
                             EntitySpecifications.EntityIdIsEqualTo<QueuedBetUrl>(queuedBetUrlId)).Single();
 
                     queuedBetUrl.StartDateTime = DateTime.UtcNow;
-                    unitOfWorkScope.SaveChanges();
 
                     var screenShotMaker = _screenShotMakerFactory.Create();
 
