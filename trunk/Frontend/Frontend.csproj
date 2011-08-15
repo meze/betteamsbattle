@@ -116,8 +116,11 @@
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignInViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignUpViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
-    <Compile Include="Areas\NotAdmin\Models\Battle\ActualBattleViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\BattleBets\MakeBetViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\BattleBets\MyBetsViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Battles\ActualBattleViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
+    <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\Battles\BattlesViewService.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\Battles\Interfaces\IBattlesViewService.cs" />
@@ -151,7 +154,7 @@
     <Compile Include="Areas\NotAdmin\Localization\Metadata\Localizers\InDays\InDaysEnglishLocalizer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Metadata\Localizers\InDays\InDaysRussianLocalizer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Metadata\Localizers\InDays\Interfaces\IInDaysLocalizer.cs" />
-    <Compile Include="Areas\NotAdmin\Models\Battle\NextBattleStartsInViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Battles\NextBattleStartsInViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Metadata\Resources\Views\Battles\Battles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -343,8 +346,8 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AuthenticationLink.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\ActualBattles.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Battles\JoinOrLeaveBattle.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\MyBets.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\BattleBets\MakeBet.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />

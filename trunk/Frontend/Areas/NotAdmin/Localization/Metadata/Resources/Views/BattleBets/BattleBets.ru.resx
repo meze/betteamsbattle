@@ -117,10 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Bet" xml:space="preserve">
+    <value>Ставка</value>
+  </data>
   <data name="BetFailed" xml:space="preserve">
     <value>Ставка сыграла</value>
   </data>
+  <data name="BetIsOutOfYourLimit" xml:space="preserve">
+    <value>Ставка превышает ваш лимит</value>
+  </data>
+  <data name="BetShouldBeMoreThanZero" xml:space="preserve">
+    <value>Ставка должна быть больше нуля</value>
+  </data>
   <data name="BetSucceeded" xml:space="preserve">
     <value>Ставка не сыграла</value>
+  </data>
+  <data name="Coefficient" xml:space="preserve">
+    <value>Коэффициент</value>
+  </data>
+  <data name="CoefficientShouldBeGreaterThanOne" xml:space="preserve">
+    <value>Коэффициент должен быть больше 1</value>
+  </data>
+  <data name="MakeBet" xml:space="preserve">
+    <value>Сделать ставку</value>
+  </data>
+  <data name="PrivateBet" xml:space="preserve">
+    <value>Приватная ставка</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="TitleIsTooLong" xml:space="preserve">
+    <value>Название слишком длинное</value>
+  </data>
+  <data name="TitleShouldNotBeEmpty" xml:space="preserve">
+    <value>Название должно быть заполнено</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Ссылка</value>
+  </data>
+  <data name="UrlIsIncorrect" xml:space="preserve">
+    <value>Некорректная ссылка</value>
   </data>
 </root>

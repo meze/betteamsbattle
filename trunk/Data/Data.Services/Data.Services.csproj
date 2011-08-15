@@ -47,7 +47,6 @@
     <Compile Include="BattlesService.cs" />
     <Compile Include="DI\DataServicesNinjectModule.cs" />
     <Compile Include="Interfaces\IBattlesService.cs" />
-    <Compile Include="Interfaces\IBattleUsersService.cs" />
     <Compile Include="Interfaces\IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersService.cs" />

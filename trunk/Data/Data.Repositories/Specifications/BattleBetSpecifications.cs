@@ -13,5 +13,10 @@ namespace BetTeamsBattle.Data.Repositories.Specifications
         {
             return LinqSpec.For<BattleBet>(bb => bb.UserId == userId);
         }
+
+        public static LinqSpec<BattleBet> BattleIdAndUserIdAreEqualTo(long battleId, long userId)
+        {
+            return BattleIdIsEqualTo(battleId) && UserIdIsEqualTo(userId);
+        }
     }
 }

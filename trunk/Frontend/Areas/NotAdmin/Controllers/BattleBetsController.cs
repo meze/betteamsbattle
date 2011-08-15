@@ -7,6 +7,7 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Services.Interfaces;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
 using BetTeamsBattle.Frontend.Authentication;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
@@ -25,29 +26,50 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         [Authorize]
         public virtual ActionResult MyBets(long battleId)
         {
-            var battleBets =
-                _repositoryOfBattleBet.Get(BattleBetSpecifications.BattleIdIsEqualTo(battleId) &&
-                                           BattleBetSpecifications.UserIdIsEqualTo(CurrentUser.UserId)).ToList();
+            var myBets = _repositoryOfBattleBet.
+                Get(BattleBetSpecifications.BattleIdAndUserIdAreEqualTo(battleId, CurrentUser.UserId)).
+                ToList();
 
+            var myBetsViewModel = new MyBetsViewModel(battleId, myBets);
 
-
-            return View();
+            return View(myBetsViewModel);
         }
 
         [Authorize]
-        public virtual ActionResult BattleBetSucceeded(long battleBetId)
+        [HttpGet]
+        public virtual ActionResult MakeBet(long battleId)
         {
-            long battleId;
-            _battlesService.CloseBattleBetAsSucceeded(battleBetId, CurrentUser.UserId, out battleId);
+            var makeBetViewModel = new MakeBetViewModel();
+
+            return View(makeBetViewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public virtual ActionResult MakeBet(long battleId, MakeBetViewModel makeBetViewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(makeBetViewModel);
+
+            _battlesService.MakeBet(battleId, CurrentUser.UserId, makeBetViewModel.Bet, makeBetViewModel.Coefficient, makeBetViewModel.Url);
 
             return RedirectToAction(MVC.NotAdmin.BattleBets.MyBets(battleId));
         }
 
         [Authorize]
-        public virtual ActionResult BattleBetFailed(long battleBetId)
+        public virtual ActionResult BetSucceeded(long battleBetId)
         {
             long battleId;
-            _battlesService.CloseBattleBetAsFailed(battleBetId, CurrentUser.UserId, out battleId);
+            _battlesService.BetSucceeded(battleBetId, CurrentUser.UserId, out battleId);
+
+            return RedirectToAction(MVC.NotAdmin.BattleBets.MyBets(battleId));
+        }
+
+        [Authorize]
+        public virtual ActionResult BetFailed(long battleBetId)
+        {
+            long battleId;
+            _battlesService.BetFailed(battleBetId, CurrentUser.UserId, out battleId);
 
             return RedirectToAction(MVC.NotAdmin.BattleBets.MyBets(battleId));
         }
