@@ -32,14 +32,16 @@ namespace BetTeamsBattle.Data.Model.Entities
             _queuedBetUrls = new List<QueuedBetUrl>();  
         }
 
-        public BattleBet(long battleId, long userId, double bet, double coefficient, string url) : this()
+        public BattleBet(long battleId, long userId, string title, double bet, double coefficient, string url, bool isPrivate) : this()
         {
             BattleId = battleId;
             UserId = userId;
+            Title = title;
             Bet = bet;
             Coefficient = coefficient;
             Url = url;
             OpenDateTime = DateTime.UtcNow;
+            IsPrivate = isPrivate;
         }
     }
 }

@@ -106,50 +106,48 @@ namespace BetTeamsBattle.Data.Services.Tests
         }
 
         [Test]
-        public void OpenBattleBet()
+        public void MakeBet()
         {
             var battle = _creator.CreateBattle();
             var user = _creator.CreateUser();
 
+            const string title = "title";
             const double bet = 100;
             const double coefficient = 2.5;
             const string url = "http://url";
+            const bool isPrivate = true;
 
             _battlesService.JoinToBattle(battle.Id, user.Id);
-            var battleBetId = _battlesService.MakeBet(battle.Id, user.Id, bet, coefficient, url);
+            var battleBetId = _battlesService.MakeBet(battle.Id, user.Id, title, bet, coefficient, url, isPrivate);
 
-            _repositoryOfBattleBet.All().Where(bb => bb.BattleId == battle.Id && bb.UserId == user.Id && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url).Single();
+            _repositoryOfBattleBet.All().Where(bb => bb.BattleId == battle.Id && bb.UserId == user.Id && bb.Title == title && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url && bb.IsPrivate == isPrivate).Single();
             _repositoryOfBattleUserStatistics.All().Where(bus => bus.BattleId == battle.Id && bus.UserId == user.Id && bus.Balance == battle.Budget - bet && bus.OpenedBetsCount == 1 && bus.ClosedBetsCount == 0).Single();
             _repositoryOfQueuedBetUrl.All().Where(qbu => qbu.BattleBetId == battleBetId && qbu.Type == (sbyte)QueuedBetUrlType.Open && qbu.Url == url).Single();
         }
 
         [Test]
-        public void OpenBattleBet_UserIsNotJoinedToThisBattle_Exception()
+        public void MakeBet_UserIsNotJoinedToThisBattle_Exception()
         {
             var battle = _creator.CreateBattle();
             var user = _creator.CreateUser();
 
-            const double bet = 100;
-            const double coefficient = 2.5;
-            const string url = "http://url";
-
-            Assert.Throws<ArgumentException>(() => _battlesService.MakeBet(battle.Id, user.Id, bet, coefficient, url));
+            Assert.Throws<ArgumentException>(() => _battlesService.MakeBet(battle.Id, user.Id, String.Empty, 0, 0, String.Empty, false));
         }
 
         [Test]
-        public void CloseBattleBetAsSucceeded()
+        public void BattleBetSucceeded()
         {
             TestCloseBattleBet(true, null);
         }
 
         [Test]
-        public void CloseBattleBetAsFailed()
+        public void BattleBetFailed()
         {
             TestCloseBattleBet(false, null);
         }
 
         [Test]
-        public void CloseBattleBetAsFailed_NotMineBattleBet_Exception()
+        public void BattleBetFailed_NotMineBattleBet_Exception()
         {
             var user = _creator.CreateUser("login1", "openIdUrl1");
             Assert.Throws<ArgumentException>(() => TestCloseBattleBet(false, user.Id));
@@ -163,12 +161,14 @@ namespace BetTeamsBattle.Data.Services.Tests
             if (!userId.HasValue)
                 userId = user.Id;
 
+            const string title = "title";
             const double bet = 100;
             const double coefficient = 150;
             const string url = "http://url";
+            const bool isPrivate = false;
 
             _battlesService.JoinToBattle(battle.Id, user.Id);
-            var battleBetId = _battlesService.MakeBet(battle.Id, user.Id, bet, coefficient, url);
+            var battleBetId = _battlesService.MakeBet(battle.Id, user.Id, title, bet, coefficient, url, isPrivate);
             long battleId;
             if (success)
                 _battlesService.BetSucceeded(battleBetId, userId.Value, out battleId);
