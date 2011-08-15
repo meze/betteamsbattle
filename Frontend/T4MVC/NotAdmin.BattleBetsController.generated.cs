@@ -38,13 +38,18 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult BattleBetSucceeded() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.BattleBetSucceeded);
+        public System.Web.Mvc.ActionResult MakeBet() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.MakeBet);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult BattleBetFailed() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.BattleBetFailed);
+        public System.Web.Mvc.ActionResult BetSucceeded() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BetSucceeded);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BetFailed() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BetFailed);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -60,8 +65,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string MyBets = ("MyBets").ToLowerInvariant();
-            public readonly string BattleBetSucceeded = ("BattleBetSucceeded").ToLowerInvariant();
-            public readonly string BattleBetFailed = ("BattleBetFailed").ToLowerInvariant();
+            public readonly string MakeBet = ("MakeBet").ToLowerInvariant();
+            public readonly string BetSucceeded = ("BetSucceeded").ToLowerInvariant();
+            public readonly string BetFailed = ("BetFailed").ToLowerInvariant();
         }
 
 
@@ -84,14 +90,27 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult BattleBetSucceeded(long battleBetId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BattleBetSucceeded);
+        public override System.Web.Mvc.ActionResult MakeBet(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MakeBet);
+            callInfo.RouteValueDictionary.Add("battleId", battleId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult MakeBet(long battleId, BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets.MakeBetViewModel makeBetViewModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MakeBet);
+            callInfo.RouteValueDictionary.Add("battleId", battleId);
+            callInfo.RouteValueDictionary.Add("makeBetViewModel", makeBetViewModel);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BetSucceeded(long battleBetId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BetSucceeded);
             callInfo.RouteValueDictionary.Add("battleBetId", battleBetId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult BattleBetFailed(long battleBetId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BattleBetFailed);
+        public override System.Web.Mvc.ActionResult BetFailed(long battleBetId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BetFailed);
             callInfo.RouteValueDictionary.Add("battleBetId", battleBetId);
             return callInfo;
         }

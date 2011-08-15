@@ -17,6 +17,7 @@ namespace BetTeamsBattle.Data.Model.Entities
             set { BattleType = (sbyte) value; } 
         }
         public virtual int Budget { get; set; }
+        public virtual int BetLimit { get; set; }
 
         public virtual ICollection<BattleUser> BattleUsers { get; set; }
         public virtual ICollection<BattleBet> BattleBets { get; set; }

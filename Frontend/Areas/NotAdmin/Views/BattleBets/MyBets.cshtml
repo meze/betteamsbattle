@@ -1,8 +1,10 @@
-﻿@using BetTeamsBattle.Data.Model.Entities
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @using Resources
-@model IEnumerable<BattleBet>
+@model MyBetsViewModel
 
-@foreach (var battleBet in Model)
+@Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))
+
+@foreach (var battleBet in Model.MyBets)
 {
     <text>
     @battleBet.OpenDateTime @battleBet.Bet$ @battleBet.Coefficient @battleBet.Url <br />
@@ -16,8 +18,8 @@
     else
     {
         <text>
-        @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BattleBetFailed(battleBet.Id))
-        @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BattleBetSucceeded(battleBet.Id))
+        @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(battleBet.Id))
+        @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(battleBet.Id))
         </text>
     }
     </text>

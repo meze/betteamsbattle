@@ -67,7 +67,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string ActualBattles = "~/Areas/NotAdmin/Views/Battles/ActualBattles.cshtml";
-            public readonly string JoinOrLeaveBattle = "~/Areas/NotAdmin/Views/Battles/JoinOrLeaveBattle.cshtml";
             public readonly string NextBattleStartsIn = "~/Areas/NotAdmin/Views/Battles/NextBattleStartsIn.cshtml";
         }
     }

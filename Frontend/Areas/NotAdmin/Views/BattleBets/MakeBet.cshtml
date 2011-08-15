@@ -1,0 +1,15 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+@using Resources
+@model MakeBetViewModel
+
+@Html.ValidationSummary(true)
+
+@using (Html.BeginForm(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId)))
+{
+    @BattleBets.Title @Html.TextBoxFor(m => m.Title, Model.Title) @Html.ValidationMessageFor(m => m.Title) <br />
+    @BattleBets.Bet @Html.TextBoxFor(m => m.Bet, Model.Bet) @Html.ValidationMessageFor(m => m.Bet) <br />
+    @BattleBets.Coefficient @Html.TextBoxFor(m => m.Coefficient, Model.Coefficient) @Html.ValidationMessageFor(m => m.Coefficient) <br />
+    @BattleBets.Url @Html.TextBoxFor(m => m.Url, Model.Url) @Html.ValidationMessageFor(m => m.Url) <br />
+    @BattleBets.PrivateBet @Html.CheckBoxFor(m => m.IsPrivate, Model.IsPrivate) @Html.ValidationMessageFor(m => m.IsPrivate) <br />
+    <input type="submit" name="@BattleBets.MakeBet" />
+}

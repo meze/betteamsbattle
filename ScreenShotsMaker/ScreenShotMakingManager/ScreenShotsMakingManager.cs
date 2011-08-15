@@ -30,6 +30,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
 
         private AmazonS3 _amazonS3Client;
         private IList<long> _queuedBetUrlsIdsInProcessing = new List<long>();
+        private SynchronizationContext _synchronizationContext;
 
         public ScreenShotsMakingManager(IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl,
             IQueuedBetUrlProcessor queuedBetUrlProcessor)
@@ -48,7 +49,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
             string secretAccessKeyId = AppSettings.AmazonSecretAccessKeyId;
             _amazonS3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyId, secretAccessKeyId);
 
-            var synchronizationContext = SynchronizationContext.Current;
+            _synchronizationContext = SynchronizationContext.Current;
 
             while (true)
             {
@@ -73,26 +74,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
                         queuedBetUrlsIds.Add(queuedBetUrlId);
                     }
 
-                    var thread = new Thread(() =>
-                        {
-                            try
-                            {
-                                _queuedBetUrlProcessor.Process(queuedBetUrlId, _amazonS3Client, synchronizationContext);
-                            }
-                            catch (Exception ex)
-                            {
-                                _logger.ErrorException("Can't make screenshot", ex);
-                            }
-                            finally
-                            {
-                                lock (_queuedBetUrlsIdsInProcessing)
-                                {
-                                    _queuedBetUrlsIdsInProcessing.Remove(queuedBetUrlId);
-                                }
-
-                                _semaphore.Release();
-                            }
-                        });
+                    var thread = new Thread(ProcessInNewThread);
                     thread.Start();
                 }
             }
@@ -105,7 +87,24 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
         private void ProcessInNewThread(object obj)
         {
             var queuedBetUrlId = (long)obj;
-            
+
+            try
+            {
+                _queuedBetUrlProcessor.Process(queuedBetUrlId, _amazonS3Client, _synchronizationContext);
+            }
+            catch (Exception ex)
+            {
+                _logger.ErrorException("Can't make screenshot", ex);
+            }
+            finally
+            {
+                lock (_queuedBetUrlsIdsInProcessing)
+                {
+                    _queuedBetUrlsIdsInProcessing.Remove(queuedBetUrlId);
+                }
+
+                _semaphore.Release();
+            }
         }
     }
 }

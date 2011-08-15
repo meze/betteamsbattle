@@ -85,7 +85,7 @@ namespace BetTeamsBattle.Data.Services
             return true;
         }
 
-        public long OpenBattleBet(long battleId, long userId, double bet, double coefficient, string url)
+        public long MakeBet(long battleId, long userId, double bet, double coefficient, string url)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
@@ -109,12 +109,12 @@ namespace BetTeamsBattle.Data.Services
             }
         }
 
-        public void CloseBattleBetAsSucceeded(long battleBetId, long userId, out long battleId)
+        public void BetSucceeded(long battleBetId, long userId, out long battleId)
         {
             CloseBattleBet(battleBetId, userId, true, out battleId);
         }
 
-        public void CloseBattleBetAsFailed(long battleBetId, long userId, out long battleId)
+        public void BetFailed(long battleBetId, long userId, out long battleId)
         {
             CloseBattleBet(battleBetId, userId, false, out battleId);
         }

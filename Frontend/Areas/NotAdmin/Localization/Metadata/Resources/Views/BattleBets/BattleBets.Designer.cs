@@ -62,6 +62,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bet.
+        /// </summary>
+        public static string Bet {
+            get {
+                return ResourceManager.GetString("Bet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet failed.
         /// </summary>
         public static string BetFailed {
@@ -71,11 +80,110 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bet is out of your limit.
+        /// </summary>
+        public static string BetIsOutOfYourLimit {
+            get {
+                return ResourceManager.GetString("BetIsOutOfYourLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bet should be more that zero.
+        /// </summary>
+        public static string BetShouldBeMoreThanZero {
+            get {
+                return ResourceManager.GetString("BetShouldBeMoreThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet succeeded.
         /// </summary>
         public static string BetSucceeded {
             get {
                 return ResourceManager.GetString("BetSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coefficient.
+        /// </summary>
+        public static string Coefficient {
+            get {
+                return ResourceManager.GetString("Coefficient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coefficient should be greater than 1.
+        /// </summary>
+        public static string CoefficientShouldBeGreaterThanOne {
+            get {
+                return ResourceManager.GetString("CoefficientShouldBeGreaterThanOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make bet.
+        /// </summary>
+        public static string MakeBet {
+            get {
+                return ResourceManager.GetString("MakeBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private bet.
+        /// </summary>
+        public static string PrivateBet {
+            get {
+                return ResourceManager.GetString("PrivateBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title is too long.
+        /// </summary>
+        public static string TitleIsTooLong {
+            get {
+                return ResourceManager.GetString("TitleIsTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title should not be empty.
+        /// </summary>
+        public static string TitleShouldNotBeEmpty {
+            get {
+                return ResourceManager.GetString("TitleShouldNotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url.
+        /// </summary>
+        public static string Url {
+            get {
+                return ResourceManager.GetString("Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url is incorrect.
+        /// </summary>
+        public static string UrlIsIncorrect {
+            get {
+                return ResourceManager.GetString("UrlIsIncorrect", resourceCulture);
             }
         }
     }

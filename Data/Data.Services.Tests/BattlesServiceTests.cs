@@ -116,7 +116,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             const string url = "http://url";
 
             _battlesService.JoinToBattle(battle.Id, user.Id);
-            var battleBetId = _battlesService.OpenBattleBet(battle.Id, user.Id, bet, coefficient, url);
+            var battleBetId = _battlesService.MakeBet(battle.Id, user.Id, bet, coefficient, url);
 
             _repositoryOfBattleBet.All().Where(bb => bb.BattleId == battle.Id && bb.UserId == user.Id && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url).Single();
             _repositoryOfBattleUserStatistics.All().Where(bus => bus.BattleId == battle.Id && bus.UserId == user.Id && bus.Balance == battle.Budget - bet && bus.OpenedBetsCount == 1 && bus.ClosedBetsCount == 0).Single();
@@ -133,7 +133,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             const double coefficient = 2.5;
             const string url = "http://url";
 
-            Assert.Throws<ArgumentException>(() => _battlesService.OpenBattleBet(battle.Id, user.Id, bet, coefficient, url));
+            Assert.Throws<ArgumentException>(() => _battlesService.MakeBet(battle.Id, user.Id, bet, coefficient, url));
         }
 
         [Test]
@@ -168,12 +168,12 @@ namespace BetTeamsBattle.Data.Services.Tests
             const string url = "http://url";
 
             _battlesService.JoinToBattle(battle.Id, user.Id);
-            var battleBetId = _battlesService.OpenBattleBet(battle.Id, user.Id, bet, coefficient, url);
+            var battleBetId = _battlesService.MakeBet(battle.Id, user.Id, bet, coefficient, url);
             long battleId;
             if (success)
-                _battlesService.CloseBattleBetAsSucceeded(battleBetId, userId.Value, out battleId);
+                _battlesService.BetSucceeded(battleBetId, userId.Value, out battleId);
             else
-                _battlesService.CloseBattleBetAsFailed(battleBetId, userId.Value, out battleId);
+                _battlesService.BetFailed(battleBetId, userId.Value, out battleId);
 
             var newBalance = battle.Budget - bet;
             if (success)

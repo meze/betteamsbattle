@@ -56,6 +56,7 @@
           <Property Name="EndDate" Type="datetime" Nullable="false" />
           <Property Name="BattleType" Type="tinyint" Nullable="false" />
           <Property Name="Budget" Type="int" Nullable="false" />
+          <Property Name="BetLimit" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="battlesbets">
           <Key>
@@ -66,9 +67,11 @@
           <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="OpenDateTime" Type="datetime" Nullable="false" />
           <Property Name="CloseDateTime" Type="datetime" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="Bet" Type="double" Nullable="false" />
           <Property Name="Coefficient" Type="double" Nullable="false" />
           <Property Name="Url" Type="varchar" Nullable="false" />
+          <Property Name="IsPrivate" Type="bool" Nullable="false" />
           <Property Name="Success" Type="bool" />
         </EntityType>
         <EntityType Name="battlesusers">
@@ -307,6 +310,7 @@
           <NavigationProperty Name="BattleUsers" Relationship="Model.battlesusers_ibfk_1" FromRole="battle" ToRole="battlesuser" />
           <NavigationProperty Name="BattleBets" Relationship="Model.battlesbets_ibfk_1" FromRole="Battle" ToRole="battlesbet" />
           <NavigationProperty Name="BattleUsersStatistics" Relationship="Model.battlesusersstatistics_ibfk_1" FromRole="Battle" ToRole="battlesusersstatistic" />
+          <Property Type="Int32" Name="BetLimit" Nullable="false" />
         </EntityType>
         <EntityType Name="BattleUser">
           <Key>
@@ -388,6 +392,8 @@
           <Property Type="Double" Name="Coefficient" Nullable="false" />
           <Property Type="Boolean" Name="Success" />
           <NavigationProperty Name="QueuedBetUrls" Relationship="Model.queuedbeturls_ibfk_1" FromRole="BattleBet" ToRole="queuedbeturl" />
+          <Property Type="Boolean" Name="IsPrivate" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
         </EntityType>
         <Association Name="battlesbets_ibfk_1">
           <End Type="Model.Battle" Role="Battle" Multiplicity="1" />
@@ -506,6 +512,7 @@
           <EntitySetMapping Name="Battles">
             <EntityTypeMapping TypeName="Model.Battle">
               <MappingFragment StoreEntitySet="battles">
+                <ScalarProperty Name="BetLimit" ColumnName="BetLimit" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
@@ -541,6 +548,8 @@
           <EntitySetMapping Name="BattlesBets">
             <EntityTypeMapping TypeName="Model.BattleBet">
               <MappingFragment StoreEntitySet="battlesbets">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsPrivate" ColumnName="IsPrivate" />
                 <ScalarProperty Name="Success" ColumnName="Success" />
                 <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
                 <ScalarProperty Name="CloseDateTime" ColumnName="CloseDateTime" />
