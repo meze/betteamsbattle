@@ -43,7 +43,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
             _usersService.Register(login, openIdUrl, language);
 
-            _repositoryOfUser.All().Where(u => u.Login == login && u.OpenIdUrl == openIdUrl && u.UserProfile.Language == (sbyte) language && u.UserStatistics != null).Single();
+            _repositoryOfUser.All().Where(u => u.Login == login && u.OpenIdUrl == openIdUrl && u.UserProfile.Language == (sbyte) language && u.UserStatistics.Rating == 0).Single();
         }
     }
 }

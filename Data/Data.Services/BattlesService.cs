@@ -22,9 +22,10 @@ namespace BetTeamsBattle.Data.Services
         private readonly IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
         private readonly IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
         private readonly IBattleUserRepository _battleUserRepository;
+        private readonly IRepository<UserStatistics> _repositoryOfUserStatistics;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
 
-        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattles, IRepository<BattleBet> repositoryOfBattleBet, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IRepository<BattleUserStatistics> repositoryOfBattleUserStatistics, IBattleUserRepository battleUserRepository)
+        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattles, IRepository<BattleBet> repositoryOfBattleBet, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IRepository<BattleUserStatistics> repositoryOfBattleUserStatistics, IBattleUserRepository battleUserRepository, IRepository<UserStatistics> repositoryOfUserStatistics)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _repositoryOfBattles = repositoryOfBattles;
@@ -32,6 +33,7 @@ namespace BetTeamsBattle.Data.Services
             _repositoryOfQueuedBetUrl = repositoryOfQueuedBetUrl;
             _repositoryOfBattleUserStatistics = repositoryOfBattleUserStatistics;
             _battleUserRepository = battleUserRepository;
+            _repositoryOfUserStatistics = repositoryOfUserStatistics;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
         }
 
@@ -134,8 +136,17 @@ namespace BetTeamsBattle.Data.Services
                 battleId = battleBet.BattleId;
 
                 var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).Single();
+                var userStatistics = _repositoryOfUserStatistics.Get(UserStatisticsSpecifications.UserIdIsEqualTo(userId)).Single();
                 if (success)
-                    battleUserStatistics.Balance += battleBet.Bet * battleBet.Coefficient;
+                {
+                    var betWin = battleBet.Bet * battleBet.Coefficient;
+
+                    battleUserStatistics.Balance += betWin;
+                    userStatistics.Rating += betWin;
+                }
+                else
+                    userStatistics.Rating -= battleBet.Bet;
+
                 battleUserStatistics.OpenedBetsCount--;
                 battleUserStatistics.ClosedBetsCount++;
 
