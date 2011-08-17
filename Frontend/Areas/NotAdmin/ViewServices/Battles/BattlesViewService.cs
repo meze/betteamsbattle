@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
@@ -8,8 +9,10 @@ using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.EntityRepositories.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Localizers.InDays.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
+using BetTeamsBattle.Frontend.Services.Interfaces;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
 {
@@ -17,16 +20,55 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
     {
         private readonly IRepository<Battle> _repositoryOfBattle;
         private readonly IBattleUserRepository _battleUserRepository;
+        private IInDaysLocalizer _inDaysLocalizer;
 
-        public BattlesViewService(IRepository<Battle> repositoryOfBattle, IBattleUserRepository battleUserRepository)
+        public BattlesViewService(IRepository<Battle> repositoryOfBattle, IBattleUserRepository battleUserRepository, IInDaysLocalizer inDaysLocalizer)
         {
             _repositoryOfBattle = repositoryOfBattle;
             _battleUserRepository = battleUserRepository;
+            _inDaysLocalizer = inDaysLocalizer;
+        }
+
+        public AllBattlesViewModel AllBattles()
+        {
+            var allBattlesViewModel = new AllBattlesViewModel();
+
+            var currentBattles = _repositoryOfBattle.Get(BattleSpecifications.Current()).OrderBy(b => b.StartDate).ToList();
+            var currentBattlesViewModels = new List<CurrentBattleViewModel>();
+            foreach (var currentBattle in currentBattles)
+            {
+                var currentBattleViewModel = new CurrentBattleViewModel(currentBattle.Budget, currentBattle.BetLimit, currentBattle.StartDate.ToShortDateString(), currentBattle.EndDate.ToShortDateString());
+                currentBattlesViewModels.Add(currentBattleViewModel);
+            }
+            allBattlesViewModel.CurrentBattlesViewModels = currentBattlesViewModels;
+
+            var notStartedBattles = _repositoryOfBattle.Get(BattleSpecifications.NotStarted()).OrderBy(b => b.StartDate).ToList();
+            var notStartedBattlesViewModels = new List<NotStartedBattleViewModel>();
+            foreach (var notStartedBattle in notStartedBattles)
+            {
+                var inDays = (notStartedBattle.StartDate - DateTime.UtcNow).Days;
+                var inDaysString = _inDaysLocalizer.Localize(inDays);
+
+                var futureBattleViewModel = new NotStartedBattleViewModel(notStartedBattle.Budget, notStartedBattle.BetLimit, notStartedBattle.StartDate.ToShortDateString(), notStartedBattle.EndDate.ToShortDateString(), inDaysString);
+                notStartedBattlesViewModels.Add(futureBattleViewModel);
+            }
+            allBattlesViewModel.NotStartedBattlesViewModels = notStartedBattlesViewModels;
+
+            var finishedBattles = _repositoryOfBattle.Get(BattleSpecifications.Finished()).OrderBy(b => b.StartDate).ToList();
+            var finishedBattlesViewModels = new List<FinishedBattleViewModel>();
+            foreach (var finishedBattle in finishedBattles)
+            {
+                var finishedBattleViewModel = new FinishedBattleViewModel(finishedBattle.Budget, finishedBattle.BetLimit, finishedBattle.StartDate.ToShortDateString(), finishedBattle.EndDate.ToShortDateString());
+                finishedBattlesViewModels.Add(finishedBattleViewModel);
+            }
+            allBattlesViewModel.FinishedBattlesViewModels = finishedBattlesViewModels;
+
+            return allBattlesViewModel;
         }
 
         public IEnumerable<ActualBattleViewModel> ActualBattlesViewModels(long? userId)
         {
-            var actualBattles = _repositoryOfBattle.Get(BattleSpecifications.NotFinishedOrNotStarted()).
+            var actualBattles = _repositoryOfBattle.Get(BattleSpecifications.Current()).
                 OrderBy(b => b.StartDate).
                 ToList();
             var actualBattlesIds = EntityHelper.GetIds(actualBattles);

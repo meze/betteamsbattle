@@ -6,12 +6,12 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Accounts;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
 using BetTeamsBattle.Frontend.Authentication;
 using BetTeamsBattle.Frontend.Localization.Infrastructure;
 using FluentValidation;
-using Resources;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
 {

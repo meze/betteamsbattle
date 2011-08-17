@@ -118,24 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActualBattles" xml:space="preserve">
-    <value>Actual battles</value>
+    <value>Актуальные турниры</value>
   </data>
   <data name="CloseAsFailed" xml:space="preserve">
-    <value>Failed</value>
+    <value>Проиграл</value>
   </data>
   <data name="CloseAsSucceeded" xml:space="preserve">
-    <value>Succeeded</value>
+    <value>Выиграл</value>
+  </data>
+  <data name="CurrentBattles" xml:space="preserve">
+    <value>Текущие турниры</value>
+  </data>
+  <data name="FinishedBattles" xml:space="preserve">
+    <value>Завершившиеся турниры</value>
   </data>
   <data name="Join" xml:space="preserve">
-    <value>Join</value>
+    <value>Участвовать</value>
   </data>
   <data name="Leave" xml:space="preserve">
-    <value>Leave</value>
+    <value>Не участвовать</value>
   </data>
   <data name="MyBets" xml:space="preserve">
-    <value>My bets</value>
+    <value>Мои ставки</value>
   </data>
   <data name="NextBattleStartsIn" xml:space="preserve">
-    <value>Next battle starts in</value>
+    <value>Следующий турнир через </value>
+  </data>
+  <data name="NotStartedBattles" xml:space="preserve">
+    <value>Будущие турниры</value>
   </data>
 </root>

@@ -54,7 +54,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string NextBattleStartsIn = ("NextBattleStartsIn").ToLowerInvariant();
+            public readonly string AllBattles = ("AllBattles").ToLowerInvariant();
             public readonly string ActualBattles = ("ActualBattles").ToLowerInvariant();
             public readonly string JoinBattle = ("JoinBattle").ToLowerInvariant();
             public readonly string LeaveBattle = ("LeaveBattle").ToLowerInvariant();
@@ -67,7 +67,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string ActualBattles = "~/Areas/NotAdmin/Views/Battles/ActualBattles.cshtml";
-            public readonly string NextBattleStartsIn = "~/Areas/NotAdmin/Views/Battles/NextBattleStartsIn.cshtml";
+            public readonly string AllBattles = "~/Areas/NotAdmin/Views/Battles/AllBattles.cshtml";
         }
     }
 
@@ -75,8 +75,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
     public class T4MVC_BattlesController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.BattlesController {
         public T4MVC_BattlesController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult NextBattleStartsIn() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.NextBattleStartsIn);
+        public override System.Web.Mvc.PartialViewResult AllBattles() {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AllBattles);
             return callInfo;
         }
 
