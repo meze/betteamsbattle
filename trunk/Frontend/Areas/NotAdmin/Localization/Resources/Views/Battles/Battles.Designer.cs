@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class BattleBets {
+    public class Battles {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal BattleBets() {
+        internal Battles() {
         }
         
         /// <summary>
@@ -39,8 +39,8 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Metadata.Resources.Views.Batt" +
-                            "leBets.BattleBets", typeof(BattleBets).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Battles.Battl" +
+                            "es", typeof(Battles).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,128 +62,92 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet.
+        ///   Looks up a localized string similar to Actual battles.
         /// </summary>
-        public static string Bet {
+        public static string ActualBattles {
             get {
-                return ResourceManager.GetString("Bet", resourceCulture);
+                return ResourceManager.GetString("ActualBattles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet failed.
+        ///   Looks up a localized string similar to Failed.
         /// </summary>
-        public static string BetFailed {
+        public static string CloseAsFailed {
             get {
-                return ResourceManager.GetString("BetFailed", resourceCulture);
+                return ResourceManager.GetString("CloseAsFailed", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet is out of your limit.
+        ///   Looks up a localized string similar to Succeeded.
         /// </summary>
-        public static string BetIsOutOfYourLimit {
+        public static string CloseAsSucceeded {
             get {
-                return ResourceManager.GetString("BetIsOutOfYourLimit", resourceCulture);
+                return ResourceManager.GetString("CloseAsSucceeded", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet should be more that zero.
+        ///   Looks up a localized string similar to Current battles.
         /// </summary>
-        public static string BetShouldBeMoreThanZero {
+        public static string CurrentBattles {
             get {
-                return ResourceManager.GetString("BetShouldBeMoreThanZero", resourceCulture);
+                return ResourceManager.GetString("CurrentBattles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet succeeded.
+        ///   Looks up a localized string similar to Finished battles.
         /// </summary>
-        public static string BetSucceeded {
+        public static string FinishedBattles {
             get {
-                return ResourceManager.GetString("BetSucceeded", resourceCulture);
+                return ResourceManager.GetString("FinishedBattles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coefficient.
+        ///   Looks up a localized string similar to Join.
         /// </summary>
-        public static string Coefficient {
+        public static string Join {
             get {
-                return ResourceManager.GetString("Coefficient", resourceCulture);
+                return ResourceManager.GetString("Join", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coefficient should be greater than 1.
+        ///   Looks up a localized string similar to Leave.
         /// </summary>
-        public static string CoefficientShouldBeGreaterThanOne {
+        public static string Leave {
             get {
-                return ResourceManager.GetString("CoefficientShouldBeGreaterThanOne", resourceCulture);
+                return ResourceManager.GetString("Leave", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Make bet.
+        ///   Looks up a localized string similar to My bets.
         /// </summary>
-        public static string MakeBet {
+        public static string MyBets {
             get {
-                return ResourceManager.GetString("MakeBet", resourceCulture);
+                return ResourceManager.GetString("MyBets", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Private bet.
+        ///   Looks up a localized string similar to Next battle starts in.
         /// </summary>
-        public static string PrivateBet {
+        public static string NextBattleStartsIn {
             get {
-                return ResourceManager.GetString("PrivateBet", resourceCulture);
+                return ResourceManager.GetString("NextBattleStartsIn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title.
+        ///   Looks up a localized string similar to Future battles.
         /// </summary>
-        public static string Title {
+        public static string NotStartedBattles {
             get {
-                return ResourceManager.GetString("Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title is too long.
-        /// </summary>
-        public static string TitleIsTooLong {
-            get {
-                return ResourceManager.GetString("TitleIsTooLong", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title should not be empty.
-        /// </summary>
-        public static string TitleShouldNotBeEmpty {
-            get {
-                return ResourceManager.GetString("TitleShouldNotBeEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Url.
-        /// </summary>
-        public static string Url {
-            get {
-                return ResourceManager.GetString("Url", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Url is incorrect.
-        /// </summary>
-        public static string UrlIsIncorrect {
-            get {
-                return ResourceManager.GetString("UrlIsIncorrect", resourceCulture);
+                return ResourceManager.GetString("NotStartedBattles", resourceCulture);
             }
         }
     }
