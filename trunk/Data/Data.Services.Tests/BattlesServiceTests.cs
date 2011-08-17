@@ -24,6 +24,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
         private IRepository<Battle> _repositoryOfBattle;
         private IRepository<User> _repositoryOfUser;
+        private IRepository<UserStatistics> _repositoryOfUserStatistics; 
         private IRepository<BattleUser> _repositoryOfBattleUser;
         private IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
         private IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
@@ -42,6 +43,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
             _repositoryOfBattle = kernel.Get<IRepository<Battle>>();
             _repositoryOfUser = kernel.Get<IRepository<User>>();
+            _repositoryOfUserStatistics = kernel.Get<IRepository<UserStatistics>>();
             _repositoryOfBattleUser = kernel.Get<IRepository<BattleUser>>();
             _repositoryOfBattleUserStatistics = kernel.Get<IRepository<BattleUserStatistics>>();
             _repositoryOfQueuedBetUrl = kernel.Get<IRepository<QueuedBetUrl>>();
@@ -175,10 +177,17 @@ namespace BetTeamsBattle.Data.Services.Tests
             else
                 _battlesService.BetFailed(battleBetId, userId.Value, out battleId);
 
+            var newRating = 0d;
             var newBalance = battle.Budget - bet;
             if (success)
-                newBalance += bet*coefficient;
+            {
+                newRating += bet * coefficient;
+                newBalance += bet * coefficient;
+            }
+            else
+                newRating -= bet;
 
+            _repositoryOfUserStatistics.All().Where(us => us.Id == user.Id && us.Rating == newRating).Single();
             _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.Success == success).Single();
             _repositoryOfBattleUserStatistics.All().Where(bus => bus.BattleId == battle.Id && bus.UserId == user.Id && bus.Balance == newBalance && bus.OpenedBetsCount == 0 && bus.ClosedBetsCount == 1).Single();
         }

@@ -65,6 +65,7 @@
     <Compile Include="Specifications\UserSpecifications.cs" />
     <Compile Include="EntityRepositories\BattleUserRepository.cs" />
     <Compile Include="EntityRepositories\Interfaces\IBattleUserRepository.cs" />
+    <Compile Include="Specifications\UserStatisticsSpecifications.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScope.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScopeFactory.cs" />

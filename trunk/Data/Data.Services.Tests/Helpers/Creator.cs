@@ -30,6 +30,7 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
         public User CreateUser(string login, string openIdUrl)
         {
             var user = new User(login, openIdUrl);
+            user.UserStatistics = new UserStatistics() { Rating = 0 };
             _repositoryOfUser.Add(user);
             _unitOfWork.SaveChanges();
             return user;
@@ -38,6 +39,6 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
         public User CreateUser()
         {
             return CreateUser("login", "openIdUrl");
-        } 
+        }
     }
 }
