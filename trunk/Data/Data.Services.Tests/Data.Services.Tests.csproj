@@ -58,6 +58,7 @@
     <Compile Include="DI\TestNinjectKernel.cs" />
     <Compile Include="Helpers\Creator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

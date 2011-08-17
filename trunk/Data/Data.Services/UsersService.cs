@@ -25,6 +25,7 @@ namespace BetTeamsBattle.Data.Services
             {
                 var user = new User(login, openIdUrl);
                 user.UserProfile = new UserProfile() {LanguageEnum = language};
+                user.UserStatistics = new UserStatistics() {Rating = 0};
 
                 _repositoryOfUser.Add(user);
 
