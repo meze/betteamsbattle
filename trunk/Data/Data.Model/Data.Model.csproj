@@ -50,6 +50,7 @@
     <Compile Include="Entities\IpToCountry.cs" />
     <Compile Include="Entities\QueuedBetUrl.cs" />
     <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Entities\UserStatistics.cs" />
     <Compile Include="Enums\BattleUserAction.cs" />
     <Compile Include="Enums\BattleType.cs" />
     <Compile Include="Enums\Language.cs" />
