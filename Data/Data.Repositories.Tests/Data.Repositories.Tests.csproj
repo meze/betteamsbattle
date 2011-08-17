@@ -36,7 +36,7 @@
     </Reference>
     <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libaries\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+      <HintPath>..\..\Libraries\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
