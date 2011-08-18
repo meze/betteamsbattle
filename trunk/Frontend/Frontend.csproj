@@ -95,6 +95,7 @@
     <Compile Include="Areas\Admin\Validators\BattleViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
+    <Compile Include="Areas\NotAdmin\Controllers\UsersController.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.Designer.cs">
       <DependentUpon>Accounts.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -122,11 +123,14 @@
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MyBetsViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\ActualBattleViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Users\UsersRatingUserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
-    <Compile Include="Areas\NotAdmin\ViewServices\Battles\BattlesViewService.cs" />
-    <Compile Include="Areas\NotAdmin\ViewServices\Battles\Interfaces\IBattlesViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\BattlesViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\IBattlesViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\IUsersViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\UsersViewService.cs" />
     <Compile Include="AspNetMvc\ActionFilters\AdminRightsActionFilter.cs" />
     <Compile Include="AspNetMvc\Routes\LanguagelessMvcRouteHandler.cs" />
     <Compile Include="AspNetMvc\Routes\RegexRouteConstraint.cs" />
@@ -189,6 +193,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\NotAdmin.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\NotAdmin.UsersController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
@@ -353,6 +360,7 @@
     <Content Include="Areas\NotAdmin\Views\BattleBets\MyBets.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\MakeBet.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\AllBattles.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Users\UsersRating.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />

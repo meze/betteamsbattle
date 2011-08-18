@@ -39,6 +39,10 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
             context.MapLanguageRoute("account/signup", MVC.NotAdmin.Accounts.SignUp());
             context.MapLanguageRoute("account/signout", MVC.NotAdmin.Accounts.SignOut());
             #endregion
+
+            #region UsersController
+            context.MapLanguageRoute("users/rating", MVC.NotAdmin.Users.UsersRating());
+            #endregion
         }
     }
 }
