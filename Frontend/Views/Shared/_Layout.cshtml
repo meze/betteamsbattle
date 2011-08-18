@@ -1,18 +1,91 @@
 ﻿@using Links
 <!DOCTYPE html>
 <html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
     <title>@ViewBag.Title</title>
     <script src="@Scripts.jquery_1_6_2_min_js" type="text/javascript"></script>
     <script src="@Scripts.jquery_validate_min_js" type="text/javascript"></script>
     <script src="@Scripts.jquery_validate_unobtrusive_min_js" type="text/javascript"></script>
-    
+
+    <link rel="stylesheet" type="text/css" href="@Content.file_css" />    <link rel="stylesheet" type="text/css" href="@Content.menu_style_css" />
     @RenderSection("Scripts", false)
-
 </head>
-
 <body>
-    @Html.Partial(MVC.NotAdmin.Accounts.Views.AuthenticationLink)
-    @RenderBody()
+    <div id="osnova">
+        <div id="heder">
+        </div>
+        <div id="menu">
+            <table style="height: 30px; width: 950px;" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td style="width: 102px;">
+                            <a href="">
+                                <div id="knopka_1">
+                                    <div id="knopka_1_hover">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td style="width: 101px;">
+                            <a href="">
+                                <div id="knopka_2">
+                                    <div id="knopka_2_hover">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td style="width: 101px;">
+                            <a href="">
+                                <div id="knopka_3">
+                                    <div id="knopka_3_hover">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td style="width: 102px;">
+                            <a href="">
+                                <div id="knopka_4">
+                                    <div id="knopka_4_hover">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td style="width: 463px;">
+                            @Html.Partial(MVC.NotAdmin.Accounts.Views.AuthenticationLink)
+                        </td>
+                        <td style="width: 41px;">
+                            <a href="">
+                                <div id="knopka_ros">
+                                    <div id="knopka_ros_hover">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                        <td style="width: 41px;">
+                            <a href="">
+                                <div id="knopka_eng">
+                                    <div id="knopka_eng_hover">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="content_blok">
+           @RenderBody()
+        </div>
+        <div id="foter">
+            <div id="menu_dubl">
+                <b><a class="mainlevel" href="">КНОПКА_1</a> <a class="mainlevel" href="">КНОПКА_2</a>
+                    <a class="mainlevel" href="">КНОПКА_3</a> <a class="mainlevel" href="">КНОПКА_4</a></b>
+            </div>
+            <div id="copyright">
+                BetTeamsBattle, @DateTime.Now.Year
+            </div>
+        </div>
+    </div>   
 </body>
 </html>

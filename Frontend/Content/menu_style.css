@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+
+#knopka_1{
+	width:102px;
+	height:30px;
+	background-image: url('images/btn_1.png');
+	cursor:pointer;
+}
+
+#knopka_1_hover{
+	width:102px;
+	height:30px;
+	background-image: url('images/btn_h_1.png');
+	cursor:pointer;
+	display:none;
+}
+
+
+
+#knopka_2{
+	width:101px;
+	height:30px;
+	background-image: url('images/btn_2.png');
+	cursor:pointer;
+}
+
+#knopka_2_hover{
+	width:101px;
+	height:30px;
+	background-image: url('images/btn_h_2.png');
+	cursor:pointer;
+	display:none;
+}
+
+
+#knopka_3{
+	width:101px;
+	height:30px;
+	background-image: url('images/btn_3.png');
+	cursor:pointer;
+}
+
+#knopka_3_hover{
+	width:101px;
+	height:30px;
+	background-image: url('images/btn_h_3.png');
+	cursor:pointer;
+	display:none;
+}
+
+
+
+
+#knopka_4{
+	width:102px;
+	height:30px;
+	background-image: url('images/btn_4.png');
+	cursor:pointer;
+}
+
+#knopka_4_hover{
+	width:102px;
+	height:30px;
+	background-image: url('images/btn_h_4.png');
+	cursor:pointer;
+	display:none;
+}
+
+
+
+
+#knopka_ros{
+	width:41px;
+	height:30px;
+	background-image: url('images/flag_r.png');
+	cursor:pointer;
+}
+
+#knopka_ros_hover{
+	width:41px;
+	height:30px;
+	background-image: url('images/flag_r_h.png');
+	cursor:pointer;
+	display:none;
+}
+
+
+
+#knopka_eng{
+	width:41px;
+	height:30px;
+	background-image: url('images/flag_e.png');
+	cursor:pointer;
+}
+
+#knopka_eng_hover{
+	width:41px;
+	height:30px;
+	background-image: url('images/flag_e_h.png');
+	cursor:pointer;
+	display:none;
+}
+
