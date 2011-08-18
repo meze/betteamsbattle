@@ -1,0 +1,9 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Users
+@model IEnumerable<UsersRatingUserViewModel>
+
+@foreach (var user in Model)
+{
+    <text>
+        @user.Login @user.Rating
+    </text>
+}
