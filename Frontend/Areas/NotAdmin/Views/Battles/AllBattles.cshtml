@@ -1,33 +1,52 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 @using Resources
 @model AllBattlesViewModel
-@*@Battles.CurrentBattles
-@foreach (var currentBattle in Model.CurrentBattlesViewModels)
-{
-    <text>
-    @currentBattle.Budget / @currentBattle.BetLimit% / @currentBattle.StartDate-@currentBattle.EndDate
-    <br />
-    </text>
-}*@
 <div id="levo_blok1">
     <div id="levo_blok1_head">
-       @* @Battles.NotStartedBattles*@
+        <div id="text_head">
+            <b>
+                @Battles.CurrentBattles
+            </b>
+        </div>
+    </div>
+    <div id="levo_blok1_content">
+        @foreach (var currentBattle in Model.CurrentBattlesViewModels)
+        {
+            <div class="list">
+                @currentBattle.Budget / @currentBattle.BetLimit% / @currentBattle.StartDate-@currentBattle.EndDate
+            </div>
+        }
+    </div>
+</div>
+<div id="levo_blok1">
+    <div id="levo_blok1_head">
+        <div id="text_head">
+            <b>@Battles.NotStartedBattles</b>
+        </div>
     </div>
     <div id="levo_blok1_content">
         @foreach (var notStartedBattle in Model.NotStartedBattlesViewModels)
         {
             <div class="list">
-            @notStartedBattle.Budget / @notStartedBattle.BetLimit% / @notStartedBattle.StartDate-@notStartedBattle.EndDate (@notStartedBattle.InDaysString)
+                @notStartedBattle.StartDate-@notStartedBattle.EndDate / @notStartedBattle.Budget / @notStartedBattle.BetLimit%
+                @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(notStartedBattle.Id))
             </div>
         }
     </div>
 </div>
-@*@Battles.FinishedBattles
-<br />
-@foreach (var finishedBattle in Model.FinishedBattlesViewModels)
-{
-    <text>
-    @finishedBattle.Budget / @finishedBattle.BetLimit% / @finishedBattle.StartDate-@finishedBattle.EndDate
-    <br />
-    </text>
-}*@
+<div id="levo_blok1">
+    <div id="levo_blok1_head">
+        <div id="text_head">
+            <b>
+                @Battles.FinishedBattles</b>
+        </div>
+    </div>
+    <div id="levo_blok1_content">
+        @foreach (var finishedBattle in Model.FinishedBattlesViewModels)
+        {
+            <div class="list">
+                @finishedBattle.Budget / @finishedBattle.BetLimit% / @finishedBattle.StartDate-@finishedBattle.EndDate
+            </div>
+        }
+    </div>
+</div>

@@ -223,8 +223,6 @@
     <Content Include="Content\images\flag_r.png" />
     <Content Include="Content\images\flag_r_h.png" />
     <Content Include="Content\images\footer_1.png" />
-    <Content Include="Content\images\g.png" />
-    <Content Include="Content\images\h.png" />
     <Content Include="Content\images\heder.jpg" />
     <Content Include="Content\images\menu_1.png" />
     <Content Include="Content\images\r.png" />

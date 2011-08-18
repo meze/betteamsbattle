@@ -1,9 +1,18 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Users
 @model IEnumerable<UsersRatingUserViewModel>
-
-@foreach (var user in Model)
-{
-    <text>
-        @user.Login @user.Rating <br/>
-    </text>
-}
+           
+<div id="levo_blok1">
+    <div id="levo_blok1_head">
+        <div id="text_head">
+            <b></b>
+        </div>
+    </div>
+    <div id="levo_blok1_content">
+        @foreach (var user in Model)
+        {
+            <div class="list">
+                @user.Login @user.Rating
+            </div>
+        }
+    </div>
+</div>

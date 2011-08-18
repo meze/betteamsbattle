@@ -537,8 +537,6 @@ namespace Links {
             public static readonly string flag_r_png = Url("flag_r.png")+"?"+T4Extensions.TimestampString(URLPATH + "/flag_r.png");
             public static readonly string flag_r_h_png = Url("flag_r_h.png")+"?"+T4Extensions.TimestampString(URLPATH + "/flag_r_h.png");
             public static readonly string footer_1_png = Url("footer_1.png")+"?"+T4Extensions.TimestampString(URLPATH + "/footer_1.png");
-            public static readonly string g_png = Url("g.png")+"?"+T4Extensions.TimestampString(URLPATH + "/g.png");
-            public static readonly string h_png = Url("h.png")+"?"+T4Extensions.TimestampString(URLPATH + "/h.png");
             public static readonly string heder_jpg = Url("heder.jpg")+"?"+T4Extensions.TimestampString(URLPATH + "/heder.jpg");
             public static readonly string menu_1_png = Url("menu_1.png")+"?"+T4Extensions.TimestampString(URLPATH + "/menu_1.png");
             public static readonly string r_png = Url("r.png")+"?"+T4Extensions.TimestampString(URLPATH + "/r.png");

@@ -33,6 +33,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Battle() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Battle);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult JoinBattle() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.JoinBattle);
         }
@@ -54,6 +59,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
+            public readonly string Battle = ("Battle").ToLowerInvariant();
             public readonly string AllBattles = ("AllBattles").ToLowerInvariant();
             public readonly string ActualBattles = ("ActualBattles").ToLowerInvariant();
             public readonly string JoinBattle = ("JoinBattle").ToLowerInvariant();
@@ -74,6 +80,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class T4MVC_BattlesController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.BattlesController {
         public T4MVC_BattlesController() : base(Dummy.Instance) { }
+
+        public override System.Web.Mvc.ActionResult Battle(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Battle);
+            callInfo.RouteValueDictionary.Add("battleId", battleId);
+            return callInfo;
+        }
 
         public override System.Web.Mvc.PartialViewResult AllBattles() {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.AllBattles);

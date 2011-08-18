@@ -35,14 +35,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 
     public class NotStartedBattleViewModel
     {
+        public long Id { get; set; }
         public int Budget { get; set; }
         public int BetLimit { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string InDaysString { get; set; }
 
-        public NotStartedBattleViewModel(int budget, int betLimit, string startDate, string endDate, string inDaysString)
+        public NotStartedBattleViewModel(long id, int budget, int betLimit, string startDate, string endDate, string inDaysString)
         {
+            Id = id;
             Budget = budget;
             BetLimit = betLimit;
             StartDate = startDate;
