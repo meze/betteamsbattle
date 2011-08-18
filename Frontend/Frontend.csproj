@@ -116,6 +116,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.Designer.cs">
+      <DependentUpon>Users.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.ru.Designer.cs">
+      <DependentUpon>Users.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignInViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignUpViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
@@ -447,6 +457,16 @@
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Battles.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Users.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Users.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
