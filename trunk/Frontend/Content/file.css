@@ -1,0 +1,199 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color:#333;
+	background-image: url('images/background.png');
+
+	padding:0px;
+	margin:0px;
+}
+
+h1{
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:20px;
+	padding-left:20px;
+	text-shadow:1px 1px 2px #121F5C;
+	
+}
+
+#osnova{
+	width:950px;
+	margin:0 auto;
+	
+}
+
+
+#heder{
+	height:171px;
+	width:950px;
+	background-image: url('images/heder.jpg');
+	
+}
+
+  #menu{
+	  height:30px;
+	  width:950px;
+	  background-image: url('images/menu_1.png');
+	  
+  }
+  
+    #menu a{
+		border:none;
+	  
+  }
+
+
+
+#content_blok{
+	width:950px;
+	min-height:700px;
+	background-color:#202020;
+	padding-top:8px;
+	
+}
+
+
+#levo_blok{
+	width:257px;
+	min-height:700px;
+	float:left;
+	
+}
+
+
+#pravo_blok{
+	width:688px;
+	margin-left:260px;
+	background-image: url('images/rr.png');
+	
+}
+
+#pravo_blok2{
+	width:688px;
+	background-image: url('images/r.png');
+	background-repeat:repeat-x;	
+}
+
+#pravo_content{
+	width:688px;
+	min-height:768px;
+	background-image: url('images/r.png');
+	background-repeat:repeat-x;
+	background-position:bottom;
+	color:#FFF;
+}
+
+#pravo_content2{
+	width:670px;
+	margin:0 auto;
+	padding-top:8px;
+	font-size:17px;
+	
+}
+
+#foter{
+	height:60px;
+	width:950px;
+	
+}
+
+#menu_dubl{
+	height:23px;
+	width:950px;;
+	text-align:right;
+}
+
+
+#copyright{
+	height:37px;
+	width:950px;
+	background-image: url('images/footer_1.png');
+	background-repeat:repeat-x;
+	text-align:center;
+	color:#FFF;
+	font-size:17px;
+	font-family:Tahoma, Geneva, sans-serif;
+	padding-top:12px;
+	text-shadow:1px 1px 2px #000;
+	
+	
+}
+
+
+
+#menu_dubl a:hover{
+	color:#88D0EC;
+	border-bottom:1px dashed;
+	text-shadow:1px 1px 1px #000;
+}
+
+.mainlevel{
+	color:#DDD;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:12px;
+	margin-left:3px;
+	margin-right:3px;
+	text-decoration:none;
+	
+}
+
+
+
+#levo_blok1{
+	min-height:245px;
+	background-color:#FFF;
+	width:255px;
+	background-image: url('images/sr.png');
+	border:1px solid #333;
+	margin-top:3px;
+}
+
+#levo_blok1_head{
+	height:28px;
+	width:257px;
+	background-image: url('images/s.png');
+}
+
+
+
+
+
+
+
+
+#pravo_content2 a{
+	color:#09F;
+	text-decoration:none;
+	
+}
+
+#pravo_content2 a:hover{
+	color:#06F;
+	text-decoration:none;
+	border-bottom:1px dashed;
+	
+}
+
+.list{
+	width:252px;;
+	height:30px;
+	border-bottom:1px solid #333;	
+}
+
+
+#levo_blok1_content{
+	width:252px;
+	padding-left:5px;
+	
+}
+
+#text_head{
+	color:#FFF;
+	padding-left:9px;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:16px;
+	padding-top:3px;
+	text-shadow:1px 1px 2px #000;
+	
+}
