@@ -140,8 +140,8 @@ h1{
 
 
 
-#levo_blok1{
-	min-height:245px;
+.levo_blok1{
+	min-height:38px;
 	background-color:#FFF;
 	width:255px;
 	background-image: url('images/sr.png');
@@ -149,7 +149,7 @@ h1{
 	margin-top:3px;
 }
 
-#levo_blok1_head{
+.levo_blok1_head{
 	height:28px;
 	width:257px;
 	background-image: url('images/s.png');
@@ -175,11 +175,6 @@ h1{
 	
 }
 
-.list{
-	width:252px;;
-	height:30px;
-	border-bottom:1px solid #333;	
-}
 
 
 #levo_blok1_content{
@@ -188,12 +183,22 @@ h1{
 	
 }
 
-#text_head{
+
+.list{
+	width:252px;;
+	height:30px;
+	border-bottom:1px solid #333;	
+}
+
+
+.text_head{
 	color:#FFF;
-	padding-left:9px;
 	font-family:Tahoma, Geneva, sans-serif;
 	font-size:16px;
 	padding-top:3px;
 	text-shadow:1px 1px 2px #000;
+	width:252px;
+	text-align:center;
+	font-weight:bold;
 	
 }
