@@ -28,6 +28,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             _inDaysLocalizer = inDaysLocalizer;
         }
 
+        public virtual ActionResult Battle(long battleId)
+        {
+
+
+            return View();
+        }
+
         [ChildActionOnly]
         public virtual PartialViewResult AllBattles()
         {

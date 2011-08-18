@@ -138,6 +138,9 @@
   <data name="Leave" xml:space="preserve">
     <value>Leave</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
   <data name="MyBets" xml:space="preserve">
     <value>My bets</value>
   </data>

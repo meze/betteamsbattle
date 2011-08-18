@@ -49,7 +49,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
                 var inDays = (notStartedBattle.StartDate - DateTime.UtcNow).Days;
                 var inDaysString = _inDaysLocalizer.Localize(inDays);
 
-                var futureBattleViewModel = new NotStartedBattleViewModel(notStartedBattle.Budget, notStartedBattle.BetLimit, notStartedBattle.StartDate.ToShortDateString(), notStartedBattle.EndDate.ToShortDateString(), inDaysString);
+                var futureBattleViewModel = new NotStartedBattleViewModel(notStartedBattle.Id, notStartedBattle.Budget, notStartedBattle.BetLimit, notStartedBattle.StartDate.ToShortDateString(), notStartedBattle.EndDate.ToShortDateString(), inDaysString);
                 notStartedBattlesViewModels.Add(futureBattleViewModel);
             }
             allBattlesViewModel.NotStartedBattlesViewModels = notStartedBattlesViewModels;
