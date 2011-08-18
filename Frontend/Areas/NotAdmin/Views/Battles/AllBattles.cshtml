@@ -1,12 +1,10 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 @using Resources
 @model AllBattlesViewModel
-<div id="levo_blok1">
-    <div id="levo_blok1_head">
-        <div id="text_head">
-            <b>
-                @Battles.CurrentBattles
-            </b>
+<div class="levo_blok1">
+    <div class="levo_blok1_head">
+        <div class="text_head">
+            @Battles.CurrentBattles
         </div>
     </div>
     <div id="levo_blok1_content">
@@ -18,27 +16,27 @@
         }
     </div>
 </div>
-<div id="levo_blok1">
-    <div id="levo_blok1_head">
-        <div id="text_head">
-            <b>@Battles.NotStartedBattles</b>
+<div class="levo_blok1">
+    <div class="levo_blok1_head">
+        <div class="text_head">
+            @Battles.NotStartedBattles
         </div>
     </div>
     <div id="levo_blok1_content">
         @foreach (var notStartedBattle in Model.NotStartedBattlesViewModels)
         {
             <div class="list">
-                @notStartedBattle.StartDate-@notStartedBattle.EndDate / @notStartedBattle.Budget / @notStartedBattle.BetLimit%
+                @notStartedBattle.StartDate-@notStartedBattle.EndDate / @notStartedBattle.Budget
+                / @notStartedBattle.BetLimit%
                 @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(notStartedBattle.Id))
             </div>
         }
     </div>
 </div>
-<div id="levo_blok1">
-    <div id="levo_blok1_head">
-        <div id="text_head">
-            <b>
-                @Battles.FinishedBattles</b>
+<div class="levo_blok1">
+    <div class="levo_blok1_head">
+        <div class="text_head">
+            @Battles.FinishedBattles
         </div>
     </div>
     <div id="levo_blok1_content">
