@@ -208,6 +208,31 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\file.css" />
+    <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\btn_1.png" />
+    <Content Include="Content\images\btn_2.png" />
+    <Content Include="Content\images\btn_3.png" />
+    <Content Include="Content\images\btn_4.png" />
+    <Content Include="Content\images\btn_h_1.png" />
+    <Content Include="Content\images\btn_h_2.png" />
+    <Content Include="Content\images\btn_h_3.png" />
+    <Content Include="Content\images\btn_h_4.png" />
+    <Content Include="Content\images\flag_e.png" />
+    <Content Include="Content\images\flag_e_h.png" />
+    <Content Include="Content\images\flag_r.png" />
+    <Content Include="Content\images\flag_r_h.png" />
+    <Content Include="Content\images\footer_1.png" />
+    <Content Include="Content\images\g.png" />
+    <Content Include="Content\images\h.png" />
+    <Content Include="Content\images\heder.jpg" />
+    <Content Include="Content\images\menu_1.png" />
+    <Content Include="Content\images\r.png" />
+    <Content Include="Content\images\rr.png" />
+    <Content Include="Content\images\s.png" />
+    <Content Include="Content\images\sr.png" />
+    <Content Include="Content\images\t.png" />
+    <Content Include="Content\menu_style.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
@@ -340,7 +365,6 @@
     <Folder Include="Areas\Admin\Localization\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\NotAdmin\Views\Shared\" />
-    <Folder Include="Content\" />
     <Folder Include="Controllers\" />
     <Folder Include="Localization\Metadata\" />
     <Folder Include="Models\" />

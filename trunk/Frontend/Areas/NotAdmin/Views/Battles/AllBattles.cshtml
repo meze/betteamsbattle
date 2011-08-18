@@ -1,28 +1,33 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 @using Resources
 @model AllBattlesViewModel
-
-<br />
-@Battles.CurrentBattles <br />
+@*@Battles.CurrentBattles
 @foreach (var currentBattle in Model.CurrentBattlesViewModels)
 {
     <text>
-        @currentBattle.Budget / @currentBattle.BetLimit% / @currentBattle.StartDate-@currentBattle.EndDate <br />
+    @currentBattle.Budget / @currentBattle.BetLimit% / @currentBattle.StartDate-@currentBattle.EndDate
+    <br />
     </text>
-}
-
-@Battles.NotStartedBattles <br />
-@foreach (var notStartedBattle in Model.NotStartedBattlesViewModels)
-{
-    <text>
-        @notStartedBattle.Budget / @notStartedBattle.BetLimit% / @notStartedBattle.StartDate-@notStartedBattle.EndDate (@notStartedBattle.InDaysString) <br />
-    </text>
-}
-
-@Battles.FinishedBattles <br />
+}*@
+<div id="levo_blok1">
+    <div id="levo_blok1_head">
+       @* @Battles.NotStartedBattles*@
+    </div>
+    <div id="levo_blok1_content">
+        @foreach (var notStartedBattle in Model.NotStartedBattlesViewModels)
+        {
+            <div class="list">
+            @notStartedBattle.Budget / @notStartedBattle.BetLimit% / @notStartedBattle.StartDate-@notStartedBattle.EndDate (@notStartedBattle.InDaysString)
+            </div>
+        }
+    </div>
+</div>
+@*@Battles.FinishedBattles
+<br />
 @foreach (var finishedBattle in Model.FinishedBattlesViewModels)
 {
     <text>
-        @finishedBattle.Budget / @finishedBattle.BetLimit% / @finishedBattle.StartDate-@finishedBattle.EndDate <br />
+    @finishedBattle.Budget / @finishedBattle.BetLimit% / @finishedBattle.StartDate-@finishedBattle.EndDate
+    <br />
     </text>
-}
+}*@
