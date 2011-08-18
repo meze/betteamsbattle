@@ -20,7 +20,7 @@ namespace BetTeamsBattle.Data.Repositories.Specifications
         public static LinqSpec<Battle> Finished()
         {
             DateTime now = DateTime.UtcNow;
-            return LinqSpec.For<Battle>(b => b.StartDate <= now && b.EndDate > now);
+            return LinqSpec.For<Battle>(b => b.EndDate < now);
         }
     }
 }
