@@ -1,19 +1,12 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Users
+@using BetTeamsBattle.Frontend.Models.Shared
 @using Resources
 @model IEnumerable<UsersRatingUserViewModel>
-           
-<div class="levo_blok1">
-    <div class="levo_blok1_head">
-        <div class="text_head">
-            @Users.UsersRating
-        </div>
+@Html.Partial(MVC.Shared.Views._LeftColumnBlock, new LeftColumnBlockViewModel(Users.UsersRating, @<text>
+@foreach (var user in Model)
+{
+    <div class="list">
+        @user.Login @user.Rating
     </div>
-    <div id="levo_blok1_content">
-        @foreach (var user in Model)
-        {
-            <div class="list">
-                @user.Login @user.Rating
-            </div>
-        }
-    </div>
-</div>
+}
+</text>))
