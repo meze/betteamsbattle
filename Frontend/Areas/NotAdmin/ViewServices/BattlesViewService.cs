@@ -55,7 +55,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
                 battleViewModel.JoinOrLeaveTitle = Localization.Resources.Views.Battles.Battles.Leave;
             }
 
-            if (nullableUserId.HasValue)
+            if (battleViewModel.IsJoined)
             {
                 var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.UserIdIsEqualTo(nullableUserId.Value)).Single();
 
