@@ -18,22 +18,22 @@ h1{
 }
 
 #osnova{
-	width:950px;
+	width:1024px;
 	margin:0 auto;
 	
 }
 
 
 #heder{
-	height:171px;
-	width:950px;
+	height:184px;
+	width:1024px;
 	background-image: url('images/heder.jpg');
 	
 }
 
   #menu{
 	  height:30px;
-	  width:950px;
+	  width:1024px;
 	  background-image: url('images/menu_1.png');
 	  
   }
@@ -46,7 +46,7 @@ h1{
 
 
 #content_blok{
-	width:950px;
+	width:1024px;
 	min-height:700px;
 	background-color:#202020;
 	padding-top:8px;
@@ -55,7 +55,7 @@ h1{
 
 
 #levo_blok{
-	width:257px;
+	width:233px;
 	min-height:700px;
 	float:left;
 	
@@ -63,21 +63,21 @@ h1{
 
 
 #pravo_blok{
-	width:688px;
-	margin-left:260px;
+	width:549px;
+	margin-left:238px;
 	background-image: url('images/rr.png');
 	
 }
 
 #pravo_blok2{
-	width:688px;
+	width:549px;
 	background-image: url('images/r.png');
 	background-repeat:repeat-x;	
 }
 
 #pravo_content{
-	width:688px;
-	min-height:768px;
+	width:549px;
+	min-height:900px;
 	background-image: url('images/r.png');
 	background-repeat:repeat-x;
 	background-position:bottom;
@@ -85,7 +85,7 @@ h1{
 }
 
 #pravo_content2{
-	width:670px;
+	width:530px;
 	margin:0 auto;
 	padding-top:8px;
 	font-size:17px;
@@ -94,20 +94,20 @@ h1{
 
 #foter{
 	height:60px;
-	width:950px;
+	width:1024px;
 	
 }
 
 #menu_dubl{
 	height:23px;
-	width:950px;;
+	width:1024px;;
 	text-align:right;
 }
 
 
 #copyright{
 	height:37px;
-	width:950px;
+	width:1024px;
 	background-image: url('images/footer_1.png');
 	background-repeat:repeat-x;
 	text-align:center;
@@ -143,20 +143,36 @@ h1{
 .levo_blok1{
 	min-height:38px;
 	background-color:#FFF;
-	width:255px;
+	width:233px;
 	background-image: url('images/sr.png');
 	border:1px solid #333;
 	margin-top:3px;
 }
 
+
+.pr_blok1_2{
+	min-height:38px;
+	width:233px;
+	background-image: url('images/2.png');
+	border:1px solid #333;
+	margin-top:3px;
+}
+
+
 .levo_blok1_head{
 	height:28px;
-	width:257px;
+	width:233px;
 	background-image: url('images/s.png');
 }
 
 
 
+
+.pr_blok1_head_2{
+	height:28px;
+	width:233px;
+	background-image: url('images/2_hed.png');
+}
 
 
 
@@ -178,17 +194,35 @@ h1{
 
 
 #levo_blok1_content{
-	width:252px;
+	width:228px;
 	padding-left:5px;
 	
 }
 
 
 .list{
-	width:252px;;
+	width:220px;
 	height:30px;
-	border-bottom:1px solid #333;	
+	border-bottom:1px solid #333;
+	font-family:Tahoma, Geneva, sans-serif;
+	padding:4px;
+	font-size:13px;
 }
+
+.list a{
+	color:#03F;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+
+.list a:hover{
+	color:#06F;
+	text-decoration:none;
+	font-weight:bold;
+	text-decoration:underline;
+}
+
 
 
 .text_head{
@@ -197,8 +231,26 @@ h1{
 	font-size:16px;
 	padding-top:3px;
 	text-shadow:1px 1px 2px #000;
-	width:252px;
+	width:233px;
 	text-align:center;
 	font-weight:bold;
 	
+}
+
+
+#blok_1{
+	width:787px;
+	
+}
+
+#blok_2{
+	width:233px;
+	float:right;
+}
+
+#vhod{
+	height:30px;
+	width:72px;
+	background-image: url('images/vhod.png');
+
 }
