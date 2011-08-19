@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
-    using System;
-    
-    
+namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Battles {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

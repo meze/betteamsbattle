@@ -31,7 +31,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
                 {
                     var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(mb.BattleId, CurrentUser.UserId)).Include(bus => bus.Battle).Single();
 
-                    var betLimit = battleUserStatistics.Balance * (battleUserStatistics.Battle.BetLimit / 100.0);
+                    var betLimit = battleUserStatistics.Balance * (battleUserStatistics.Battle.BetLimit / 100d);
 
                     return bet <= betLimit;
                 }).WithMessage(BattleBets.BetIsOutOfYourLimit);

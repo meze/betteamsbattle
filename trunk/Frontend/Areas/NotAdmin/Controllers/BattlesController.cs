@@ -28,13 +28,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             _inDaysLocalizer = inDaysLocalizer;
         }
 
-        public virtual ActionResult Battle(long battleId)
-        {
-
-
-            return View();
-        }
-
         [ChildActionOnly]
         public virtual PartialViewResult AllBattles()
         {
@@ -44,11 +37,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult ActualBattles()
+        public virtual ActionResult Battle(long battleId)
         {
-            var actualBattlesViewModels = _battlesViewService.ActualBattlesViewModels(CurrentUser.NullableUserId);
+            var battleViewModel = _battlesViewService.Battle(battleId, CurrentUser.NullableUserId);
 
-            return View(actualBattlesViewModels);
+            return View(battleViewModel);
         }
 
         [HttpGet]
@@ -57,7 +50,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         {
             _battlesService.JoinToBattle(battleId, CurrentUser.UserId);
 
-            return RedirectToAction(Actions.ActualBattles());
+            return RedirectToAction(Actions.Battle(battleId));
         }
 
         [HttpGet]
@@ -66,7 +59,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         {
             _battlesService.LeaveBattle(battleId, CurrentUser.UserId);
 
-            return RedirectToAction(Actions.ActualBattles());
+            return RedirectToAction(Actions.Battle(battleId));
         }
     }
 }
