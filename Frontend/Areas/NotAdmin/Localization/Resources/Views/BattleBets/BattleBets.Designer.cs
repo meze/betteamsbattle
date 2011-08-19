@@ -122,11 +122,29 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Ba
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Join to battle to make bets.
+        /// </summary>
+        public static string JoinToBattleToMakeBets {
+            get {
+                return ResourceManager.GetString("JoinToBattleToMakeBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make bet.
         /// </summary>
         public static string MakeBet {
             get {
                 return ResourceManager.GetString("MakeBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My bets.
+        /// </summary>
+        public static string MyBets {
+            get {
+                return ResourceManager.GetString("MyBets", resourceCulture);
             }
         }
         
@@ -181,6 +199,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Ba
         public static string UrlIsIncorrect {
             get {
                 return ResourceManager.GetString("UrlIsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have made no bets in this battle.
+        /// </summary>
+        public static string YouHaveMadeNoBetsInThisBattle {
+            get {
+                return ResourceManager.GetString("YouHaveMadeNoBetsInThisBattle", resourceCulture);
             }
         }
     }

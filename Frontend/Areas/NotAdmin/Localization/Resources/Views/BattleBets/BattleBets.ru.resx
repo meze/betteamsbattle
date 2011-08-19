@@ -138,8 +138,14 @@
   <data name="CoefficientShouldBeGreaterThanOne" xml:space="preserve">
     <value>Коэффициент должен быть больше 1</value>
   </data>
+  <data name="JoinToBattleToMakeBets" xml:space="preserve">
+    <value>Присоединитесь к турниру прежде чем делать ставки</value>
+  </data>
   <data name="MakeBet" xml:space="preserve">
     <value>Сделать ставку</value>
+  </data>
+  <data name="MyBets" xml:space="preserve">
+    <value>Мои ставки</value>
   </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Приватная ставка</value>
@@ -158,5 +164,8 @@
   </data>
   <data name="UrlIsIncorrect" xml:space="preserve">
     <value>Некорректная ссылка</value>
+  </data>
+  <data name="YouHaveMadeNoBetsInThisBattle" xml:space="preserve">
+    <value>Вы не сделали ни одной ставки в этом турнире</value>
   </data>
 </root>

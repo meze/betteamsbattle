@@ -62,38 +62,27 @@ namespace Data.Repositories.Tests.Specific
         }
 
         [Test]
-        public void GetLastBattleUsers_NoBattleUsers_EmptyList()
+        public void GetLastBattleUser_NoBattleUser_EmptyList()
         {
-            var battleUsers = _battleUserRepository.GetLastBattleUsers(_user3.Id, new List<long>() { _battle1.Id }).ToList();
+            var battleUser = _battleUserRepository.GetLastBattleUser(_user3.Id, _battle1.Id).Single();
 
-            Assert.AreEqual(0, battleUsers.Count);
+            Assert.IsNull(battleUser);
         }
 
         [Test]
-        public void GetLastBattleUsers_OneBattleUser_ItIsChosen()
+        public void GetLastBattleUser_OneBattleUser_ItIsChosen()
         {
-            var battleUsers = _battleUserRepository.GetLastBattleUsers(_user2.Id, new List<long>() { _battle1.Id }).ToList();
+            var battleUser = _battleUserRepository.GetLastBattleUser(_user2.Id, _battle1.Id).Single();
 
-            Assert.AreEqual(1, battleUsers.Count);
-            Assert.AreEqual(_battleUser3.Id, battleUsers[0].Id);
+            Assert.AreEqual(_battleUser3.Id, battleUser.Id);
         }
 
         [Test]
         public void GetLastBattleUsers_SeveralBattleUsers_LastIsChosen()
         {
-            var battleUsers = _battleUserRepository.GetLastBattleUsers(_user1.Id, new List<long> {_battle1.Id}).ToList();
+            var battleUser = _battleUserRepository.GetLastBattleUser(_user1.Id, _battle1.Id).Single();
 
-            Assert.AreEqual(1, battleUsers.Count);
-            Assert.AreEqual(_battleUser2.Id, battleUsers[0].Id);
-        }
-
-        [Test]
-        public void GetLastBattleUsers_SeveralBattles_LastForEachBattleIsChosen()
-        {
-            var battleUsers = _battleUserRepository.GetLastBattleUsers(_user1.Id, new List<long> { _battle1.Id, _battle2.Id }).ToList();
-
-            CollectionAssert.AreEquivalent(new List<long>() {_battleUser2.Id, _battleUser4.Id},
-                                           battleUsers.Select(bu => bu.Id).ToList());
+            Assert.AreEqual(_battleUser2.Id, battleUser.Id);
         }
 
         [TearDown]

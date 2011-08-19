@@ -23,16 +23,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             _battlesService = battlesService;
         }
 
+        [ChildActionOnly]
         [Authorize]
         public virtual ActionResult MyBets(long battleId)
         {
             var myBets = _repositoryOfBattleBet.
                 Get(BattleBetSpecifications.BattleIdAndUserIdAreEqualTo(battleId, CurrentUser.UserId)).
+                OrderByDescending(b => b.OpenDateTime).
                 ToList();
 
-            var myBetsViewModel = new MyBetsViewModel(battleId, myBets);
-
-            return View(myBetsViewModel);
+            return View(myBets);
         }
 
         [Authorize]

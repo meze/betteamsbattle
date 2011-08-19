@@ -21,17 +21,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
 
             #region BattlesController
             context.MapLanguageRoute("battles/all", MVC.NotAdmin.Battles.AllBattles());
-            context.MapLanguageRoute("battles/actual", MVC.NotAdmin.Battles.ActualBattles());
             context.MapLanguageRoute("battles/{battleId}", MVC.NotAdmin.Battles.Battle());
             context.MapLanguageRoute("battles/{battleId}/join", MVC.NotAdmin.Battles.JoinBattle());
             context.MapLanguageRoute("battles/{battleId}/leave", MVC.NotAdmin.Battles.LeaveBattle());
             #endregion
 
             #region BattleBetsController
-            context.MapLanguageRoute("battles/{battleId}/mybets", MVC.NotAdmin.BattleBets.MyBets());
             context.MapLanguageRoute("battles/{battleId}/mybets/new", MVC.NotAdmin.BattleBets.MakeBet());
-            context.MapLanguageRoute("battles/mybets/{battleBetId}/succeeded", MVC.NotAdmin.BattleBets.BetSucceeded());
-            context.MapLanguageRoute("battles/mybets/{battleBetId}/failed", MVC.NotAdmin.BattleBets.BetFailed());
+            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/succeeded", MVC.NotAdmin.BattleBets.BetSucceeded());
+            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/failed", MVC.NotAdmin.BattleBets.BetFailed());
             #endregion
 
             #region AccountsController

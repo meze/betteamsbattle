@@ -133,10 +133,10 @@
     <value>Завершившиеся турниры</value>
   </data>
   <data name="Join" xml:space="preserve">
-    <value>Участвовать</value>
+    <value>Присоединиться</value>
   </data>
   <data name="Leave" xml:space="preserve">
-    <value>Не участвовать</value>
+    <value>Покинуть</value>
   </data>
   <data name="More" xml:space="preserve">
     <value>Подробнее</value>

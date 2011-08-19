@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
@@ -12,6 +13,7 @@ using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Localizers.InDays.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
+using BetTeamsBattle.Frontend.Authentication;
 using BetTeamsBattle.Frontend.Services.Interfaces;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
@@ -20,13 +22,53 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
     {
         private readonly IRepository<Battle> _repositoryOfBattle;
         private readonly IBattleUserRepository _battleUserRepository;
-        private IInDaysLocalizer _inDaysLocalizer;
+        private readonly IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
+        private readonly IInDaysLocalizer _inDaysLocalizer;
 
-        public BattlesViewService(IRepository<Battle> repositoryOfBattle, IBattleUserRepository battleUserRepository, IInDaysLocalizer inDaysLocalizer)
+        public BattlesViewService(IRepository<Battle> repositoryOfBattle, IBattleUserRepository battleUserRepository, IRepository<BattleUserStatistics> repositoryOfBattleUserStatistics, IInDaysLocalizer inDaysLocalizer)
         {
             _repositoryOfBattle = repositoryOfBattle;
             _battleUserRepository = battleUserRepository;
+            _repositoryOfBattleUserStatistics = repositoryOfBattleUserStatistics;
             _inDaysLocalizer = inDaysLocalizer;
+        }
+
+        public BattleViewModel Battle(long battleId, long? nullableUserId)
+        {
+            var battle = _repositoryOfBattle.Get(EntitySpecifications.EntityIdIsEqualTo<Battle>(battleId)).Single();
+            
+            var battleViewModel = new BattleViewModel(battle.Id, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit);
+
+            BattleUser battleUser = null;
+            if (nullableUserId.HasValue)
+                battleUser = _battleUserRepository.GetLastBattleUser(nullableUserId.Value, battleId).SingleOrDefault();
+            if (battleUser == null || battleUser.ActionEnum == BattleUserAction.Leave)
+            {
+                battleViewModel.IsJoined = false;
+                battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.JoinBattle(battleId);
+                battleViewModel.JoinOrLeaveTitle = Localization.Resources.Views.Battles.Battles.Join;
+            }
+            else
+            {
+                battleViewModel.IsJoined = true;
+                battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.LeaveBattle(battleId);
+                battleViewModel.JoinOrLeaveTitle = Localization.Resources.Views.Battles.Battles.Leave;
+            }
+
+            if (nullableUserId.HasValue)
+            {
+                var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.UserIdIsEqualTo(nullableUserId.Value)).Single();
+
+                var earned = battleUserStatistics.Balance - battle.Budget;
+                var earnedPercents = earned/battle.Budget;
+                battleViewModel.Earned = earned;
+                battleViewModel.EarnedPercents = earnedPercents;
+
+                battleViewModel.TotalBetsCount = battleUserStatistics.OpenedBetsCount + battleUserStatistics.ClosedBetsCount;
+                battleViewModel.OpenBetsCount = battleUserStatistics.OpenedBetsCount;
+            }
+
+            return battleViewModel;
         }
 
         public AllBattlesViewModel AllBattles()
@@ -64,52 +106,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             allBattlesViewModel.FinishedBattlesViewModels = finishedBattlesViewModels;
 
             return allBattlesViewModel;
-        }
-
-        public IEnumerable<ActualBattleViewModel> ActualBattlesViewModels(long? userId)
-        {
-            var actualBattles = _repositoryOfBattle.Get(BattleSpecifications.Current()).
-                OrderBy(b => b.StartDate).
-                ToList();
-            var actualBattlesIds = EntityHelper.GetIds(actualBattles);
-
-            IEnumerable<BattleUser> actualBattlesUsers = new List<BattleUser>();
-            if (userId.HasValue)
-                actualBattlesUsers = _battleUserRepository.GetLastBattleUsers(userId.Value, actualBattlesIds).ToList();
-
-            var actualBattleViewModels = new List<ActualBattleViewModel>();
-            foreach (var battle in actualBattles)
-            {
-                var actualBattleViewModel = new ActualBattleViewModel()
-                                                {
-                                                    Id = battle.Id,
-                                                    StartDate = battle.StartDate,
-                                                    EndDate = battle.EndDate,
-                                                    Budget = battle.Budget,
-                                                    Earned = 0,
-                                                };
-
-                var battleUser = actualBattlesUsers.Where(bu => bu.BattleId == battle.Id).SingleOrDefault();
-
-                if (battleUser == null || battleUser.ActionEnum == BattleUserAction.Leave)
-                {
-                    actualBattleViewModel.IsJoined = false;
-                    actualBattleViewModel.JoinOrLeaveActionResult = userId.HasValue
-                                                                        ? MVC.NotAdmin.Battles.JoinBattle(battle.Id)
-                                                                        : MVC.NotAdmin.Accounts.SignIn();
-                    actualBattleViewModel.JoinOrLeaveTitle = Resources.Battles.Join;
-                }
-                else
-                {
-                    actualBattleViewModel.IsJoined = true;
-                    actualBattleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.LeaveBattle(battle.Id);
-                    actualBattleViewModel.JoinOrLeaveTitle = Resources.Battles.Leave;
-                }
-
-                actualBattleViewModels.Add(actualBattleViewModel);
-            }
-
-            return actualBattleViewModels;
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets
+@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
+@model BattleViewModel
+           
+@Model.StartDate-@Model.EndDate @Model.Budget
+@Html.ActionLink(Model.JoinOrLeaveTitle, Model.JoinOrLeaveActionResult)
+@if (Model.IsJoined)
+{
+    <text>
+    @Model.Earned @Model.EarnedPercents (@Model.TotalBetsCount/@Model.OpenBetsCount)
+    </text>
+}
+
+@Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.Id))
+
+@BattleBets.MyBets
+@if (!Model.IsJoined)
+{
+    @BattleBets.JoinToBattleToMakeBets
+}
+else
+{
+    <text>
+        @Html.Action(MVC.NotAdmin.BattleBets.MyBets(Model.Id))
+    </text>
+}

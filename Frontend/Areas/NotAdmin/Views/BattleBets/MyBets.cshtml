@@ -1,26 +1,33 @@
-﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets
-@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
-@model MyBetsViewModel
-
-@Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))
-
-@foreach (var battleBet in Model.MyBets)
+﻿@using BetTeamsBattle.Data.Model.Entities
+@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets
+@model IEnumerable<BattleBet>
+@if (Model.Count() == 0)
 {
-    <text>
-    @battleBet.OpenDateTime @battleBet.Bet$ @battleBet.Coefficient @battleBet.Url <br />
-    @if (battleBet.CloseDateTime.HasValue)
+    <text>@BattleBets.YouHaveMadeNoBetsInThisBattle</text>
+}
+else
+{
+    foreach (var battleBet in Model)
     {
         <text>
-        @battleBet.CloseDateTime <br />
-        @battleBet.Success <br />
-        </text>
-    }
-    else
-    {
-        <text>
-        @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(battleBet.Id))
-        @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(battleBet.Id))
-        </text>
-    }
+        @battleBet.OpenDateTime @battleBet.Bet$ @battleBet.Coefficient @battleBet.Url
+        <br />
+        @if (battleBet.CloseDateTime.HasValue)
+        {
+            <text>
+            @battleBet.CloseDateTime
+            <br />
+            @battleBet.Success
+            <br />
+            </text>
+        }
+        else
+        {
+            <text>
+            @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(battleBet.Id))
+            @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(battleBet.Id))
+            </text>
+        }
     </text>
+    }
 }

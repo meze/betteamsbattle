@@ -138,8 +138,14 @@
   <data name="CoefficientShouldBeGreaterThanOne" xml:space="preserve">
     <value>Coefficient should be greater than 1</value>
   </data>
+  <data name="JoinToBattleToMakeBets" xml:space="preserve">
+    <value>Join to battle to make bets</value>
+  </data>
   <data name="MakeBet" xml:space="preserve">
     <value>Make bet</value>
+  </data>
+  <data name="MyBets" xml:space="preserve">
+    <value>My bets</value>
   </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Private bet</value>
@@ -158,5 +164,8 @@
   </data>
   <data name="UrlIsIncorrect" xml:space="preserve">
     <value>Url is incorrect</value>
+  </data>
+  <data name="YouHaveMadeNoBetsInThisBattle" xml:space="preserve">
+    <value>You have made no bets in this battle</value>
   </data>
 </root>

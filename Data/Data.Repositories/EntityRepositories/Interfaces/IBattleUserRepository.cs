@@ -7,6 +7,6 @@ namespace BetTeamsBattle.Data.Repositories.EntityRepositories.Interfaces
 {
     public interface IBattleUserRepository : IRepository<BattleUser>
     {
-        IQueryable<BattleUser> GetLastBattleUsers(long userId, IEnumerable<long> battlesIds);
+        IQueryable<BattleUser> GetLastBattleUser(long userId, long battleId);
     }
 }
