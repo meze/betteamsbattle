@@ -30,6 +30,9 @@ namespace T4MVC {
         public class ViewNames {
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LeftColumnBlock = "~/Views/Shared/_LeftColumnBlock.cshtml";
+            public readonly string _RightColumnBlock = "~/Views/Shared/_RightColumnBlock.cshtml";
+            public readonly string _ThreeColumnsLayout = "~/Views/Shared/_ThreeColumnsLayout.cshtml";
+            public readonly string _TwoColumnsLayout = "~/Views/Shared/_TwoColumnsLayout.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
         }
     }

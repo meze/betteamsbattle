@@ -1,8 +1,9 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Users
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Users
 @using BetTeamsBattle.Frontend.Models.Shared
+
 @model IEnumerable<UsersRatingUserViewModel>
-@Html.Partial(MVC.Shared.Views._LeftColumnBlock, new LeftColumnBlockViewModel(Users.UsersRating, @<text>
+@Html.Partial(MVC.Shared.Views._RightColumnBlock, new LeftColumnBlockViewModel(Users.UsersRating, @<text>
 @foreach (var user in Model)
 {
     <div class="list">
