@@ -4,6 +4,11 @@
 @{
     Layout = MVC.Shared.Views._ThreeColumnsLayout;
 }
+
+@section LeftBlock {
+    @Html.Action(MVC.NotAdmin.Battles.BattleTopUsers(Model.Id))
+}
+
 @section MiddleBlock {
     @Model.StartDate-@Model.EndDate @Model.Budget
     @if (Model.IsJoined)
