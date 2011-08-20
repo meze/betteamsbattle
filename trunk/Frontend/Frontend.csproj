@@ -372,7 +372,7 @@
     <Content Include="Areas\NotAdmin\Views\Users\TopUsers.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\Battle.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\BattleTopUsers.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Accounts\UserLink.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Accounts\AccountLink.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />

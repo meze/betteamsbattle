@@ -39,21 +39,21 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         [HttpGet]
         public virtual ActionResult MakeBet(long battleId)
         {
-            var makeBetViewModel = new MakeBetViewModel();
+            var makeBetViewModel = new MakeBetViewModel(battleId);
 
             return View(makeBetViewModel);
         }
 
         [Authorize]
         [HttpPost]
-        public virtual ActionResult MakeBet(long battleId, MakeBetViewModel makeBetViewModel)
+        public virtual ActionResult MakeBet(long battleId, MakeBetFormViewModel makeBetForm)
         {
             if (!ModelState.IsValid)
-                return View(makeBetViewModel);
+                return View(new MakeBetViewModel(battleId));
 
-            _battlesService.MakeBet(battleId, CurrentUser.UserId, makeBetViewModel.Title, makeBetViewModel.Bet, makeBetViewModel.Coefficient, makeBetViewModel.Url, makeBetViewModel.IsPrivate);
+            _battlesService.MakeBet(battleId, CurrentUser.UserId, makeBetForm.Title, makeBetForm.Bet, makeBetForm.Coefficient, makeBetForm.Url, makeBetForm.IsPrivate);
 
-            return RedirectToAction(MVC.NotAdmin.BattleBets.MyBets(battleId));
+            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
         }
 
         [Authorize]

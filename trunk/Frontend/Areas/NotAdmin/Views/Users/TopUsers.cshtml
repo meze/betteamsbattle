@@ -6,8 +6,10 @@
 @Html.Partial(MVC.Shared.Views._RightColumnBlock, new LeftColumnBlockViewModel(Users.UsersRating, @<text>
 @foreach (var user in Model)
 {
-    <div class="list">
-        @user.Login @user.Rating
+    <div class="list_r">
+        <div class="pro">
+            <a>@user.Login</a> @user.Rating
+        </div>
     </div>
 }
 </text>))

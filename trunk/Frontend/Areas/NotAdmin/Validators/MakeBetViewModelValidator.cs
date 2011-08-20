@@ -2,6 +2,8 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
+using System.Web.Routing;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
@@ -15,7 +17,7 @@ using FluentValidation;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
 {
-    public class MakeBetViewModelValidator : AbstractValidator<MakeBetViewModel>
+    public class MakeBetViewModelValidator : AbstractValidator<MakeBetFormViewModel>
     {
         private IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
 
@@ -28,13 +30,14 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
 
             RuleFor(mb => mb.Bet).GreaterThan(0).WithMessage(BattleBets.BetShouldBeMoreThanZero);
             RuleFor(mb => mb.Bet).Must((mb, bet) =>
-                {
-                    var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(mb.BattleId, CurrentUser.UserId)).Include(bus => bus.Battle).Single();
+                                           {
+                                               var battleId = Convert.ToInt32(RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["battleId"]);
+                                               var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, CurrentUser.UserId)).Include(bus => bus.Battle).Single();
 
-                    var betLimit = battleUserStatistics.Balance * (battleUserStatistics.Battle.BetLimit / 100d);
+                                               var betLimit = battleUserStatistics.Balance * (battleUserStatistics.Battle.BetLimit / 100d);
 
-                    return bet <= betLimit;
-                }).WithMessage(BattleBets.BetIsOutOfYourLimit);
+                                               return bet <= betLimit;
+                                           }).WithMessage(BattleBets.BetIsOutOfYourLimit);
 
             RuleFor(mb => mb.Coefficient).GreaterThan(1).WithMessage(BattleBets.CoefficientShouldBeGreaterThanOne);
 

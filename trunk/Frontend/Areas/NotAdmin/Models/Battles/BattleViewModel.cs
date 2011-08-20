@@ -11,7 +11,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
         public int Budget { get; set; }
         public int BetLimit { get; set; }
 
-        public bool IsJoined { get; set; }
+        public bool IsActive { get; set; }
+
+        public bool UserIsJoined { get; set; }
         public string JoinOrLeaveTitle { get; set; }
         public ActionResult JoinOrLeaveActionResult { get; set; }
 
@@ -20,13 +22,14 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
         public int TotalBetsCount { get; set; }
         public int OpenBetsCount { get; set; }
 
-        public BattleViewModel(long id, string startDate, string endDate, int budget, int betLimit)
+        public BattleViewModel(long id, string startDate, string endDate, int budget, int betLimit, bool isActive)
         {
             Id = id;
             StartDate = startDate;
             EndDate = endDate;
             Budget = budget;
             BetLimit = betLimit;
+            IsActive = isActive;
         }
     }
 }

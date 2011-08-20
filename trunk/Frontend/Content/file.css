@@ -141,21 +141,23 @@ h1{
 
 
 .levo_blok1{
-	min-height:38px;
+	min-height:48px;
 	background-color:#FFF;
 	width:233px;
-	background-image: url('images/sr.png');
+	background-color:#FFF;
 	border:1px solid #333;
-	margin-top:3px;
+	margin-top:8px;
+	border:1px solid #F00;
 }
 
 
 .pr_blok1_2{
 	min-height:38px;
 	width:233px;
-	background-image: url('images/2.png');
+	background-color:#FFF;
 	border:1px solid #333;
-	margin-top:3px;
+	margin-top:6px;
+	border:1px solid #F00;
 }
 
 
@@ -195,7 +197,6 @@ h1{
 
 .levo_blok1_content{
 	width:228px;
-	padding-left:5px;
 	
 }
 
@@ -206,7 +207,37 @@ h1{
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
 	font-size:13px;
+	padding-left:10px;
 }
+
+.list_r{
+	width:220px;
+	border-bottom:1px solid #333;
+	font-family:Tahoma, Geneva, sans-serif;
+	padding:4px;
+	font-size:13px;
+	padding-left:18px;
+	font-weight:bold;
+	background-image: url('images/h.png');
+	background-repeat:no-repeat;
+	background-position:-2px 3px;
+}
+
+.list_r a{
+	color:#03F;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+
+.list_r a:hover{
+	color:#06F;
+	text-decoration:none;
+	font-weight:bold;
+	text-decoration:underline;
+}
+
+
 
 .list a{
 	color:#03F;
@@ -277,33 +308,25 @@ table{
 }
 
 .td5{
-	width: 389px;
+	width: 319px;
 }
 
 
 
-
-
-
-
-
-
 .td6{
-	width: 150px;
+	width: 220px;
 	color:#FFF;
-	font-size:20px;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
 	text-decoration:none;
-	text-align:right;
 	padding-right:5px;
+	text-align:right;
 	
 }
 
 
 .td6 a{
 	color:#FFF;
-	font-size:20px;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
 		text-decoration:none;
@@ -311,7 +334,6 @@ table{
 }
 .td6 a:hover{
 	color:#999;
-	font-size:20px;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
 		text-decoration:none;
@@ -328,4 +350,31 @@ table{
 
 .img{
 	width:233px;
+}
+
+
+.name{
+	padding-right:8px;
+	font-size:15px;
+	
+}
+
+.name a:hover{
+	padding-right:8px;
+	font-size:15px;
+	color:#FF0;
+	
+}
+
+.login{
+font-size:19px;
+padding-right:3px;
+}
+
+
+.pro{
+		background-image: url('images/pro.png');
+		background-repeat:no-repeat;
+		background-position:170px;
+
 }

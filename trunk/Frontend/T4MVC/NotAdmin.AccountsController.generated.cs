@@ -71,10 +71,10 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string AccountLink = "~/Areas/NotAdmin/Views/Accounts/AccountLink.cshtml";
             public readonly string SignIn = "~/Areas/NotAdmin/Views/Accounts/SignIn.cshtml";
             public readonly string SignInOrSignOutLink = "~/Areas/NotAdmin/Views/Accounts/SignInOrSignOutLink.cshtml";
             public readonly string SignUp = "~/Areas/NotAdmin/Views/Accounts/SignUp.cshtml";
-            public readonly string UserLink = "~/Areas/NotAdmin/Views/Accounts/UserLink.cshtml";
         }
     }
 

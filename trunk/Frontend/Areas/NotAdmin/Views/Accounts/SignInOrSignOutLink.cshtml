@@ -1,15 +1,17 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Accounts
 @model dynamic
 
+@{ const string anchorClass = "login"; }
+
 @if (User.Identity.IsAuthenticated)
 {
 	<text>
-    @Html.ActionLink(Accounts.SignOut, MVC.NotAdmin.Accounts.SignOut())
+    @Html.ActionLink(Accounts.SignOut, MVC.NotAdmin.Accounts.SignOut(), new { @class=anchorClass })
     </text>
 }
 else
 {
     <text>
-    @Html.ActionLink(Accounts.SignIn, MVC.NotAdmin.Accounts.SignIn())
+    @Html.ActionLink(Accounts.SignIn, MVC.NotAdmin.Accounts.SignIn(), new { @class=anchorClass })
     </text>
 }
