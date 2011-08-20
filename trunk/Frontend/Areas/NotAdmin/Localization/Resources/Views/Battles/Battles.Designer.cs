@@ -8,7 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Battles {
+namespace Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -64,6 +67,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Ba
         public static string ActualBattles {
             get {
                 return ResourceManager.GetString("ActualBattles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle leaders.
+        /// </summary>
+        public static string BattleLeaders {
+            get {
+                return ResourceManager.GetString("BattleLeaders", resourceCulture);
             }
         }
         

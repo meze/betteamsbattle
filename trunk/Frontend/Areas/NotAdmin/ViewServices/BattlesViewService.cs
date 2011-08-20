@@ -46,13 +46,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             {
                 battleViewModel.IsJoined = false;
                 battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.JoinBattle(battleId);
-                battleViewModel.JoinOrLeaveTitle = Localization.Resources.Views.Battles.Battles.Join;
+                battleViewModel.JoinOrLeaveTitle = Resources.Battles.Join;
             }
             else
             {
                 battleViewModel.IsJoined = true;
                 battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.LeaveBattle(battleId);
-                battleViewModel.JoinOrLeaveTitle = Localization.Resources.Views.Battles.Battles.Leave;
+                battleViewModel.JoinOrLeaveTitle = Resources.Battles.Leave;
             }
 
             if (battleViewModel.IsJoined)
@@ -70,6 +70,17 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
 
             return battleViewModel;
         }
+
+        public IEnumerable<BattleTopUsersUserViewModel> BattleTopUsers(long battleId)
+        {
+            return _repositoryOfBattleUserStatistics.
+                Get(BattleUserStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
+                OrderByDescending(bus => bus.Balance).
+                Skip(0).Take(10).
+                Select(bus => new BattleTopUsersUserViewModel() { UserId = bus.UserId, Login = bus.User.Login, Balance = bus.Balance }).
+                ToList();
+        }
+ 
 
         public AllBattlesViewModel AllBattles()
         {

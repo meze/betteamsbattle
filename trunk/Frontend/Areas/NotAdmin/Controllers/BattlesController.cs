@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
@@ -16,13 +17,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
     public partial class BattlesController : Controller
     {
         private readonly IRepository<Battle> _repositoryOfBattle;
+        private readonly IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
         private readonly IBattlesService _battlesService;
         private readonly IBattlesViewService _battlesViewService;
         private readonly IInDaysLocalizer _inDaysLocalizer;
 
-        public BattlesController(IRepository<Battle> repositoryOfBattle, IBattlesService battlesService, IBattlesViewService battlesViewService, IInDaysLocalizer inDaysLocalizer)
+        public BattlesController(IRepository<Battle> repositoryOfBattle, IRepository<BattleUserStatistics> repositoryOfBattleUserStatistics, IBattlesService battlesService, IBattlesViewService battlesViewService, IInDaysLocalizer inDaysLocalizer)
         {
             _repositoryOfBattle = repositoryOfBattle;
+            _repositoryOfBattleUserStatistics = repositoryOfBattleUserStatistics;
             _battlesService = battlesService;
             _battlesViewService = battlesViewService;
             _inDaysLocalizer = inDaysLocalizer;
@@ -42,6 +45,14 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             var battleViewModel = _battlesViewService.Battle(battleId, CurrentUser.NullableUserId);
 
             return View(battleViewModel);
+        }
+
+        [ChildActionOnly]
+        public virtual ActionResult BattleTopUsers(long battleId)
+        {
+            var battleTopUsers = _battlesViewService.BattleTopUsers(battleId);
+
+            return PartialView(battleTopUsers);
         }
 
         [HttpGet]

@@ -120,6 +120,9 @@
   <data name="ActualBattles" xml:space="preserve">
     <value>Actual battles</value>
   </data>
+  <data name="BattleLeaders" xml:space="preserve">
+    <value>Battle leaders</value>
+  </data>
   <data name="CloseAsFailed" xml:space="preserve">
     <value>Failed</value>
   </data>

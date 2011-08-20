@@ -131,8 +131,9 @@
     <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MakeBetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Battles\BattleTopUsersUserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\BattleViewModel.cs" />
-    <Compile Include="Areas\NotAdmin\Models\Users\UsersRatingUserViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Users\TopUsersUserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
@@ -388,8 +389,9 @@
     <Content Include="Areas\NotAdmin\Views\BattleBets\MyBets.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\MakeBet.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\AllBattles.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Users\UsersRating.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Users\TopUsers.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\Battle.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Battles\BattleTopUsers.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />

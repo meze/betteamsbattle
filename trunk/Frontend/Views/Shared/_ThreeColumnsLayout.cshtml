@@ -2,20 +2,20 @@
     Layout = MVC.Shared.Views._Layout;
 }
 
-<div id="blok_2">
-    @RenderSection("RightBlock", true)
+<div class="blok_2">
+    @RenderSection("RightBlock", false)
 </div>
 
-<div id="blok_1">
+<div class="blok_1">
     <div id="levo_blok">
-        @RenderSection("LeftBlock", true)
+        @RenderSection("LeftBlock", false)
     </div>
 </div>
 
-<div id="pravo_blok">
-    <div id="pravo_blok2">
-        <div id="pravo_content">
-            <div id="pravo_content2">
+<div class="pravo_blok">
+    <div class="pravo_blok2">
+        <div class="pravo_content">
+            <div class="pravo_content2">
                 @RenderSection("MiddleBlock", true)
             </div>
         </div>

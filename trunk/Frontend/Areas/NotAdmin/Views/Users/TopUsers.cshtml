@@ -1,8 +1,8 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Users
 @using BetTeamsBattle.Frontend.Models.Shared
 @using Resources
-
-@model IEnumerable<UsersRatingUserViewModel>
+@model IEnumerable<TopUsersUserViewModel>
+           
 @Html.Partial(MVC.Shared.Views._RightColumnBlock, new LeftColumnBlockViewModel(Users.UsersRating, @<text>
 @foreach (var user in Model)
 {

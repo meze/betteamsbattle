@@ -12,68 +12,62 @@
     @RenderSection("Scripts", false)
 </head>
 <body>
-    <div id="osnova">
-        <div id="heder">
+    <div class="osnova">
+        <div class="heder">
         </div>
-        <div id="menu">
-            <table style="height: 30px; width: 1024px;" border="0" cellspacing="0" cellpadding="0">
+        <div class="menu">
+            <table class="table">
                 <tbody>
                     <tr>
-                        <td style="width: 102px;">
+                        <td class="td1">
                             <a href="">
-                                <div id="knopka_1">
-                                    <div id="knopka_1_hover">
+                                <div class="knopka_1">
+                                    <div class="knopka_1_hover">
                                     </div>
                                 </div>
                             </a>
                         </td>
-                        <td style="width: 101px;">
+                        <td class="td2">
                             <a href="">
-                                <div id="knopka_2">
-                                    <div id="knopka_2_hover">
+                                <div class="knopka_2">
+                                    <div class="knopka_2_hover">
                                     </div>
                                 </div>
                             </a>
                         </td>
-                        <td style="width: 101px;">
+                        <td class="td3">
                             <a href="">
-                                <div id="knopka_3">
-                                    <div id="knopka_3_hover">
+                                <div class="knopka_3">
+                                    <div class="knopka_3_hover">
                                     </div>
                                 </div>
                             </a>
                         </td>
-                        <td style="width: 102px;">
+                        <td class="td4">
                             <a href="">
-                                <div id="knopka_4">
-                                    <div id="knopka_4_hover">
+                                <div class="knopka_4">
+                                    <div class="knopka_4_hover">
                                     </div>
                                 </div>
                             </a>
                         </td>
-                        <td style="width: 465px;">
+                        <td class="td5">
                         </td>
-                        <td style="width: 72px;">
-                            <a href="">
-                                <div id="vhod">
-                                </div>
-                            </a>
-                        </td>
-                        @*<td style="width: 463px;">
+                        <td class="td6">
                             @Html.Partial(MVC.NotAdmin.Accounts.Views.AuthenticationLink)
-                        </td>*@
-                        <td style="width: 41px;">
+                        </td>
+                        <td class="td7">
                             <a href="">
-                                <div id="knopka_ros">
-                                    <div id="knopka_ros_hover">
+                                <div class="knopka_ros">
+                                    <div class="knopka_ros_hover">
                                     </div>
                                 </div>
                             </a>
                         </td>
-                        <td style="width: 41px;">
+                        <td class="td8">
                             <a href="">
-                                <div id="knopka_eng">
-                                    <div id="knopka_eng_hover">
+                                <div class="knopka_eng">
+                                    <div class="knopka_eng_hover">
                                     </div>
                                 </div>
                             </a>
@@ -82,15 +76,15 @@
                 </tbody>
             </table>
         </div>
-        <div id="content_blok">
+        <div class="content_blok">
             @RenderBody()
         </div>
-        <div id="foter">
-            <div id="menu_dubl">
+        <div class="foter">
+            <div class="menu_dubl">
                 <b><a class="mainlevel" href="">КНОПКА_1</a> <a class="mainlevel" href="">КНОПКА_2</a>
                     <a class="mainlevel" href="">КНОПКА_3</a> <a class="mainlevel" href="">КНОПКА_4</a></b>
             </div>
-            <div id="copyright">
+            <div class="copyright">
                 BetTeamsBattle, @DateTime.Now.Year
             </div>
         </div>
