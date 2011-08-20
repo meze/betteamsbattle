@@ -36,28 +36,29 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
         public BattleViewModel Battle(long battleId, long? nullableUserId)
         {
             var battle = _repositoryOfBattle.Get(EntitySpecifications.EntityIdIsEqualTo<Battle>(battleId)).Single();
-            
-            var battleViewModel = new BattleViewModel(battle.Id, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit);
+            var isActive = new List<Battle> {battle}.AsQueryable().Where(BattleSpecifications.Current()).Any();
+
+            var battleViewModel = new BattleViewModel(battle.Id, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, isActive);
 
             BattleUser battleUser = null;
             if (nullableUserId.HasValue)
                 battleUser = _battleUserRepository.GetLastBattleUser(nullableUserId.Value, battleId).SingleOrDefault();
             if (battleUser == null || battleUser.ActionEnum == BattleUserAction.Leave)
             {
-                battleViewModel.IsJoined = false;
+                battleViewModel.UserIsJoined = false;
                 battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.JoinBattle(battleId);
                 battleViewModel.JoinOrLeaveTitle = Resources.Battles.Join;
             }
             else
             {
-                battleViewModel.IsJoined = true;
+                battleViewModel.UserIsJoined = true;
                 battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.LeaveBattle(battleId);
                 battleViewModel.JoinOrLeaveTitle = Resources.Battles.Leave;
             }
 
-            if (battleViewModel.IsJoined)
+            if (battleViewModel.UserIsJoined)
             {
-                var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.UserIdIsEqualTo(nullableUserId.Value)).Single();
+                var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, nullableUserId.Value)).Single();
 
                 var earned = battleUserStatistics.Balance - battle.Budget;
                 var earnedPercents = earned/battle.Budget;

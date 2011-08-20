@@ -4,14 +4,12 @@
 @{
     Layout = MVC.Shared.Views._ThreeColumnsLayout;
 }
-
 @section LeftBlock {
     @Html.Action(MVC.NotAdmin.Battles.BattleTopUsers(Model.Id))
 }
-
 @section MiddleBlock {
     @Model.StartDate-@Model.EndDate @Model.Budget
-    @if (Model.IsJoined)
+    @if (Model.UserIsJoined)
     {
         <text>
         @Model.Earned @Model.EarnedPercents (@Model.TotalBetsCount/@Model.OpenBetsCount)
@@ -20,18 +18,17 @@
     <br />
     @Html.ActionLink(Model.JoinOrLeaveTitle, Model.JoinOrLeaveActionResult)
     <br />
-    @Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.Id))
-    <br />
-    @BattleBets.MyBets
-    <br />
-    @if (!Model.IsJoined)
+    @if (Model.IsActive && Model.UserIsJoined)
+    {
+        <text>
+        @Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.Id))
+        </text>
+    }
+    else if (Model.IsActive && !Model.UserIsJoined)
     {
         @BattleBets.JoinToBattleToMakeBets
     }
-    else
-    {
-        <text>
-        @Html.Action(MVC.NotAdmin.BattleBets.MyBets(Model.Id))
-        </text>
-    }
+    <br />
+    
+    @Html.Action(MVC.NotAdmin.BattleBets.MyBets(Model.Id))
 }
