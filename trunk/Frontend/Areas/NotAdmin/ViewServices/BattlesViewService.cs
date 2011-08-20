@@ -90,7 +90,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             var currentBattlesViewModels = new List<CurrentBattleViewModel>();
             foreach (var currentBattle in currentBattles)
             {
-                var currentBattleViewModel = new CurrentBattleViewModel(currentBattle.Budget, currentBattle.BetLimit, currentBattle.StartDate.ToShortDateString(), currentBattle.EndDate.ToShortDateString());
+                var currentBattleViewModel = new CurrentBattleViewModel(currentBattle.Id, currentBattle.Budget, currentBattle.BetLimit, currentBattle.StartDate.ToShortDateString(), currentBattle.EndDate.ToShortDateString());
                 currentBattlesViewModels.Add(currentBattleViewModel);
             }
             allBattlesViewModel.CurrentBattlesViewModels = currentBattlesViewModels;
@@ -111,7 +111,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             var finishedBattlesViewModels = new List<FinishedBattleViewModel>();
             foreach (var finishedBattle in finishedBattles)
             {
-                var finishedBattleViewModel = new FinishedBattleViewModel(finishedBattle.Budget, finishedBattle.BetLimit, finishedBattle.StartDate.ToShortDateString(), finishedBattle.EndDate.ToShortDateString());
+                var finishedBattleViewModel = new FinishedBattleViewModel(finishedBattle.Id, finishedBattle.Budget, finishedBattle.BetLimit, finishedBattle.StartDate.ToShortDateString(), finishedBattle.EndDate.ToShortDateString());
                 finishedBattlesViewModels.Add(finishedBattleViewModel);
             }
             allBattlesViewModel.FinishedBattlesViewModels = finishedBattlesViewModels;

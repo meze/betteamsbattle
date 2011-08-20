@@ -19,13 +19,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 
     public class CurrentBattleViewModel
     {
+        public long Id { get; set; }
         public int Budget { get; set; }
         public int BetLimit { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
 
-        public CurrentBattleViewModel(int budget, int betLimit, string startDate, string endDate)
+        public CurrentBattleViewModel(long id, int budget, int betLimit, string startDate, string endDate)
         {
+            Id = id;
             Budget = budget;
             BetLimit = betLimit;
             StartDate = startDate;
@@ -55,13 +57,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
 
     public class FinishedBattleViewModel
     {
+        public long Id { get; set; }
         public int Budget { get; set; }
         public int BetLimit { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
 
-        public FinishedBattleViewModel(int budget, int betLimit, string startDate, string endDate)
+        public FinishedBattleViewModel(long id, int budget, int betLimit, string startDate, string endDate)
         {
+            Id = id;
             Budget = budget;
             BetLimit = betLimit;
             StartDate = startDate;
