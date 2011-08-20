@@ -44,7 +44,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string UsersRating = ("UsersRating").ToLowerInvariant();
+            public readonly string TopUsers = ("TopUsers").ToLowerInvariant();
         }
 
 
@@ -53,7 +53,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string UsersRating = "~/Areas/NotAdmin/Views/Users/UsersRating.cshtml";
+            public readonly string TopUsers = "~/Areas/NotAdmin/Views/Users/TopUsers.cshtml";
         }
     }
 
@@ -61,8 +61,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
     public class T4MVC_UsersController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.UsersController {
         public T4MVC_UsersController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.PartialViewResult UsersRating() {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.UsersRating);
+        public override System.Web.Mvc.PartialViewResult TopUsers() {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.TopUsers);
             return callInfo;
         }
 

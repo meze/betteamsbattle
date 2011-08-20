@@ -5,6 +5,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces
 {
     public interface IUsersViewService
     {
-        IEnumerable<UsersRatingUserViewModel> UsersRating();
+        IEnumerable<TopUsersUserViewModel> TopUsers();
     }
 }

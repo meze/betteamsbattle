@@ -20,11 +20,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [ChildActionOnly]
-        public virtual PartialViewResult UsersRating()
+        public virtual PartialViewResult TopUsers()
         {
-            var usersRatingUsersViewModels = _usersViewService.UsersRating();
+            var usersTopUser = _usersViewService.TopUsers();
 
-            return PartialView(usersRatingUsersViewModels);
+            return PartialView(usersTopUser);
         }
 
     }

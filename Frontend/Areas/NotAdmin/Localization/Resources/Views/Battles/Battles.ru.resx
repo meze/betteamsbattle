@@ -120,6 +120,9 @@
   <data name="ActualBattles" xml:space="preserve">
     <value>Актуальные турниры</value>
   </data>
+  <data name="BattleLeaders" xml:space="preserve">
+    <value>Лидеры турнира</value>
+  </data>
   <data name="CloseAsFailed" xml:space="preserve">
     <value>Проиграл</value>
   </data>

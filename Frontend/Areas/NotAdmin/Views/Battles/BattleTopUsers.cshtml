@@ -1,0 +1,13 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
+@using BetTeamsBattle.Frontend.Models.Shared
+@using Resources
+@model IEnumerable<BattleTopUsersUserViewModel>
+
+@Html.Partial(MVC.Shared.Views._RightColumnBlock, new LeftColumnBlockViewModel(Battles.BattleLeaders, @<text>
+@foreach (var user in Model)
+{
+    <div class="list">
+        @user.Login @user.Balance
+    </div>
+}
+</text>))

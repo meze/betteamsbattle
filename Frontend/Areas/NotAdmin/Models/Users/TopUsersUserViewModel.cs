@@ -1,12 +1,12 @@
 ﻿namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Users
 {
-    public class UsersRatingUserViewModel
+    public class TopUsersUserViewModel
     {
         public long Id { get; set; }
         public string Login { get; set; }
         public double Rating { get; set; }
 
-        public UsersRatingUserViewModel(long id, string login, double rating)
+        public TopUsersUserViewModel(long id, string login, double rating)
         {
             Id = id;
             Login = login;

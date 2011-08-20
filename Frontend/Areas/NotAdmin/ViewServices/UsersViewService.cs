@@ -17,17 +17,17 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             _repositoryOfUser = repositoryOfUser;
         }
 
-        public IEnumerable<UsersRatingUserViewModel> UsersRating()
+        public IEnumerable<TopUsersUserViewModel> TopUsers()
         {
             var users = _repositoryOfUser.All().Include(u => u.UserStatistics).OrderByDescending(u => u.UserStatistics.Rating).Skip(0).Take(10).ToList();
 
-            var usersRatingsUsersViewModels = new List<UsersRatingUserViewModel>();
+            var topUsersUserViewModels = new List<TopUsersUserViewModel>();
             foreach (var user in users)
             {
-                var usersRatingUserViewModel = new UsersRatingUserViewModel(user.Id, user.Login, user.UserStatistics.Rating);
-                usersRatingsUsersViewModels.Add(usersRatingUserViewModel);
+                var topUsersUserViewModel = new TopUsersUserViewModel(user.Id, user.Login, user.UserStatistics.Rating);
+                topUsersUserViewModels.Add(topUsersUserViewModel);
             }
-            return usersRatingsUsersViewModels;
+            return topUsersUserViewModels;
         }
     }
 }

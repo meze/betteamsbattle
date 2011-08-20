@@ -38,6 +38,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BattleTopUsers() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BattleTopUsers);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult JoinBattle() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.JoinBattle);
         }
@@ -61,6 +66,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public class ActionNamesClass {
             public readonly string AllBattles = ("AllBattles").ToLowerInvariant();
             public readonly string Battle = ("Battle").ToLowerInvariant();
+            public readonly string BattleTopUsers = ("BattleTopUsers").ToLowerInvariant();
             public readonly string JoinBattle = ("JoinBattle").ToLowerInvariant();
             public readonly string LeaveBattle = ("LeaveBattle").ToLowerInvariant();
         }
@@ -73,6 +79,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public class ViewNames {
             public readonly string AllBattles = "~/Areas/NotAdmin/Views/Battles/AllBattles.cshtml";
             public readonly string Battle = "~/Areas/NotAdmin/Views/Battles/Battle.cshtml";
+            public readonly string BattleTopUsers = "~/Areas/NotAdmin/Views/Battles/BattleTopUsers.cshtml";
         }
     }
 
@@ -87,6 +94,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         public override System.Web.Mvc.ActionResult Battle(long battleId) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Battle);
+            callInfo.RouteValueDictionary.Add("battleId", battleId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult BattleTopUsers(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BattleTopUsers);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }
