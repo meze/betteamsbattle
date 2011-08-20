@@ -277,41 +277,26 @@ table{
 }
 
 .td5{
-	width: 369px;
-}
-
-.td5_1{
-	width: 90px;
-	color:#CCC;
+	width: 389px;
 }
 
 
 
-.td5_1 a{
-	color:#CCC;
-	font-size:17px;
-	text-align:center;
-	font-family:Tahoma, Geneva, sans-serif;
-	
-}
-.td5_1 a:hover{
-	color:#09F;
-	font-size:17px;
-	text-align:center;
-	font-family:Tahoma, Geneva, sans-serif;
-	
-}
+
 
 
 
 
 
 .td6{
-	width: 80px;
+	width: 150px;
 	color:#FFF;
 	font-size:20px;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
+	text-decoration:none;
+	text-align:right;
+	padding-right:5px;
 	
 }
 
@@ -321,14 +306,16 @@ table{
 	font-size:20px;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
-	
+		text-decoration:none;
+
 }
 .td6 a:hover{
-	color:#09F;
+	color:#999;
 	font-size:20px;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
-	
+		text-decoration:none;
+
 }
 
 .td7{
