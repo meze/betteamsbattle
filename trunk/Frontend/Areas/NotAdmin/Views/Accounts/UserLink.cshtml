@@ -1,0 +1,8 @@
+﻿@model dynamic
+
+@if (User.Identity.IsAuthenticated)
+{
+	<text>
+    @User.Identity.Name
+    </text>
+}

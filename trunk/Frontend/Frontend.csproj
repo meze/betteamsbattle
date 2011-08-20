@@ -220,27 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\file.css" />
-    <Content Include="Content\images\background.png" />
-    <Content Include="Content\images\btn_1.png" />
-    <Content Include="Content\images\btn_2.png" />
-    <Content Include="Content\images\btn_3.png" />
-    <Content Include="Content\images\btn_4.png" />
-    <Content Include="Content\images\btn_h_1.png" />
-    <Content Include="Content\images\btn_h_2.png" />
-    <Content Include="Content\images\btn_h_3.png" />
-    <Content Include="Content\images\btn_h_4.png" />
-    <Content Include="Content\images\flag_e.png" />
-    <Content Include="Content\images\flag_e_h.png" />
-    <Content Include="Content\images\flag_r.png" />
-    <Content Include="Content\images\flag_r_h.png" />
-    <Content Include="Content\images\footer_1.png" />
-    <Content Include="Content\images\heder.jpg" />
-    <Content Include="Content\images\menu_1.png" />
-    <Content Include="Content\images\r.png" />
-    <Content Include="Content\images\rr.png" />
-    <Content Include="Content\images\s.png" />
-    <Content Include="Content\images\sr.png" />
-    <Content Include="Content\images\t.png" />
     <Content Include="Content\menu_style.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
@@ -373,6 +352,7 @@
     <Folder Include="Areas\Admin\Localization\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\NotAdmin\Views\Shared\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Controllers\" />
     <Folder Include="Localization\Metadata\" />
   </ItemGroup>
@@ -385,13 +365,14 @@
     <Content Include="Areas\NotAdmin\Views\Accounts\SignIn.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\SignUp.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Accounts\AuthenticationLink.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Accounts\SignInOrSignOutLink.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\MyBets.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\MakeBet.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\AllBattles.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Users\TopUsers.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\Battle.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\BattleTopUsers.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Accounts\UserLink.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
