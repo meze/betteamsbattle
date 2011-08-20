@@ -17,35 +17,35 @@ h1{
 	
 }
 
-#osnova{
+.osnova{
 	width:1024px;
 	margin:0 auto;
 	
 }
 
 
-#heder{
+.heder{
 	height:184px;
 	width:1024px;
 	background-image: url('images/heder.jpg');
 	
 }
 
-  #menu{
+  .menu{
 	  height:30px;
 	  width:1024px;
 	  background-image: url('images/menu_1.png');
 	  
   }
   
-    #menu a{
+    .menu a{
 		border:none;
 	  
   }
 
 
 
-#content_blok{
+.content_blok{
 	width:1024px;
 	min-height:700px;
 	background-color:#202020;
@@ -62,20 +62,20 @@ h1{
 }
 
 
-#pravo_blok{
+.pravo_blok{
 	width:549px;
 	margin-left:238px;
 	background-image: url('images/rr.png');
 	
 }
 
-#pravo_blok2{
+.pravo_blok2{
 	width:549px;
 	background-image: url('images/r.png');
 	background-repeat:repeat-x;	
 }
 
-#pravo_content{
+.pravo_content{
 	width:549px;
 	min-height:900px;
 	background-image: url('images/r.png');
@@ -84,7 +84,7 @@ h1{
 	color:#FFF;
 }
 
-#pravo_content2{
+.pravo_content2{
 	width:530px;
 	margin:0 auto;
 	padding-top:8px;
@@ -92,20 +92,20 @@ h1{
 	
 }
 
-#foter{
+.foter{
 	height:60px;
 	width:1024px;
 	
 }
 
-#menu_dubl{
+.menu_dubl{
 	height:23px;
 	width:1024px;;
 	text-align:right;
 }
 
 
-#copyright{
+.copyright{
 	height:37px;
 	width:1024px;
 	background-image: url('images/footer_1.png');
@@ -122,7 +122,7 @@ h1{
 
 
 
-#menu_dubl a:hover{
+.menu_dubl a:hover{
 	color:#88D0EC;
 	border-bottom:1px dashed;
 	text-shadow:1px 1px 1px #000;
@@ -178,13 +178,13 @@ h1{
 
 
 
-#pravo_content2 a{
+.pravo_content2 a{
 	color:#09F;
 	text-decoration:none;
 	
 }
 
-#pravo_content2 a:hover{
+.pravo_content2 a:hover{
 	color:#06F;
 	text-decoration:none;
 	border-bottom:1px dashed;
@@ -193,7 +193,7 @@ h1{
 
 
 
-#levo_blok1_content{
+.levo_blok1_content{
 	width:228px;
 	padding-left:5px;
 	
@@ -202,7 +202,6 @@ h1{
 
 .list{
 	width:220px;
-	height:30px;
 	border-bottom:1px solid #333;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
@@ -238,19 +237,83 @@ h1{
 }
 
 
-#blok_1{
+.blok_1{
 	width:787px;
 	
 }
 
-#blok_2{
+.blok_2{
 	width:233px;
 	float:right;
 }
 
-#vhod{
+.vhod{
 	height:30px;
-	width:72px;
+	width:80px;
 	background-image: url('images/vhod.png');
 
+}
+
+table{
+	height: 30px;
+	width: 1024px;
+	border:0;
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+.td1{
+	width: 102px;
+}
+
+.td2{
+	width: 101px;
+}
+.td3{
+	width: 101px;
+}
+.td4{
+	width: 102px;
+}
+
+.td5{
+	width: 459px;
+}
+
+.td6{
+	width: 80px;
+	color:#FFF;
+	font-size:20px;
+	text-align:center;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+}
+
+
+.td6 a{
+	color:#FFF;
+	font-size:20px;
+	text-align:center;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+}
+.td6 a:hover{
+	color:#09F;
+	font-size:20px;
+	text-align:center;
+	font-family:Tahoma, Geneva, sans-serif;
+	text-shadow:1px 1px 2px #FFF;
+	
+}
+
+.td7{
+	width: 41px;
+}
+
+.td8{
+	width: 41px;
+}
+
+.img{
+	width:233px;
 }

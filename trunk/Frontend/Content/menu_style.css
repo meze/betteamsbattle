@@ -1,14 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
 
-#knopka_1{
+.knopka_1{
 	width:102px;
 	height:30px;
 	background-image: url('images/btn_1.png');
 	cursor:pointer;
 }
 
-#knopka_1_hover{
+.knopka_1_hover{
 	width:102px;
 	height:30px;
 	background-image: url('images/btn_h_1.png');
@@ -18,14 +18,14 @@
 
 
 
-#knopka_2{
+.knopka_2{
 	width:101px;
 	height:30px;
 	background-image: url('images/btn_2.png');
 	cursor:pointer;
 }
 
-#knopka_2_hover{
+.knopka_2_hover{
 	width:101px;
 	height:30px;
 	background-image: url('images/btn_h_2.png');
@@ -34,14 +34,14 @@
 }
 
 
-#knopka_3{
+.knopka_3{
 	width:101px;
 	height:30px;
 	background-image: url('images/btn_3.png');
 	cursor:pointer;
 }
 
-#knopka_3_hover{
+.knopka_3_hover{
 	width:101px;
 	height:30px;
 	background-image: url('images/btn_h_3.png');
@@ -52,14 +52,14 @@
 
 
 
-#knopka_4{
+.knopka_4{
 	width:102px;
 	height:30px;
 	background-image: url('images/btn_4.png');
 	cursor:pointer;
 }
 
-#knopka_4_hover{
+.knopka_4_hover{
 	width:102px;
 	height:30px;
 	background-image: url('images/btn_h_4.png');
@@ -70,14 +70,14 @@
 
 
 
-#knopka_ros{
+.knopka_ros{
 	width:41px;
 	height:30px;
 	background-image: url('images/flag_r.png');
 	cursor:pointer;
 }
 
-#knopka_ros_hover{
+.knopka_ros_hover{
 	width:41px;
 	height:30px;
 	background-image: url('images/flag_r_h.png');
@@ -87,14 +87,14 @@
 
 
 
-#knopka_eng{
+.knopka_eng{
 	width:41px;
 	height:30px;
 	background-image: url('images/flag_e.png');
 	cursor:pointer;
 }
 
-#knopka_eng_hover{
+.knopka_eng_hover{
 	width:41px;
 	height:30px;
 	background-image: url('images/flag_e_h.png');
