@@ -523,27 +523,6 @@ namespace Links {
             private const string URLPATH = "~/Content/images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string background_png = Url("background.png")+"?"+T4Extensions.TimestampString(URLPATH + "/background.png");
-            public static readonly string btn_1_png = Url("btn_1.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_1.png");
-            public static readonly string btn_2_png = Url("btn_2.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_2.png");
-            public static readonly string btn_3_png = Url("btn_3.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_3.png");
-            public static readonly string btn_4_png = Url("btn_4.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_4.png");
-            public static readonly string btn_h_1_png = Url("btn_h_1.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_h_1.png");
-            public static readonly string btn_h_2_png = Url("btn_h_2.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_h_2.png");
-            public static readonly string btn_h_3_png = Url("btn_h_3.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_h_3.png");
-            public static readonly string btn_h_4_png = Url("btn_h_4.png")+"?"+T4Extensions.TimestampString(URLPATH + "/btn_h_4.png");
-            public static readonly string flag_e_png = Url("flag_e.png")+"?"+T4Extensions.TimestampString(URLPATH + "/flag_e.png");
-            public static readonly string flag_e_h_png = Url("flag_e_h.png")+"?"+T4Extensions.TimestampString(URLPATH + "/flag_e_h.png");
-            public static readonly string flag_r_png = Url("flag_r.png")+"?"+T4Extensions.TimestampString(URLPATH + "/flag_r.png");
-            public static readonly string flag_r_h_png = Url("flag_r_h.png")+"?"+T4Extensions.TimestampString(URLPATH + "/flag_r_h.png");
-            public static readonly string footer_1_png = Url("footer_1.png")+"?"+T4Extensions.TimestampString(URLPATH + "/footer_1.png");
-            public static readonly string heder_jpg = Url("heder.jpg")+"?"+T4Extensions.TimestampString(URLPATH + "/heder.jpg");
-            public static readonly string menu_1_png = Url("menu_1.png")+"?"+T4Extensions.TimestampString(URLPATH + "/menu_1.png");
-            public static readonly string r_png = Url("r.png")+"?"+T4Extensions.TimestampString(URLPATH + "/r.png");
-            public static readonly string rr_png = Url("rr.png")+"?"+T4Extensions.TimestampString(URLPATH + "/rr.png");
-            public static readonly string s_png = Url("s.png")+"?"+T4Extensions.TimestampString(URLPATH + "/s.png");
-            public static readonly string sr_png = Url("sr.png")+"?"+T4Extensions.TimestampString(URLPATH + "/sr.png");
-            public static readonly string t_png = Url("t.png")+"?"+T4Extensions.TimestampString(URLPATH + "/t.png");
         }
     
         public static readonly string menu_style_css = Url("menu_style.css")+"?"+T4Extensions.TimestampString(URLPATH + "/menu_style.css");

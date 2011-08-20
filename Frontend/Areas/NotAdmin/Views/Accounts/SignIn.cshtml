@@ -1,29 +1,33 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Accounts
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Accounts
 @model SignInViewModel
+@{
+    Layout = MVC.Shared.Views._ThreeColumnsLayout;               
+}
 
 @section Scripts {
-<link href="@Links.Scripts.openid_selector.css.openid_css" rel="stylesheet" type="text/css" />
-<script src="@Links.Scripts.openid_selector.js.openid_jquery_js" type="text/javascript"></script>
-<script src="@Links.Scripts.openid_selector.js.openid_en_js" type="text/javascript"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        openid.init('openIdIdentifier');
-    });
-</script>
+    <link href="@Links.Scripts.openid_selector.css.openid_css" rel="stylesheet" type="text/css" />
+    <script src="@Links.Scripts.openid_selector.js.openid_jquery_js" type="text/javascript"></script>
+    <script src="@Links.Scripts.openid_selector.js.openid_en_js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            openid.init('openIdIdentifier');
+        });
+    </script>
 }
-@if (Model.Message != null)
-{
-    <div style="border: solid 1px red">
-        @Model.Message
-    </div>
-}
-@using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form" }))
-{
-    <input type="hidden" name="action" value="verify" />
 
-		<fieldset>
+@section MiddleBlock {
+    @if (Model.Message != null)
+    {
+        <div style="border: solid 1px red">
+            @Model.Message
+        </div>
+    }
+    @using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form" }))
+    {
+        <input type="hidden" name="action" value="verify" />
+
+        <fieldset>
             <div id="openid_choice">
                 <p>@Accounts.ClickIconToSignIn:</p>
                 <div id="openid_btns">
@@ -34,4 +38,5 @@
                 <input id="openid_submit" type="submit" value="@Accounts.SignIn" />
             </div>
         </fieldset>
+    }
 }

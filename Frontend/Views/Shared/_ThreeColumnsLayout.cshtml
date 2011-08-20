@@ -2,12 +2,14 @@
     Layout = MVC.Shared.Views._Layout;
 }
 
+@RenderSection("Scripts", false)
+
 <div class="blok_2">
     @RenderSection("RightBlock", false)
 </div>
 
 <div class="blok_1">
-    <div id="levo_blok">
+    <div class="levo_blok">
         @RenderSection("LeftBlock", false)
     </div>
 </div>

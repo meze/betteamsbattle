@@ -54,7 +54,7 @@ h1{
 }
 
 
-#levo_blok{
+.levo_blok{
 	width:233px;
 	min-height:700px;
 	float:left;
@@ -277,8 +277,34 @@ table{
 }
 
 .td5{
-	width: 459px;
+	width: 369px;
 }
+
+.td5_1{
+	width: 90px;
+	color:#CCC;
+}
+
+
+
+.td5_1 a{
+	color:#CCC;
+	font-size:17px;
+	text-align:center;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+}
+.td5_1 a:hover{
+	color:#09F;
+	font-size:17px;
+	text-align:center;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+}
+
+
+
+
 
 .td6{
 	width: 80px;
@@ -302,7 +328,6 @@ table{
 	font-size:20px;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
-	text-shadow:1px 1px 2px #FFF;
 	
 }
 
