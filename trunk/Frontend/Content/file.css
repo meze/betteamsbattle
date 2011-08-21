@@ -144,7 +144,6 @@ h1{
 	min-height:48px;
 	background-color:#FFF;
 	width:233px;
-	background-color:#FFF;
 	border:1px solid #333;
 	margin-top:8px;
 	border:1px solid #F00;
@@ -202,17 +201,21 @@ h1{
 
 
 .list{
-	width:220px;
-	border-bottom:1px solid #333;
+	width:211px;
+	border-bottom:1px solid #999;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
 	font-size:13px;
 	padding-left:10px;
+	padding-left:18px;
+		background-image: url('images/h.png');
+	background-repeat:no-repeat;
+	background-position:-2px 2px;
 }
 
 .list_r{
-	width:220px;
-	border-bottom:1px solid #333;
+	width:211px;
+	border-bottom:1px solid #999;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
 	font-size:13px;
@@ -220,7 +223,15 @@ h1{
 	font-weight:bold;
 	background-image: url('images/h.png');
 	background-repeat:no-repeat;
-	background-position:-2px 3px;
+	background-position:-2px 2px;
+}
+
+
+.pro{
+		height:15px;
+		width:36px;
+		margin-bottom:-3px;
+
 }
 
 .list_r a{
@@ -321,12 +332,10 @@ table{
 	text-decoration:none;
 	padding-right:5px;
 	text-align:right;
-	
 }
 
 
 .td6 a{
-	color:#FFF;
 	text-align:center;
 	font-family:Tahoma, Geneva, sans-serif;
 		text-decoration:none;
@@ -354,9 +363,13 @@ table{
 
 
 .name{
-	padding-right:8px;
-	font-size:15px;
-	
+		color:#FF0;
+
+	padding-right:10px;
+	font-size:19px;
+	background-repeat:no-repeat;
+	background-position:right;
+	background-image: url('images/1.png');
 }
 
 .name a:hover{
@@ -367,14 +380,11 @@ table{
 }
 
 .login{
+		color:#FFF;
 font-size:19px;
-padding-right:3px;
-}
-
-
-.pro{
-		background-image: url('images/pro.png');
-		background-repeat:no-repeat;
-		background-position:170px;
+padding-right:5px;
+padding-left:5px;
 
 }
+
+
