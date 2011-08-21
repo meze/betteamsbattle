@@ -48,7 +48,6 @@ h1{
 
 .content_blok{
 	width:1024px;
-	min-height:700px;
 	background-color:#202020;
 	padding-top:8px;
 	
@@ -230,7 +229,6 @@ h1{
 
 .pro{
 		height:15px;
-		width:36px;
 		margin-bottom:-3px;
 	background-image: url('images/pro.png');
 	margin-left:8px;
