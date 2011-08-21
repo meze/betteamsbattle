@@ -55,7 +55,7 @@ h1{
 
 
 .levo_blok{
-	width:233px;
+	width:230px;
 	float:left;
 	
 }
@@ -142,7 +142,7 @@ h1{
 .levo_blok1{
 	min-height:48px;
 	background-color:#FFF;
-	width:233px;
+	width:230px;
 	border:1px solid #333;
 	margin-top:8px;
 	border:1px solid #F00;
@@ -151,7 +151,7 @@ h1{
 
 .pr_blok1_2{
 	min-height:38px;
-	width:233px;
+	width:230px;
 	background-color:#FFF;
 	border:1px solid #333;
 	margin-top:6px;
@@ -161,7 +161,7 @@ h1{
 
 .levo_blok1_head{
 	height:28px;
-	width:233px;
+	width:230px;
 	background-image: url('images/s.png');
 }
 
@@ -170,7 +170,7 @@ h1{
 
 .pr_blok1_head_2{
 	height:28px;
-	width:233px;
+	width:230px;
 	background-image: url('images/2_hed.png');
 }
 
@@ -200,7 +200,7 @@ h1{
 
 
 .list{
-	width:211px;
+	width:208px;
 	border-bottom:1px solid #999;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
@@ -213,7 +213,7 @@ h1{
 }
 
 .list_r{
-	width:211px;
+	width:208px;
 	border-bottom:1px solid #999;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
@@ -275,7 +275,7 @@ h1{
 	font-size:16px;
 	padding-top:3px;
 	text-shadow:1px 1px 2px #000;
-	width:233px;
+	width:230px;
 	text-align:center;
 	font-weight:bold;
 	
@@ -288,7 +288,7 @@ h1{
 }
 
 .blok_2{
-	width:233px;
+	width:230px;
 	float:right;
 }
 
@@ -361,7 +361,7 @@ table{
 }
 
 .img{
-	width:233px;
+	width:230px;
 }
 
 
