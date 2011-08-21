@@ -8,7 +8,7 @@
     @Html.Action(MVC.NotAdmin.Battles.BattleTopUsers(Model.Id))
 }
 @section MiddleBlock {
-    @Model.StartDate-@Model.EndDate @Model.Budget
+    @Model.StartDate-@Model.EndDate @Model.Budget @Model.BetLimit <br />
     @if (Model.UserIsJoined)
     {
         <text>
