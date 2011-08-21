@@ -32,6 +32,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
             RuleFor(mb => mb.Bet).Must((mb, bet) =>
                                            {
                                                var battleId = Convert.ToInt32(RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["battleId"]);
+
                                                var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, CurrentUser.UserId)).Include(bus => bus.Battle).Single();
 
                                                var betLimit = battleUserStatistics.Balance * (battleUserStatistics.Battle.BetLimit / 100d);
