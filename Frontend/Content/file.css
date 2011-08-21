@@ -56,7 +56,6 @@ h1{
 
 .levo_blok{
 	width:233px;
-	min-height:700px;
 	float:left;
 	
 }
@@ -229,11 +228,14 @@ h1{
 
 .pro{
 		height:15px;
+		width:0px;
 		margin-bottom:-3px;
 	background-image: url('images/pro.png');
 	margin-left:8px;
 	padding-left:36px;
 }
+
+*:first-child+html .r  {margin-top:-13px}
 
 .list_r a{
 	color:#03F;
