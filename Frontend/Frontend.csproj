@@ -116,6 +116,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.Designer.cs">
+      <DependentUpon>Home.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.Designer.cs">
+      <DependentUpon>Home.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.Designer.cs">
       <DependentUpon>Users.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -441,6 +451,16 @@
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Battles.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.resx">
