@@ -1,0 +1,9 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams
+@model TeamViewModel
+
+<a>@Model.Title</a>
+@if (Model.IsPro)
+{
+    <img class="pro" />
+}
+<div class="r">@Model.Rating</div>
