@@ -1,5 +1,6 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battles
+@using BetTeamsBattle.Frontend.Authentication
 @using Resources
 @model BattleViewModel
 @{
@@ -24,5 +25,8 @@
             </div>
         </div>
     }
-    @Html.Action(MVC.NotAdmin.BattleBets.MyBets(Model.BattleId))
+    @if (CurrentUser.NullableUserId.HasValue)
+    {
+        @Html.Action(MVC.NotAdmin.BattleBets.MyBets(Model.BattleId))
+    }
 }
