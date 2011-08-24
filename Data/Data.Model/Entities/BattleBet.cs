@@ -8,6 +8,7 @@ namespace BetTeamsBattle.Data.Model.Entities
     {
         public virtual long Id { get; set; }
         public virtual long BattleId { get; set; }
+        public virtual long TeamId { get; set; }
         public virtual long UserId { get; set; }
         public virtual string Title { get; set; }
         public virtual double Bet { get; set; }
@@ -19,6 +20,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual bool IsPrivate { get; set; }
 
         public virtual Battle Battle { get; set; }
+        public virtual Team Team { get; set; }
         public virtual User User { get; set; }
         private ICollection<QueuedBetUrl> _queuedBetUrls;
         public virtual ICollection<QueuedBetUrl> QueuedBetUrls
@@ -32,9 +34,10 @@ namespace BetTeamsBattle.Data.Model.Entities
             _queuedBetUrls = new List<QueuedBetUrl>();  
         }
 
-        public BattleBet(long battleId, long userId, string title, double bet, double coefficient, string url, bool isPrivate) : this()
+        public BattleBet(long battleId, long teamId, long userId, string title, double bet, double coefficient, string url, bool isPrivate) : this()
         {
             BattleId = battleId;
+            TeamId = teamId;
             UserId = userId;
             Title = title;
             Bet = bet;

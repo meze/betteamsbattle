@@ -39,7 +39,7 @@ namespace BetTeamsBattle.Frontend.DI
             Bind<IFormsAuthenticationService>().To<FormsAuthenticationService>();
 
             Bind<IBattlesViewService>().To<BattlesViewService>();
-            Bind<IUsersViewService>().To<UsersViewService>();
+            Bind<ITeamsViewService>().To<TeamsViewService>();
 
             Bind<IInDaysLocalizer>().To<InDaysEnglishLocalizer>().When(r => CurrentLanguage.Language == Language.English);
             Bind<IInDaysLocalizer>().To<InDaysRussianLocalizer>().When(r => CurrentLanguage.Language == Language.Russian);

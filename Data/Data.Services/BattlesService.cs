@@ -5,7 +5,6 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.EntityRepositories.Interfaces;
 using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Repositories.UnitOfWork;
@@ -17,93 +16,57 @@ namespace BetTeamsBattle.Data.Services
     internal class BattlesService : IBattlesService
     {
         private readonly ITransactionScopeFactory _transactionScopeFactory;
-        private readonly IRepository<Battle> _repositoryOfBattles;
+        private readonly IRepository<Battle> _repositoryOfBattle;
+        private readonly IRepository<Team> _repositoryOfTeam;
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
         private readonly IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
-        private readonly IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
-        private readonly IBattleUserRepository _battleUserRepository;
-        private readonly IRepository<UserStatistics> _repositoryOfUserStatistics;
+        private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
 
-        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattles, IRepository<BattleBet> repositoryOfBattleBet, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IRepository<BattleUserStatistics> repositoryOfBattleUserStatistics, IBattleUserRepository battleUserRepository, IRepository<UserStatistics> repositoryOfUserStatistics)
+        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattle, IRepository<Team> repositoryOfTeam, IRepository<BattleBet> repositoryOfBattleBet, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
         {
             _transactionScopeFactory = transactionScopeFactory;
-            _repositoryOfBattles = repositoryOfBattles;
+            _repositoryOfBattle = repositoryOfBattle;
+            _repositoryOfTeam = repositoryOfTeam;
             _repositoryOfBattleBet = repositoryOfBattleBet;
             _repositoryOfQueuedBetUrl = repositoryOfQueuedBetUrl;
-            _repositoryOfBattleUserStatistics = repositoryOfBattleUserStatistics;
-            _battleUserRepository = battleUserRepository;
-            _repositoryOfUserStatistics = repositoryOfUserStatistics;
+            _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
         }
 
-        public void CreateBattle(DateTime startDate, DateTime endDate, BattleType battleType, int budget)
+        public long CreateBattle(DateTime startDate, DateTime endDate, BattleType battleType, int budget)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
                 var battle = new Battle(startDate, endDate, battleType, budget);
-                _repositoryOfBattles.Add(battle);
+
+                _repositoryOfBattle.Add(battle);
+
                 unitOfWorkScope.SaveChanges();
+
+                return battle.Id;
             }
         }
 
-        public void JoinToBattle(long battleId, long userId)
+        public long MakeBet(long battleId, long teamId, long userId, string title, double bet, double coefficient, string url, bool isPrivate)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
-                var battleUser = new BattleUser(battleId, userId, BattleUserAction.Join);
-                _battleUserRepository.Add(battleUser);
+                var battleBet = new BattleBet(battleId, teamId, userId, title, bet, coefficient, url, isPrivate);
+                _repositoryOfBattleBet.Add(battleBet);
 
-                var battleUserStatisticsExists =
-                    _repositoryOfBattleUserStatistics.Get(
-                        BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).Any();
-                if (!battleUserStatisticsExists)
+                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).SingleOrDefault();
+                if (battleTeamStatistics == null)
                 {
-                    var battleBudget = _repositoryOfBattles.Get(EntitySpecifications.EntityIdIsEqualTo<Battle>(battleId)).Select(b => b.Budget).Single();
-
-                    var battleUserStatistics = new BattleUserStatistics(battleId, userId, battleBudget);
-                    _repositoryOfBattleUserStatistics.Add(battleUserStatistics);
+                    var battleBudget = _repositoryOfBattle.Get(EntitySpecifications.EntityIdIsEqualTo<Battle>(battleId)).Select(b => b.Budget).Single();
+                    battleTeamStatistics = new BattleTeamStatistics(battleId, teamId, battleBudget);
+                    _repositoryOfBattleTeamStatistics.Add(battleTeamStatistics);
                 }
-
-                unitOfWorkScope.SaveChanges();
-            }
-        }
-
-        public void LeaveBattle(long battleId, long userId)
-        {
-            using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
-            {
-                var battleUser = new BattleUser(battleId, userId, BattleUserAction.Leave);
-                _battleUserRepository.Add(battleUser);
-                unitOfWorkScope.SaveChanges();
-            }
-        }
-
-        public bool UserIsJoinedToBattle(long userId, long battleId)
-        {
-            var lastBattleUserAction = _battleUserRepository.Get(BattleUserSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).OrderByDescending(bu => bu.Id).Select(bu => bu.Action).FirstOrDefault();
-            if (lastBattleUserAction == default(sbyte) || lastBattleUserAction == (sbyte)BattleUserAction.Leave)
-                return false;
-            return true;
-        }
-
-        public long MakeBet(long battleId, long userId, string title, double bet, double coefficient, string url, bool isPrivate)
-        {
-            using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
-            {
-                if (!UserIsJoinedToBattle(userId, battleId))
-                    throw new ArgumentException("User is not joined to the battle");
-
-                var battleBet = new BattleBet(battleId, userId, title, bet, coefficient, url, isPrivate);
-                
-                var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).Single();
-                battleUserStatistics.Balance -= bet;
-                battleUserStatistics.OpenedBetsCount++;
+                battleTeamStatistics.Balance -= bet;
+                battleTeamStatistics.OpenedBetsCount++;
 
                 var queuedBetUrl = new QueuedBetUrl(battleBet.Id, url, QueuedBetUrlType.Open);
                 battleBet.QueuedBetUrls.Add(queuedBetUrl);
-
-                _repositoryOfBattleBet.Add(battleBet);
 
                 unitOfWorkScope.SaveChanges();
 
@@ -126,6 +89,7 @@ namespace BetTeamsBattle.Data.Services
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
                 var battleBet = _repositoryOfBattleBet.Get(EntitySpecifications.EntityIdIsEqualTo<BattleBet>(battleBetId)).Single();
+                battleId = battleBet.BattleId;
 
                 if (userId != battleBet.UserId)
                     throw new ArgumentException("You are trying to close not your bet");
@@ -133,22 +97,20 @@ namespace BetTeamsBattle.Data.Services
                 battleBet.CloseDateTime = DateTime.UtcNow;
                 battleBet.Success = success;
 
-                battleId = battleBet.BattleId;
-
-                var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).Single();
-                var userStatistics = _repositoryOfUserStatistics.Get(UserStatisticsSpecifications.UserIdIsEqualTo(userId)).Single();
+                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleBet.BattleId, battleBet.TeamId)).Single();
+                var team = _repositoryOfTeam.Get(EntitySpecifications.EntityIdIsEqualTo<Team>(battleBet.TeamId)).Single();
                 if (success)
                 {
                     var betWin = battleBet.Bet * battleBet.Coefficient;
 
-                    battleUserStatistics.Balance += betWin;
-                    userStatistics.Rating += betWin;
+                    battleTeamStatistics.Balance += betWin;
+                    team.Rating += betWin;
                 }
                 else
-                    userStatistics.Rating -= battleBet.Bet;
+                    team.Rating -= battleBet.Bet;
 
-                battleUserStatistics.OpenedBetsCount--;
-                battleUserStatistics.ClosedBetsCount++;
+                battleTeamStatistics.OpenedBetsCount--;
+                battleTeamStatistics.ClosedBetsCount++;
 
                 unitOfWorkScope.SaveChanges();
             }

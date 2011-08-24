@@ -15,9 +15,10 @@
     public class MakeBetFormViewModel
     {
         public string Title { get; set; }
-        public double Bet { get; set; }
-        public double Coefficient { get; set; }
         public string Url { get; set; }
+        public double Coefficient { get; set; }
+        public double Bet { get; set; }
+        public long TeamId { get; set; }
         public bool IsPrivate { get; set; }
     }
 }

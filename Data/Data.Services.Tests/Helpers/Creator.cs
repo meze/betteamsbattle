@@ -11,12 +11,14 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Battle> _repositoryOfBattle;
         private IRepository<User> _repositoryOfUser;
+        private readonly IRepository<Team> _repositoryOfTeam;
 
-        public Creator(IUnitOfWork unitOfWork, IRepository<Battle> repositoryOfBattle, IRepository<User> repositoryOfUser)
+        public Creator(IUnitOfWork unitOfWork, IRepository<Battle> repositoryOfBattle, IRepository<User> repositoryOfUser, IRepository<Team> repositoryOfTeam)
         {
             _unitOfWork = unitOfWork;
             _repositoryOfBattle = repositoryOfBattle;
             _repositoryOfUser = repositoryOfUser;
+            _repositoryOfTeam = repositoryOfTeam;
         }
 
         public Battle CreateBattle()
@@ -30,7 +32,7 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
         public User CreateUser(string login, string openIdUrl)
         {
             var user = new User(login, openIdUrl);
-            user.UserStatistics = new UserStatistics() { Rating = 0 };
+            //user.UserStatistics = new UserStatistics() { Rating = 0 };
             _repositoryOfUser.Add(user);
             _unitOfWork.SaveChanges();
             return user;
@@ -39,6 +41,17 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
         public User CreateUser()
         {
             return CreateUser("login", "openIdUrl");
+        }
+
+        public Team CreateTeam(User user)
+        {
+            var team = new Team("team", true, 0);
+
+            _repositoryOfTeam.Add(team);
+
+            _unitOfWork.SaveChanges();
+
+            return team;
         }
     }
 }

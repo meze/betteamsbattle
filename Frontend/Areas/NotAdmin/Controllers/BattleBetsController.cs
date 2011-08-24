@@ -51,12 +51,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             if (!ModelState.IsValid)
                 return View(new MakeBetViewModel(battleId));
 
-            _battlesService.MakeBet(battleId, CurrentUser.UserId, makeBetForm.Title, makeBetForm.Bet, makeBetForm.Coefficient, makeBetForm.Url, makeBetForm.IsPrivate);
+            _battlesService.MakeBet(battleId, makeBetForm.TeamId, CurrentUser.UserId, makeBetForm.Title, makeBetForm.Bet, makeBetForm.Coefficient, makeBetForm.Url, makeBetForm.IsPrivate);
 
             return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
         }
 
         [Authorize]
+        [HttpPost]
         public virtual ActionResult BetSucceeded(long battleBetId)
         {
             long battleId;
@@ -66,6 +67,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [Authorize]
+        [HttpPost]
         public virtual ActionResult BetFailed(long battleBetId)
         {
             long battleId;

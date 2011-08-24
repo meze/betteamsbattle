@@ -45,13 +45,12 @@
   <ItemGroup>
     <Compile Include="Entities\Battle.cs" />
     <Compile Include="Entities\BattleBet.cs" />
-    <Compile Include="Entities\BattleUser.cs" />
-    <Compile Include="Entities\BattleUserStatistics.cs" />
+    <Compile Include="Entities\BattleTeamStatistics.cs" />
     <Compile Include="Entities\IpToCountry.cs" />
     <Compile Include="Entities\QueuedBetUrl.cs" />
+    <Compile Include="Entities\Team.cs" />
+    <Compile Include="Entities\TeamUser.cs" />
     <Compile Include="Entities\UserProfile.cs" />
-    <Compile Include="Entities\UserStatistics.cs" />
-    <Compile Include="Enums\BattleUserAction.cs" />
     <Compile Include="Enums\BattleType.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Entities\User.cs" />

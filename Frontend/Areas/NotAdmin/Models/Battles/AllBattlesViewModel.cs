@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
+namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battles
 {
     public class AllBattlesViewModel
     {

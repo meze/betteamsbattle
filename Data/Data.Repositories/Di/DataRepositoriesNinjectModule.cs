@@ -1,7 +1,5 @@
 ﻿using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.EntityRepositories;
-using BetTeamsBattle.Data.Repositories.EntityRepositories.Interfaces;
 using BetTeamsBattle.Data.Repositories.UnitOfWork;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 using Ninject.Modules;
@@ -16,7 +14,6 @@ namespace BetTeamsBattle.Data.Repositories.DI
             Bind<IUnitOfWorkScopeFactory>().To<UnitOfWorkScopeFactory>();
 
             Bind(typeof (IRepository<>)).To(typeof (Repository<>));
-            Bind<IBattleUserRepository>().To<BattleUserRepository>();
         }
     }
 }

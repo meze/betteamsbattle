@@ -21,11 +21,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
  
             RuleFor(u => u.Login).Length(3, 20).WithMessage(Accounts.LoginLengthError);
             RuleFor(u => u.Login).Matches("^[a-zA-Z0-9]*$").WithMessage(Accounts.LoginFormatError);
-            RuleFor(u => u.Login).Must(l => !_repositoryOfUser.Exists(UserSpecifications.LoginIsEqual(l))).
+            RuleFor(u => u.Login).Must(l => !_repositoryOfUser.Any(UserSpecifications.LoginIsEqual(l))).
                 WithMessage(Accounts.LoginIsBusy);
 
             RuleFor(u => u.OpenIdUrl).NotEmpty().WithMessage(Accounts.OpenIdIsIncorrectTryLoginOnceMore);
-            RuleFor(u => u.OpenIdUrl).Must(oiu => !_repositoryOfUser.Exists(UserSpecifications.OpenIdUrlIsEqual(oiu))).
+            RuleFor(u => u.OpenIdUrl).Must(oiu => !_repositoryOfUser.Any(UserSpecifications.OpenIdUrlIsEqual(oiu))).
                 WithMessage(Accounts.OpenIdIsIncorrectTryLoginOnceMore);
         }
     }
