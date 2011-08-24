@@ -24,7 +24,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [ChildActionOnly]
-        [Authorize]
         public virtual ActionResult MyBets(long battleId)
         {
             var myBets = _repositoryOfBattleBet.
