@@ -52,20 +52,17 @@
     <Compile Include="ExpressionVisitorExtensions.cs" />
     <Compile Include="LinqSpecExtensions.cs" />
     <Compile Include="Specifications\BattleBetSpecifications.cs" />
-    <Compile Include="Specifications\BattleUserStatisticsSpecifications.cs" />
     <Compile Include="Specifications\BattleSpecifications.cs" />
     <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
     <Compile Include="Base\Interfaces\IRepository.cs" />
-    <Compile Include="Specifications\BattleUserSpecifications.cs" />
+    <Compile Include="Specifications\BattleTeamStatisticsSpecifications.cs" />
     <Compile Include="Specifications\EntitySpecifications.cs" />
     <Compile Include="Specifications\IpToCountrySpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\Repository.cs" />
     <Compile Include="Specifications\QueuedBetUrlSpecifications.cs" />
+    <Compile Include="Specifications\TeamSpecifications.cs" />
     <Compile Include="Specifications\UserSpecifications.cs" />
-    <Compile Include="EntityRepositories\BattleUserRepository.cs" />
-    <Compile Include="EntityRepositories\Interfaces\IBattleUserRepository.cs" />
-    <Compile Include="Specifications\UserStatisticsSpecifications.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScope.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScopeFactory.cs" />
@@ -83,12 +80,15 @@
       <Name>Data.Repositories.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="EntityRepositories\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

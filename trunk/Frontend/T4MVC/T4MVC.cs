@@ -44,7 +44,7 @@ namespace T4MVC {
         public BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.BattleBetsController BattleBets = new BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.T4MVC_BattleBetsController();
         public BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.BattlesController Battles = new BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.T4MVC_BattlesController();
         public BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.HomeController Home = new BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.T4MVC_HomeController();
-        public BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.UsersController Users = new BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.T4MVC_UsersController();
+        public BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.TeamsController Teams = new BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.T4MVC_TeamsController();
         public T4MVC.NotAdmin.SharedController Shared = new T4MVC.NotAdmin.SharedController();
     }
 }

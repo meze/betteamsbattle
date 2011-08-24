@@ -38,7 +38,7 @@ namespace BetTeamsBattle.Data.Repositories.Base
             return Get(filterSpecification).FirstOrDefault();
         }
 
-        public bool Exists(LinqSpec<T> filterSpecification)
+        public bool Any(LinqSpec<T> filterSpecification)
         {
             return Get(filterSpecification).Any();
         }

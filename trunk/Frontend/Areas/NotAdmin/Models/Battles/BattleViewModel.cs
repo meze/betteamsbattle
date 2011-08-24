@@ -1,35 +1,28 @@
-﻿using System;
-using System.Web.Mvc;
-
-namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle
+﻿namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battles
 {
     public class BattleViewModel
     {
-        public long Id { get; set; }
+        public long BattleId { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public int Budget { get; set; }
         public int BetLimit { get; set; }
 
-        public bool IsActive { get; set; }
-
-        public bool UserIsJoined { get; set; }
-        public string JoinOrLeaveTitle { get; set; }
-        public ActionResult JoinOrLeaveActionResult { get; set; }
+        public bool BattleIsActive { get; set; }
 
         public double Earned { get; set; }
         public double EarnedPercents { get; set; }
         public int TotalBetsCount { get; set; }
         public int OpenBetsCount { get; set; }
 
-        public BattleViewModel(long id, string startDate, string endDate, int budget, int betLimit, bool isActive)
+        public BattleViewModel(long battleId, string startDate, string endDate, int budget, int betLimit, bool battleIsActive)
         {
-            Id = id;
+            BattleId = battleId;
             StartDate = startDate;
             EndDate = endDate;
             Budget = budget;
             BetLimit = betLimit;
-            IsActive = isActive;
+            BattleIsActive = battleIsActive;
         }
     }
 }

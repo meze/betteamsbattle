@@ -17,6 +17,8 @@ namespace BetTeamsBattle.Data.Services.Tests
 
         private IUsersService _usersService;
         private IRepository<User> _repositoryOfUser;
+        private IRepository<Team> _repositoryOfTeam;
+        private IRepository<TeamUser> _repositoryOfTeamUser;
 
         [SetUp]
         public void Setup()
@@ -26,9 +28,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             var kernel = TestNinjectKernel.Kernel;
             _usersService = kernel.Get<IUsersService>();
             _repositoryOfUser = kernel.Get<IRepository<User>>();
+            _repositoryOfTeam = kernel.Get<IRepository<Team>>();
+            _repositoryOfTeamUser = kernel.Get<IRepository<TeamUser>>();
         }
 
-        [TestAttribute]
+        [TearDown]
         public void TearDown()
         {
             _transactionScope.Dispose();
@@ -41,9 +45,10 @@ namespace BetTeamsBattle.Data.Services.Tests
             const string openIdUrl = "openIdUrl";
             const Language language = Language.English;
 
-            _usersService.Register(login, openIdUrl, language);
+            var userId = _usersService.Register(login, openIdUrl, language);
 
-            _repositoryOfUser.All().Where(u => u.Login == login && u.OpenIdUrl == openIdUrl && u.UserProfile.Language == (sbyte) language && u.UserStatistics.Rating == 0).Single();
+            _repositoryOfUser.All().Where(u => u.Login == login && u.OpenIdUrl == openIdUrl && u.UserProfile.Language == (sbyte)language).Single();
+            _repositoryOfTeam.All().Where(t => t.Title == login && t.IsPersonal && t.Rating == 0 && t.TeamUsers.Count() == 1 && t.TeamUsers.Any(tu => tu.UserId == userId)).Single();
         }
     }
 }

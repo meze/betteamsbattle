@@ -8,10 +8,10 @@ using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Model.Helpers;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.EntityRepositories.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Localizers.InDays.Interfaces;
-using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battle;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battles;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
 using BetTeamsBattle.Frontend.Authentication;
 using BetTeamsBattle.Frontend.Services.Interfaces;
@@ -21,67 +21,50 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
     internal class BattlesViewService : IBattlesViewService
     {
         private readonly IRepository<Battle> _repositoryOfBattle;
-        private readonly IBattleUserRepository _battleUserRepository;
-        private readonly IRepository<BattleUserStatistics> _repositoryOfBattleUserStatistics;
         private readonly IInDaysLocalizer _inDaysLocalizer;
+        private IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
 
-        public BattlesViewService(IRepository<Battle> repositoryOfBattle, IBattleUserRepository battleUserRepository, IRepository<BattleUserStatistics> repositoryOfBattleUserStatistics, IInDaysLocalizer inDaysLocalizer)
+        public BattlesViewService(IRepository<Battle> repositoryOfBattle, IInDaysLocalizer inDaysLocalizer, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
         {
             _repositoryOfBattle = repositoryOfBattle;
-            _battleUserRepository = battleUserRepository;
-            _repositoryOfBattleUserStatistics = repositoryOfBattleUserStatistics;
             _inDaysLocalizer = inDaysLocalizer;
+            _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
         }
 
         public BattleViewModel Battle(long battleId, long? nullableUserId)
         {
             var battle = _repositoryOfBattle.Get(EntitySpecifications.EntityIdIsEqualTo<Battle>(battleId)).Single();
-            var isActive = new List<Battle> {battle}.AsQueryable().Where(BattleSpecifications.Current()).Any();
+            var battleIsActive = new List<Battle> { battle }.AsQueryable().Where(BattleSpecifications.Current()).Any();
 
-            var battleViewModel = new BattleViewModel(battle.Id, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, isActive);
+            var battleViewModel = new BattleViewModel(battle.Id, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, battleIsActive);
 
-            BattleUser battleUser = null;
-            if (nullableUserId.HasValue)
-                battleUser = _battleUserRepository.GetLastBattleUser(nullableUserId.Value, battleId).SingleOrDefault();
-            if (battleUser == null || battleUser.ActionEnum == BattleUserAction.Leave)
-            {
-                battleViewModel.UserIsJoined = false;
-                battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.JoinBattle(battleId);
-                battleViewModel.JoinOrLeaveTitle = Resources.Battles.Join;
-            }
-            else
-            {
-                battleViewModel.UserIsJoined = true;
-                battleViewModel.JoinOrLeaveActionResult = MVC.NotAdmin.Battles.LeaveBattle(battleId);
-                battleViewModel.JoinOrLeaveTitle = Resources.Battles.Leave;
-            }
+            //if (battleViewModel.UserIsJoinedToBattle)
+            //{
+            //var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, nullableUserId.Value)).Single();
 
-            if (battleViewModel.UserIsJoined)
-            {
-                var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, nullableUserId.Value)).Single();
+            //var earned = battleUserStatistics.Balance - battle.Budget;
+            //var earnedPercents = earned/battle.Budget;
+            //battleViewModel.Earned = earned;
+            //battleViewModel.EarnedPercents = earnedPercents;
 
-                var earned = battleUserStatistics.Balance - battle.Budget;
-                var earnedPercents = earned/battle.Budget;
-                battleViewModel.Earned = earned;
-                battleViewModel.EarnedPercents = earnedPercents;
-
-                battleViewModel.TotalBetsCount = battleUserStatistics.OpenedBetsCount + battleUserStatistics.ClosedBetsCount;
-                battleViewModel.OpenBetsCount = battleUserStatistics.OpenedBetsCount;
-            }
+            //battleViewModel.TotalBetsCount = battleUserStatistics.OpenedBetsCount + battleUserStatistics.ClosedBetsCount;
+            //battleViewModel.OpenBetsCount = battleUserStatistics.OpenedBetsCount;
+            //}
 
             return battleViewModel;
         }
 
-        public IEnumerable<BattleTopUsersUserViewModel> BattleTopUsers(long battleId)
+        public IEnumerable<BattleTopTeamsTeamViewModel> BattleTopTeams(long battleId)
         {
-            return _repositoryOfBattleUserStatistics.
-                Get(BattleUserStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
-                OrderByDescending(bus => bus.Balance).
-                Skip(0).Take(10).
-                Select(bus => new BattleTopUsersUserViewModel() { UserId = bus.UserId, Login = bus.User.Login, Balance = bus.Balance }).
-                ToList();
+            return
+                _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
+                    OrderByDescending(bts => bts.Balance).
+                    Skip(0).Take(10).
+                    Select(
+                        bus =>
+                        new BattleTopTeamsTeamViewModel() { TeamId = bus.TeamId, Login = bus.Team.Title, Balance = bus.Balance }).
+                    ToList();
         }
- 
 
         public AllBattlesViewModel AllBattles()
         {

@@ -95,7 +95,7 @@
     <Compile Include="Areas\Admin\Validators\BattleViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
-    <Compile Include="Areas\NotAdmin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\NotAdmin\Controllers\TeamsController.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.Designer.cs">
       <DependentUpon>Accounts.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -126,13 +126,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.Designer.cs">
-      <DependentUpon>Users.resx</DependentUpon>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.Designer.cs">
+      <DependentUpon>Teams.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.ru.Designer.cs">
-      <DependentUpon>Users.ru.resx</DependentUpon>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru.Designer.cs">
+      <DependentUpon>Teams.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -141,16 +141,16 @@
     <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MakeBetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
-    <Compile Include="Areas\NotAdmin\Models\Battles\BattleTopUsersUserViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Battles\BattleTopTeamsTeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\BattleViewModel.cs" />
-    <Compile Include="Areas\NotAdmin\Models\Users\TopUsersUserViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Teams\TopTeamsTeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\BattlesViewService.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\IBattlesViewService.cs" />
-    <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\IUsersViewService.cs" />
-    <Compile Include="Areas\NotAdmin\ViewServices\UsersViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\ITeamsViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\TeamsViewService.cs" />
     <Compile Include="AspNetMvc\ActionFilters\AdminRightsActionFilter.cs" />
     <Compile Include="AspNetMvc\Routes\LanguagelessMvcRouteHandler.cs" />
     <Compile Include="AspNetMvc\Routes\RegexRouteConstraint.cs" />
@@ -216,7 +216,7 @@
     <Compile Include="T4MVC\NotAdmin.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\NotAdmin.UsersController.generated.cs">
+    <Compile Include="T4MVC\NotAdmin.TeamsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
@@ -379,9 +379,9 @@
     <Content Include="Areas\NotAdmin\Views\BattleBets\MyBets.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\MakeBet.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\AllBattles.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Users\TopUsers.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Teams\TopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\Battle.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Battles\BattleTopUsers.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Battles\BattleTopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AccountLink.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
@@ -463,14 +463,14 @@
       <LastGenOutput>Home.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.resx">
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Users.Designer.cs</LastGenOutput>
+      <LastGenOutput>Teams.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.ru.resx">
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Users.ru.Designer.cs</LastGenOutput>
+      <LastGenOutput>Teams.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>

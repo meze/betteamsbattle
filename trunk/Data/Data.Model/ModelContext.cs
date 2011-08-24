@@ -30,16 +30,5 @@ namespace BetTeamsBattle.Data.Model
                 return _battles;
             }
         }
-
-        private ObjectSet<BattleUser> _battlesUsers;
-        public ObjectSet<BattleUser> BattlesUsers
-        {
-            get
-            {
-                if (_battlesUsers == null)
-                    _battlesUsers = CreateObjectSet<BattleUser>();
-                return _battlesUsers;
-            }
-        }
     }
 }

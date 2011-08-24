@@ -97,10 +97,10 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult MakeBet(long battleId, BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets.MakeBetFormViewModel makeBetFormViewModel) {
+        public override System.Web.Mvc.ActionResult MakeBet(long battleId, BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets.MakeBetFormViewModel makeBetForm) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MakeBet);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
-            callInfo.RouteValueDictionary.Add("makeBetFormViewModel", makeBetFormViewModel);
+            callInfo.RouteValueDictionary.Add("makeBetForm", makeBetForm);
             return callInfo;
         }
 

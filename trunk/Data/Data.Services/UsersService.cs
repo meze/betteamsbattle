@@ -1,4 +1,5 @@
-﻿using BetTeamsBattle.Data.Model.Entities;
+﻿using System;
+using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
@@ -12,24 +13,31 @@ namespace BetTeamsBattle.Data.Services
     {
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
         private readonly IRepository<User> _repositoryOfUser;
+        private readonly IRepository<Team> _repositoryOfTeam;
 
-        public UsersService(IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<User> repositoryOfUser)
+        public UsersService(IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<User> repositoryOfUser, IRepository<Team> repositoryOfTeam)
         {
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
             _repositoryOfUser = repositoryOfUser;
+            _repositoryOfTeam = repositoryOfTeam;
         }
 
-        public void Register(string login, string openIdUrl, Language language)
+        public long Register(string login, string openIdUrl, Language language)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
                 var user = new User(login, openIdUrl);
                 user.UserProfile = new UserProfile() {LanguageEnum = language};
-                user.UserStatistics = new UserStatistics() {Rating = 0};
-
                 _repositoryOfUser.Add(user);
 
+                var team = new Team(login, true, 0);
+                var teamUser = new TeamUser() { User = user, ActionEnum = TeamUserAction.Join, DateTime = DateTime.UtcNow };
+                team.TeamUsers.Add(teamUser);
+                _repositoryOfTeam.Add(team);
+
                 unitOfWorkScope.SaveChanges();
+
+                return user.Id;
             }
         }
     }
