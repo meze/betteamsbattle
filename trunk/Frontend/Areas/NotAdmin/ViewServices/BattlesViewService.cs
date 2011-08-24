@@ -54,7 +54,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             return battleViewModel;
         }
 
-        public IEnumerable<BattleTopTeamsTeamViewModel> BattleTopTeams(long battleId)
+        public IEnumerable<TeamViewModel> BattleTopTeams(long battleId)
         {
             return
                 _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
@@ -62,7 +62,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
                     Skip(0).Take(10).
                     Select(
                         bus =>
-                        new BattleTopTeamsTeamViewModel() { TeamId = bus.TeamId, Login = bus.Team.Title, Balance = bus.Balance }).
+                        new TeamViewModel() { TeamId = bus.TeamId, Title = bus.Team.Title, Rating = bus.Balance, IsPro = bus.Team.IsPro }).
                     ToList();
         }
 

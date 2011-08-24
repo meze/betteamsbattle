@@ -9,6 +9,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual string Title { get; set; }
         public virtual bool IsPersonal { get; set; }
         public virtual double Rating { get; set; }
+        public virtual bool IsPro { get; set; }
 
         private ICollection<TeamUser> _teamUsers;
         public virtual ICollection<TeamUser> TeamUsers

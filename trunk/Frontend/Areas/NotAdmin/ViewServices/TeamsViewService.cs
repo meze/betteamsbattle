@@ -18,11 +18,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             _repositoryOfTeam = repositoryOfTeam;
         }
 
-        public IEnumerable<TopTeamsTeamViewModel> TopTeams()
+        public IEnumerable<TeamViewModel> TopTeams()
         {
             return _repositoryOfTeam.All().OrderByDescending(t => t.Rating).
                 Skip(0).Take(10).
-                Select(t => new TopTeamsTeamViewModel() { TeamId =  t.Id, Title = t.Title, Rating = t.Rating }).
+                Select(t => new TeamViewModel() { TeamId =  t.Id, Title = t.Title, Rating = t.Rating, IsPro = t.IsPro }).
                 ToList();
         }
     }
