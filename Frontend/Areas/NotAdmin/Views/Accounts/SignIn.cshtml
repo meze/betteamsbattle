@@ -2,9 +2,8 @@
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Accounts
 @model SignInViewModel
 @{
-    Layout = MVC.Shared.Views._ThreeColumnsLayout;               
+    Layout = MVC.Shared.Views._Layout;               
 }
-
 @section Scripts {
     <link href="@Links.Scripts.openid_selector.css.openid_css" rel="stylesheet" type="text/css" />
     <script src="@Links.Scripts.openid_selector.js.openid_jquery_js" type="text/javascript"></script>
@@ -15,28 +14,25 @@
         });
     </script>
 }
+@if (Model.Message != null)
+{
+    <div style="border: solid 1px red">
+        @Model.Message
+    </div>
+}
+@using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form" }))
+{
+    <input type="hidden" name="action" value="verify" />
 
-@section MiddleBlock {
-    @if (Model.Message != null)
-    {
-        <div style="border: solid 1px red">
-            @Model.Message
+    <fieldset>
+        <div id="openid_choice">
+            <p>@Accounts.ClickIconToSignIn:</p>
+            <div id="openid_btns">
+            </div>
         </div>
-    }
-    @using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form" }))
-    {
-        <input type="hidden" name="action" value="verify" />
-
-        <fieldset>
-            <div id="openid_choice">
-                <p>@Accounts.ClickIconToSignIn:</p>
-                <div id="openid_btns">
-                </div>
-            </div>
-            <div id="openid_input_area">
-                <input id="openIdIdentifier" name="openIdIdentifier" type="text" value="http://" />
-                <input id="openid_submit" type="submit" value="@Accounts.SignIn" />
-            </div>
-        </fieldset>
-    }
+        <div id="openid_input_area">
+            <input id="openIdIdentifier" name="openIdIdentifier" type="text" value="http://" />
+            <input id="openid_submit" type="submit" value="@Accounts.SignIn" />
+        </div>
+    </fieldset>
 }

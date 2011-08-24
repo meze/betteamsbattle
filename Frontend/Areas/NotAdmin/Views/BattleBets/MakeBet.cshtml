@@ -2,18 +2,16 @@
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @model MakeBetViewModel
 @{
-    Layout = MVC.Shared.Views._ThreeColumnsLayout;
+    Layout = MVC.Shared.Views._Layout;
 }
 
-@section MiddleBlock {
-    @Html.ValidationSummary(true)
-    @using (Html.BeginForm(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId)))
-    {
-        @BattleBets.Title @Html.TextBoxFor(m => m.MakeBetForm.Title, Model.MakeBetForm.Title) @Html.ValidationMessageFor(m => m.MakeBetForm.Title) <br />
-        @BattleBets.Bet @Html.TextBoxFor(m => m.MakeBetForm.Bet, Model.MakeBetForm.Bet) @Html.ValidationMessageFor(m => m.MakeBetForm.Bet) <br />
-        @BattleBets.Coefficient @Html.TextBoxFor(m => m.MakeBetForm.Coefficient, Model.MakeBetForm.Coefficient) @Html.ValidationMessageFor(m => m.MakeBetForm.Coefficient) <br />
-        @BattleBets.Url @Html.TextBoxFor(m => m.MakeBetForm.Url, Model.MakeBetForm.Url) @Html.ValidationMessageFor(m => m.MakeBetForm.Url) <br />
-        @BattleBets.PrivateBet @Html.CheckBoxFor(m => m.MakeBetForm.IsPrivate, Model.MakeBetForm.IsPrivate) @Html.ValidationMessageFor(m => m.MakeBetForm.IsPrivate) <br />
-        <input type="submit" name="@BattleBets.MakeBet" />
-    }
+@Html.ValidationSummary(true)
+@using (Html.BeginForm(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId)))
+{
+    @BattleBets.Title @Html.TextBoxFor(m => m.MakeBetForm.Title, Model.MakeBetForm.Title) @Html.ValidationMessageFor(m => m.MakeBetForm.Title) <br />
+    @BattleBets.Bet @Html.TextBoxFor(m => m.MakeBetForm.Bet, Model.MakeBetForm.Bet) @Html.ValidationMessageFor(m => m.MakeBetForm.Bet) <br />
+    @BattleBets.Coefficient @Html.TextBoxFor(m => m.MakeBetForm.Coefficient, Model.MakeBetForm.Coefficient) @Html.ValidationMessageFor(m => m.MakeBetForm.Coefficient) <br />
+    @BattleBets.Url @Html.TextBoxFor(m => m.MakeBetForm.Url, Model.MakeBetForm.Url) @Html.ValidationMessageFor(m => m.MakeBetForm.Url) <br />
+    @BattleBets.PrivateBet @Html.CheckBoxFor(m => m.MakeBetForm.IsPrivate, Model.MakeBetForm.IsPrivate) @Html.ValidationMessageFor(m => m.MakeBetForm.IsPrivate) <br />
+    <input type="submit" name="@BattleBets.MakeBet" />
 }

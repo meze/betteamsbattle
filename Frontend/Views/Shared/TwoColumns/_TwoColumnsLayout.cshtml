@@ -1,0 +1,16 @@
+﻿@{
+    Layout = MVC.Shared.Views._Layout;
+}
+@RenderSection("Scripts", false)
+<div class="blok_1_battle">
+    <div class="levo_blok">
+        @RenderSection("LeftBlock", true)
+    </div>
+    <div class="pravo_blok_battle">
+        <div class="pravo_blok2_battle">
+            <div class="pravo_content_battle">
+                @RenderSection("RightBlock", true)
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,38 +1,76 @@
 ﻿@using BetTeamsBattle.Data.Model.Entities
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets
 @model IEnumerable<BattleBet>
-           
 @BattleBets.MyBets
 <br />
 @if (Model.Count() == 0)
 {
     <text>
-        @BattleBets.YouHaveMadeNoBetsInThisBattle
+    @BattleBets.YouHaveMadeNoBetsInThisBattle
     </text>
 }
 else
 {
-    foreach (var battleBet in Model)
-    {
-    <text>
-    @battleBet.OpenDateTime @battleBet.Bet$ @battleBet.Coefficient @battleBet.Url
-    <br />
-    @if (battleBet.CloseDateTime.HasValue)
-    {
-        <text>
-        @battleBet.CloseDateTime
-        <br />
-        @battleBet.Success
-        <br />
-        </text>
-    }
-    else
-    {
-        <text>
-        @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(battleBet.Id))
-        @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(battleBet.Id))
-        </text>
-    }
-    </text>
-    }
+    <div class="pravo_content2_battle">
+        <div class="pravo_content2_hed">
+            <table class="table_stavka">
+                <tbody>
+                    <tr>
+                        <td class="td_1_s">
+                            @BattleBets.Title
+                        </td>
+                        <td class="td_2_s">
+                            @BattleBets.Bet
+                        </td>
+                        <td class="td_3_s">
+                            @BattleBets.Coefficient
+                        </td>
+                        <td class="td_4_s">
+                        </td>
+                        <td class="td_5_s">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table class="table_stavka_1">
+            <tbody>
+                @foreach (var battleBet in Model)
+                {
+                    <tr>
+                        <td class="td1_1">
+                            @battleBet.Title
+                        </td>
+                        <td class="td1_3" rowspan="2">
+                            @battleBet.Bet$
+                        </td>
+                        <td class="td1_4" rowspan="2">
+                            @battleBet.Coefficient
+                        </td>
+                        <td class="td1_5">
+                            @battleBet.OpenDateTime
+                        </td>
+                        <td class="td1_7">
+                            @if (battleBet.CloseDateTime.HasValue)
+                            {
+                                <text>
+                                @battleBet.CloseDateTime
+                                <br />
+                                @battleBet.Success
+                                <br />
+                                </text>
+                            }
+                            else
+                            {
+                                <text>
+                                @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(battleBet.Id))
+                                @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(battleBet.Id))
+                                </text>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
