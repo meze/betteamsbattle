@@ -8,7 +8,7 @@
 { 
     <div class="list">
         @currentBattle.StartDate-@currentBattle.EndDate / @currentBattle.Budget / @currentBattle.BetLimit%
-        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(currentBattle.Id))
+        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(currentBattle.BattleId))
     </div> 
 }
 </text>))
@@ -17,7 +17,7 @@
 {
     <div class="list">
         @notStartedBattle.StartDate-@notStartedBattle.EndDate / @notStartedBattle.Budget / @notStartedBattle.BetLimit%
-        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(notStartedBattle.Id))
+        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(notStartedBattle.BattleId))
     </div>
 }
 </text>))
@@ -26,7 +26,7 @@
 {
     <div class="list">
         @finishedBattle.StartDate-@finishedBattle.EndDate / @finishedBattle.Budget / @finishedBattle.BetLimit%
-        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(finishedBattle.Id))
+        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(finishedBattle.BattleId))
     </div>
 }
 </text>))
