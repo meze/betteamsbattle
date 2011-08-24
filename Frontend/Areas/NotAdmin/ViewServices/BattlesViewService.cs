@@ -70,35 +70,23 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
         {
             var allBattlesViewModel = new AllBattlesViewModel();
 
-            var currentBattles = _repositoryOfBattle.Get(BattleSpecifications.Current()).OrderBy(b => b.StartDate).ToList();
-            var currentBattlesViewModels = new List<CurrentBattleViewModel>();
-            foreach (var currentBattle in currentBattles)
-            {
-                var currentBattleViewModel = new CurrentBattleViewModel(currentBattle.Id, currentBattle.Budget, currentBattle.BetLimit, currentBattle.StartDate.ToShortDateString(), currentBattle.EndDate.ToShortDateString());
-                currentBattlesViewModels.Add(currentBattleViewModel);
-            }
-            allBattlesViewModel.CurrentBattlesViewModels = currentBattlesViewModels;
+            allBattlesViewModel.CurrentBattlesViewModels = _repositoryOfBattle.Get(BattleSpecifications.Current()).
+                OrderBy(b => b.StartDate).
+                AsEnumerable().
+                Select(b => new CurrentBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate = b.EndDate.ToShortDateString() }).
+                ToList();
+            
+            allBattlesViewModel.NotStartedBattlesViewModels = _repositoryOfBattle.Get(BattleSpecifications.NotStarted()).
+                OrderBy(b => b.StartDate).
+                AsEnumerable().
+                Select(b => new NotStartedBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate = b.EndDate.ToShortDateString()}).
+                ToList();
 
-            var notStartedBattles = _repositoryOfBattle.Get(BattleSpecifications.NotStarted()).OrderBy(b => b.StartDate).ToList();
-            var notStartedBattlesViewModels = new List<NotStartedBattleViewModel>();
-            foreach (var notStartedBattle in notStartedBattles)
-            {
-                var inDays = (notStartedBattle.StartDate - DateTime.UtcNow).Days;
-                var inDaysString = _inDaysLocalizer.Localize(inDays);
-
-                var futureBattleViewModel = new NotStartedBattleViewModel(notStartedBattle.Id, notStartedBattle.Budget, notStartedBattle.BetLimit, notStartedBattle.StartDate.ToShortDateString(), notStartedBattle.EndDate.ToShortDateString(), inDaysString);
-                notStartedBattlesViewModels.Add(futureBattleViewModel);
-            }
-            allBattlesViewModel.NotStartedBattlesViewModels = notStartedBattlesViewModels;
-
-            var finishedBattles = _repositoryOfBattle.Get(BattleSpecifications.Finished()).OrderBy(b => b.StartDate).ToList();
-            var finishedBattlesViewModels = new List<FinishedBattleViewModel>();
-            foreach (var finishedBattle in finishedBattles)
-            {
-                var finishedBattleViewModel = new FinishedBattleViewModel(finishedBattle.Id, finishedBattle.Budget, finishedBattle.BetLimit, finishedBattle.StartDate.ToShortDateString(), finishedBattle.EndDate.ToShortDateString());
-                finishedBattlesViewModels.Add(finishedBattleViewModel);
-            }
-            allBattlesViewModel.FinishedBattlesViewModels = finishedBattlesViewModels;
+            allBattlesViewModel.FinishedBattlesViewModels = _repositoryOfBattle.Get(BattleSpecifications.Finished()).
+                OrderBy(b => b.StartDate).
+                AsEnumerable().
+                Select(b => new FinishedBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate =  b.EndDate.ToShortDateString() }).
+                ToList();
 
             return allBattlesViewModel;
         }
