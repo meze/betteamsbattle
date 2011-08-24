@@ -3,18 +3,26 @@
 @using Resources
 @model BattleViewModel
 @{
-    Layout = MVC.Shared.Views._ThreeColumnsLayout;
+    Layout = MVC.Shared.Views.TwoColumns._TwoColumnsLayout;
 }
 @section LeftBlock {
     @Html.Action(MVC.NotAdmin.Battles.BattleTopTeams(Model.BattleId))
 }
-@section MiddleBlock {
-    @Model.StartDate-@Model.EndDate @Model.Budget @Model.BetLimit <br />
-    <br />
+@section RightBlock {
+    <div class="hed_s">
+        <div class="hed_s_text">
+            @Battles.Battle @Model.StartDate - @Model.EndDate @Model.Budget @Model.BetLimit
+        </div>
+    </div>
     @if (Model.BattleIsActive)
     {
-        @Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))
+        <div class="knopka_st_blok">
+            <div class="knopka_st">
+                <div class="knopka_st_text">
+                    @Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))
+                </div>
+            </div>
+        </div>
     }
-    <br />
     @Html.Action(MVC.NotAdmin.BattleBets.MyBets(Model.BattleId))
 }

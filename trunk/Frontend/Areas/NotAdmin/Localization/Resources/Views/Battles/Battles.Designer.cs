@@ -71,6 +71,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Battle.
+        /// </summary>
+        public static string Battle {
+            get {
+                return ResourceManager.GetString("Battle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Battle leaders.
         /// </summary>
         public static string BattleLeaders {

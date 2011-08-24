@@ -29,11 +29,20 @@ namespace T4MVC {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
-            public readonly string _LeftColumnBlock = "~/Views/Shared/_LeftColumnBlock.cshtml";
-            public readonly string _RightColumnBlock = "~/Views/Shared/_RightColumnBlock.cshtml";
-            public readonly string _ThreeColumnsLayout = "~/Views/Shared/_ThreeColumnsLayout.cshtml";
-            public readonly string _TwoColumnsLayout = "~/Views/Shared/_TwoColumnsLayout.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
+            static readonly _ThreeColumns s_ThreeColumns = new _ThreeColumns();
+            public _ThreeColumns ThreeColumns { get { return s_ThreeColumns; } }
+            public partial class _ThreeColumns{
+                public readonly string _LeftColumnBlock = "~/Views/Shared/ThreeColumns/_LeftColumnBlock.cshtml";
+                public readonly string _RightColumnBlock = "~/Views/Shared/ThreeColumns/_RightColumnBlock.cshtml";
+                public readonly string _ThreeColumnsLayout = "~/Views/Shared/ThreeColumns/_ThreeColumnsLayout.cshtml";
+            }
+            static readonly _TwoColumns s_TwoColumns = new _TwoColumns();
+            public _TwoColumns TwoColumns { get { return s_TwoColumns; } }
+            public partial class _TwoColumns{
+                public readonly string _LeftColumnBlock = "~/Views/Shared/TwoColumns/_LeftColumnBlock.cshtml";
+                public readonly string _TwoColumnsLayout = "~/Views/Shared/TwoColumns/_TwoColumnsLayout.cshtml";
+            }
         }
     }
 

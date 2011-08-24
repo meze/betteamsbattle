@@ -392,10 +392,11 @@
     </None>
     <None Include="T4MVC\T4MVC.tt.settings.t4" />
     <Content Include="Areas\NotAdmin\Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_LeftColumnBlock.cshtml" />
-    <Content Include="Views\Shared\_TwoColumnsLayout.cshtml" />
-    <Content Include="Views\Shared\_ThreeColumnsLayout.cshtml" />
-    <Content Include="Views\Shared\_RightColumnBlock.cshtml" />
+    <Content Include="Views\Shared\ThreeColumns\_LeftColumnBlock.cshtml" />
+    <Content Include="Views\Shared\TwoColumns\_TwoColumnsLayout.cshtml" />
+    <Content Include="Views\Shared\ThreeColumns\_ThreeColumnsLayout.cshtml" />
+    <Content Include="Views\Shared\ThreeColumns\_RightColumnBlock.cshtml" />
+    <Content Include="Views\Shared\TwoColumns\_LeftColumnBlock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
