@@ -127,13 +127,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>robocopy $(SolutionDir)Libraries\Awesomium\ $(TargetDir) /XF AwesomiumSharp.dll
-if errorlevel 4 goto BuildEventFailed
-if errorlevel 0 goto end
-:BuildEventFailed echo FILECOPY for $(ProjectName) FAILED
-exit 1
-:end echo FILECOPY for $(ProjectName) COMPLETED OK
-exit 0</PreBuildEvent>
+    <PreBuildEvent>copy "$(SolutionDir)Libraries\Awesomium\*" "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
