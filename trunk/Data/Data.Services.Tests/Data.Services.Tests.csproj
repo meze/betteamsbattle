@@ -61,7 +61,7 @@
     <Compile Include="UsersServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Configs\Test\App.config">
+    <None Include="..\..\Configs\Testing\App.config">
       <Link>App.config</Link>
       <SubType>Designer</SubType>
     </None>
