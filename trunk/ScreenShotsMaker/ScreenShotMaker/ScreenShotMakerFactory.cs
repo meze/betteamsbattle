@@ -3,20 +3,20 @@ using Ninject;
 
 namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker
 {
-    internal class ScreenShotMakerFactory : IScreenShotMakerFactory
+    internal class ScreenshotMakerFactory : IScreenshotMakerFactory
     {
         private readonly IKernel _kernel;
 
-        public ScreenShotMakerFactory(IKernel kernel)
+        public ScreenshotMakerFactory(IKernel kernel)
         {
             _kernel = kernel;
         }
 
-        #region IScreenShotMakerFactory Members
+        #region IScreenshotMakerFactory Members
 
-        public IScreenShotMaker Create()
+        public IScreenshotMaker Create()
         {
-            return _kernel.Get<IScreenShotMaker>();
+            return _kernel.Get<IScreenshotMaker>();
         }
 
         #endregion

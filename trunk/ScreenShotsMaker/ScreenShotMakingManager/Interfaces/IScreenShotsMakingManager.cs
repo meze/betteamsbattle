@@ -1,6 +1,6 @@
 ﻿namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager.Interfaces
 {
-    public interface IScreenShotsMakingManager
+    public interface IScreenshotsMakingManager
     {
         void Run();
     }

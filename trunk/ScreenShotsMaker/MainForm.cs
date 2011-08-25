@@ -23,7 +23,7 @@ namespace BetTeamsBattle.ScreenShotsMaker
             //{
                 var kernel = new StandardKernel(new DataRepositoriesNinjectModule(), new ScreenShotsMakerNinjectModule());
 
-                var screenShotsMakingManager = kernel.Get<IScreenShotsMakingManager>();
+                var screenShotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
 
                 screenShotsMakingManager.Run();
             //}

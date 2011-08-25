@@ -13,14 +13,14 @@ namespace BetTeamsBattle.ScreenShotsMaker.DI
         public override void Load()
         {
             Bind<IRenderBufferToPngStreamConverter>().To<RenderBufferToPngStreamConverter>();
-            Bind<IScreenShotMaker>().To<ScreenShotMaker.ScreenShotMaker>();
-            Bind<IScreenShotMakerFactory>().To<ScreenShotMakerFactory>();
-            Bind<IScreenShotRenderService>().To<ScreenShotRenderService>();
+            Bind<IScreenshotMaker>().To<ScreenShotMaker.ScreenshotMaker>();
+            Bind<IScreenshotMakerFactory>().To<ScreenshotMakerFactory>();
+            Bind<IScreenshotRenderService>().To<ScreenshotRenderService>();
 
             Bind<IBetScreenshotProcessor>().To<QueuedBetUrlProcessor.BetScreenshotProcessor>();
             Bind<IScreenshotAmazonS3Putter>().To<ScreenshotAmazonS3Putter>();
 
-            Bind<IScreenShotsMakingManager>().To<ScreenshotsMakingManager>();
+            Bind<IScreenshotsMakingManager>().To<ScreenshotsMakingManager>();
         }
     }
 }

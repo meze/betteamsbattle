@@ -72,17 +72,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DI\ScreenShotsMakerNinjectModule.cs" />
-    <Compile Include="QueuedBetUrlProcessor\Interfaces\IBetScreenshotProcessor.cs" />
-    <Compile Include="QueuedBetUrlProcessor\Interfaces\IScreenshotAmazonS3Putter.cs" />
-    <Compile Include="QueuedBetUrlProcessor\ScreenshotAmazonS3Putter.cs" />
-    <Compile Include="QueuedBetUrlProcessor\BetScreenshotProcessor.cs" />
+    <Compile Include="BetScreenshotProcessor\Interfaces\IBetScreenshotProcessor.cs" />
+    <Compile Include="BetScreenshotProcessor\Interfaces\IScreenshotAmazonS3Putter.cs" />
+    <Compile Include="BetScreenshotProcessor\ScreenshotAmazonS3Putter.cs" />
+    <Compile Include="BetScreenshotProcessor\BetScreenshotProcessor.cs" />
     <Compile Include="ScreenshotMaker\Interfaces\IRenderBufferToPngStreamConverter.cs" />
-    <Compile Include="ScreenshotMaker\Interfaces\IScreenShotMaker.cs" />
-    <Compile Include="ScreenshotMaker\Interfaces\IScreenShotMakerFactory.cs" />
-    <Compile Include="ScreenshotMaker\Interfaces\IScreenShotRenderService.cs" />
+    <Compile Include="ScreenshotMaker\Interfaces\IScreenshotMaker.cs" />
+    <Compile Include="ScreenshotMaker\Interfaces\IScreenshotMakerFactory.cs" />
+    <Compile Include="ScreenshotMaker\Interfaces\IScreenshotRenderService.cs" />
     <Compile Include="ScreenshotMaker\RenderBufferToPngStreamConverter.cs" />
-    <Compile Include="ScreenshotMaker\ScreenShotRenderService.cs" />
-    <Compile Include="ScreenShotMakingManager\Interfaces\IScreenShotsMakingManager.cs" />
+    <Compile Include="ScreenshotMaker\ScreenshotRenderService.cs" />
+    <Compile Include="ScreenshotMakingManager\Interfaces\IScreenshotsMakingManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,9 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenshotMaker\ScreenShotMaker.cs" />
-    <Compile Include="ScreenshotMaker\ScreenShotMakerFactory.cs" />
-    <Compile Include="ScreenShotMakingManager\ScreenShotsMakingManager.cs" />
+    <Compile Include="ScreenshotMaker\ScreenshotMaker.cs" />
+    <Compile Include="ScreenshotMaker\ScreenshotMakerFactory.cs" />
+    <Compile Include="ScreenshotMakingManager\ScreenshotsMakingManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Configuration\Configuration.csproj">
