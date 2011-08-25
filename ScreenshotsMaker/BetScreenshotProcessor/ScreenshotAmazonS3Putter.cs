@@ -1,13 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Amazon.S3;
 using Amazon.S3.Model;
-using BetTeamsBattle.Configuration;
-using BetTeamsBattle.Data.Model.Entities;
-using BetTeamsBattle.Data.Model.Enums;
-using BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces;
+using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 
-namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
+namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
 {
     internal class ScreenshotAmazonS3Putter : IScreenshotAmazonS3Putter
     {

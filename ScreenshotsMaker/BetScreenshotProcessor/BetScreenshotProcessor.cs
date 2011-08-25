@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Transactions;
 using Amazon.S3;
-using Amazon.S3.Model;
 using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
-using BetTeamsBattle.Data.Model.Enums;
-using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
-using BetTeamsBattle.Data.Repositories.UnitOfWork;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
-using BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces;
 using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
-using NLog;
+using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interfaces;
 
-namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
+namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
 {
     internal class BetScreenshotProcessor : IBetScreenshotProcessor
     {

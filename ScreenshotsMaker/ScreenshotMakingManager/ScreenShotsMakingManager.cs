@@ -14,8 +14,8 @@ using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
-using BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces;
 using BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager.Interfaces;
+using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 using NLog;
 
 namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager

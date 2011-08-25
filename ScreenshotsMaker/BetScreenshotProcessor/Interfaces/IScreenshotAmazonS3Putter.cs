@@ -1,8 +1,7 @@
 ﻿using System.IO;
 using Amazon.S3;
-using BetTeamsBattle.Data.Model.Entities;
 
-namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces
+namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces
 {
     internal interface IScreenshotAmazonS3Putter
     {
