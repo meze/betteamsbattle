@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -20,19 +21,19 @@ using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interface
 
 namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
 {
-    internal class QueuedBetUrlProcessor : IQueuedBetUrlProcessor
+    internal class BetScreenshotProcessor : IBetScreenshotProcessor
     {
         private readonly ITransactionScopeFactory _transactionScopeFactory;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
-        private readonly IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
+        private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
         private readonly IScreenShotMakerFactory _screenShotMakerFactory;
         private readonly IScreenshotAmazonS3Putter _screenshotAmazonS3Putter;
 
-        public QueuedBetUrlProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IScreenShotMakerFactory screenShotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter)
+        public BetScreenshotProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<BetScreenshot> repositoryOfBetScreenshot, IScreenShotMakerFactory screenShotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
-            _repositoryOfQueuedBetUrl = repositoryOfQueuedBetUrl;
+            _repositoryOfBetScreenshot = repositoryOfBetScreenshot;
             _screenShotMakerFactory = screenShotMakerFactory;
             _screenshotAmazonS3Putter = screenshotAmazonS3Putter;
         }
@@ -43,19 +44,17 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
             {
                 using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
                 {
-                    QueuedBetUrl queuedBetUrl =
-                        _repositoryOfQueuedBetUrl.Get(
-                            EntitySpecifications.EntityIdIsEqualTo<QueuedBetUrl>(queuedBetUrlId)).Single();
+                    var betScreenshot = _repositoryOfBetScreenshot.Get(EntitySpecifications.IdIsEqualTo<BetScreenshot>(queuedBetUrlId)).Include(bs => bs.BattleBet).Single();
 
-                    queuedBetUrl.StartDateTime = DateTime.UtcNow;
+                    betScreenshot.ProcessingStartDateTime = DateTime.UtcNow;
 
                     var screenShotMaker = _screenShotMakerFactory.Create();
 
-                    Stream screenshotPngStream = screenShotMaker.GetScreenshotPngStream(queuedBetUrl.Url, synchronizationContext);
+                    var screenshotPngStream = screenShotMaker.GetScreenshotPngStream(betScreenshot.BattleBet.Url, synchronizationContext);
 
-                    _screenshotAmazonS3Putter.PutScreenshot(amazonS3Client, queuedBetUrl, screenshotPngStream);
+                    _screenshotAmazonS3Putter.PutScreenshot(amazonS3Client, betScreenshot, screenshotPngStream);
 
-                    queuedBetUrl.FinishDateTime = DateTime.UtcNow;
+                    betScreenshot.ProcessingFinishDateTime = DateTime.UtcNow;
                     unitOfWorkScope.SaveChanges();
                 }
 

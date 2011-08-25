@@ -15,23 +15,20 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual double Coefficient { get; set; }
         public virtual string Url { get; set; }
         public virtual DateTime OpenDateTime { get; set; }
+        public virtual long OpenBetScreenshotId { get; set; }
         public virtual DateTime? CloseDateTime { get; set; }
+        public virtual long? CloseBetScreenshotId { get; set; }
         public virtual bool? Success { get; set; }
         public virtual bool IsPrivate { get; set; }
 
         public virtual Battle Battle { get; set; }
         public virtual Team Team { get; set; }
         public virtual User User { get; set; }
-        private ICollection<QueuedBetUrl> _queuedBetUrls;
-        public virtual ICollection<QueuedBetUrl> QueuedBetUrls
-        {
-            get { return _queuedBetUrls; }
-            set { _queuedBetUrls = value; }
-        }
+        public virtual BetScreenshot OpenBetScreenshot { get; set; }
+        public virtual BetScreenshot CloseBetScreenshot { get; set; }
 
         public BattleBet()
         {
-            _queuedBetUrls = new List<QueuedBetUrl>();  
         }
 
         public BattleBet(long battleId, long teamId, long userId, string title, double bet, double coefficient, string url, bool isPrivate) : this()

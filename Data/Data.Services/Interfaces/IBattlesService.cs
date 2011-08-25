@@ -1,4 +1,5 @@
 using System;
+using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 
 namespace BetTeamsBattle.Data.Services.Interfaces

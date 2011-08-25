@@ -60,7 +60,7 @@
     <Compile Include="Specifications\IpToCountrySpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\Repository.cs" />
-    <Compile Include="Specifications\QueuedBetUrlSpecifications.cs" />
+    <Compile Include="Specifications\BetScreenshotSpecifications.cs" />
     <Compile Include="Specifications\TeamSpecifications.cs" />
     <Compile Include="Specifications\UserSpecifications.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
@@ -87,7 +87,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>

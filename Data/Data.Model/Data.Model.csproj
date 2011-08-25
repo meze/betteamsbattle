@@ -47,14 +47,12 @@
     <Compile Include="Entities\BattleBet.cs" />
     <Compile Include="Entities\BattleTeamStatistics.cs" />
     <Compile Include="Entities\IpToCountry.cs" />
-    <Compile Include="Entities\QueuedBetUrl.cs" />
+    <Compile Include="Entities\BetScreenshot.cs" />
     <Compile Include="Entities\Team.cs" />
     <Compile Include="Entities\TeamUser.cs" />
     <Compile Include="Entities\UserProfile.cs" />
-    <Compile Include="Enums\BattleType.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Enums\QueuedBetUrlType.cs" />
     <Compile Include="Helpers\EntityHelper.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Model.Designer.cs">
@@ -70,11 +68,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

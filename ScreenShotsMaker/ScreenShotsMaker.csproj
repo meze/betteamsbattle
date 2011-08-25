@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\AWSSDK.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Client\Ninject.dll</HintPath>
     </Reference>
@@ -68,10 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DI\ScreenShotsMakerNinjectModule.cs" />
-    <Compile Include="QueuedBetUrlProcessor\Interfaces\IQueuedBetUrlProcessor.cs" />
+    <Compile Include="QueuedBetUrlProcessor\Interfaces\IBetScreenshotProcessor.cs" />
     <Compile Include="QueuedBetUrlProcessor\Interfaces\IScreenshotAmazonS3Putter.cs" />
     <Compile Include="QueuedBetUrlProcessor\ScreenshotAmazonS3Putter.cs" />
-    <Compile Include="QueuedBetUrlProcessor\QueuedBetUrlProcessor.cs" />
+    <Compile Include="QueuedBetUrlProcessor\BetScreenshotProcessor.cs" />
     <Compile Include="ScreenShotMaker\Interfaces\IRenderBufferToPngStreamConverter.cs" />
     <Compile Include="ScreenShotMaker\Interfaces\IScreenShotMaker.cs" />
     <Compile Include="ScreenShotMaker\Interfaces\IScreenShotMakerFactory.cs" />
