@@ -149,7 +149,9 @@
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\BattleBetsViewService.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\BattlesViewService.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\IBattleBetsViewService.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\IBattlesViewService.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\Interfaces\ITeamsViewService.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\TeamsViewService.cs" />
