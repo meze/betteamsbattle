@@ -8,7 +8,7 @@ namespace BetTeamsBattle.Data.Repositories.Specifications
     {
         public static LinqSpec<BetScreenshot> NotProcessed()
         {
-            return LinqSpec.For<BetScreenshot>(bs => bs.ProcessingFinishDateTime == null);
+            return LinqSpec.For<BetScreenshot>(bs => bs.Status == (sbyte)BetScreenshotStatus.NotProcessed);
         }
     }
 }

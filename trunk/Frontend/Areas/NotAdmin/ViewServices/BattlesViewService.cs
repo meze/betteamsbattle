@@ -33,7 +33,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
 
         public BattleViewModel Battle(long battleId, long? nullableUserId)
         {
-            var battle = _repositoryOfBattle.Get(EntitySpecifications.EntityIdIsEqualTo<Battle>(battleId)).Single();
+            var battle = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Single();
             var battleIsActive = new List<Battle> { battle }.AsQueryable().Where(BattleSpecifications.Current()).Any();
 
             var battleViewModel = new BattleViewModel(battle.Id, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, battleIsActive);
