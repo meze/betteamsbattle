@@ -93,7 +93,6 @@ namespace BetTeamsBattle.Data.Services.Tests
             var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
 
             AssertOpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-            AssertOpenBetScreenshot(battleBetId);
 
             AssertBattleTeamStatistics(battle.Id, team.Id, battle.Budget - _bet, 1, 0);
         }
@@ -110,10 +109,8 @@ namespace BetTeamsBattle.Data.Services.Tests
             var battleBetId2 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
 
             AssertOpenedBattleBet(battleBetId1, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-            AssertOpenBetScreenshot(battleBetId1);
 
             AssertOpenedBattleBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-            AssertOpenBetScreenshot(battleBetId2);
 
             AssertBattleTeamStatistics(battle.Id, team.Id, battle.Budget - _bet * 2, 2, 0);
         }
@@ -171,17 +168,12 @@ namespace BetTeamsBattle.Data.Services.Tests
 
         private void AssertOpenedBattleBet(long battleBetId, long battleId, long teamId, long userId, string _betTitle, double bet, double coefficient, string url, bool isPrivate)
         {
-            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.BattleId == battleId && bb.TeamId == teamId && bb.UserId == userId && bb.Title == _betTitle && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url && bb.IsPrivate == isPrivate).Single();
+            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.BattleId == battleId && bb.TeamId == teamId && bb.UserId == userId && bb.Title == _betTitle && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url && bb.IsPrivate == isPrivate && bb.OpenBetScreenshot.Status == (sbyte)BetScreenshotStatus.NotProcessed).Single();
         }
 
         private void AssertClosedBattleBet(long battleBetId, bool success)
         {
             _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.Success == success).Single();
-        }
-
-        private void AssertOpenBetScreenshot(long battleBetId)
-        {
-            _repositoryOfBetScreenshot.All().Where(bs => bs.BattleBetId == battleBetId && bs.BattleBet.OpenBetScreenshotId == bs.Id).Single();
         }
 
         private void AssertBattleTeamStatistics(long battleId, long teamId, double balance, int openedBetsCount, int closedBetsCount)

@@ -5,6 +5,6 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces
 {
     internal interface IBetScreenshotProcessor
     {
-        void Process(long queuedBetUrlId, AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext);
+        void Process(long betScreenshotId, AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext);
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="battles" EntityType="Model.Store.battles" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="battlesbets" EntityType="Model.Store.battlesbets" store:Type="Tables" Schema="betteamsbattle" />
@@ -42,10 +42,6 @@
           <AssociationSet Name="battlesteamsstatistics_ibfk_2" Association="Model.Store.battlesteamsstatistics_ibfk_2">
             <End Role="teams" EntitySet="teams" />
             <End Role="battlesteamsstatistics" EntitySet="battlesteamsstatistics" />
-          </AssociationSet>
-          <AssociationSet Name="betsscreenshots_ibfk_1" Association="Model.Store.betsscreenshots_ibfk_1">
-            <End Role="battlesbets" EntitySet="battlesbets" />
-            <End Role="betsscreenshots" EntitySet="betsscreenshots" />
           </AssociationSet>
           <AssociationSet Name="teamsusers_ibfk_1" Association="Model.Store.teamsusers_ibfk_1">
             <End Role="teams" EntitySet="teams" />
@@ -106,10 +102,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="BattleBetId" Type="bigint" Nullable="false" />
           <Property Name="CreationDateTime" Type="datetime" Nullable="false" />
-          <Property Name="ProcessingStartDateTime" Type="datetime" />
-          <Property Name="ProcessingFinishDateTime" Type="datetime" />
+          <Property Name="StartedProcessingDateTime" Type="datetime" />
+          <Property Name="StartedScreenshotRetrievalDateTime" Type="datetime" />
+          <Property Name="FinishedScreenshotRetrievalDateTime" Type="datetime" />
+          <Property Name="StartedScreenshotSavingDateTime" Type="datetime" />
+          <Property Name="FinishedScreenshotSavingDateTime" Type="datetime" />
+          <Property Name="FinishedProcessingDateTime" Type="datetime" />
           <Property Name="Status" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="iptocountry">
@@ -246,18 +245,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="betsscreenshots_ibfk_1">
-          <End Role="battlesbets" Type="Model.Store.battlesbets" Multiplicity="1" />
-          <End Role="betsscreenshots" Type="Model.Store.betsscreenshots" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="battlesbets">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="betsscreenshots">
-              <PropertyRef Name="BattleBetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="teamsusers_ibfk_1">
           <End Role="teams" Type="Model.Store.teams" Multiplicity="1" />
           <End Role="teamsusers" Type="Model.Store.teamsusers" Multiplicity="*" />
@@ -347,10 +334,6 @@
           <AssociationSet Name="battlesbets_ibfk_14" Association="Model.battlesbets_ibfk_14">
             <End Role="BetScreenshot" EntitySet="BetsScreenshots" />
             <End Role="BattleBet" EntitySet="BattlesBets" />
-          </AssociationSet>
-          <AssociationSet Name="betsscreenshots_ibfk_1" Association="Model.betsscreenshots_ibfk_1">
-            <End Role="BattleBet" EntitySet="BattlesBets" />
-            <End Role="BetScreenshot" EntitySet="BetsScreenshots" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="IpToCountry">
@@ -564,11 +547,13 @@
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="DateTime" Name="CreationDateTime" Nullable="false" />
-          <Property Type="DateTime" Name="ProcessingStartDateTime" />
-          <Property Type="DateTime" Name="ProcessingFinishDateTime" />
           <Property Type="SByte" Name="Status" Nullable="false" />
-          <Property Type="Int64" Name="BattleBetId" Nullable="false" />
-          <NavigationProperty Name="BattleBet" Relationship="Model.betsscreenshots_ibfk_1" FromRole="BetScreenshot" ToRole="BattleBet" />
+          <Property Type="DateTime" Name="StartedProcessingDateTime" />
+          <Property Type="DateTime" Name="StartedScreenshotRetrievalDateTime" />
+          <Property Type="DateTime" Name="FinishedScreenshotRetrievalDateTime" />
+          <Property Type="DateTime" Name="StartedScreenshotSavingDateTime" />
+          <Property Type="DateTime" Name="FinishedScreenshotSavingDateTime" />
+          <Property Type="DateTime" Name="FinishedProcessingDateTime" />
         </EntityType>
         <Association Name="battlesbets_ibfk_4">
           <End Type="Model.BetScreenshot" Role="betsscreenshot" Multiplicity="1" />
@@ -591,18 +576,6 @@
             </Principal>
             <Dependent Role="BattleBet">
               <PropertyRef Name="CloseBetScreenshotId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="betsscreenshots_ibfk_1">
-          <End Type="Model.BattleBet" Role="BattleBet" Multiplicity="1" />
-          <End Type="Model.BetScreenshot" Role="BetScreenshot" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BattleBet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BetScreenshot">
-              <PropertyRef Name="BattleBetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -716,10 +689,13 @@
           <EntitySetMapping Name="BetsScreenshots">
             <EntityTypeMapping TypeName="Model.BetScreenshot">
               <MappingFragment StoreEntitySet="betsscreenshots">
-                <ScalarProperty Name="BattleBetId" ColumnName="BattleBetId" />
+                <ScalarProperty Name="FinishedProcessingDateTime" ColumnName="FinishedProcessingDateTime" />
+                <ScalarProperty Name="FinishedScreenshotSavingDateTime" ColumnName="FinishedScreenshotSavingDateTime" />
+                <ScalarProperty Name="StartedScreenshotSavingDateTime" ColumnName="StartedScreenshotSavingDateTime" />
+                <ScalarProperty Name="FinishedScreenshotRetrievalDateTime" ColumnName="FinishedScreenshotRetrievalDateTime" />
+                <ScalarProperty Name="StartedScreenshotRetrievalDateTime" ColumnName="StartedScreenshotRetrievalDateTime" />
+                <ScalarProperty Name="StartedProcessingDateTime" ColumnName="StartedProcessingDateTime" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ProcessingFinishDateTime" ColumnName="ProcessingFinishDateTime" />
-                <ScalarProperty Name="ProcessingStartDateTime" ColumnName="ProcessingStartDateTime" />
                 <ScalarProperty Name="CreationDateTime" ColumnName="CreationDateTime" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -764,8 +740,8 @@
           <ConnectorPoint PointX="2" PointY="4.19063877363782" />
           <ConnectorPoint PointX="2.375" PointY="4.56563877363782" />
           <ConnectorPoint PointX="2.375" PointY="4.125" />
-          <ConnectorPoint PointX="5.416666666666667" PointY="4.1249999999999991" />
-          <ConnectorPoint PointX="5.583333333333333" PointY="4.125" />
+          <ConnectorPoint PointX="4.947916666666667" PointY="4.1249999999999991" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="4.125" />
           <ConnectorPoint PointX="8.75" PointY="4.125" />
           <ConnectorPoint PointX="9.125" PointY="4.5" />
         </AssociationConnector>
@@ -785,26 +761,22 @@
           <ConnectorPoint PointX="8.5" PointY="2.5285953776041667" />
         </AssociationConnector>
         <AssociationConnector Association="Model.battlesbets_ibfk_21" >
-          <ConnectorPoint PointX="5.5" PointY="3.8071907552083331" />
-          <ConnectorPoint PointX="5.5" PointY="8.0499479166666674" />
-          <ConnectorPoint PointX="9.125" PointY="8.0499479166666674" />
+          <ConnectorPoint PointX="5.03125" PointY="3.8071907552083331" />
+          <ConnectorPoint PointX="5.03125" PointY="8.2422493489583317" />
+          <ConnectorPoint PointX="9.125" PointY="8.2422493489583317" />
         </AssociationConnector>
         <AssociationConnector Association="Model.battlesteamsstatistics_ibfk_2" >
           <ConnectorPoint PointX="6.25" PointY="2.4324446614583337" />
           <ConnectorPoint PointX="7" PointY="2.4324446614583337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.BetScreenshot" Width="1.5" PointX="6.5" PointY="4.5" Height="2.3648893229166665" />
+        <EntityTypeShape EntityType="Model.BetScreenshot" Width="2.625" PointX="5.375" PointY="4.5" Height="2.7494921874999996" />
         <AssociationConnector Association="Model.battlesbets_ibfk_4" >
-          <ConnectorPoint PointX="8" PointY="5.0802173857472352" />
-          <ConnectorPoint PointX="9.125" PointY="5.0802173857472352" />
+          <ConnectorPoint PointX="8" PointY="6.3963136680448951" />
+          <ConnectorPoint PointX="9.125" PointY="6.3963136680448951" />
         </AssociationConnector>
         <AssociationConnector Association="Model.battlesbets_ibfk_14" >
-          <ConnectorPoint PointX="8" PointY="6.3564095472055682" />
-          <ConnectorPoint PointX="9.125" PointY="6.3564095472055682" />
-        </AssociationConnector>
-        <AssociationConnector Association="Model.betsscreenshots_ibfk_1" >
-          <ConnectorPoint PointX="9.125" PointY="5.7183134664764017" />
-          <ConnectorPoint PointX="8" PointY="5.7183134664764017" />
+          <ConnectorPoint PointX="8" PointY="5.4169093340224483" />
+          <ConnectorPoint PointX="9.125" PointY="5.4169093340224483" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

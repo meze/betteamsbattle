@@ -8,10 +8,11 @@
     <ProjectGuid>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.ScreenShotsMaker</RootNamespace>
-    <AssemblyName>BetTeamsBattle.ScreenShotsMaker</AssemblyName>
+    <RootNamespace>BetTeamsBattle.ScreenshotsMaker</RootNamespace>
+    <AssemblyName>BetTeamsBattle.ScreenshotsMaker</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

@@ -7,26 +7,31 @@ namespace BetTeamsBattle.Data.Model.Entities
     public class BetScreenshot : IEntity
     {
         public virtual long Id { get; set; }
-        public virtual long BattleBetId { get; set; }
         public virtual DateTime CreationDateTime { get; set; }
-        public virtual DateTime? ProcessingStartDateTime { get; set; }
-        public virtual DateTime? ProcessingFinishDateTime { get; set; }
-
-        public virtual BattleBet BattleBet { get; set; }
+        public virtual DateTime? StartedProcessingDateTime { get; set; }
+        public virtual DateTime? StartedScreenshotRetrievalDateTime { get; set; }
+        public virtual DateTime? FinishedScreenshotRetrievalDateTime { get; set; }
+        public virtual DateTime? StartedScreenshotSavingDateTime { get; set; }
+        public virtual DateTime? FinishedScreenshotSavingDateTime { get; set; }
+        public virtual DateTime? FinishedProcessingDateTime { get; set; }
+        public virtual sbyte Status { get; set; }
+        public virtual BetScreenshotStatus StatusEnum
+        {
+            get { return (BetScreenshotStatus)Status; }
+            set { Status = (sbyte) value; }
+        }
 
         public BetScreenshot()
         {
-        }
-
-        public BetScreenshot(long battleBetId)
-        {
-            BattleBetId = battleBetId;
             CreationDateTime = DateTime.UtcNow;
+            StatusEnum = BetScreenshotStatus.NotProcessed;
         }
     }
 
     public enum BetScreenshotStatus
     {
-        
+        NotProcessed = 1,
+        Processed = 2,
+        Failed = 3
     }
 }

@@ -18,5 +18,10 @@ namespace BetTeamsBattle.Data.Repositories.Specifications
         {
             return BattleIdIsEqualTo(battleId) && UserIdIsEqualTo(userId);
         }
+
+        public static LinqSpec<BattleBet> BetScreenshotOwner(long betScreenshotId)
+        {
+            return LinqSpec.For<BattleBet>(bb => bb.OpenBetScreenshotId == betScreenshotId || bb.CloseBetScreenshotId == betScreenshotId);
+        }
     }
 }
