@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Services.Tests", "Data\Data.Services.Tests\Data.Services.Tests.csproj", "{B386F5A3-D586-41D3-A7C1-214C4E514F31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker", "ScreenShotsMaker\ScreenShotsMaker.csproj", "{668A5B28-216A-4DA8-9B58-BB904B9C0472}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker", "ScreenshotsMaker\ScreenshotsMaker.csproj", "{668A5B28-216A-4DA8-9B58-BB904B9C0472}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{A7C451BA-6138-489D-B91C-D66DF03BE3D3}"
 EndProject

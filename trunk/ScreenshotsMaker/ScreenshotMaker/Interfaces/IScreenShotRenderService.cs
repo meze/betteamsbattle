@@ -3,7 +3,7 @@ using AwesomiumSharp;
 
 namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces
 {
-    internal interface IScreenShotRenderService
+    internal interface IScreenshotRenderService
     {
         RenderBuffer GetRender(string url, SynchronizationContext synchronizationContext);
     }

@@ -1,7 +1,7 @@
 ﻿namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces
 {
-    internal interface IScreenShotMakerFactory
+    internal interface IScreenshotMakerFactory
     {
-        IScreenShotMaker Create();
+        IScreenshotMaker Create();
     }
 }
