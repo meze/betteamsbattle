@@ -8,6 +8,7 @@ using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
 using BetTeamsBattle.Frontend.Authentication;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
@@ -15,21 +16,20 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
     public partial class BattleBetsController : Controller
     {
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
+        private readonly IBattleBetsViewService _battleBetsViewService;
         private readonly IBattlesService _battlesService;
 
-        public BattleBetsController(IRepository<BattleBet> repositoryOfBattleBet, IBattlesService battlesService)
+        public BattleBetsController(IRepository<BattleBet> repositoryOfBattleBet, IBattleBetsViewService battleBetsViewService, IBattlesService battlesService)
         {
             _repositoryOfBattleBet = repositoryOfBattleBet;
+            _battleBetsViewService = battleBetsViewService;
             _battlesService = battlesService;
         }
 
         [ChildActionOnly]
         public virtual ActionResult MyBets(long battleId)
         {
-            var myBets = _repositoryOfBattleBet.
-                Get(BattleBetSpecifications.BattleIdAndUserIdAreEqualTo(battleId, CurrentUser.UserId)).
-                OrderByDescending(b => b.OpenDateTime).
-                ToList();
+            var myBets = _battleBetsViewService.MyBets(battleId, CurrentUser.UserId);
 
             return View(myBets);
         }
