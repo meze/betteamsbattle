@@ -63,6 +63,7 @@
   <ItemGroup>
     <None Include="..\..\Configs\Test\App.config">
       <Link>App.config</Link>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

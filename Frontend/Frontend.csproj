@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetOpenAuth">
       <HintPath>..\packages\DotNetOpenAuth.3.4.7.11121\lib\DotNetOpenAuth.dll</HintPath>
@@ -346,13 +349,6 @@
     <Content Include="Scripts\openid-selector\js\openid-uk.js" />
     <Content Include="Scripts\openid-selector\js\prototype.js" />
     <Content Include="Scripts\openid-selector\README.txt" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -383,6 +379,9 @@
     <Content Include="Areas\NotAdmin\Views\Battles\BattleTopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AccountLink.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Shared\_Team.cshtml" />
+    <Content Include="..\Configs\Production\Web.config">
+      <Link>Web.config</Link>
+    </Content>
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -505,4 +504,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>copy /Y "$(SolutionDir)Configs\Production\AppSettings.config" "$(ProjectDir)"
+copy /Y "$(SolutionDir)Configs\Production\ConnectionStrings.config" "$(ProjectDir)"
+copy /Y "$(SolutionDir)Configs\Production\Web.config" "$(ProjectDir)"
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>
