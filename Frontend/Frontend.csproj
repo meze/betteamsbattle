@@ -379,7 +379,7 @@
     <Content Include="Areas\NotAdmin\Views\Battles\BattleTopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AccountLink.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Shared\_Team.cshtml" />
-    <Content Include="..\Configs\Production\Web.config">
+    <Content Include="..\Configs\Usage\Web.config">
       <Link>Web.config</Link>
     </Content>
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
@@ -505,9 +505,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PreBuildEvent>copy /Y "$(SolutionDir)Configs\Production\AppSettings.config" "$(ProjectDir)"
-copy /Y "$(SolutionDir)Configs\Production\ConnectionStrings.config" "$(ProjectDir)"
-copy /Y "$(SolutionDir)Configs\Production\Web.config" "$(ProjectDir)"
+    <PreBuildEvent>copy /Y "$(SolutionDir)Configs\Usage\AppSettings.config" "$(ProjectDir)"
+copy /Y "$(SolutionDir)Configs\Usage\ConnectionStrings.config" "$(ProjectDir)"
+copy /Y "$(SolutionDir)Configs\Usage\Web.config" "$(ProjectDir)"
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

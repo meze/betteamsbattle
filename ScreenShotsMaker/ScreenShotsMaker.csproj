@@ -114,7 +114,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Configs\Production\App.config">
+    <None Include="..\Configs\Usage\App.config">
       <Link>App.config</Link>
     </None>
     <None Include="packages.config" />
