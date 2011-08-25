@@ -20,7 +20,7 @@ using NLog;
 
 namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
 {
-    internal class ScreenshotsMakingManager : IScreenShotsMakingManager
+    internal class ScreenshotsMakingManager : IScreenshotsMakingManager
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
@@ -39,7 +39,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
             _betScreenshotProcessor = betScreenshotProcessor;
         }
 
-        #region IScreenShotsMakingManager Members
+        #region IScreenshotsMakingManager Members
 
         public void Run()
         {

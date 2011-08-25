@@ -27,16 +27,16 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
         private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
-        private readonly IScreenShotMakerFactory _screenShotMakerFactory;
+        private readonly IScreenshotMakerFactory _screenshotMakerFactory;
         private readonly IScreenshotAmazonS3Putter _screenshotAmazonS3Putter;
 
-        public BetScreenshotProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleBet> repositoryOfBattleBet, IScreenShotMakerFactory screenShotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter)
+        public BetScreenshotProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleBet> repositoryOfBattleBet, IScreenshotMakerFactory screenshotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
             _repositoryOfBetScreenshot = repositoryOfBetScreenshot;
             _repositoryOfBattleBet = repositoryOfBattleBet;
-            _screenShotMakerFactory = screenShotMakerFactory;
+            _screenshotMakerFactory = screenshotMakerFactory;
             _screenshotAmazonS3Putter = screenshotAmazonS3Putter;
         }
 
@@ -92,7 +92,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
         {
             betScreenshot.StartedScreenshotRetrievalDateTime = DateTime.UtcNow;
 
-            var screenShotMaker = _screenShotMakerFactory.Create();
+            var screenShotMaker = _screenshotMakerFactory.Create();
             var screenshotPngStream = screenShotMaker.GetScreenshotPngStream(battleBetUrl, synchronizationContext);
 
             betScreenshot.FinishedScreenshotRetrievalDateTime = DateTime.UtcNow;

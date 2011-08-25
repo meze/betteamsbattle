@@ -4,12 +4,12 @@ using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
 
 namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker
 {
-    internal class ScreenShotRenderService : IScreenShotRenderService
+    internal class ScreenshotRenderService : IScreenshotRenderService
     {
         private bool _finishedScrollDataReceived;
         private ScrollData _scrollData;
 
-        #region IScreenShotRenderService Members
+        #region IScreenshotRenderService Members
 
         public RenderBuffer GetRender(string url, SynchronizationContext synchronizationContext)
         {

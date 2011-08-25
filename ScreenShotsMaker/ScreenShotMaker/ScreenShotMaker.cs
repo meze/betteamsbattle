@@ -5,23 +5,23 @@ using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
 
 namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker
 {
-    internal class ScreenShotMaker : IScreenShotMaker
+    internal class ScreenshotMaker : IScreenshotMaker
     {
         private readonly IRenderBufferToPngStreamConverter _renderBufferToPngStreamConverter;
-        private readonly IScreenShotRenderService _screenShotRenderService;
+        private readonly IScreenshotRenderService _screenshotRenderService;
 
-        public ScreenShotMaker(IScreenShotRenderService screenShotRenderService,
+        public ScreenshotMaker(IScreenshotRenderService screenshotRenderService,
                                IRenderBufferToPngStreamConverter renderBufferToPngStreamConverter)
         {
-            _screenShotRenderService = screenShotRenderService;
+            _screenshotRenderService = screenshotRenderService;
             _renderBufferToPngStreamConverter = renderBufferToPngStreamConverter;
         }
 
-        #region IScreenShotMaker Members
+        #region IScreenshotMaker Members
 
         public Stream GetScreenshotPngStream(string url, SynchronizationContext synchronizationContext)
         {
-            RenderBuffer renderBuffer = _screenShotRenderService.GetRender(url, synchronizationContext);
+            RenderBuffer renderBuffer = _screenshotRenderService.GetRender(url, synchronizationContext);
 
             return _renderBufferToPngStreamConverter.ConvertToPngStream(renderBuffer);
         }
