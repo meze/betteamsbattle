@@ -20,23 +20,23 @@ using NLog;
 
 namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
 {
-    internal class ScreenShotsMakingManager : IScreenShotsMakingManager
+    internal class ScreenshotsMakingManager : IScreenShotsMakingManager
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        private readonly IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
-        private readonly IQueuedBetUrlProcessor _queuedBetUrlProcessor;
+        private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
+        private readonly IBetScreenshotProcessor _betScreenshotProcessor;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(10);
 
         private AmazonS3 _amazonS3Client;
         private IList<long> _queuedBetUrlsIdsInProcessing = new List<long>();
         private SynchronizationContext _synchronizationContext;
 
-        public ScreenShotsMakingManager(IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl,
-            IQueuedBetUrlProcessor queuedBetUrlProcessor)
+        public ScreenshotsMakingManager(IRepository<BetScreenshot> repositoryOfBetScreenshot,
+            IBetScreenshotProcessor betScreenshotProcessor)
         {
-            _repositoryOfQueuedBetUrl = repositoryOfQueuedBetUrl;
-            _queuedBetUrlProcessor = queuedBetUrlProcessor;
+            _repositoryOfBetScreenshot = repositoryOfBetScreenshot;
+            _betScreenshotProcessor = betScreenshotProcessor;
         }
 
         #region IScreenShotsMakingManager Members
@@ -54,9 +54,9 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
             while (true)
             {
                 List<long> queuedBetUrlsIds =
-                    _repositoryOfQueuedBetUrl.Get(
-                        QueuedBetUrlSpecifications.NotProcessed() &&
-                        !EntitySpecifications.EntityIdIsContainedIn<QueuedBetUrl>(_queuedBetUrlsIdsInProcessing)).
+                    _repositoryOfBetScreenshot.Get(
+                        BetScreenshotSpecifications.NotProcessed() &&
+                        EntitySpecifications.IdIsNotContainedIn<BetScreenshot>(_queuedBetUrlsIdsInProcessing)).
                         OrderBy(qbu => qbu.Id).
                         Select(qbu => qbu.Id).ToList();
                 if (queuedBetUrlsIds.Count == 0)
@@ -90,7 +90,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
 
             try
             {
-                _queuedBetUrlProcessor.Process(queuedBetUrlId, _amazonS3Client, _synchronizationContext);
+                _betScreenshotProcessor.Process(queuedBetUrlId, _amazonS3Client, _synchronizationContext);
             }
             catch (Exception ex)
             {

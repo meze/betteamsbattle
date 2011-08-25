@@ -6,6 +6,6 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor.Interfaces
 {
     internal interface IScreenshotAmazonS3Putter
     {
-        void PutScreenshot(AmazonS3 amazonS3Client, QueuedBetUrl queuedBetUrl, Stream screenshotPngStream);
+        void PutScreenshot(AmazonS3 amazonS3Client, BetScreenshot betScreenshot, Stream screenshotPngStream);
     }
 }

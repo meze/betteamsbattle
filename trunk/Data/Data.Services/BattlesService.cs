@@ -19,17 +19,17 @@ namespace BetTeamsBattle.Data.Services
         private readonly IRepository<Battle> _repositoryOfBattle;
         private readonly IRepository<Team> _repositoryOfTeam;
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
-        private readonly IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
+        private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
         private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
 
-        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattle, IRepository<Team> repositoryOfTeam, IRepository<BattleBet> repositoryOfBattleBet, IRepository<QueuedBetUrl> repositoryOfQueuedBetUrl, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
+        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattle, IRepository<Team> repositoryOfTeam, IRepository<BattleBet> repositoryOfBattleBet, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _repositoryOfBattle = repositoryOfBattle;
             _repositoryOfTeam = repositoryOfTeam;
             _repositoryOfBattleBet = repositoryOfBattleBet;
-            _repositoryOfQueuedBetUrl = repositoryOfQueuedBetUrl;
+            _repositoryOfBetScreenshot = repositoryOfBetScreenshot;
             _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
         }
@@ -58,15 +58,14 @@ namespace BetTeamsBattle.Data.Services
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).SingleOrDefault();
                 if (battleTeamStatistics == null)
                 {
-                    var battleBudget = _repositoryOfBattle.Get(EntitySpecifications.EntityIdIsEqualTo<Battle>(battleId)).Select(b => b.Budget).Single();
+                    var battleBudget = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Select(b => b.Budget).Single();
                     battleTeamStatistics = new BattleTeamStatistics(battleId, teamId, battleBudget);
                     _repositoryOfBattleTeamStatistics.Add(battleTeamStatistics);
                 }
                 battleTeamStatistics.Balance -= bet;
                 battleTeamStatistics.OpenedBetsCount++;
 
-                var queuedBetUrl = new QueuedBetUrl(battleBet.Id, url, QueuedBetUrlType.Open);
-                battleBet.QueuedBetUrls.Add(queuedBetUrl);
+                battleBet.OpenBetScreenshot = new BetScreenshot() { CreationDateTime = DateTime.UtcNow };
 
                 unitOfWorkScope.SaveChanges();
 
@@ -88,7 +87,7 @@ namespace BetTeamsBattle.Data.Services
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
-                var battleBet = _repositoryOfBattleBet.Get(EntitySpecifications.EntityIdIsEqualTo<BattleBet>(battleBetId)).Single();
+                var battleBet = _repositoryOfBattleBet.Get(EntitySpecifications.IdIsEqualTo<BattleBet>(battleBetId)).Single();
                 battleId = battleBet.BattleId;
 
                 if (userId != battleBet.UserId)
@@ -98,7 +97,7 @@ namespace BetTeamsBattle.Data.Services
                 battleBet.Success = success;
 
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleBet.BattleId, battleBet.TeamId)).Single();
-                var team = _repositoryOfTeam.Get(EntitySpecifications.EntityIdIsEqualTo<Team>(battleBet.TeamId)).Single();
+                var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(battleBet.TeamId)).Single();
                 if (success)
                 {
                     var betWin = battleBet.Bet * battleBet.Coefficient;

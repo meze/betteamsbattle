@@ -17,10 +17,10 @@ namespace BetTeamsBattle.ScreenShotsMaker.DI
             Bind<IScreenShotMakerFactory>().To<ScreenShotMakerFactory>();
             Bind<IScreenShotRenderService>().To<ScreenShotRenderService>();
 
-            Bind<IQueuedBetUrlProcessor>().To<QueuedBetUrlProcessor.QueuedBetUrlProcessor>();
+            Bind<IBetScreenshotProcessor>().To<QueuedBetUrlProcessor.BetScreenshotProcessor>();
             Bind<IScreenshotAmazonS3Putter>().To<ScreenshotAmazonS3Putter>();
 
-            Bind<IScreenShotsMakingManager>().To<ScreenShotsMakingManager>();
+            Bind<IScreenShotsMakingManager>().To<ScreenshotsMakingManager>();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace BetTeamsBattle.Data.Services.Tests
         private IRepository<Battle> _repositoryOfBattle;
         private IRepository<Team> _repositoryOfTeam;
         private IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics; 
-        private IRepository<QueuedBetUrl> _repositoryOfQueuedBetUrl;
+        private IRepository<BetScreenshot> _repositoryOfBetScreenshot;
         private IRepository<BattleBet> _repositoryOfBattleBet;
 
         private IUsersService _usersService;
@@ -54,7 +54,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             _repositoryOfBattle = kernel.Get<IRepository<Battle>>();
             _repositoryOfTeam = kernel.Get<IRepository<Team>>();
             _repositoryOfBattleTeamStatistics = kernel.Get<IRepository<BattleTeamStatistics>>();
-            _repositoryOfQueuedBetUrl = kernel.Get<IRepository<QueuedBetUrl>>();
+            _repositoryOfBetScreenshot = kernel.Get<IRepository<BetScreenshot>>();
             _repositoryOfBattleBet = kernel.Get<IRepository<BattleBet>>();
 
             _usersService = kernel.Get<IUsersService>();
@@ -93,7 +93,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
 
             AssertOpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-            AssertQueuedBetUrl(battleBetId, QueuedBetUrlType.Open, _betUrl);
+            AssertOpenBetScreenshot(battleBetId);
 
             AssertBattleTeamStatistics(battle.Id, team.Id, battle.Budget - _bet, 1, 0);
         }
@@ -110,10 +110,10 @@ namespace BetTeamsBattle.Data.Services.Tests
             var battleBetId2 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
 
             AssertOpenedBattleBet(battleBetId1, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-            AssertQueuedBetUrl(battleBetId1, QueuedBetUrlType.Open, _betUrl);
+            AssertOpenBetScreenshot(battleBetId1);
 
             AssertOpenedBattleBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-            AssertQueuedBetUrl(battleBetId2, QueuedBetUrlType.Open, _betUrl);
+            AssertOpenBetScreenshot(battleBetId2);
 
             AssertBattleTeamStatistics(battle.Id, team.Id, battle.Budget - _bet * 2, 2, 0);
         }
@@ -179,9 +179,9 @@ namespace BetTeamsBattle.Data.Services.Tests
             _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.Success == success).Single();
         }
 
-        private void AssertQueuedBetUrl(long battleBetId, QueuedBetUrlType type, string url)
+        private void AssertOpenBetScreenshot(long battleBetId)
         {
-            _repositoryOfQueuedBetUrl.All().Where(qbu => qbu.BattleBetId == battleBetId && qbu.Type == (sbyte)type && qbu.Url == url).Single();
+            _repositoryOfBetScreenshot.All().Where(bs => bs.BattleBetId == battleBetId && bs.BattleBet.OpenBetScreenshotId == bs.Id).Single();
         }
 
         private void AssertBattleTeamStatistics(long battleId, long teamId, double balance, int openedBetsCount, int closedBetsCount)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 
 namespace BetTeamsBattle.Frontend.Areas.Admin.Models
@@ -14,7 +15,7 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Models
         {
             get
             {
-                var fixedBudgetBattleType = BattleType.FixedBudget;
+                const BattleType fixedBudgetBattleType = BattleType.FixedBudget;
                 return new List<SelectListItem>()
                            {
                                new SelectListItem() 

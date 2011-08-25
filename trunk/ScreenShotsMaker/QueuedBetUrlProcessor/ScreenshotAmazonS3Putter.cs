@@ -11,7 +11,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
 {
     internal class ScreenshotAmazonS3Putter : IScreenshotAmazonS3Putter
     {
-        public void PutScreenshot(AmazonS3 amazonS3Client, QueuedBetUrl queuedBetUrl, Stream screenshotPngStream)
+        public void PutScreenshot(AmazonS3 amazonS3Client, BetScreenshot betScreenshot, Stream screenshotPngStream)
         {
             var putObjectRequest = new PutObjectRequest();
 
@@ -19,10 +19,14 @@ namespace BetTeamsBattle.ScreenShotsMaker.QueuedBetUrlProcessor
 
             putObjectRequest.WithBucketName(AppSettings.AmazonBucketName);
 
-            string path = queuedBetUrl.TypeEnum == QueuedBetUrlType.Open
-                              ? AppSettings.AmazonOpenBetScreenshotsPath
-                              : AppSettings.AmazonCloseBetScreenshotsPath;
-            putObjectRequest.WithKey(String.Format("{0}{1}.png", path, queuedBetUrl.Id));
+            string path;
+            if (betScreenshot.BattleBet.OpenBetScreenshotId == betScreenshot.Id)
+                path = AppSettings.AmazonOpenBetScreenshotsPath;
+            else if (betScreenshot.BattleBet.CloseBetScreenshotId == betScreenshot.Id)
+                path = AppSettings.AmazonCloseBetScreenshotsPath;
+            else
+                throw new Exception("Error processing ");
+            putObjectRequest.WithKey(String.Format("{0}{1}.png", path, betScreenshot.Id));
 
             amazonS3Client.PutObject(putObjectRequest);
         }
