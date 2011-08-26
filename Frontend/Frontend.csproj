@@ -143,6 +143,7 @@
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignUpViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MakeBetViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\BattleBets\MyBetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\BattleViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Shared\TeamViewModel.cs" />

@@ -1,5 +1,5 @@
-﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets
-@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+@using Resources
 @model MakeBetViewModel
 @{
     Layout = MVC.Shared.Views._Layout;
@@ -8,6 +8,7 @@
 @Html.ValidationSummary(true)
 @using (Html.BeginForm(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId)))
 {
+    @BattleBets.MakeBetOnBehalfOf @Html.DropDownListFor(m => m.MakeBetForm.TeamId, Model.Teams) <br />
     @BattleBets.Title @Html.TextBoxFor(m => m.MakeBetForm.Title, Model.MakeBetForm.Title) @Html.ValidationMessageFor(m => m.MakeBetForm.Title) <br />
     @BattleBets.Bet @Html.TextBoxFor(m => m.MakeBetForm.Bet, Model.MakeBetForm.Bet) @Html.ValidationMessageFor(m => m.MakeBetForm.Bet) <br />
     @BattleBets.Coefficient @Html.TextBoxFor(m => m.MakeBetForm.Coefficient, Model.MakeBetForm.Coefficient) @Html.ValidationMessageFor(m => m.MakeBetForm.Coefficient) <br />
