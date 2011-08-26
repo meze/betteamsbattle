@@ -6,7 +6,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces
 {
     public interface IBattleBetsViewService
     {
-        IEnumerable<BattleBet> MyBets(long battleId, long userId);
+        IEnumerable<MyBetViewModel> MyBets(long battleId, long userId);
         MakeBetViewModel MakeBet(long battleId, long userId, MakeBetFormViewModel makeBetFormViewModel);
         MakeBetViewModel MakeBet(long battleId, long userId);
     }

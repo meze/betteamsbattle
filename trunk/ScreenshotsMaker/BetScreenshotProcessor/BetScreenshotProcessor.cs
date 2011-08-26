@@ -22,8 +22,9 @@ namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
         private readonly IScreenshotMakerFactory _screenshotMakerFactory;
         private readonly IScreenshotAmazonS3Putter _screenshotAmazonS3Putter;
+        private readonly IBetScreenshotPathService _betScreenshotPathService;
 
-        public BetScreenshotProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleBet> repositoryOfBattleBet, IScreenshotMakerFactory screenshotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter)
+        public BetScreenshotProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleBet> repositoryOfBattleBet, IScreenshotMakerFactory screenshotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter, IBetScreenshotPathService betScreenshotPathService)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
@@ -31,6 +32,7 @@ namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
             _repositoryOfBattleBet = repositoryOfBattleBet;
             _screenshotMakerFactory = screenshotMakerFactory;
             _screenshotAmazonS3Putter = screenshotAmazonS3Putter;
+            _betScreenshotPathService = betScreenshotPathService;
         }
 
         public void Process(long betScreenshotId, AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext)
@@ -97,23 +99,10 @@ namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
         {
             betScreenshot.StartedScreenshotSavingDateTime = DateTime.UtcNow;
 
-            var path = GetPath(battleBet, betScreenshot.Id);
+            var path = _betScreenshotPathService.GetPath(betScreenshot.Id);
             _screenshotAmazonS3Putter.PutScreenshot(amazonS3Client, AppSettings.AmazonBucketName, path, screenshotPngStream);
 
             betScreenshot.FinishedScreenshotSavingDateTime = DateTime.UtcNow;
-        }
-
-        private string GetPath(BattleBet battleBet, long betScreenshotId)
-        {
-            string path;
-            if (battleBet.OpenBetScreenshotId == betScreenshotId)
-                path = AppSettings.AmazonOpenBetScreenshotsPath;
-            else if (battleBet.CloseBetScreenshotId == betScreenshotId)
-                path = AppSettings.AmazonCloseBetScreenshotsPath;
-            else
-                throw new Exception("Error processing ");
-
-            return String.Format("{0}{1}.png", path, betScreenshotId);
         }
     }
 }

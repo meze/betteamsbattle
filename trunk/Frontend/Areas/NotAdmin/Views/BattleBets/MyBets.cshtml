@@ -1,6 +1,7 @@
 ﻿@using BetTeamsBattle.Data.Model.Entities
+@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @using Resources
-@model IEnumerable<BattleBet>
+@model IEnumerable<MyBetViewModel>
 @BattleBets.MyBets
 <br />
 @if (Model.Count() == 0)
@@ -40,38 +41,27 @@ else
         </div>
         <table class="table_stavka_1">
             <tbody>
-                @foreach (var battleBet in Model)
+                @foreach (var myBet in Model)
                 {
                     <tr>
                         <td class="td1_1">
-                            @battleBet.Title
+                            @myBet.Title
                         </td>
                         <td class="td1_3" rowspan="2">
-                            @battleBet.Bet$
+                            @myBet.Bet$
                         </td>
                         <td class="td1_4" rowspan="2">
-                            @battleBet.Coefficient
+                            @myBet.Coefficient
                         </td>
                         <td class="td1_5">
-                            @battleBet.OpenDateTime
+                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.OpenDateTime, myBet.OpenScreenshotStatus, myBet.OpenScreenshotUrl))
                         </td>
                         <td class="td1_7">
-                            @if (battleBet.CloseDateTime.HasValue)
-                            {
-                                <text>
-                                @battleBet.CloseDateTime
-                                <br />
-                                @battleBet.Success
-                                <br />
-                                </text>
-                            }
-                            else
-                            {
-                                <text>
-                                @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(battleBet.Id))
-                                @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(battleBet.Id))
-                                </text>
-                            }
+                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotUrl))
+                        </td>
+                        <td>
+                            @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId)) <br />
+                            @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId)) <br />
                         </td>
                     </tr>
                 }
