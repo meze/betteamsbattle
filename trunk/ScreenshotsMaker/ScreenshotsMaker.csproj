@@ -71,6 +71,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI\ScreenshotsMakerNinjectKernel.cs" />
     <Compile Include="DI\ScreenShotsMakerNinjectModule.cs" />
     <Compile Include="BetScreenshotProcessor\Interfaces\IBetScreenshotProcessor.cs" />
     <Compile Include="BetScreenshotProcessor\Interfaces\IScreenshotAmazonS3Putter.cs" />

@@ -53,7 +53,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
 
             while (true)
             {
-                List<long> queuedBetUrlsIds =
+                var queuedBetUrlsIds =
                     _repositoryOfBetScreenshot.Get(
                         BetScreenshotSpecifications.NotProcessed() &&
                         EntitySpecifications.IdIsNotContainedIn<BetScreenshot>(_queuedBetUrlsIdsInProcessing)).
