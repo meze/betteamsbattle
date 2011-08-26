@@ -17,19 +17,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Services.Tests", "Data\Data.Services.Tests\Data.Services.Tests.csproj", "{B386F5A3-D586-41D3-A7C1-214C4E514F31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker", "ScreenshotsMaker\ScreenshotsMaker.csproj", "{668A5B28-216A-4DA8-9B58-BB904B9C0472}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker", "Screenshots\ScreenshotsMaker\ScreenshotsMaker.csproj", "{668A5B28-216A-4DA8-9B58-BB904B9C0472}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{A7C451BA-6138-489D-B91C-D66DF03BE3D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Tests", "Frontend.Tests\Frontend.Tests.csproj", "{52BC08AD-7EBF-415D-8EC1-D34976D4C3FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker.Tests", "ScreenshotsMaker.Tests\ScreenshotsMaker.Tests.csproj", "{CD5826C5-5573-4816-ABF4-220F4B0A4520}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker.Tests", "Screenshots\ScreenshotsMaker.Tests\ScreenshotsMaker.Tests.csproj", "{CD5826C5-5573-4816-ABF4-220F4B0A4520}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schreenshots", "Schreenshots", "{1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMakerWinForms", "ScreenshotsMaker\ScreenshotsMakerWinForms\ScreenshotsMakerWinForms.csproj", "{B1F6BE11-C141-453F-A302-CD0C543C4820}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMakerWinForms", "Screenshots\ScreenshotsMakerWinForms\ScreenshotsMakerWinForms.csproj", "{B1F6BE11-C141-453F-A302-CD0C543C4820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMakerWinFormsTests", "ScreenshotsMaker\ScreenshotsMakerWinFormsTests\ScreenshotsMakerWinFormsTests.csproj", "{4126E87A-FDD0-4AC9-813F-9D752631071B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMakerWinFormsTests", "Screenshots\ScreenshotsMakerWinFormsTests\ScreenshotsMakerWinFormsTests.csproj", "{4126E87A-FDD0-4AC9-813F-9D752631071B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -182,8 +182,8 @@ Global
 		{1FC3176B-A5DD-4626-B0B3-E6599B138B57} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
 		{31EE08FA-D22B-4FF3-AF38-5C09C757234D} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
 		{B386F5A3-D586-41D3-A7C1-214C4E514F31} = {062BFFA4-E64F-4FC7-9C29-E7E478E8E49E}
-		{668A5B28-216A-4DA8-9B58-BB904B9C0472} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 		{CD5826C5-5573-4816-ABF4-220F4B0A4520} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
+		{668A5B28-216A-4DA8-9B58-BB904B9C0472} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 		{B1F6BE11-C141-453F-A302-CD0C543C4820} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 		{4126E87A-FDD0-4AC9-813F-9D752631071B} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 	EndGlobalSection

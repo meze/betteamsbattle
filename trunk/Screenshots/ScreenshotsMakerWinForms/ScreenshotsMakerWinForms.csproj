@@ -76,7 +76,7 @@
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ScreenshotsMaker.csproj">
+    <ProjectReference Include="..\ScreenshotsMaker\ScreenshotsMaker.csproj">
       <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
       <Name>ScreenshotsMaker</Name>
     </ProjectReference>
