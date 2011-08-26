@@ -1,7 +1,6 @@
 ﻿using BetTeamsBattle.Data.Repositories.DI;
 using BetTeamsBattle.Data.Repositories.Infrastructure.DI;
 using BetTeamsBattle.Data.Services.DI;
-using BetTeamsBattle.ScreenShotsMaker.DI;
 using Ninject;
 
 namespace BetTeamsBattle.Frontend.DI
@@ -13,8 +12,7 @@ namespace BetTeamsBattle.Frontend.DI
             return new StandardKernel(new DataRepositoriesNinjectModule(),
                                       new DataServicesNinjectModule(),
                                       new DataRepositoriesInfrastructureNinjectModule(),
-                                      new FrontendNinjectModule(),
-                                      new ScreenshotsMakerNinjectModule());
+                                      new FrontendNinjectModule());
         }
     }
 }

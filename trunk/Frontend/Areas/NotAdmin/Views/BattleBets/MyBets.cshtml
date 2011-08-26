@@ -2,8 +2,9 @@
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @using Resources
 @model IEnumerable<MyBetViewModel>
-@BattleBets.MyBets
-<br />
+<div class="my_s">
+    @BattleBets.MyBets
+</div>
 @if (Model.Count() == 0)
 {
     <text>
@@ -60,8 +61,10 @@ else
                             @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotUrl))
                         </td>
                         <td>
-                            @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId)) <br />
-                            @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId)) <br />
+                            @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId))
+                            <br />
+                            @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId))
+                            <br />
                         </td>
                     </tr>
                 }

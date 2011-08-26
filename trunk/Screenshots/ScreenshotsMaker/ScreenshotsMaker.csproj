@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="BetScreenshotProcessor\BetScreenshotPathService.cs" />
     <Compile Include="BetScreenshotProcessor\Interfaces\IBetScreenshotPathService.cs" />
+    <Compile Include="DI\ScreenshotsMakerForFrontendNinjectModule.cs" />
     <Compile Include="DI\ScreenShotsMakerNinjectModule.cs" />
     <Compile Include="BetScreenshotProcessor\Interfaces\IBetScreenshotProcessor.cs" />
     <Compile Include="BetScreenshotProcessor\Interfaces\IScreenshotAmazonS3Putter.cs" />

@@ -17,11 +17,13 @@
     @if (Model.BattleIsActive)
     {
         <div class="knopka_st_blok">
-            <div class="knopka_st">
-                <div class="knopka_st_text">
-                    @Html.ActionLink(BattleBets.MakeBet, MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))
+            <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
+                <div class="knopka_st">
+                    <div class="knopka_st_text">
+                        @BattleBets.MakeBet
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     }
     @if (CurrentUser.NullableUserId.HasValue)

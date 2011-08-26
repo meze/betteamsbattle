@@ -29,8 +29,8 @@ namespace BetTeamsBattle.Frontend
         public void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //routes.IgnoreRoute("Content/{*pathInfo}");
-            //routes.IgnoreRoute("Scripts/{*pathInfo}");
+            routes.IgnoreRoute("Content/{*pathInfo}");
+            routes.IgnoreRoute("Scripts/{*pathInfo}");
 
             #region Language-inspecific queries
             //This route is catched by LanguageActionFilter and redirected to page with specific language
