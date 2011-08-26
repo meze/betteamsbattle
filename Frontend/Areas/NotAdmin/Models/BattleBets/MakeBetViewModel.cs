@@ -4,18 +4,17 @@ using BetTeamsBattle.Data.Model.Entities;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 {
-    public class MakeBetViewModel
+    public class MakeBetViewModel : BattleBaseViewModel
     {
-        public long BattleId { get; set; }
         public IEnumerable<SelectListItem> Teams { get; set; } 
         public MakeBetFormViewModel MakeBetForm { get; set; }
 
-        public MakeBetViewModel(long battleId, IEnumerable<SelectListItem> teams)
-            : this(battleId, teams, new MakeBetFormViewModel())
+        public MakeBetViewModel(long battleId, string startDate, string endDate, int budget, int betLimit, IEnumerable<SelectListItem> teams)
+            : this(battleId, startDate, endDate, budget, betLimit, teams, new MakeBetFormViewModel())
         {
         }
 
-        public MakeBetViewModel(long battleId, IEnumerable<SelectListItem> teams, MakeBetFormViewModel makeBetViewModel)
+        public MakeBetViewModel(long battleId, string startDate, string endDate, int budget, int betLimit, IEnumerable<SelectListItem> teams, MakeBetFormViewModel makeBetViewModel) : base(battleId, startDate, endDate, budget, betLimit)
         {
             BattleId = battleId;
             Teams = teams;

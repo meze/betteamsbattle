@@ -28,6 +28,7 @@ namespace T4MVC.NotAdmin {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _BattleLayout = "~/Areas/NotAdmin/Views/Shared/_BattleLayout.cshtml";
             public readonly string _Team = "~/Areas/NotAdmin/Views/Shared/_Team.cshtml";
         }
     }

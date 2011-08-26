@@ -16,15 +16,19 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
     {
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
         private IRepository<Team> _repositoryOfTeam;
+        private readonly IRepository<Battle> _repositoryOfBattle;
 
-        public BattleBetsViewService(IRepository<BattleBet> repositoryOfBattleBet, IRepository<Team> repositoryOfTeam)
+        public BattleBetsViewService(IRepository<BattleBet> repositoryOfBattleBet, IRepository<Team> repositoryOfTeam, IRepository<Battle> repositoryOfBattle)
         {
             _repositoryOfBattleBet = repositoryOfBattleBet;
             _repositoryOfTeam = repositoryOfTeam;
+            _repositoryOfBattle = repositoryOfBattle;
         }
 
         public MakeBetViewModel MakeBet(long battleId, long userId, MakeBetFormViewModel makeBetFormViewModel)
         {
+            var battle = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Single();
+
             var teams = _repositoryOfTeam.Get(TeamSpecifications.UserIsMember(userId)).ToList();
             var personalTeam = teams.Where(t => t.IsPersonal).Single();
             teams.Remove(personalTeam);
@@ -42,7 +46,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                         return selectListItem;
                     }).
                 ToList();
-            var makeBetViewModel = new MakeBetViewModel(battleId, teamsSelectListItems, makeBetFormViewModel);
+
+            var makeBetViewModel = new MakeBetViewModel(battleId, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, teamsSelectListItems, makeBetFormViewModel);
 
             return makeBetViewModel;
         }
