@@ -8,7 +8,7 @@ using Ninject.Modules;
 
 namespace BetTeamsBattle.ScreenShotsMaker.DI
 {
-    public class ScreenShotsMakerNinjectModule : NinjectModule
+    public class ScreenshotsMakerNinjectModule : NinjectModule
     {
         public override void Load()
         {
