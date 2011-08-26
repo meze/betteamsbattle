@@ -26,7 +26,7 @@ h1{
 }
 
 .pravo_content_battle{
-	padding-bottom:100px;
+	padding-bottom:80px;
 	background-image: url('images/ryy.png');
 	background-repeat:repeat-x;
 	background-position:bottom;
@@ -38,6 +38,22 @@ h1{
 	background-image: url('images/heder.jpg');
 	
 }
+
+
+.logo{
+
+cursor:pointer;
+height:184px;
+margin-left:415px;
+width:190px;
+	
+}
+
+.logo a{
+	border:0px;
+	
+}
+
 
   .menu{
 	  height:30px;
@@ -55,7 +71,21 @@ h1{
 position:relative;
 min-height:100%;
 height:auto !important;
-height:100%;padding:0 80px;
+height:100%;
+padding:0px;
+background-image: url('images/7.png');
+background-repeat:repeat-y;
+background-position:center;
+}
+
+
+#osnova_d_b{
+
+position:relative;
+min-height:100%;
+height:auto !important;
+height:100%;
+padding:0px;
 background-image: url('images/12.png');
 background-repeat:repeat-y;
 background-position:center;
@@ -64,17 +94,35 @@ background-position:center;
 
 .content_blok{
 	background-color:#202020;
-	padding-top:8px;
+	padding-top:5px;
+	background-image: url('images/7.png');
+	
 }
 
+.content_blok_b{
+	background-color:#202020;
+	padding-top:5px;
+
+	
+}
 
 
 
 .levo_blok{
+	
+	width:230px;
+	float:left;
+
+		margin-top:-6px
+
+}
+
+.levo_blok_b{	
 	width:230px;
 	float:left;
 	
 }
+
 
 
 .pravo_blok_battle{
@@ -89,12 +137,12 @@ background-position:center;
 .pravo_blok{
 	width:549px;
 	margin-left:238px;
-	background-image: url('images/rr.png');
+
 	
 }
 
 .pravo_blok2{
-	background-image: url('images/r.png');
+
 	background-repeat:repeat-x;	
 }
 
@@ -104,8 +152,8 @@ background-position:center;
 }
 
 .pravo_content{
-	padding-bottom:100px;
-	background-image: url('images/r.png');
+	padding-bottom:30px;
+
 	background-repeat:repeat-x;
 	background-position:bottom;
 	color:#FFF;
@@ -165,10 +213,11 @@ width:1024px;
 background-image:url("images/btn.png");
 float:left;
 height:36px;
-margin-left:13px;
+margin-left:19px;
 margin-top:19px;
-width:201px;
+width:180px;
 cursor:pointer;
+background-repeat:no-repeat;
 
 }
 .knopka_st_blok{
@@ -181,7 +230,7 @@ cursor:pointer;
 	font-size:21px;
 	font-family:Georgia, "Times New Roman", Times, serif;
 	float:left;
-width:201px;
+width:168px;
 padding-top:5px;
 text-align:center;
 }
@@ -201,8 +250,18 @@ text-align:center;
 
 .menu_dubl{
 	text-align:right;
-	height:10px;
+	height:12px;
 
+}
+
+.my_s{
+	text-align:center;
+	color:#FDE406;
+	font-size:17px;
+	padding-bottom:4px;
+	font-family:Tahoma, Geneva, sans-serif;
+	margin-top:-21px;
+	
 }
 
 
@@ -243,31 +302,48 @@ text-align:center;
 	min-height:48px;
 	background-color:#FFF;
 	border:1px solid #333;
-	margin-top:8px;
-	border:1px solid #F00;
+	margin-top:6px;
+border:3px solid #686868;;
 }
 
 
 .pr_blok1_2{
 	min-height:38px;
 	background-color:#FFF;
-	border:1px solid #333;
-	margin-top:6px;
-	border:1px solid #F00;
+	border:3px solid #686868;
+
+	border-top:3px solid #686868;
+
 }
 
 
 .levo_blok1_head{
-	height:28px;
-	background-image: url('images/s.png');
+background-color:#3D3C3C;
+background-image:url("images/rt.png");
+background-repeat:no-repeat;
+border-bottom:2px solid #686868;
+height:36px;
 }
 
 
+.levo_blok1_head_b{
+	height:36px;
+	background-color:#3d3c3c;
+background-image:url("images/rt.png");
+border-bottom:2px solid #686868;
+
+background-repeat:no-repeat;
+
+
+}
 
 
 .pr_blok1_head_2{
-	height:28px;
-	background-image: url('images/2_hed.png');
+background-color:#3D3C3C;
+background-image:url("images/rt.png");
+background-repeat:no-repeat;
+border-bottom:2px solid #686868;
+height:36px;
 }
 
 
@@ -307,7 +383,7 @@ text-align:center;
 
 
 .list{
-	width:208px;
+	width:203px;
 	border-bottom:1px solid #999;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
@@ -320,14 +396,14 @@ text-align:center;
 }
 
 .list_r{
-	width:207px;
-	border-bottom:1px solid #999;
+	width:197px;
+	border-bottom:1px solid #E4E4E4;
 	font-family:Tahoma, Geneva, sans-serif;
 	padding:4px;
 	font-size:13px;
-	padding-left:18px;
+	padding-left:23px;
 	font-weight:bold;
-	background-image: url('images/h.png');
+	background-image: url('images/h_2.png');
 	background-repeat:no-repeat;
 	background-position:-2px 2px;
 }
@@ -349,7 +425,7 @@ text-align:center;
 		width:0px;
 		margin-bottom:-3px;
 	background-image: url('images/pro.png');
-	margin-left:8px;
+	margin-left:20px;
 	padding-left:36px;
 	background-repeat:no-repeat;
 
@@ -369,7 +445,7 @@ text-align:center;
 *:first-child+html .r  {margin-top:-13px}
 
 .list_r a{
-	color:#03F;
+	color:#333;
 	text-decoration:none;
 	font-weight:bold;
 }
@@ -379,7 +455,7 @@ text-align:center;
 	color:#06F;
 	text-decoration:none;
 	font-weight:bold;
-	text-decoration:underline;
+
 }
 
 
@@ -401,13 +477,24 @@ text-align:center;
 
 
 .text_head{
+color:#FFFFFF;
+font-family:Tahoma,Geneva,sans-serif;
+font-size:17px;
+padding-left:14px;
+padding-top:7px;
+text-shadow:1px 1px 1px #333333;
+	
+}
+
+.text_head_b{
 	color:#FFF;
 	font-family:Tahoma, Geneva, sans-serif;
-	font-size:16px;
-	padding-top:3px;
-	text-shadow:1px 1px 2px #000;
-	text-align:center;
-	font-weight:bold;
+	font-size:17px;
+	padding-top:7px;
+	text-shadow:1px 1px 1px #333;
+
+padding-left:14px;
+
 	
 }
 
@@ -825,4 +912,15 @@ font-size:16px;
 	
 }
 
-#osnova_d .empty {height:10px; }
+#osnova_d .empty {
+height:1px;
+margin:0 auto;
+width:1024px;
+}
+
+
+
+
+
+
+

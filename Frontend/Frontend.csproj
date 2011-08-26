@@ -427,10 +427,6 @@
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Screenshots\ScreenshotsMaker\ScreenshotsMaker.csproj">
-      <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
-      <Name>ScreenshotsMaker</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.resx">

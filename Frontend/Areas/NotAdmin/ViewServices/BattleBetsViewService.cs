@@ -8,7 +8,6 @@ using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
-using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 using Resources;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
@@ -17,13 +16,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
     {
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
         private IRepository<Team> _repositoryOfTeam;
-        private readonly IBetScreenshotPathService _betScreenshotPathService;
 
-        public BattleBetsViewService(IRepository<BattleBet> repositoryOfBattleBet, IRepository<Team> repositoryOfTeam, IBetScreenshotPathService betScreenshotPathService)
+        public BattleBetsViewService(IRepository<BattleBet> repositoryOfBattleBet, IRepository<Team> repositoryOfTeam)
         {
             _repositoryOfBattleBet = repositoryOfBattleBet;
             _repositoryOfTeam = repositoryOfTeam;
-            _betScreenshotPathService = betScreenshotPathService;
         }
 
         public MakeBetViewModel MakeBet(long battleId, long userId, MakeBetFormViewModel makeBetFormViewModel)
@@ -80,13 +77,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
 
                 myBetViewModel.OpenDateTime = myBet.OpenDateTime.ToShortDateString();
                 myBetViewModel.OpenScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
-                myBetViewModel.OpenScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.OpenBetScreenshotId);
+                //myBetViewModel.OpenScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.OpenBetScreenshotId);
 
                 if (myBet.CloseBetScreenshotId.HasValue)
                 {
                     myBetViewModel.CloseDateTime = myBet.CloseDateTime.Value.ToShortDateString();
                     myBetViewModel.CloseScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
-                    myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshotId.Value);
+                    //myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshotId.Value);
                 }
                 else
                     myBetViewModel.CloseDateTime = "?";

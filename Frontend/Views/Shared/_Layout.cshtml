@@ -12,9 +12,13 @@
     @RenderSection("Scripts", false)
 </head>
 <body>
-    <div id="osnova_d">
+    <div id="osnova_d_b">
         <div class="osnova">
             <div class="heder">
+                <a href="@Url.Action(MVC.NotAdmin.Home.Index())">
+                    <div class="logo">
+                    </div>
+                </a>
             </div>
             <div class="menu">
                 <table class="table">
@@ -54,9 +58,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="content_blok">
-                @RenderBody()
-            </div>
+            @RenderBody()
         </div>
         <div class="empty">
         </div>
