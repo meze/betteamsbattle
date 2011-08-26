@@ -19,18 +19,11 @@ namespace BetTeamsBattle.ScreenShotsMaker
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-                var kernel = new StandardKernel(new DataRepositoriesNinjectModule(), new ScreenShotsMakerNinjectModule());
+            var kernel = ScreenshotsMakerNinjectKernel.CreateKernel();
 
-                var screenShotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
+            var screenshotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
 
-                screenShotsMakingManager.Run();
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.ErrorException("Error running ScreenShotMakingManager", ex);
-            //}
+            screenshotsMakingManager.Run();
         }
     }
 }

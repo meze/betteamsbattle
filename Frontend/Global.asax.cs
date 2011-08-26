@@ -89,9 +89,7 @@ namespace BetTeamsBattle.Frontend
 
         protected override IKernel CreateKernel()
         {
-            return new StandardKernel(new DataRepositoriesNinjectModule(), new DataServicesNinjectModule(),
-                                      new DataRepositoriesInfrastructureNinjectModule(),
-                                      new FrontendNinjectModule());
+            return FrontendNinjectKernel.CreateKernel();
         }
     }
 }

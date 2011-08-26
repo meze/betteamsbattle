@@ -165,6 +165,7 @@
     <Compile Include="Areas\NotAdmin\Controllers\HomeController.cs" />
     <Compile Include="Authentication\Services\FormsAuthenticationService.cs" />
     <Compile Include="Authentication\Services\Interfaces\IFormsAuthenticationService.cs" />
+    <Compile Include="DI\FrontendNinjectKernel.cs" />
     <Compile Include="DI\FrontendNinjectModule.cs" />
     <Compile Include="FrontendConstants.cs" />
     <Compile Include="Global.asax.cs">
