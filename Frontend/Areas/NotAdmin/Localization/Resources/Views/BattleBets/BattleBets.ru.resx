@@ -120,11 +120,11 @@
   <data name="Bet" xml:space="preserve">
     <value>Ставка</value>
   </data>
-  <data name="BetClosed" xml:space="preserve">
-    <value>Ставка закрыта</value>
-  </data>
   <data name="BetFailed" xml:space="preserve">
     <value>Ставка сыграла</value>
+  </data>
+  <data name="BetFinished" xml:space="preserve">
+    <value>Ставка закончена</value>
   </data>
   <data name="BetIsOutOfYourLimit" xml:space="preserve">
     <value>Ставка превышает ваш лимит</value>
@@ -133,7 +133,7 @@
     <value>Ставка должна быть больше нуля</value>
   </data>
   <data name="BetStarted" xml:space="preserve">
-    <value>Ставка сделана</value>
+    <value>Ставка начата</value>
   </data>
   <data name="BetSucceeded" xml:space="preserve">
     <value>Ставка не сыграла</value>
@@ -164,6 +164,9 @@
   </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Приватная ставка</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Статус</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>

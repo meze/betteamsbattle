@@ -80,7 +80,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet closed.
+        ///   Looks up a localized string similar to Bet finished.
         /// </summary>
         public static string BetFinished {
             get {
@@ -202,6 +202,15 @@ namespace Resources {
         public static string PrivateBet {
             get {
                 return ResourceManager.GetString("PrivateBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
             }
         }
         
