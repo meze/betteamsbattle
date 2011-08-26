@@ -12,7 +12,16 @@
     @RenderSection("Scripts", false)
 </head>
 <body>
-    <div id="osnova_d_b">
+    <div
+    @if (IsSectionDefined("osnova_d"))
+    { 
+    @RenderSection("osnova_d")
+    }
+    else
+    {
+    <text>id="osnova_d"</text>
+    }
+    >
         <div class="osnova">
             <div class="heder">
                 <a href="@Url.Action(MVC.NotAdmin.Home.Index())">
