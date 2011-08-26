@@ -5,6 +5,7 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Localizers.InDays;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Localizers.InDays.Interfaces;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
 using BetTeamsBattle.Frontend.AspNetMvc.ActionFilters;
@@ -40,6 +41,7 @@ namespace BetTeamsBattle.Frontend.DI
 
             Bind<IBattlesViewService>().To<BattlesViewService>();
             Bind<ITeamsViewService>().To<TeamsViewService>();
+            Bind<IBattleBetsViewService>().To<BattleBetsViewService>();
 
             Bind<IInDaysLocalizer>().To<InDaysEnglishLocalizer>().When(r => CurrentLanguage.Language == Language.English);
             Bind<IInDaysLocalizer>().To<InDaysRussianLocalizer>().When(r => CurrentLanguage.Language == Language.Russian);

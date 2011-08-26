@@ -8,7 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets {
+namespace Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -77,6 +80,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Ba
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bet closed.
+        /// </summary>
+        public static string BetFinished {
+            get {
+                return ResourceManager.GetString("BetFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet is out of your limit.
         /// </summary>
         public static string BetIsOutOfYourLimit {
@@ -91,6 +103,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Ba
         public static string BetShouldBeMoreThanZero {
             get {
                 return ResourceManager.GetString("BetShouldBeMoreThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bet started.
+        /// </summary>
+        public static string BetStarted {
+            get {
+                return ResourceManager.GetString("BetStarted", resourceCulture);
             }
         }
         
@@ -140,11 +161,38 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Ba
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make bet on behalf of.
+        /// </summary>
+        public static string MakeBetOnBehalfOf {
+            get {
+                return ResourceManager.GetString("MakeBetOnBehalfOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Me personally.
+        /// </summary>
+        public static string MePersonally {
+            get {
+                return ResourceManager.GetString("MePersonally", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My bets.
         /// </summary>
         public static string MyBets {
             get {
                 return ResourceManager.GetString("MyBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to team.
+        /// </summary>
+        public static string OfTeam {
+            get {
+                return ResourceManager.GetString("OfTeam", resourceCulture);
             }
         }
         

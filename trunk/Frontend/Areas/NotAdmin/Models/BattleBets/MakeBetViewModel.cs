@@ -1,14 +1,25 @@
-﻿namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using BetTeamsBattle.Data.Model.Entities;
+
+namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 {
     public class MakeBetViewModel
     {
         public long BattleId { get; set; }
+        public IEnumerable<SelectListItem> Teams { get; set; } 
         public MakeBetFormViewModel MakeBetForm { get; set; }
 
-        public MakeBetViewModel(long battleId)
+        public MakeBetViewModel(long battleId, IEnumerable<SelectListItem> teams)
+            : this(battleId, teams, new MakeBetFormViewModel())
+        {
+        }
+
+        public MakeBetViewModel(long battleId, IEnumerable<SelectListItem> teams, MakeBetFormViewModel makeBetViewModel)
         {
             BattleId = battleId;
-            MakeBetForm = new MakeBetFormViewModel();
+            Teams = teams;
+            MakeBetForm = makeBetViewModel;
         }
     }
 

@@ -1,5 +1,5 @@
 ﻿@using BetTeamsBattle.Data.Model.Entities
-@using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets
+@using Resources
 @model IEnumerable<BattleBet>
 @BattleBets.MyBets
 <br />
@@ -26,8 +26,13 @@ else
                             @BattleBets.Coefficient
                         </td>
                         <td class="td_4_s">
+                            @BattleBets.BetStarted
                         </td>
                         <td class="td_5_s">
+                            @BattleBets.BetFinished
+                        </td>
+                        <td class="td_6_s">
+                            @BattleBets.Status
                         </td>
                     </tr>
                 </tbody>

@@ -8,22 +8,27 @@ using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
-using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.BattleBets;
+using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Accounts;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
 using BetTeamsBattle.Frontend.Authentication;
 using BetTeamsBattle.Frontend.Localization.Infrastructure;
 using FluentValidation;
+using Resources;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
 {
     public class MakeBetViewModelValidator : AbstractValidator<MakeBetFormViewModel>
     {
         private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
+        private IBattlesService _battlesService;
+        private IRepository<Battle> _repositoryOfBattle;
 
-        public MakeBetViewModelValidator(IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
+        public MakeBetViewModelValidator(IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics, IBattlesService battlesService, IRepository<Battle> repositoryOfBattle)
         {
             _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
+            _battlesService = battlesService;
+            _repositoryOfBattle = repositoryOfBattle;
 
             RuleFor(mb => mb.Title).NotEmpty().WithMessage(BattleBets.TitleShouldNotBeEmpty);
             RuleFor(mb => mb.Title).Length(1, 200).WithMessage(BattleBets.TitleIsTooLong);
@@ -34,11 +39,17 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
                     var battleId = Convert.ToInt32(RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["battleId"]);
                     var teamId = Convert.ToInt32(RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["teamId"]);
 
-                    var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Include(bus => bus.Battle).Single();
+                    var battle = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Single();
 
-                    var betLimit = battleTeamStatistics.Balance * (battleTeamStatistics.Battle.BetLimit / 100d);
+                    var balance = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Select(bts => (double?)bts.Balance).SingleOrDefault();
+                    if (balance == null)
+                    {
+                        balance = battle.Budget;
+                    }
 
-                    return bet <= betLimit;
+                    var betLimit = balance * (battle.BetLimit / 100d);
+
+                    return bet > betLimit;
                 }).WithMessage(BattleBets.BetIsOutOfYourLimit);
 
             RuleFor(mb => mb.Coefficient).GreaterThan(1).WithMessage(BattleBets.CoefficientShouldBeGreaterThanOne);

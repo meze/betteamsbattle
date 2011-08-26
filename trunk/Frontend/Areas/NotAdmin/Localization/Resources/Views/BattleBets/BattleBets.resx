@@ -123,11 +123,17 @@
   <data name="BetFailed" xml:space="preserve">
     <value>Bet failed</value>
   </data>
+  <data name="BetFinished" xml:space="preserve">
+    <value>Bet closed</value>
+  </data>
   <data name="BetIsOutOfYourLimit" xml:space="preserve">
     <value>Bet is out of your limit</value>
   </data>
   <data name="BetShouldBeMoreThanZero" xml:space="preserve">
     <value>Bet should be more that zero</value>
+  </data>
+  <data name="BetStarted" xml:space="preserve">
+    <value>Bet started</value>
   </data>
   <data name="BetSucceeded" xml:space="preserve">
     <value>Bet succeeded</value>
@@ -144,8 +150,17 @@
   <data name="MakeBet" xml:space="preserve">
     <value>Make bet</value>
   </data>
+  <data name="MakeBetOnBehalfOf" xml:space="preserve">
+    <value>Make bet on behalf of</value>
+  </data>
+  <data name="MePersonally" xml:space="preserve">
+    <value>Me personally</value>
+  </data>
   <data name="MyBets" xml:space="preserve">
     <value>My bets</value>
+  </data>
+  <data name="OfTeam" xml:space="preserve">
+    <value>team</value>
   </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Private bet</value>
