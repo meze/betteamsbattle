@@ -66,7 +66,7 @@ namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
 
                     var screenshotPngStream = GetScreenshot(battleBet.Url, betScreenshot, synchronizationContext);
 
-                    PutScreenshot(amazonS3Client, screenshotPngStream, battleBet, betScreenshot);
+                    PutScreenshot(amazonS3Client, screenshotPngStream, betScreenshot);
 
                     betScreenshot.FinishedProcessingDateTime = DateTime.UtcNow;
 
@@ -95,7 +95,7 @@ namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
             return screenshotPngStream;
         }
 
-        private void PutScreenshot(AmazonS3 amazonS3Client, Stream screenshotPngStream, BattleBet battleBet, BetScreenshot betScreenshot)
+        private void PutScreenshot(AmazonS3 amazonS3Client, Stream screenshotPngStream, BetScreenshot betScreenshot)
         {
             betScreenshot.StartedScreenshotSavingDateTime = DateTime.UtcNow;
 
