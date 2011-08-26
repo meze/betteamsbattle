@@ -8,6 +8,7 @@ using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
+using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 using Resources;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
@@ -16,11 +17,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
     {
         private readonly IRepository<BattleBet> _repositoryOfBattleBet;
         private IRepository<Team> _repositoryOfTeam;
+        private readonly IBetScreenshotPathService _betScreenshotPathService;
 
-        public BattleBetsViewService(IRepository<BattleBet> repositoryOfBattleBet, IRepository<Team> repositoryOfTeam)
+        public BattleBetsViewService(IRepository<BattleBet> repositoryOfBattleBet, IRepository<Team> repositoryOfTeam, IBetScreenshotPathService betScreenshotPathService)
         {
             _repositoryOfBattleBet = repositoryOfBattleBet;
             _repositoryOfTeam = repositoryOfTeam;
+            _betScreenshotPathService = betScreenshotPathService;
         }
 
         public MakeBetViewModel MakeBet(long battleId, long userId, MakeBetFormViewModel makeBetFormViewModel)
@@ -38,7 +41,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                         else
                             title = String.Format("{0} {1}", BattleBets.OfTeam, t.Title);
                         var isSelected = t.Id == makeBetFormViewModel.TeamId;
-                        var selectListItem = new SelectListItem() {Value = t.Id.ToString(), Text = t.Title, Selected = isSelected};
+                        var selectListItem = new SelectListItem() {Value = t.Id.ToString(), Text = title, Selected = isSelected};
                         return selectListItem;
                     }).
                 ToList();
@@ -52,7 +55,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             return MakeBet(battleId, userId, new MakeBetFormViewModel());
         }
 
-        public IEnumerable<BattleBet> MyBets(long battleId, long userId)
+        public IEnumerable<MyBetViewModel> MyBets(long battleId, long userId)
         {
             var myBets = _repositoryOfBattleBet.
                    Get(BattleBetSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).
@@ -61,23 +64,49 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                    OrderByDescending(b => b.OpenDateTime).
                    ToList();
 
+            var myBetsViewModels = new List<MyBetViewModel>();
             foreach (var myBet in myBets)
             {
-                //var myBetViewModel = new MyBetViewModel();
-                //myBet.BattleId
-                //myBet.Title
-                //myBet.Url
-                //myBet.Bet
-                //myBet.OpenDateTime
-                //myBet.OpenBetScreenshot.Status
-                //OpenScreenshotUrl
-                //myBet.CloseDateTime
-                //myBet.CloseBetScreenshot.Status
-                //myBet.IsPrivate
-                //CloseScreenshotUrl  
+                var myBetViewModel = new MyBetViewModel()
+                                         {
+                                             BattleBetId = myBet.Id,
+                                             BattleId = myBet.BattleId,
+                                             Title = myBet.Title,
+                                             Url = myBet.Url,
+                                             Bet = myBet.Bet,
+                                             Coefficient = myBet.Coefficient,
+                                             IsPrivate = myBet.IsPrivate,
+                                         };
+
+                myBetViewModel.OpenDateTime = myBet.OpenDateTime.ToShortDateString();
+                myBetViewModel.OpenScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
+                myBetViewModel.OpenScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.OpenBetScreenshotId);
+
+                if (myBet.CloseBetScreenshotId.HasValue)
+                {
+                    myBetViewModel.CloseDateTime = myBet.CloseDateTime.Value.ToShortDateString();
+                    myBetViewModel.CloseScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
+                    myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshotId.Value);
+                }
+                else
+                    myBetViewModel.CloseDateTime = "?";
+
+                myBetsViewModels.Add(myBetViewModel);
             }
 
-            return myBets;
+            return myBetsViewModels;
+        }
+
+        private string BetScreenshotStatusToString(BetScreenshotStatus betScreenshotStatus)
+        {
+            if (betScreenshotStatus == BetScreenshotStatus.Failed)
+                return "Failed";
+            else if (betScreenshotStatus == BetScreenshotStatus.NotProcessed)
+                return "Retrieving...";
+            else if (betScreenshotStatus == BetScreenshotStatus.Processed)
+                return "Screenshot";
+            else
+                throw new ArgumentOutOfRangeException("betScreenshotStatus");
         }
     }
 }

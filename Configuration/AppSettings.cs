@@ -38,25 +38,14 @@ namespace BetTeamsBattle.Configuration
             }
         }
 
-        public static string AmazonOpenBetScreenshotsPath
+        public static string AmazonBetsScreenshotsDirectory
         {
             get 
             { 
-                var amazonOpenBetScreenshotsPath = ConfigurationManager.AppSettings["amazonOpenBetScreenshotsPath"];
-                if (string.IsNullOrEmpty(amazonOpenBetScreenshotsPath))
-                    throw new ArgumentException("amazonOpenBetScreenshotsPath");
-                return amazonOpenBetScreenshotsPath;
-            }
-        }
-
-        public static string AmazonCloseBetScreenshotsPath
-        {
-            get
-            {
-                var amazonCloseBetScreenshotsPath = ConfigurationManager.AppSettings["amazonCloseBetScreenshotsPath"];
-                if (string.IsNullOrEmpty(amazonCloseBetScreenshotsPath))
-                    throw new ArgumentException("amazonCloseBetScreenshotsPath");
-                return amazonCloseBetScreenshotsPath;
+                var amazonBetsScreenshotsDirectory = ConfigurationManager.AppSettings["amazonBetsScreenshotsDirectory"];
+                if (string.IsNullOrEmpty(amazonBetsScreenshotsDirectory))
+                    throw new ArgumentException("amazonBetsScreenshotsDirectory");
+                return amazonBetsScreenshotsDirectory;
             }
         }
     }

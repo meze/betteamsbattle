@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CD5826C5-5573-4816-ABF4-220F4B0A4520}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{B1F6BE11-C141-453F-A302-CD0C543C4820}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.ScreenshotsMaker.Tests</RootNamespace>
-    <AssemblyName>BetTeamsBattle.ScreenshotsMaker.Tests</AssemblyName>
+    <RootNamespace>BetTeamsBattle.ScreenshotsMakerWinForms</RootNamespace>
+    <AssemblyName>BetTeamsBattle.ScreenshotsMakerWinForms</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,24 +31,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.mocks">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="pnunit.framework">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+    <Reference Include="NLog">
+      <HintPath>..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,24 +52,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI\ScreenshotsMakerNinjectKernel.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScreenshotsMaker\ScreenshotsMaker.csproj">
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Data.Repositories.Infrastructure\Data.Repositories.Infrastructure.csproj">
+      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
+      <Name>Data.Repositories.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Data.Repositories\Data.Repositories.csproj">
+      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
+      <Name>Data.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScreenshotsMaker.csproj">
       <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
       <Name>ScreenshotsMaker</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Configs\Testing\App.config">
+    <None Include="..\..\Configs\Usage\App.config">
       <Link>App.config</Link>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>copy "$(SolutionDir)Libraries\Awesomium\*" "$(TargetDir)"
+
+copy /Y "$(SolutionDir)Configs\Usage\AppSettings.config" "$(TargetDir)"
+copy /Y "$(SolutionDir)Configs\Usage\ConnectionStrings.config" "$(TargetDir)"
+copy /Y "$(SolutionDir)Configs\Usage\App.config" "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

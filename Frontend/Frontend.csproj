@@ -146,6 +146,7 @@
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MyBetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\BattleViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\BattleBets\DateAndScreenshotViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Shared\TeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
@@ -386,6 +387,7 @@
     <Content Include="..\Configs\Usage\Web.config">
       <Link>Web.config</Link>
     </Content>
+    <Content Include="Areas\NotAdmin\Views\BattleBets\_DateAndScreenshot.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -424,6 +426,10 @@
     <ProjectReference Include="..\Data\Data.Repositories\Data.Repositories.csproj">
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScreenshotsMaker\ScreenshotsMaker.csproj">
+      <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
+      <Name>ScreenshotsMaker</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
