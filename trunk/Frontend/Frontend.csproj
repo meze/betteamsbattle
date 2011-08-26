@@ -142,6 +142,7 @@
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignInViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignUpViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Accounts\UserViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Shared\BattleBaseViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MakeBetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MyBetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
@@ -388,6 +389,7 @@
       <Link>Web.config</Link>
     </Content>
     <Content Include="Areas\NotAdmin\Views\BattleBets\_DateAndScreenshot.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Shared\_BattleLayout.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
