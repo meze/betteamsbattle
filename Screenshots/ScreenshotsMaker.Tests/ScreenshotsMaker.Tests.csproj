@@ -65,7 +65,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Configs\Testing\App.config">
+    <None Include="..\..\Configs\Testing\App.config">
       <Link>App.config</Link>
     </None>
     <None Include="packages.config" />
