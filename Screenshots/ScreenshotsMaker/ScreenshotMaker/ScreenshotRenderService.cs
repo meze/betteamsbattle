@@ -16,7 +16,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker
             WebView webView = null;
             synchronizationContext.Send((object state) => webView = WebCore.CreateWebView(1024, 768), null);
              
-            webView.LoadURL(url);
+            synchronizationContext.Send(((object state) => webView.LoadURL(url)), null);
 
             while (webView.IsLoadingPage)
                 SleepAndUpdateCore(synchronizationContext);

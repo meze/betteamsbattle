@@ -94,6 +94,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>copy "$(SolutionDir)Libraries\Awesomium\*" "$(TargetDir)"
+copy "$(SolutionDir)Libraries\Awesomium\locales\*" "$(TargetDir)\locales"
 
 copy /Y "$(SolutionDir)Configs\Usage\AppSettings.config" "$(TargetDir)"
 copy /Y "$(SolutionDir)Configs\Usage\ConnectionStrings.config" "$(TargetDir)"

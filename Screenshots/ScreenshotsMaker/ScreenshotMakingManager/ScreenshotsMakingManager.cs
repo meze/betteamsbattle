@@ -75,7 +75,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
                     }
 
                     var thread = new Thread(ProcessInNewThread);
-                    thread.Start();
+                    thread.Start(queuedBetUrlId);
                 }
             }
 
