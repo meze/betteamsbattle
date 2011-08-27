@@ -91,7 +91,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                 if (myBet.CloseBetScreenshotId.HasValue)
                 {
                     myBetViewModel.CloseDateTime = myBet.CloseDateTime.Value.ToShortDateString();
-                    myBetViewModel.CloseScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
+                    myBetViewModel.CloseScreenshotStatus = BetScreenshotStatusToString(myBet.CloseBetScreenshot.StatusEnum);
                     if (myBet.CloseBetScreenshot.StatusEnum == BetScreenshotStatus.Processed)
                         myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshotId.Value);
                 }
