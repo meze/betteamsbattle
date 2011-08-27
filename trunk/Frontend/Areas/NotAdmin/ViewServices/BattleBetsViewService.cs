@@ -85,13 +85,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
 
                 myBetViewModel.OpenDateTime = myBet.OpenDateTime.ToShortDateString();
                 myBetViewModel.OpenScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
-                myBetViewModel.OpenScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.OpenBetScreenshotId);
+                if (myBet.OpenBetScreenshot.StatusEnum == BetScreenshotStatus.Processed)
+                    myBetViewModel.OpenScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.OpenBetScreenshotId);
 
                 if (myBet.CloseBetScreenshotId.HasValue)
                 {
                     myBetViewModel.CloseDateTime = myBet.CloseDateTime.Value.ToShortDateString();
                     myBetViewModel.CloseScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
-                    myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshotId.Value);
+                    if (myBet.CloseBetScreenshot.StatusEnum == BetScreenshotStatus.Processed)
+                        myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshotId.Value);
                 }
                 else
                     myBetViewModel.CloseDateTime = "?";
