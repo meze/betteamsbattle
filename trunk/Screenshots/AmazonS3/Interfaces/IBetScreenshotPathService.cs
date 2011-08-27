@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces
+﻿namespace BetTeamsBattle.Screenshots.AmazonS3.Interfaces
 {
     public interface IBetScreenshotPathService
     {
