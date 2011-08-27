@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Amazon.S3;
 
-namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces
+namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces
 {
     internal interface IBetScreenshotProcessor
     {

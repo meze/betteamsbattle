@@ -2,9 +2,9 @@
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using AwesomiumSharp;
-using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
+using BetTeamsBattle.AwesomiumScreenshotMaker.Interfaces;
 
-namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker
+namespace BetTeamsBattle.AwesomiumScreenshotMaker
 {
     internal class RenderBufferToPngStreamConverter : IRenderBufferToPngStreamConverter
     {

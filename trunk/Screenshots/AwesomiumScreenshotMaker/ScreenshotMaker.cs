@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System.Threading;
 using AwesomiumSharp;
-using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
+using BetTeamsBattle.AwesomiumScreenshotMaker.Interfaces;
 
-namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker
+namespace BetTeamsBattle.AwesomiumScreenshotMaker
 {
     internal class ScreenshotMaker : IScreenshotMaker
     {

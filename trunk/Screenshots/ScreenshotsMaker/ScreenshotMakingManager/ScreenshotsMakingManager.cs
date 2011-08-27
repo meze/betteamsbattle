@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Transactions;
 using Amazon;
 using Amazon.S3;
-using Amazon.S3.Model;
-using AwesomiumSharp;
+using BetTeamsBattle.AwesomiumScreenshotMaker;
+using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
+using BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager.Interfaces;
 using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
-using BetTeamsBattle.Data.Model.Enums;
-using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
-using BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager.Interfaces;
-using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 using NLog;
 
-namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
+namespace BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager
 {
     internal class ScreenshotsMakingManager : IScreenshotsMakingManager
     {
@@ -43,7 +38,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
 
         public void Run()
         {
-            WebCore.Initialize(new WebCoreConfig { CustomCSS = "::-webkit-scrollbar { visibility: hidden; }" });
+            AwesomiumCore.Initialze();
 
             string accessKeyId = AppSettings.AmazonAccessKeyId;
             string secretAccessKeyId = AppSettings.AmazonSecretAccessKeyId;
@@ -79,7 +74,7 @@ namespace BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager
                 }
             }
 
-            WebCore.Shutdown();
+            AwesomiumCore.Shutdown();
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces
+﻿namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces
 {
     public interface IBetScreenshotPathService
     {

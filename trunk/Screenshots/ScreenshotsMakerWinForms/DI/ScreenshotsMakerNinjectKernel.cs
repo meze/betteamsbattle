@@ -1,8 +1,10 @@
-﻿using BetTeamsBattle.Data.Repositories.DI;
+﻿using BetTeamsBattle.AwesomiumScreenshotMaker.DI;
+using BetTeamsBattle.BettScreenshotsManager.DI;
+using BetTeamsBattle.Data.Repositories.DI;
 using BetTeamsBattle.Data.Repositories.Infrastructure.DI;
 using Ninject;
 
-namespace BetTeamsBattle.ScreenShotsMaker.DI
+namespace BetTeamsBattle.ScreenshotsMakerWinForms.DI
 {
     internal class ScreenshotsMakerNinjectKernel
     {
@@ -11,6 +13,8 @@ namespace BetTeamsBattle.ScreenShotsMaker.DI
             return new StandardKernel(
                 new DataRepositoriesInfrastructureNinjectModule(),
                 new DataRepositoriesNinjectModule(), 
+                new AwesomiumScreenshotMakerNinjectModule(),
+                new AmazonS3NinjectModule(),
                 new ScreenshotsMakerNinjectModule());
         }
     }

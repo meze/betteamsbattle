@@ -1,9 +1,8 @@
 ﻿using System;
+using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
 using BetTeamsBattle.Configuration;
-using BetTeamsBattle.Data.Model.Entities;
-using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 
-namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
+namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
 {
     internal class BetScreenshotPathService : IBetScreenshotPathService
     {

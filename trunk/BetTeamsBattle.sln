@@ -17,19 +17,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Services.Tests", "Data\Data.Services.Tests\Data.Services.Tests.csproj", "{B386F5A3-D586-41D3-A7C1-214C4E514F31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker", "Screenshots\ScreenshotsMaker\ScreenshotsMaker.csproj", "{668A5B28-216A-4DA8-9B58-BB904B9C0472}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.BetScreenshotsManager", "Screenshots\ScreenshotsMaker\Screenshots.BetScreenshotsManager.csproj", "{668A5B28-216A-4DA8-9B58-BB904B9C0472}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{A7C451BA-6138-489D-B91C-D66DF03BE3D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend.Tests", "Frontend.Tests\Frontend.Tests.csproj", "{52BC08AD-7EBF-415D-8EC1-D34976D4C3FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMaker.Tests", "Screenshots\ScreenshotsMaker.Tests\ScreenshotsMaker.Tests.csproj", "{CD5826C5-5573-4816-ABF4-220F4B0A4520}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.BetScreenshotsManager.Tests", "Screenshots\ScreenshotsMaker.Tests\Screenshots.BetScreenshotsManager.Tests.csproj", "{CD5826C5-5573-4816-ABF4-220F4B0A4520}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schreenshots", "Schreenshots", "{1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMakerWinForms", "Screenshots\ScreenshotsMakerWinForms\ScreenshotsMakerWinForms.csproj", "{B1F6BE11-C141-453F-A302-CD0C543C4820}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.ScreenshotsMakerWinForms", "Screenshots\ScreenshotsMakerWinForms\Screenshots.ScreenshotsMakerWinForms.csproj", "{B1F6BE11-C141-453F-A302-CD0C543C4820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenshotsMakerWinFormsTests", "Screenshots\ScreenshotsMakerWinFormsTests\ScreenshotsMakerWinFormsTests.csproj", "{4126E87A-FDD0-4AC9-813F-9D752631071B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.ScreenshotsMakerWinForms.Tests", "Screenshots\ScreenshotsMakerWinFormsTests\Screenshots.ScreenshotsMakerWinForms.Tests.csproj", "{4126E87A-FDD0-4AC9-813F-9D752631071B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.AwesomiumScreenshotMaker", "Screenshots\AwesomiumScreenshotMaker\Screenshots.AwesomiumScreenshotMaker.csproj", "{7F6CC474-040D-4A51-BF99-12C0B2A0C014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.AmazonS3", "Screenshots\AmazonS3\Screenshots.AmazonS3.csproj", "{343976EF-889A-4A32-8135-EBF2A96C38F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +175,26 @@ Global
 		{4126E87A-FDD0-4AC9-813F-9D752631071B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4126E87A-FDD0-4AC9-813F-9D752631071B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4126E87A-FDD0-4AC9-813F-9D752631071B}.Release|x86.ActiveCfg = Release|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014}.Release|x86.ActiveCfg = Release|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,5 +210,7 @@ Global
 		{668A5B28-216A-4DA8-9B58-BB904B9C0472} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 		{B1F6BE11-C141-453F-A302-CD0C543C4820} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 		{4126E87A-FDD0-4AC9-813F-9D752631071B} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
+		{7F6CC474-040D-4A51-BF99-12C0B2A0C014} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
+		{343976EF-889A-4A32-8135-EBF2A96C38F6} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 	EndGlobalSection
 EndGlobal
