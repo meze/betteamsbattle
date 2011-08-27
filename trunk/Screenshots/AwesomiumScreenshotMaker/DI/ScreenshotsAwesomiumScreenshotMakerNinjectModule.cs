@@ -1,9 +1,9 @@
-﻿using BetTeamsBattle.AwesomiumScreenshotMaker.Interfaces;
+﻿using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
 using Ninject.Modules;
 
-namespace BetTeamsBattle.AwesomiumScreenshotMaker.DI
+namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.DI
 {
-    public class AwesomiumScreenshotMakerNinjectModule : NinjectModule
+    public class ScreenshotsAwesomiumScreenshotMakerNinjectModule : NinjectModule
     {
         public override void Load()
         {

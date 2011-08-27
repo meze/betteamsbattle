@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Amazon;
-using Amazon.S3;
-using BetTeamsBattle.AwesomiumScreenshotMaker;
-using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
-using BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager.Interfaces;
 using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker;
+using BetTeamsBattle.Screenshots.BettScreenshotsManager.Interfaces;
 using NLog;
 
-namespace BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager
+namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 {
     internal class ScreenshotsMakingManager : IScreenshotsMakingManager
     {
@@ -23,7 +21,7 @@ namespace BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager
         private readonly IBetScreenshotProcessor _betScreenshotProcessor;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(10);
 
-        private AmazonS3 _amazonS3Client;
+        private Amazon.S3.AmazonS3 _amazonS3Client;
         private IList<long> _queuedBetUrlsIdsInProcessing = new List<long>();
         private SynchronizationContext _synchronizationContext;
 

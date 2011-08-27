@@ -1,8 +1,8 @@
 ﻿using System;
-using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
 using BetTeamsBattle.Configuration;
+using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
 
-namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
+namespace BetTeamsBattle.Screenshots.AmazonS3
 {
     internal class BetScreenshotPathService : IBetScreenshotPathService
     {

@@ -1,6 +1,6 @@
 ﻿using AwesomiumSharp;
 
-namespace BetTeamsBattle.AwesomiumScreenshotMaker
+namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
 {
     public class AwesomiumCore
     {

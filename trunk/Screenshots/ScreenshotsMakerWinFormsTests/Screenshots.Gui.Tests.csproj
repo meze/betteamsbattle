@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1F6BE11-C141-453F-A302-CD0C543C4820}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{4126E87A-FDD0-4AC9-813F-9D752631071B}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.ScreenshotsMakerWinForms</RootNamespace>
-    <AssemblyName>BetTeamsBattle.ScreenshotsMakerWinForms</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Gui.Tests</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Gui.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,20 +31,21 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ninject">
       <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,57 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DI\ScreenshotsMakerNinjectKernel.cs" />
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DI\ScreenshotsMakerWinFormsNinjectKernelTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="..\..\Configs\Testing\App.config">
+      <Link>App.config</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\Data.Repositories.Infrastructure\Data.Repositories.Infrastructure.csproj">
-      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
-      <Name>Data.Repositories.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data\Data.Repositories\Data.Repositories.csproj">
-      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
-      <Name>Data.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AmazonS3\Screenshots.AmazonS3.csproj">
-      <Project>{343976EF-889A-4A32-8135-EBF2A96C38F6}</Project>
-      <Name>Screenshots.AmazonS3</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AwesomiumScreenshotMaker\Screenshots.AwesomiumScreenshotMaker.csproj">
-      <Project>{7F6CC474-040D-4A51-BF99-12C0B2A0C014}</Project>
-      <Name>Screenshots.AwesomiumScreenshotMaker</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ScreenshotsMaker\Screenshots.BetScreenshotsManager.csproj">
       <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
       <Name>Screenshots.BetScreenshotsManager</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Configs\Usage\App.config">
-      <Link>App.config</Link>
-    </None>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\ScreenshotsMakerWinForms\Screenshots.Gui.csproj">
+      <Project>{B1F6BE11-C141-453F-A302-CD0C543C4820}</Project>
+      <Name>Screenshots.Gui</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>xcopy "$(SolutionDir)Libraries\Awesomium\*" "$(TargetDir)" /e /i
-
-copy /Y "$(SolutionDir)Configs\Usage\AppSettings.config" "$(TargetDir)"
-copy /Y "$(SolutionDir)Configs\Usage\ConnectionStrings.config" "$(TargetDir)"
-copy /Y "$(SolutionDir)Configs\Usage\App.config" "$(TargetDir)"</PreBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

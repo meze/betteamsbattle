@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.ScreenshotsMakerWinForms
+﻿namespace BetTeamsBattle.Screenshots.Gui
 {
     partial class MainForm
     {

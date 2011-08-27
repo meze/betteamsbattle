@@ -8,8 +8,8 @@
     <ProjectGuid>{7F6CC474-040D-4A51-BF99-12C0B2A0C014}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.AwesomiumScreenshotMaker</RootNamespace>
-    <AssemblyName>BetTeamsBattle.AwesomiumScreenshotMaker</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AwesomiumSharp, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="AwesomiumSharp, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ScreenshotsMakerWinFormsTests\bin\Debug\AwesomiumSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
@@ -49,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AwesomiumCore.cs" />
-    <Compile Include="DI\AwesomiumScreenshotMakerNinjectModule.cs" />
+    <Compile Include="DI\ScreenshotsAwesomiumScreenshotMakerNinjectModule.cs" />
     <Compile Include="Interfaces\IRenderBufferToPngStreamConverter.cs" />
     <Compile Include="Interfaces\IScreenshotMaker.cs" />
     <Compile Include="Interfaces\IScreenshotMakerFactory.cs" />

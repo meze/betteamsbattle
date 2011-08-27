@@ -2,17 +2,17 @@
 using System.IO;
 using System.Linq;
 using System.Threading;
-using Amazon.S3;
-using BetTeamsBattle.AwesomiumScreenshotMaker.Interfaces;
-using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
 using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interfaces;
+using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
+using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
+using BetTeamsBattle.Screenshots.BettScreenshotsManager.Interfaces;
 
-namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
+namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 {
     internal class BetScreenshotProcessor : IBetScreenshotProcessor
     {
@@ -35,7 +35,7 @@ namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
             _betScreenshotPathService = betScreenshotPathService;
         }
 
-        public void Process(long betScreenshotId, AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext)
+        public void Process(long betScreenshotId, Amazon.S3.AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext)
         {
             using (var transactionScope = _transactionScopeFactory.Create())
             {
@@ -52,7 +52,7 @@ namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
             }
         }
 
-        private void ProcessCore(long betScreenshotId, AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext)
+        private void ProcessCore(long betScreenshotId, Amazon.S3.AmazonS3 amazonS3Client, SynchronizationContext synchronizationContext)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
@@ -95,7 +95,7 @@ namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
             return screenshotPngStream;
         }
 
-        private void PutScreenshot(AmazonS3 amazonS3Client, Stream screenshotPngStream, BetScreenshot betScreenshot)
+        private void PutScreenshot(Amazon.S3.AmazonS3 amazonS3Client, Stream screenshotPngStream, BetScreenshot betScreenshot)
         {
             betScreenshot.StartedScreenshotSavingDateTime = DateTime.UtcNow;
 

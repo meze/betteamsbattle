@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BetScreenshotPathService.cs" />
-    <Compile Include="DI\AmazonS3NinjectModule.cs" />
+    <Compile Include="DI\ScreenshotsAmazonS3NinjectModule.cs" />
     <Compile Include="Interfaces\IBetScreenshotPathService.cs" />
     <Compile Include="Interfaces\IScreenshotAmazonS3Putter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
