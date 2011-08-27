@@ -59,7 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScreenshotsMaker\BetScreenshotsManager.csproj">
+    <ProjectReference Include="..\ScreenshotsMaker\Screenshots.BetScreenshotsManager.csproj">
       <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
       <Name>BetScreenshotsManager</Name>
     </ProjectReference>
