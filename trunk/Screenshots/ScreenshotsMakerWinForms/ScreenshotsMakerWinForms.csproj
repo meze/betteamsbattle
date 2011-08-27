@@ -93,7 +93,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>xcopy "$(SolutionDir)Libraries\Awesomium\*" "$(TargetDir)" /e
+    <PreBuildEvent>xcopy "$(SolutionDir)Libraries\Awesomium\*" "$(TargetDir)" /e /i
 
 copy /Y "$(SolutionDir)Configs\Usage\AppSettings.config" "$(TargetDir)"
 copy /Y "$(SolutionDir)Configs\Usage\ConnectionStrings.config" "$(TargetDir)"
