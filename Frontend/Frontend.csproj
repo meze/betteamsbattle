@@ -429,6 +429,10 @@
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Screenshots\AmazonS3\Screenshots.AmazonS3.csproj">
+      <Project>{343976EF-889A-4A32-8135-EBF2A96C38F6}</Project>
+      <Name>Screenshots.AmazonS3</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.resx">

@@ -3,16 +3,16 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using Amazon.S3;
+using BetTeamsBattle.AwesomiumScreenshotMaker.Interfaces;
+using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
 using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
-using BetTeamsBattle.ScreenShotsMaker.ScreenShotMaker.Interfaces;
-using BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor.Interfaces;
 using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interfaces;
 
-namespace BetTeamsBattle.ScreenshotsMaker.BetScreenshotProcessor
+namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
 {
     internal class BetScreenshotProcessor : IBetScreenshotProcessor
     {

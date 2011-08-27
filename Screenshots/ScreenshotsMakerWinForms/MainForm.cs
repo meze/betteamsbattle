@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using BetTeamsBattle.Data.Repositories.DI;
-using BetTeamsBattle.ScreenShotsMaker.DI;
-using BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager.Interfaces;
+using BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager.Interfaces;
+using BetTeamsBattle.ScreenshotsMakerWinForms.DI;
 using NLog;
 using Ninject;
 
-namespace BetTeamsBattle.ScreenShotsMaker
+namespace BetTeamsBattle.ScreenshotsMakerWinForms
 {
     public partial class MainForm : Form
     {

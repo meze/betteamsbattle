@@ -8,8 +8,8 @@
     <ProjectGuid>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.ScreenshotsMaker</RootNamespace>
-    <AssemblyName>BetTeamsBattle.ScreenshotsMaker</AssemblyName>
+    <RootNamespace>BetTeamsBattle.BettScreenshotsManager</RootNamespace>
+    <AssemblyName>BetTeamsBattle.BetScreenshotsManager</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -38,9 +38,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AwesomiumSharp">
-      <HintPath>..\..\Libraries\Awesomium\AwesomiumSharp.dll</HintPath>
-    </Reference>
     <Reference Include="AWSSDK, Version=1.3.10.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\AWSSDK.dll</HintPath>
@@ -68,24 +65,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BetScreenshotProcessor\BetScreenshotPathService.cs" />
-    <Compile Include="BetScreenshotProcessor\Interfaces\IBetScreenshotPathService.cs" />
-    <Compile Include="DI\ScreenshotsMakerForFrontendNinjectModule.cs" />
     <Compile Include="DI\ScreenShotsMakerNinjectModule.cs" />
     <Compile Include="BetScreenshotProcessor\Interfaces\IBetScreenshotProcessor.cs" />
-    <Compile Include="BetScreenshotProcessor\Interfaces\IScreenshotAmazonS3Putter.cs" />
-    <Compile Include="BetScreenshotProcessor\ScreenshotAmazonS3Putter.cs" />
     <Compile Include="BetScreenshotProcessor\BetScreenshotProcessor.cs" />
-    <Compile Include="ScreenshotMaker\Interfaces\IRenderBufferToPngStreamConverter.cs" />
-    <Compile Include="ScreenshotMaker\Interfaces\IScreenshotMaker.cs" />
-    <Compile Include="ScreenshotMaker\Interfaces\IScreenshotMakerFactory.cs" />
-    <Compile Include="ScreenshotMaker\Interfaces\IScreenshotRenderService.cs" />
-    <Compile Include="ScreenshotMaker\RenderBufferToPngStreamConverter.cs" />
-    <Compile Include="ScreenshotMaker\ScreenshotRenderService.cs" />
     <Compile Include="ScreenshotMakingManager\Interfaces\IScreenshotsMakingManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenshotMaker\ScreenshotMaker.cs" />
-    <Compile Include="ScreenshotMaker\ScreenshotMakerFactory.cs" />
     <Compile Include="ScreenshotMakingManager\ScreenshotsMakingManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,9 +89,20 @@
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AmazonS3\Screenshots.AmazonS3.csproj">
+      <Project>{343976EF-889A-4A32-8135-EBF2A96C38F6}</Project>
+      <Name>Screenshots.AmazonS3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AwesomiumScreenshotMaker\Screenshots.AwesomiumScreenshotMaker.csproj">
+      <Project>{7F6CC474-040D-4A51-BF99-12C0B2A0C014}</Project>
+      <Name>Screenshots.AwesomiumScreenshotMaker</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ScreenshotMaker\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

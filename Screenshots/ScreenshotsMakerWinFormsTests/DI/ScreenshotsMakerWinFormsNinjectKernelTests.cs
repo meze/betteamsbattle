@@ -1,9 +1,9 @@
-﻿using BetTeamsBattle.ScreenShotsMaker.DI;
-using BetTeamsBattle.ScreenShotsMaker.ScreenShotMakingManager.Interfaces;
+﻿using BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager.Interfaces;
+using BetTeamsBattle.ScreenshotsMakerWinForms.DI;
 using NUnit.Framework;
 using Ninject;
 
-namespace ScreenshotsMaker.Tests
+namespace BetTeamsBattle.ScreenshotsMakerWinFormsTests.DI
 {
     [TestFixture]
     internal class ScreenshotsMakerWinFormsNinjectKernelTests

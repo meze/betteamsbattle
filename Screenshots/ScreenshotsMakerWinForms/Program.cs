@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BetTeamsBattle.ScreenShotsMaker
+namespace BetTeamsBattle.ScreenshotsMakerWinForms
 {
     internal class Program
     {
