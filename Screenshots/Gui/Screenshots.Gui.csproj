@@ -84,7 +84,7 @@
       <Project>{7F6CC474-040D-4A51-BF99-12C0B2A0C014}</Project>
       <Name>Screenshots.AwesomiumScreenshotMaker</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ScreenshotsMaker\Screenshots.BetScreenshotsManager.csproj">
+    <ProjectReference Include="..\BetScreenshotsManager\Screenshots.BetScreenshotsManager.csproj">
       <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
       <Name>Screenshots.BetScreenshotsManager</Name>
     </ProjectReference>
