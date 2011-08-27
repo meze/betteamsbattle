@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using BetTeamsBattle.Screenshots.BettScreenshotsManager.Interfaces;
 using BetTeamsBattle.Screenshots.Gui.DI;
@@ -16,7 +17,7 @@ namespace BetTeamsBattle.Screenshots.Gui
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             var kernel = ScreenshotsGuiNinjectKernel.CreateKernel();
 
