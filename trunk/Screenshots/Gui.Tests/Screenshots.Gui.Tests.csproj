@@ -64,11 +64,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ScreenshotsMaker\Screenshots.BetScreenshotsManager.csproj">
+    <ProjectReference Include="..\BetScreenshotsManager\Screenshots.BetScreenshotsManager.csproj">
       <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
       <Name>Screenshots.BetScreenshotsManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ScreenshotsMakerWinForms\Screenshots.Gui.csproj">
+    <ProjectReference Include="..\Gui\Screenshots.Gui.csproj">
       <Project>{B1F6BE11-C141-453F-A302-CD0C543C4820}</Project>
       <Name>Screenshots.Gui</Name>
     </ProjectReference>
