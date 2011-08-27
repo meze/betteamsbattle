@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager.Interfaces;
-using BetTeamsBattle.ScreenshotsMakerWinForms.DI;
+using BetTeamsBattle.Screenshots.BettScreenshotsManager.Interfaces;
+using BetTeamsBattle.Screenshots.Gui.DI;
 using NLog;
 using Ninject;
 
-namespace BetTeamsBattle.ScreenshotsMakerWinForms
+namespace BetTeamsBattle.Screenshots.Gui
 {
     public partial class MainForm : Form
     {
@@ -18,7 +18,7 @@ namespace BetTeamsBattle.ScreenshotsMakerWinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var kernel = ScreenshotsMakerNinjectKernel.CreateKernel();
+            var kernel = ScreenshotsGuiNinjectKernel.CreateKernel();
 
             var screenshotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
+using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
 using Resources;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices

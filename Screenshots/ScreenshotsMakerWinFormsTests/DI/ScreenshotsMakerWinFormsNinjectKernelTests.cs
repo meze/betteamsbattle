@@ -1,9 +1,9 @@
-﻿using BetTeamsBattle.BettScreenshotsManager.ScreenshotMakingManager.Interfaces;
-using BetTeamsBattle.ScreenshotsMakerWinForms.DI;
+﻿using BetTeamsBattle.Screenshots.BettScreenshotsManager.Interfaces;
+using BetTeamsBattle.Screenshots.Gui.DI;
 using NUnit.Framework;
 using Ninject;
 
-namespace BetTeamsBattle.ScreenshotsMakerWinFormsTests.DI
+namespace BetTeamsBattle.Gui.Tests.DI
 {
     [TestFixture]
     internal class ScreenshotsMakerWinFormsNinjectKernelTests
@@ -13,7 +13,7 @@ namespace BetTeamsBattle.ScreenshotsMakerWinFormsTests.DI
         [SetUp]
         public void Setup()
         {
-            var kernel = ScreenshotsMakerNinjectKernel.CreateKernel();
+            var kernel = ScreenshotsGuiNinjectKernel.CreateKernel();
             _screenshotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
         }
 

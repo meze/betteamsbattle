@@ -1,10 +1,9 @@
-﻿using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor;
-using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
+﻿using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
 using Ninject.Modules;
 
-namespace BetTeamsBattle.BettScreenshotsManager.DI
+namespace BetTeamsBattle.Screenshots.AmazonS3.DI
 {
-    public class AmazonS3NinjectModule : NinjectModule
+    public class ScreenshotsAmazonS3NinjectModule : NinjectModule
     {
         public override void Load()
         {

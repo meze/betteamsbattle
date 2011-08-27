@@ -1,7 +1,7 @@
-﻿using BetTeamsBattle.AwesomiumScreenshotMaker.Interfaces;
+﻿using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
 using Ninject;
 
-namespace BetTeamsBattle.AwesomiumScreenshotMaker
+namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
 {
     internal class ScreenshotMakerFactory : IScreenshotMakerFactory
     {

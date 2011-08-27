@@ -1,13 +1,12 @@
 ﻿using System.IO;
-using Amazon.S3;
 using Amazon.S3.Model;
-using BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor.Interfaces;
+using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
 
-namespace BetTeamsBattle.BettScreenshotsManager.BetScreenshotProcessor
+namespace BetTeamsBattle.Screenshots.AmazonS3
 {
     internal class ScreenshotAmazonS3Putter : IScreenshotAmazonS3Putter
     {
-        public void PutScreenshot(AmazonS3 amazonS3Client, string bucketName, string path, Stream stream)
+        public void PutScreenshot(Amazon.S3.AmazonS3 amazonS3Client, string bucketName, string path, Stream stream)
         {
             var putObjectRequest = new PutObjectRequest();
 
