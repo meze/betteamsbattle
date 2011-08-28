@@ -30,11 +30,6 @@ namespace T4MVC {
         public class ViewNames {
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
-            static readonly _Forms s_Forms = new _Forms();
-            public _Forms Forms { get { return s_Forms; } }
-            public partial class _Forms{
-                public readonly string _FormElement = "~/Views/Shared/Forms/_FormElement.cshtml";
-            }
             static readonly _ThreeColumns s_ThreeColumns = new _ThreeColumns();
             public _ThreeColumns ThreeColumns { get { return s_ThreeColumns; } }
             public partial class _ThreeColumns{

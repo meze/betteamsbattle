@@ -1,5 +1,4 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
-@using BetTeamsBattle.Frontend.Models
 @using Resources
 @model MakeBetViewModel
 @{
@@ -8,8 +7,7 @@
 @section RightBlockStart {
 <div class="pravo_blok_battle_n">
 }
-@section RightBlockFinish {
-</div>
+@section RightBlockFinish { </div>
 }
 @section head_s{
     @Html.Raw("class=\"hed_s_n\"")
@@ -18,12 +16,11 @@
 {
     @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
     
-    @Html.Partial(MVC.Shared.Views.Forms._FormElement, new FormElementViewModel(BattleBets.MakeBetOnBehalfOf, Html.DropDownListFor(m => m.MakeBetForm.TeamId, Model.Teams), Html.ValidationMessageFor(m => m.MakeBetForm.TeamId)))
-    @Html.Partial(MVC.Shared.Views.Forms._FormElement, new FormElementViewModel(BattleBets.Title, Html.TextBoxFor(m => m.MakeBetForm.Title, Model.MakeBetForm.Title), Html.ValidationMessageFor(m => m.MakeBetForm.Title)))
-    @Html.Partial(MVC.Shared.Views.Forms._FormElement, new FormElementViewModel(BattleBets.Url, Html.TextBoxFor(m => m.MakeBetForm.Url, Model.MakeBetForm.Url), Html.ValidationMessageFor(m => m.MakeBetForm.Url)))
-    @Html.Partial(MVC.Shared.Views.Forms._FormElement, new FormElementViewModel(BattleBets.Bet, Html.TextBoxFor(m => m.MakeBetForm.Bet, Model.MakeBetForm.Bet), Html.ValidationMessageFor(m => m.MakeBetForm.Bet)))
-    @Html.Partial(MVC.Shared.Views.Forms._FormElement, new FormElementViewModel(BattleBets.Coefficient, Html.TextBoxFor(m => m.MakeBetForm.Coefficient, Model.MakeBetForm.Coefficient), Html.ValidationMessageFor(m => m.MakeBetForm.Coefficient)))
-    @BattleBets.PrivateBet @Html.CheckBoxFor(m => m.MakeBetForm.IsPrivate, Model.MakeBetForm.IsPrivate) @Html.ValidationMessageFor(m => m.MakeBetForm.IsPrivate) <br />
-    <div class="btn_n"><a href=""><div class="btn_n"></div></a></div>
+    @Forms.DropDownList(Html, m => m.MakeBetForm.TeamId, BattleBets.MakeBetOnBehalfOf, Model.Teams)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Title, BattleBets.Title)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Url, BattleBets.Url)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Bet, BattleBets.Bet)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Coefficient, BattleBets.Coefficient)
+    @Forms.CheckBox(Html, m => m.MakeBetForm.IsPrivate, BattleBets.PrivateBet)
     <input type="submit" value="@BattleBets.MakeBet" />
 }

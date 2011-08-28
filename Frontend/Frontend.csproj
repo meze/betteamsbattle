@@ -371,7 +371,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="Areas\Admin\Localization\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\NotAdmin\Models\Teams\" />
@@ -415,8 +414,7 @@
     <Content Include="Views\Shared\ThreeColumns\_ThreeColumnsLayout.cshtml" />
     <Content Include="Views\Shared\ThreeColumns\_RightColumnBlock.cshtml" />
     <Content Include="Views\Shared\TwoColumns\_LeftColumnBlock.cshtml" />
-    <Content Include="Views\Shared\Forms\_FormElement.cshtml" />
-    <Content Include="Views\Shared\Forms\_FormCheckbox.cshtml" />
+    <Content Include="App_Code\Forms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
