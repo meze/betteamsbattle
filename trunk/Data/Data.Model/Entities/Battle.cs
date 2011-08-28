@@ -34,9 +34,4 @@ namespace BetTeamsBattle.Data.Model.Entities
             Budget = budget;
         }
     }
-
-    public enum BattleType
-    {
-        FixedBudget = 1
-    }
 }

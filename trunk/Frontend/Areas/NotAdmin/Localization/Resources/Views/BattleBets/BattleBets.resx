@@ -120,9 +120,6 @@
   <data name="Bet" xml:space="preserve">
     <value>Bet</value>
   </data>
-  <data name="BetFailed" xml:space="preserve">
-    <value>Bet failed</value>
-  </data>
   <data name="BetFinished" xml:space="preserve">
     <value>Bet finished</value>
   </data>
@@ -135,14 +132,17 @@
   <data name="BetStarted" xml:space="preserve">
     <value>Bet started</value>
   </data>
-  <data name="BetSucceeded" xml:space="preserve">
-    <value>Bet succeeded</value>
+  <data name="CanceledByBookmaker" xml:space="preserve">
+    <value>Canceled by bookmaker</value>
   </data>
   <data name="Coefficient" xml:space="preserve">
     <value>Coefficient</value>
   </data>
   <data name="CoefficientShouldBeGreaterThanOne" xml:space="preserve">
     <value>Coefficient should be greater than 1</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Failed</value>
   </data>
   <data name="JoinToBattleToMakeBets" xml:space="preserve">
     <value>Join to battle to make bets</value>
@@ -167,6 +167,9 @@
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Succeeded" xml:space="preserve">
+    <value>Succeeded</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>

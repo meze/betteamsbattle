@@ -71,15 +71,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet failed.
-        /// </summary>
-        public static string BetFailed {
-            get {
-                return ResourceManager.GetString("BetFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bet finished.
         /// </summary>
         public static string BetFinished {
@@ -116,11 +107,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet succeeded.
+        ///   Looks up a localized string similar to Canceled by bookmaker.
         /// </summary>
-        public static string BetSucceeded {
+        public static string CanceledByBookmaker {
             get {
-                return ResourceManager.GetString("BetSucceeded", resourceCulture);
+                return ResourceManager.GetString("CanceledByBookmaker", resourceCulture);
             }
         }
         
@@ -139,6 +130,15 @@ namespace Resources {
         public static string CoefficientShouldBeGreaterThanOne {
             get {
                 return ResourceManager.GetString("CoefficientShouldBeGreaterThanOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string Failed {
+            get {
+                return ResourceManager.GetString("Failed", resourceCulture);
             }
         }
         
@@ -211,6 +211,15 @@ namespace Resources {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Succeeded.
+        /// </summary>
+        public static string Succeeded {
+            get {
+                return ResourceManager.GetString("Succeeded", resourceCulture);
             }
         }
         

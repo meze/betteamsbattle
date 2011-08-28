@@ -34,7 +34,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
         private IRepository<Battle> _repositoryOfBattle;
         private IRepository<Team> _repositoryOfTeam;
-        private IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics; 
+        private IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
         private IRepository<BetScreenshot> _repositoryOfBetScreenshot;
         private IRepository<BattleBet> _repositoryOfBattleBet;
 
@@ -88,7 +88,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             Team team;
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
-            
+
             var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
 
             AssertOpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
@@ -115,54 +115,78 @@ namespace BetTeamsBattle.Data.Services.Tests
         }
 
         [Test]
-        public void BattleBetSucceeded()
-        {
-            TestCloseBattleBet(true, null);
-        }
-
-        [Test]
-        public void BattleBetFailed()
-        {
-            TestCloseBattleBet(false, null);
-        }
-
-        [Test]
-        public void BattleBetFailed_NotMineBattleBet_Exception()
-        {
-            var user = _creator.CreateUser("login1", "openIdUrl1");
-            Assert.Throws<ArgumentException>(() => TestCloseBattleBet(false, user.Id));
-        }
-
-        private void TestCloseBattleBet(bool success, long? userId)
+        public void CloseBattleBet_Succeeded()
         {
             Battle battle;
             Team team;
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
 
-            if (!userId.HasValue)
-                userId = user.Id;
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            long battleId;
+            _battlesService.BetSucceeded(battleBetId, user.Id, out battleId);
+
+            var newRating = _bet * _betCoefficient;
+            var newBalance = battle.Budget - _bet + _bet * _betCoefficient;
+
+            AssertTeam(team.Id, newRating);
+            AssertClosedBattleBet(battleBetId, BattleBetStatus.Succeeded);
+            AssertBattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
+        }
+
+        [Test]
+        public void CloseBattleBet_Failed()
+        {
+            Battle battle;
+            Team team;
+            User user;
+            SetupBattleAndUserAndTeam(out battle, out team, out user);
 
             var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
             long battleId;
-            if (success)
-                _battlesService.BetSucceeded(battleBetId, userId.Value, out battleId);
-            else
-                _battlesService.BetFailed(battleBetId, userId.Value, out battleId);
+            _battlesService.BetFailed(battleBetId, user.Id, out battleId);
 
-            var newRating = 0d;
+            var newRating = -_bet;
             var newBalance = battle.Budget - _bet;
-            if (success)
-            {
-                newRating += _bet * _betCoefficient;
-                newBalance += _bet * _betCoefficient;
-            }
-            else
-                newRating -= _bet;
 
             AssertTeam(team.Id, newRating);
-            AssertClosedBattleBet(battleBetId, success);
+            AssertClosedBattleBet(battleBetId, BattleBetStatus.Failed);
             AssertBattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
+        }
+
+        [Test]
+        public void CloseBattleBet_CanceledByBookmaker()
+        {
+            Battle battle;
+            Team team;
+            User user;
+            SetupBattleAndUserAndTeam(out battle, out team, out user);
+
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            long battleId;
+            _battlesService.BetCanceledByBookmaker(battleBetId, user.Id, out battleId);
+
+            var newRating = 0;
+            var newBalance = battle.Budget;
+
+            AssertTeam(team.Id, newRating);
+            AssertClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker);
+            AssertBattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
+        }
+
+        [Test]
+        public void CloseBattleBet_NotMineBattleBet_Exception()
+        {
+            Battle battle;
+            Team team;
+            User user;
+            SetupBattleAndUserAndTeam(out battle, out team, out user);
+
+            var otherUser = _creator.CreateUser("login1", "openIdUrl1");
+
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            long battleId;
+            Assert.Throws<ArgumentException>(() => _battlesService.BetFailed(battleBetId, otherUser.Id, out battleId));
         }
 
         private void AssertOpenedBattleBet(long battleBetId, long battleId, long teamId, long userId, string _betTitle, double bet, double coefficient, string url, bool isPrivate)
@@ -170,9 +194,9 @@ namespace BetTeamsBattle.Data.Services.Tests
             _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.BattleId == battleId && bb.TeamId == teamId && bb.UserId == userId && bb.Title == _betTitle && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url && bb.IsPrivate == isPrivate && bb.OpenBetScreenshot.Status == (sbyte)BetScreenshotStatus.NotProcessed).Single();
         }
 
-        private void AssertClosedBattleBet(long battleBetId, bool success)
+        private void AssertClosedBattleBet(long battleBetId, BattleBetStatus status)
         {
-            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.CloseBetScreenshotId != null && bb.Success == success).Single();
+            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.CloseBetScreenshotId != null && bb.Status == (sbyte)status).Single();
         }
 
         private void AssertBattleTeamStatistics(long battleId, long teamId, double balance, int openedBetsCount, int closedBetsCount)

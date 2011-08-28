@@ -74,15 +74,20 @@ namespace BetTeamsBattle.Data.Services
 
         public void BetSucceeded(long battleBetId, long userId, out long battleId)
         {
-            CloseBattleBet(battleBetId, userId, true, out battleId);
+            CloseBet(battleBetId, userId, BattleBetStatus.Succeeded, out battleId);
         }
 
         public void BetFailed(long battleBetId, long userId, out long battleId)
         {
-            CloseBattleBet(battleBetId, userId, false, out battleId);
+            CloseBet(battleBetId, userId, BattleBetStatus.Failed, out battleId);
         }
 
-        private void CloseBattleBet(long battleBetId, long userId, bool success, out long battleId)
+        public void BetCanceledByBookmaker(long battleBetId, long userId, out long battleId)
+        {
+            CloseBet(battleBetId, userId, BattleBetStatus.CanceledByBookmaker, out battleId);
+        }
+
+        public void CloseBet(long battleBetId, long userId, BattleBetStatus status, out long battleId)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
@@ -94,19 +99,23 @@ namespace BetTeamsBattle.Data.Services
 
                 battleBet.CloseDateTime = DateTime.UtcNow;
                 battleBet.CloseBetScreenshot = new BetScreenshot();
-                battleBet.Success = success;
+                battleBet.StatusEnum = status;
 
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleBet.BattleId, battleBet.TeamId)).Single();
                 var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(battleBet.TeamId)).Single();
-                if (success)
+                if (status == BattleBetStatus.Succeeded)
                 {
                     var betWin = battleBet.Bet * battleBet.Coefficient;
 
                     battleTeamStatistics.Balance += betWin;
                     team.Rating += betWin;
                 }
-                else
+                else if (status == BattleBetStatus.Failed)
                     team.Rating -= battleBet.Bet;
+                else if (status == BattleBetStatus.CanceledByBookmaker)
+                    battleTeamStatistics.Balance += battleBet.Bet;
+                else
+                    throw new ArgumentOutOfRangeException("status");
 
                 battleTeamStatistics.OpenedBetsCount--;
                 battleTeamStatistics.ClosedBetsCount++;

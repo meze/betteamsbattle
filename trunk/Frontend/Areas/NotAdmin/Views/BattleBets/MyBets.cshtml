@@ -61,10 +61,11 @@ else
                             @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotUrl))
                         </td>
                         <td class="td1_8">
-                            @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId))
+                            @Html.ActionLink(BattleBets.Succeeded, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId))
                             <br />
-                            @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId))
+                            @Html.ActionLink(BattleBets.Failed, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId))
                             <br />
+                            @Html.ActionLink(BattleBets.CanceledByBookmaker, MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(myBet.BattleBetId))
                         </td>
                     </tr>
                 }
