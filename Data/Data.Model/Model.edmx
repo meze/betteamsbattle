@@ -84,7 +84,7 @@
           <Property Name="Coefficient" Type="double" Nullable="false" />
           <Property Name="Url" Type="varchar" Nullable="false" />
           <Property Name="IsPrivate" Type="bool" Nullable="false" />
-          <Property Name="Success" Type="bool" />
+          <Property Name="Status" Type="tinyint" />
         </EntityType>
         <EntityType Name="battlesteamsstatistics">
           <Key>
@@ -409,7 +409,6 @@
           <Property Type="DateTime" Name="OpenDateTime" Nullable="false" />
           <Property Type="DateTime" Name="CloseDateTime" />
           <Property Type="Double" Name="Coefficient" Nullable="false" />
-          <Property Type="Boolean" Name="Success" />
           <Property Type="Boolean" Name="IsPrivate" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" />
           <Property Type="Int64" Name="TeamId" Nullable="false" />
@@ -418,6 +417,7 @@
           <NavigationProperty Name="OpenBetScreenshot" Relationship="Model.battlesbets_ibfk_4" FromRole="BattleBet" ToRole="betsscreenshot" />
           <Property Type="Int64" Name="CloseBetScreenshotId" />
           <NavigationProperty Name="CloseBetScreenshot" Relationship="Model.battlesbets_ibfk_14" FromRole="BattleBet" ToRole="BetScreenshot" />
+          <Property Type="SByte" Name="Status" />
         </EntityType>
         <Association Name="battlesbets_ibfk_1">
           <End Type="Model.Battle" Role="Battle" Multiplicity="1" />
@@ -635,12 +635,12 @@
           <EntitySetMapping Name="BattlesBets">
             <EntityTypeMapping TypeName="Model.BattleBet">
               <MappingFragment StoreEntitySet="battlesbets">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CloseBetScreenshotId" ColumnName="CloseBetScreenshotId" />
                 <ScalarProperty Name="OpenBetScreenshotId" ColumnName="OpenBetScreenshotId" />
                 <ScalarProperty Name="TeamId" ColumnName="TeamId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="IsPrivate" ColumnName="IsPrivate" />
-                <ScalarProperty Name="Success" ColumnName="Success" />
                 <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
                 <ScalarProperty Name="CloseDateTime" ColumnName="CloseDateTime" />
                 <ScalarProperty Name="OpenDateTime" ColumnName="OpenDateTime" />
@@ -771,12 +771,12 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.BetScreenshot" Width="2.625" PointX="5.375" PointY="4.5" Height="2.7494921874999996" />
         <AssociationConnector Association="Model.battlesbets_ibfk_4" >
-          <ConnectorPoint PointX="8" PointY="6.3963136680448951" />
-          <ConnectorPoint PointX="9.125" PointY="6.3963136680448951" />
+          <ConnectorPoint PointX="8" PointY="6.3957007607612244" />
+          <ConnectorPoint PointX="9.125" PointY="6.3957007607612244" />
         </AssociationConnector>
         <AssociationConnector Association="Model.battlesbets_ibfk_14" >
-          <ConnectorPoint PointX="8" PointY="5.4169093340224483" />
-          <ConnectorPoint PointX="9.125" PointY="5.4169093340224483" />
+          <ConnectorPoint PointX="8" PointY="5.416602880380613" />
+          <ConnectorPoint PointX="9.125" PointY="5.416602880380613" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

@@ -39,7 +39,8 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Teams.Teams", typeof(Teams).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.AspNetMvc.Areas.NotAdmin.Localization.Resources.Views.Tea" +
+                            "ms.Teams", typeof(Teams).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

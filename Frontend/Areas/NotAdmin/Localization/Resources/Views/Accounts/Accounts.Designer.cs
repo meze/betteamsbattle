@@ -8,7 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Accounts {
+namespace Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -36,8 +39,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Ac
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Accounts.Acco" +
-                            "unts", typeof(Accounts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.AspNetMvc.Areas.NotAdmin.Localization.Resources.Views.Acc" +
+                            "ounts.Accounts", typeof(Accounts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

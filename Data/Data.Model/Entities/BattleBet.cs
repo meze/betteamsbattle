@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Model.Interfaces;
 
 namespace BetTeamsBattle.Data.Model.Entities
@@ -18,7 +19,8 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual long OpenBetScreenshotId { get; set; }
         public virtual DateTime? CloseDateTime { get; set; }
         public virtual long? CloseBetScreenshotId { get; set; }
-        public virtual bool? Success { get; set; }
+        public virtual sbyte Status { get; set; }
+        public virtual BattleBetStatus StatusEnum { get { return (BattleBetStatus)Status; } set { Status = (sbyte) value; } }
         public virtual bool IsPrivate { get; set; }
 
         public virtual Battle Battle { get; set; }
@@ -42,6 +44,7 @@ namespace BetTeamsBattle.Data.Model.Entities
             Url = url;
             OpenDateTime = DateTime.UtcNow;
             IsPrivate = isPrivate;
+            StatusEnum = BattleBetStatus.NotFinished;
         }
     }
 }

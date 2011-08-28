@@ -74,5 +74,15 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 
             return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
         }
+
+        [Authorize]
+        [HttpPost]
+        public virtual ActionResult BetCanceledByBookmaker(long battleBetId)
+        {
+            long battleId;
+            _battlesService.BetCanceledByBookmaker(battleBetId, CurrentUser.UserId, out battleId);
+
+            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
+        }
     }
 }

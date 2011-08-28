@@ -1,4 +1,5 @@
 ﻿using System;
+using BetTeamsBattle.Data.Model.Enums;
 
 namespace BetTeamsBattle.Data.Model.Entities
 {
@@ -17,11 +18,5 @@ namespace BetTeamsBattle.Data.Model.Entities
 
         public virtual Team Team { get; set; }
         public virtual User User { get; set; }
-    }
-
-    public enum TeamUserAction
-    {
-        Join = 1,
-        Leave = 2
     }
 }

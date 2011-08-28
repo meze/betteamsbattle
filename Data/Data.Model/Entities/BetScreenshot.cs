@@ -27,11 +27,4 @@ namespace BetTeamsBattle.Data.Model.Entities
             StatusEnum = BetScreenshotStatus.NotProcessed;
         }
     }
-
-    public enum BetScreenshotStatus
-    {
-        NotProcessed = 1,
-        Processed = 2,
-        Failed = 3
-    }
 }

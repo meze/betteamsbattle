@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
+using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
