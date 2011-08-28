@@ -1,0 +1,44 @@
+﻿@*Idea is taken from http://stackoverflow.com/questions/4760783/is-it-possible-to-create-a-generic-helper-method-with-razor
+Thank you, chrismilleruk*@
+@using System.Linq.Expressions;
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using SelectListItem = System.Web.Mvc.SelectListItem;
+@functions
+{
+    public static HelperResult TextBox<TModel, TItem>(HtmlHelper<TModel> html, Expression<Func<TModel, TItem>> expr, string title)
+    {
+        return TwoLinesFormElement(html.LabelFor(expr, title), html.TextBoxFor(expr, new { @class = "text-form" }), html.ValidationMessageFor(expr));
+    }
+
+    public static HelperResult DropDownList<TModel, TItem>(HtmlHelper<TModel> html, Expression<Func<TModel, TItem>> expr, string title, IEnumerable<SelectListItem> selectList)
+    {
+        return TwoLinesFormElement(html.LabelFor(expr, title), html.DropDownListFor(expr, selectList, new { @class = "form-select" }), html.ValidationMessageFor(expr));
+    }
+
+    public static HelperResult CheckBox<TModel>(HtmlHelper<TModel> html, Expression<Func<TModel, bool>> expr, string title)
+    {
+        return OneLineFormElement(html.LabelFor(expr, title), html.CheckBoxFor(expr, new { @class = "g" }), html.ValidationMessageFor(expr));
+    }
+}
+@helper TwoLinesFormElement(MvcHtmlString label, MvcHtmlString element, MvcHtmlString validationMessage)
+    {
+    <div class="stroka_1">
+        <div class="stroka_11">
+            <div class="stroka_1_name">@label</div>
+            <div class="stroka_1_form">@element</div>
+        </div>
+        <div class="stroka_12">
+            @validationMessage
+        </div>
+    </div>
+}
+@helper OneLineFormElement(MvcHtmlString label, MvcHtmlString element, MvcHtmlString validationMessage)
+    {
+    <div class="checkbox_n">
+        <div class="stroka_1_n">@label</div>
+        <div class="stroka_1_f">
+        @element @validationMessage
+        </div>
+    </div>
+}

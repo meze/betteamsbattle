@@ -164,15 +164,26 @@ background-position:center;
 }
 
 
-#name{
-	border:none;
-	width:288px;
+.text-form{
+	    border:none;
+	    width:288px;
 		background-image: url('images/33.png');
 		height:23px;
 		padding-left:8px;
 		padding-right:8px;
 		font-weight:bold;
 		color:#333;
+}
+
+
+
+
+.form-select{
+	border:none;
+	width:298px;
+	background-image:url("images/33.png");
+	color:#333333;
+font-weight:bold;
 }
 
 
@@ -250,15 +261,19 @@ float:left;
 
 .stroka_1_form{
 	height:20px;
-	background-color:#FF0;
+	background-image: url('images/33.png')
+	
+}
+
+.stroka_1_forml{
+	height:20px;
+	background-image: url('images/33.png');
+	padding:3px;
 	
 }
 
 
-.hed_error{
-
-	min-height:60px;
-	
+.hed_error{	
 }
 
 .pravo_blok{
@@ -1041,19 +1056,12 @@ table{
 }
 
 .td1_5{
-	width: 188px;
-text-align:center;
-		
-
-}
-
-
-.td1_6{
 	width: 155px;
 text-align:center;
 		
 
 }
+
 
 
 .td1_7{
@@ -1129,8 +1137,8 @@ width:1024px;
 	
 	
 	
-	 .validation-summary-error {
-	 color:#F00;
+	 .field-validation-error {
+	color:#F00;
     width: 300px;
     }
 	
