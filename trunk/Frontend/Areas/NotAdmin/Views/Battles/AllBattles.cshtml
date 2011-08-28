@@ -3,7 +3,7 @@
 @using Resources
 @model AllBattlesViewModel
 
-@Html.Partial(MVC.Shared.Views.ThreeColumns._LeftColumnBlock, new LeftColumnBlockViewModel(Battles.CurrentBattles, @<text>
+@Html.Partial(MVC.Shared.Views.ThreeColumns._LeftColumnBlock, new ColumnBlockViewModel(Battles.CurrentBattles, @<text>
 @foreach (var currentBattle in Model.CurrentBattlesViewModels)
 { 
     <div class="list">
@@ -12,7 +12,7 @@
     </div> 
 }
 </text>))
-@Html.Partial(MVC.Shared.Views.ThreeColumns._LeftColumnBlock, new LeftColumnBlockViewModel(Battles.NotStartedBattles, @<text>
+@Html.Partial(MVC.Shared.Views.ThreeColumns._LeftColumnBlock, new ColumnBlockViewModel(Battles.NotStartedBattles, @<text>
 @foreach (var notStartedBattle in Model.NotStartedBattlesViewModels)
 {
     <div class="list">
@@ -21,7 +21,7 @@
     </div>
 }
 </text>))
-@Html.Partial(MVC.Shared.Views.ThreeColumns._LeftColumnBlock, new LeftColumnBlockViewModel(Battles.FinishedBattles, @<text>
+@Html.Partial(MVC.Shared.Views.ThreeColumns._LeftColumnBlock, new ColumnBlockViewModel(Battles.FinishedBattles, @<text>
 @foreach (var finishedBattle in Model.FinishedBattlesViewModels)
 {
     <div class="list">

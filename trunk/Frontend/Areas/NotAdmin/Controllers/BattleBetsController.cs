@@ -56,23 +56,23 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        //[HttpPost]
         public virtual ActionResult BetSucceeded(long battleBetId)
         {
             long battleId;
             _battlesService.BetSucceeded(battleBetId, CurrentUser.UserId, out battleId);
 
-            return RedirectToAction(MVC.NotAdmin.BattleBets.MyBets(battleId));
+            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
         }
 
         [Authorize]
-        [HttpPost]
+        //[HttpPost]
         public virtual ActionResult BetFailed(long battleBetId)
         {
             long battleId;
             _battlesService.BetFailed(battleBetId, CurrentUser.UserId, out battleId);
 
-            return RedirectToAction(MVC.NotAdmin.BattleBets.MyBets(battleId));
+            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
         }
     }
 }

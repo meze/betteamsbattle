@@ -3,7 +3,7 @@
 @using Resources
 @model IEnumerable<TeamViewModel>
            
-@Html.Partial(MVC.Shared.Views.ThreeColumns._RightColumnBlock, new LeftColumnBlockViewModel(Teams.TopTeams, @<text>
+@Html.Partial(MVC.Shared.Views.ThreeColumns._RightColumnBlock, new ColumnBlockViewModel(Teams.TopTeams, @<text>
 @foreach (var team in Model)
 {
     <div class="list_r">

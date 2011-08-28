@@ -15,8 +15,7 @@ using System;
 namespace BetTeamsBattle.Data.Services.Tests
 {
     [TestFixture]
-    public class 
-        BattlesServiceTests
+    public class BattlesServiceTests
     {
         private DateTime _battleStartDate = DateTime.UtcNow;
         private DateTime _battleEndDate = DateTime.UtcNow;
@@ -173,7 +172,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
         private void AssertClosedBattleBet(long battleBetId, bool success)
         {
-            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.Success == success).Single();
+            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.CloseBetScreenshotId != null && bb.Success == success).Single();
         }
 
         private void AssertBattleTeamStatistics(long battleId, long teamId, double balance, int openedBetsCount, int closedBetsCount)

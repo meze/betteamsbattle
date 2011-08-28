@@ -189,7 +189,18 @@
     <Compile Include="Areas\NotAdmin\Localization\Localizers\InDays\InDaysEnglishLocalizer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Localizers\InDays\InDaysRussianLocalizer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Localizers\InDays\Interfaces\IInDaysLocalizer.cs" />
-    <Compile Include="Models\Shared\LeftColumnBlockViewModel.cs" />
+    <Compile Include="Localization\Resources\Common\Common.Designer.cs">
+      <DependentUpon>Common.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Localization\Resources\Common\Common.ru.Designer.cs">
+      <DependentUpon>Common.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Shared\FormElementViewModel.cs" />
+    <Compile Include="Models\Shared\ColumnBlockViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -365,7 +376,6 @@
     <Folder Include="Areas\NotAdmin\Models\Teams\" />
     <Folder Include="Content\images\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Localization\Metadata\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -404,6 +414,8 @@
     <Content Include="Views\Shared\ThreeColumns\_ThreeColumnsLayout.cshtml" />
     <Content Include="Views\Shared\ThreeColumns\_RightColumnBlock.cshtml" />
     <Content Include="Views\Shared\TwoColumns\_LeftColumnBlock.cshtml" />
+    <Content Include="Views\Shared\Forms\_FormElement.cshtml" />
+    <Content Include="Views\Shared\Forms\_FormCheckbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -483,6 +495,16 @@
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Teams.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources\Common\Common.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources\Common\Common.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>

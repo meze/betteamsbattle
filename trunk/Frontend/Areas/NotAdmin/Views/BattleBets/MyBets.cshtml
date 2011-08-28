@@ -48,19 +48,19 @@ else
                         <td class="td1_1">
                             @myBet.Title
                         </td>
-                        <td class="td1_3" rowspan="2">
+                        <td class="td1_3">
                             @myBet.Bet$
                         </td>
-                        <td class="td1_4" rowspan="2">
+                        <td class="td1_4">
                             @myBet.Coefficient
                         </td>
-                        <td class="td1_5">
+                        <td style="width: 150px;">
                             @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.OpenDateTime, myBet.OpenScreenshotStatus, myBet.OpenScreenshotUrl))
                         </td>
-                        <td class="td1_7">
+                        <td class="td1_6">
                             @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotUrl))
                         </td>
-                        <td>
+                        <td class="td1_8">
                             @Html.ActionLink(BattleBets.BetFailed, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId))
                             <br />
                             @Html.ActionLink(BattleBets.BetSucceeded, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId))

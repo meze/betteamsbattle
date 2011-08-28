@@ -1,14 +1,15 @@
-﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models
-@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @model DateAndScreenshotViewModel
-@Model.DateTime
-<br />
+<div class="data">@Model.DateTime</div>
+<div class="sc">
 @if (Model.ScreenshotUrl != null)
 {
-    <text><a href="@Model.ScreenshotUrl"></text> 
+    <text><a href="@Model.ScreenshotUrl"></text>
 }
-@Model.ScreenshotStatus
+<img class="scr" />
+@*@Model.ScreenshotStatus*@
 @if (Model.ScreenshotUrl != null)
 { 
     <text>@Html.Raw("</a>")</text>
 }
+</div>
