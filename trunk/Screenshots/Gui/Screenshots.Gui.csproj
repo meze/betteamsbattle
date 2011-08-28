@@ -124,6 +124,7 @@
     <None Include="..\..\Configs\Usage\App.config">
       <Link>App.config</Link>
     </None>
+    <None Include="NLog.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
