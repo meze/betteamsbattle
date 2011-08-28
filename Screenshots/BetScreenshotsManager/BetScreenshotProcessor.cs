@@ -11,11 +11,14 @@ using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interface
 using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
 using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
 using BetTeamsBattle.Screenshots.BettScreenshotsManager.Interfaces;
+using NLog;
 
 namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 {
     internal class BetScreenshotProcessor : IBetScreenshotProcessor
     {
+        private Logger _logger = LogManager.GetCurrentClassLogger();
+
         private readonly ITransactionScopeFactory _transactionScopeFactory;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
         private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
@@ -45,9 +48,9 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
                     transactionScope.Complete();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    //ToDo: add NLog error here
+                    _logger.ErrorException(String.Format("Failed to process betScreenshotId = {0}. Was not saved", betScreenshotId), ex);
                 }
             }
         }
@@ -74,6 +77,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                 }
                 catch (Exception ex)
                 {
+                    _logger.TraceException(String.Format("Failed to process betScreenshotId = {0}. Trying to save as failed", betScreenshotId), ex);
                     betScreenshot.StatusEnum = BetScreenshotStatus.Failed;
                 }
                 finally

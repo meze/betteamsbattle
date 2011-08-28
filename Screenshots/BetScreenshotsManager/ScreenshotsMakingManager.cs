@@ -22,7 +22,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(10);
 
         private Amazon.S3.AmazonS3 _amazonS3Client;
-        private IList<long> _queuedBetUrlsIdsInProcessing = new List<long>();
+        private IList<long> _beingProcessedBetScreenshotsIds = new List<long>();
         private SynchronizationContext _synchronizationContext;
 
         public ScreenshotsMakingManager(IRepository<BetScreenshot> repositoryOfBetScreenshot,
@@ -46,25 +46,25 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
             while (true)
             {
-                var queuedBetUrlsIds =
+                var notProcessedBetScreenshotsIds =
                     _repositoryOfBetScreenshot.Get(
                         BetScreenshotSpecifications.NotProcessed() &&
-                        EntitySpecifications.IdIsNotContainedIn<BetScreenshot>(_queuedBetUrlsIdsInProcessing)).
+                        EntitySpecifications.IdIsNotContainedIn<BetScreenshot>(_beingProcessedBetScreenshotsIds)).
                         OrderBy(qbu => qbu.Id).
                         Select(qbu => qbu.Id).ToList();
-                if (queuedBetUrlsIds.Count == 0)
+                if (notProcessedBetScreenshotsIds.Count == 0)
                 {
                     Thread.Sleep(1000);
                     continue;
                 }
 
-                foreach (long queuedBetUrlId in queuedBetUrlsIds)
+                foreach (long queuedBetUrlId in notProcessedBetScreenshotsIds)
                 {
                     _semaphore.Wait();
 
-                    lock (_queuedBetUrlsIdsInProcessing)
+                    lock (_beingProcessedBetScreenshotsIds)
                     {
-                        queuedBetUrlsIds.Add(queuedBetUrlId);
+                        _beingProcessedBetScreenshotsIds.Add(queuedBetUrlId);
                     }
 
                     var thread = new Thread(ProcessInNewThread);
@@ -79,11 +79,11 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
         private void ProcessInNewThread(object obj)
         {
-            var queuedBetUrlId = (long)obj;
+            var betScreenshotId = (long)obj;
 
             try
             {
-                _betScreenshotProcessor.Process(queuedBetUrlId, _amazonS3Client, _synchronizationContext);
+                _betScreenshotProcessor.Process(betScreenshotId, _amazonS3Client, _synchronizationContext);
             }
             catch (Exception ex)
             {
@@ -91,9 +91,9 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
             }
             finally
             {
-                lock (_queuedBetUrlsIdsInProcessing)
+                lock (_beingProcessedBetScreenshotsIds)
                 {
-                    _queuedBetUrlsIdsInProcessing.Remove(queuedBetUrlId);
+                    _beingProcessedBetScreenshotsIds.Remove(betScreenshotId);
                 }
 
                 _semaphore.Release();

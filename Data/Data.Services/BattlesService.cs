@@ -53,6 +53,7 @@ namespace BetTeamsBattle.Data.Services
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
                 var battleBet = new BattleBet(battleId, teamId, userId, title, bet, coefficient, url, isPrivate);
+                battleBet.OpenBetScreenshot = new BetScreenshot();
                 _repositoryOfBattleBet.Add(battleBet);
 
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).SingleOrDefault();
@@ -64,8 +65,6 @@ namespace BetTeamsBattle.Data.Services
                 }
                 battleTeamStatistics.Balance -= bet;
                 battleTeamStatistics.OpenedBetsCount++;
-
-                battleBet.OpenBetScreenshot = new BetScreenshot() { CreationDateTime = DateTime.UtcNow };
 
                 unitOfWorkScope.SaveChanges();
 
@@ -94,6 +93,7 @@ namespace BetTeamsBattle.Data.Services
                     throw new ArgumentException("You are trying to close not your bet");
 
                 battleBet.CloseDateTime = DateTime.UtcNow;
+                battleBet.CloseBetScreenshot = new BetScreenshot();
                 battleBet.Success = success;
 
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleBet.BattleId, battleBet.TeamId)).Single();
