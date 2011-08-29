@@ -12,18 +12,25 @@ namespace BetTeamsBattle.Screenshots.Gui
     {
         private Logger _logger = LogManager.GetCurrentClassLogger();
 
+        private readonly IScreenshotsMakingManager _screenshotsMakingManager;
+
         public MainForm()
         {
             InitializeComponent();
+
+            var kernel = ScreenshotsGuiNinjectKernel.CreateKernel();
+
+            _screenshotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var kernel = ScreenshotsGuiNinjectKernel.CreateKernel();
+            _screenshotsMakingManager.Run();
+        }
 
-            var screenshotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
-
-            screenshotsMakingManager.Run();
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _screenshotsMakingManager.Stop();
         }
     }
 }
