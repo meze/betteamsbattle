@@ -47,8 +47,6 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
             var pollingThread = new Thread(StartPolling);
             pollingThread.Start();
-
-            AwesomiumCore.Shutdown();
         }
 
         #endregion
@@ -105,6 +103,11 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
                 _semaphore.Release();
             }
+        }
+
+        public void Dispose()
+        {
+            AwesomiumCore.Shutdown();
         }
     }
 }

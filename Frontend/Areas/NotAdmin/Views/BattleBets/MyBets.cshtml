@@ -1,5 +1,4 @@
-﻿@using BetTeamsBattle.Data.Model.Entities
-@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @using Resources
 @model IEnumerable<MyBetViewModel>
 <div class="my_s">
@@ -54,10 +53,10 @@ else
                         <td class="td1_4">
                             @myBet.Coefficient
                         </td>
-                        <td style="width: 150px;">
+                        <td class="td1_5">
                             @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.OpenDateTime, myBet.OpenScreenshotStatus, myBet.OpenScreenshotUrl))
                         </td>
-                        <td class="td1_6">
+                        <td class="td1_5">
                             @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotUrl))
                         </td>
                         <td class="td1_8">

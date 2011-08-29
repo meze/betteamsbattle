@@ -15,7 +15,7 @@
 }
 @if (Model.BattleIsActive)
 { 
-@* <div class="knopka_st_blok">
+ <div class="knopka_st_blok">
         <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
             <div class="knopka_st">
                 <div class="knopka_st_text">
@@ -24,11 +24,11 @@
                 </div>
             </div>
         </a>
-    </div>*@
+    </div>
     <div class="knopka_st_blok">
         <div class="knopka_st">
             <span class="button">
-                <input type="button" value="@BattleBets.MakeBet"></input></span>
+                <button type="button" value="@BattleBets.MakeBet"></button></span>
         </div>
     </div>
 }
