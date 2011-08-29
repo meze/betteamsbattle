@@ -10,10 +10,10 @@
 <div class="text_login">
     @Accounts.OpenIdUrlFirstTime
 </div>
-@using (Html.BeginForm(MVC.NotAdmin.Accounts.SignUp(), FormMethod.Post, new { @class="form_auto" }))
+@using (Html.BeginForm(MVC.NotAdmin.Accounts.SignUp(), FormMethod.Post, new { @class="form" }))
 {
     <text>
-    @Html.ValidationSummary(Common.ValidationSummaryCaption, true)
+    @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
     @Forms.TextBox(Html, m => m.Login, Accounts.Login)
     @Html.HiddenFor(m => m.OpenIdUrl, Model.OpenIdUrl)
     @Forms.SubmitButton(Accounts.SignUp)
