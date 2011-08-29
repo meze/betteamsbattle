@@ -16,7 +16,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 {
     internal class ScreenshotsMakingManager : IScreenshotsMakingManager
     {
-        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
         private readonly IBetScreenshotProcessor _betScreenshotProcessor;
@@ -94,7 +94,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
             }
             catch (Exception ex)
             {
-                _logger.ErrorException("Can't make screenshot", ex);
+                Logger.ErrorException("Can't make screenshot", ex);
             }
             finally
             {

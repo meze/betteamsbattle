@@ -18,7 +18,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 {
     internal class BetScreenshotProcessor : IBetScreenshotProcessor
     {
-        private Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private readonly ITransactionScopeFactory _transactionScopeFactory;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
@@ -51,7 +51,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                 }
                 catch (Exception ex)
                 {
-                    _logger.ErrorException(String.Format("Failed to process betScreenshotId = {0}. Was not saved", betScreenshotId), ex);
+                    Logger.ErrorException(String.Format("Failed to process betScreenshotId = {0}. Was not saved", betScreenshotId), ex);
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                 }
                 catch (Exception ex)
                 {
-                    _logger.TraceException(String.Format("Failed to process betScreenshotId = {0}. Trying to save as failed", betScreenshotId), ex);
+                    Logger.TraceException(String.Format("Failed to process betScreenshotId = {0}. Trying to save as failed", betScreenshotId), ex);
                     betScreenshot.StatusEnum = BetScreenshotStatus.Failed;
                 }
                 finally
