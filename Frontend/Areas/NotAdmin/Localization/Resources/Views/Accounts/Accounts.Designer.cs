@@ -134,6 +134,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Signing in.
+        /// </summary>
+        public static string SigningIn {
+            get {
+                return ResourceManager.GetString("SigningIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signing up.
+        /// </summary>
+        public static string SigningUp {
+            get {
+                return ResourceManager.GetString("SigningUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign out.
         /// </summary>
         public static string SignOut {
