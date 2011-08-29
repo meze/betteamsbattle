@@ -22,5 +22,10 @@
     @Forms.TextBox(Html, m => m.MakeBetForm.Bet, BattleBets.Bet)
     @Forms.TextBox(Html, m => m.MakeBetForm.Coefficient, BattleBets.Coefficient)
     @Forms.CheckBox(Html, m => m.MakeBetForm.IsPrivate, BattleBets.PrivateBet)
-    <input type="submit" value="@BattleBets.MakeBet" />
+
+    <div class="btn_n">
+        <span class="button">
+            <input type="submit" value="@BattleBets.MakeBet" />
+        </span>
+    </div>
 }

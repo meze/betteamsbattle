@@ -8,22 +8,28 @@
 @section RightBlockStart {
 <div class="pravo_blok_battle"> <div class="pravo_blok2_battle"> <div class="pravo_content_battle">
 }
-@section RightBlockFinish {
-</div></div></div>
+@section RightBlockFinish { </div></div></div>
 }
 @section head_s{
     @Html.Raw("class=\"hed_s\"")
 }
 @if (Model.BattleIsActive)
-{ <div class="knopka_st_blok">
-    <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
-        <div class="knopka_st">
-            <div class="knopka_st_text">
-                <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
-                    @BattleBets.MakeBet </a>
+{ 
+@* <div class="knopka_st_blok">
+        <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
+            <div class="knopka_st">
+                <div class="knopka_st_text">
+                    <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
+                        @BattleBets.MakeBet </a>
+                </div>
             </div>
+        </a>
+    </div>*@
+    <div class="knopka_st_blok">
+        <div class="knopka_st">
+            <span class="button">
+                <input type="button" value="@BattleBets.MakeBet"></input></span>
         </div>
-    </a>
     </div>
 }
 @if (CurrentUser.NullableUserId.HasValue)

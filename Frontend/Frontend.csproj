@@ -248,6 +248,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\botton.css" />
     <Content Include="Content\file.css" />
     <Content Include="Content\menu_style.css" />
     <Content Include="Global.asax" />

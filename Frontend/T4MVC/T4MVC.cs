@@ -517,6 +517,7 @@ namespace Links {
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+        public static readonly string botton_css = Url("botton.css")+"?"+T4Extensions.TimestampString(URLPATH + "/botton.css");
         public static readonly string file_css = Url("file.css")+"?"+T4Extensions.TimestampString(URLPATH + "/file.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class images {

@@ -168,7 +168,7 @@ background-position:center;
 	    border:none;
 	    width:288px;
 		background-image: url('images/33.png');
-		height:23px;
+		height:20px;
 		padding-left:8px;
 		padding-right:8px;
 		font-weight:bold;
@@ -181,9 +181,12 @@ background-position:center;
 .form-select{
 	border:none;
 	width:298px;
-	background-image:url("images/33.png");
 	color:#333333;
 font-weight:bold;
+height:20px;
+
+border-top:none;
+border-color:#FFF;
 }
 
 
@@ -250,17 +253,22 @@ float:left;
 
 
 .btn_n{
-	height:42px;
-	width:163px;
-	background-image: url('images/kh.png');
+	height:36px;
+	width:168px;
 	margin-top:15px;
+	margin-left:-10px;
+
 }
 
 
 
 
+
+
+
+
 .stroka_1_form{
-	height:20px;
+	height:25px;
 	background-image: url('images/33.png')
 	
 }
@@ -384,7 +392,7 @@ width:1024px;
 }
 
 .knopka_st{
-background-image:url("images/btn.png");
+
 float:left;
 height:36px;
 margin-left:19px;
