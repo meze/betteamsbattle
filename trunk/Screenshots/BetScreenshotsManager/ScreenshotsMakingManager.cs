@@ -26,6 +26,8 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
         private IList<long> _beingProcessedBetScreenshotsIds = new List<long>();
         private SynchronizationContext _synchronizationContext;
 
+        private bool _closed = false;
+
         public ScreenshotsMakingManager(IRepository<BetScreenshot> repositoryOfBetScreenshot,
             IBetScreenshotProcessor betScreenshotProcessor)
         {
@@ -37,8 +39,6 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
         public void Run()
         {
-            AwesomiumCore.Initialze();
-
             string accessKeyId = AppSettings.AmazonAccessKeyId;
             string secretAccessKeyId = AppSettings.AmazonSecretAccessKeyId;
             _amazonS3Client = AWSClientFactory.CreateAmazonS3Client(accessKeyId, secretAccessKeyId);
@@ -53,7 +53,9 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
         private void StartPolling()
         {
-            while (true)
+            AwesomiumCore.Initialze();
+
+            while (!_closed)
             {
                 var notProcessedBetScreenshotsIds =
                     _repositoryOfBetScreenshot.Get(
@@ -80,6 +82,8 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                     thread.Start(notProcessedBetScreenshotId);
                 }
             }
+
+            AwesomiumCore.Shutdown();
         }
 
         private void ProcessInNewThread(object obj)
@@ -107,7 +111,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
         public void Stop()
         {
-            AwesomiumCore.Shutdown();
+            _closed = true;
         }
     }
 }
