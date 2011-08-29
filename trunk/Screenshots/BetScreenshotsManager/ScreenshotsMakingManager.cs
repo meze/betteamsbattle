@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Windows.Forms;
 using Amazon;
 using BetTeamsBattle.Configuration;
 using BetTeamsBattle.Data.Model.Entities;
@@ -54,22 +55,28 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                         Select(qbu => qbu.Id).ToList();
                 if (notProcessedBetScreenshotsIds.Count == 0)
                 {
+                    //var autoResetEvent = new AutoResetEvent(false);
+                    //var timer = new Timer((param) => autoResetEvent.Reset(), null, 1000, Timeout.Infinite);
+                    //autoResetEvent.WaitOne();
+                    Application.DoEvents();
                     Thread.Sleep(1000);
                     continue;
                 }
 
-                foreach (long queuedBetUrlId in notProcessedBetScreenshotsIds)
+                foreach (long notProcessedBetScreenshotId in notProcessedBetScreenshotsIds)
                 {
                     _semaphore.Wait();
 
                     lock (_beingProcessedBetScreenshotsIds)
                     {
-                        _beingProcessedBetScreenshotsIds.Add(queuedBetUrlId);
+                        _beingProcessedBetScreenshotsIds.Add(notProcessedBetScreenshotId);
                     }
 
                     var thread = new Thread(ProcessInNewThread);
-                    thread.Start(queuedBetUrlId);
+                    thread.Start(notProcessedBetScreenshotId);
                 }
+
+                //break;
             }
 
             AwesomiumCore.Shutdown();
