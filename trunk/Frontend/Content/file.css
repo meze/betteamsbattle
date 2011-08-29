@@ -155,6 +155,18 @@ background-position:center;
 }
 
 
+.loging{
+	width:1024px;
+	border:3px solid #686868;	
+	border-top:3px solid #686868;
+	background-image: url('images/fon.png');
+	padding-bottom:50px;
+	min-height:300px;
+
+}
+
+
+
 .form{
 	min-height:250px;
 
@@ -168,11 +180,12 @@ background-position:center;
 	    border:none;
 	    width:288px;
 		background-image: url('images/33.png');
-		height:20px;
+		height:17px;
 		padding-left:8px;
 		padding-right:8px;
 		font-weight:bold;
 		color:#333;
+		padding-top:6px;
 }
 
 
@@ -184,6 +197,7 @@ background-position:center;
 	color:#333333;
 font-weight:bold;
 height:20px;
+margin:3px;
 
 border-top:none;
 border-color:#FFF;
@@ -269,15 +283,12 @@ float:left;
 
 .stroka_1_form{
 	height:25px;
-	background-image: url('images/33.png')
+	background-image: url('images/33.png');
 	
 }
 
 .stroka_1_forml{
-	height:20px;
 	background-image: url('images/33.png');
-	padding:3px;
-	
 }
 
 
@@ -342,6 +353,15 @@ float:left;
 	
 }
 
+
+.text_login{
+	color:#FFF;
+	padding:20px;
+	font-size:16px;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+}
+
 .data{
 	font-size:15px;
 	text-align:center;
@@ -392,18 +412,18 @@ width:1024px;
 }
 
 .knopka_st{
-
+background-image:url("images/btn.png");
 float:left;
 height:36px;
 margin-left:19px;
-margin-top:19px;
+margin-top:14px;
 width:180px;
 cursor:pointer;
 background-repeat:no-repeat;
 
 }
 .knopka_st_blok{
-	height:80px;
+	height:72px;
 	
 }
 
@@ -425,8 +445,8 @@ text-align:center;
 
 .knopka_st_text a:hover{
 	text-decoration:none;
-	color:#CCC;
-	text-shadow:1px 1px 2px #999;
+	color:#FF0;
+
 	
 }
 
@@ -440,7 +460,7 @@ text-align:center;
 	text-align:center;
 	color:#FDE406;
 	font-size:17px;
-	padding-bottom:4px;
+	padding-bottom:7px;
 	font-family:Tahoma, Geneva, sans-serif;
 	margin-top:-21px;
 	
@@ -1064,7 +1084,7 @@ table{
 }
 
 .td1_5{
-	width: 155px;
+	width: 150px;
 text-align:center;
 		
 
