@@ -29,7 +29,13 @@ namespace T4MVC {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
+            public readonly string _OneOrTwoColumnsLayoutBase = "~/Views/Shared/_OneOrTwoColumnsLayoutBase.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
+            static readonly _OneColumn s_OneColumn = new _OneColumn();
+            public _OneColumn OneColumn { get { return s_OneColumn; } }
+            public partial class _OneColumn{
+                public readonly string _OneColumnLayout = "~/Views/Shared/OneColumn/_OneColumnLayout.cshtml";
+            }
             static readonly _ThreeColumns s_ThreeColumns = new _ThreeColumns();
             public _ThreeColumns ThreeColumns { get { return s_ThreeColumns; } }
             public partial class _ThreeColumns{

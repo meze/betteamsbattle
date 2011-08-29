@@ -1,16 +1,9 @@
 ﻿@{
-    Layout = MVC.Shared.Views._Layout;
-}
-@section osnova_d
-{
-id="osnova_d_b"
+    Layout = MVC.Shared.Views._OneOrTwoColumnsLayoutBase;
 }
 @RenderSection("Scripts", false)
-<div class="content_blok_b">
-    <div class="blok_1_battle">
-        <div class="levo_blok_b">
-            @RenderSection("LeftBlock", true)
-        </div>
-        @RenderSection("RightBlock", true)
-    </div>
+
+<div class="levo_blok_b">
+    @RenderSection("LeftBlock", true)
 </div>
+@RenderSection("RightBlock", true)
