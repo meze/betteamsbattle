@@ -105,7 +105,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
             }
         }
 
-        public void Dispose()
+        public void Stop()
         {
             AwesomiumCore.Shutdown();
         }
