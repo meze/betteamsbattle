@@ -2,7 +2,7 @@
 @using Resources
 @model SignInViewModel
 @{
-    Layout = MVC.Shared.Views._Layout;               
+    Layout = MVC.Shared.Views.OneColumn._OneColumnLayout;               
 }
 @section Scripts {
     <link href="@Links.Scripts.openid_selector.css.openid_css" rel="stylesheet" type="text/css" />
@@ -14,6 +14,10 @@
         });
     </script>
 }
+@section Title {
+    @Accounts.SignIn
+}
+
 @if (Model.Message != null)
 {
     <div style="border: solid 1px red">

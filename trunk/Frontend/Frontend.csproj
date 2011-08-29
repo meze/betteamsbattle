@@ -416,6 +416,8 @@
     <Content Include="Views\Shared\ThreeColumns\_RightColumnBlock.cshtml" />
     <Content Include="Views\Shared\TwoColumns\_LeftColumnBlock.cshtml" />
     <Content Include="App_Code\Forms.cshtml" />
+    <Content Include="Views\Shared\OneColumn\_OneColumnLayout.cshtml" />
+    <Content Include="Views\Shared\_OneOrTwoColumnsLayoutBase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,0 +1,14 @@
+﻿@{
+    Layout = MVC.Shared.Views._OneOrTwoColumnsLayoutBase;
+}
+@RenderSection("Scripts", false)
+<div class="loging">
+    <div class="hed_s_n">
+        <div class="hed_s_text">
+            @RenderSection("Title", true)
+        </div>
+    </div>
+    <div class="text_login">
+        @RenderBody()
+    </div>
+</div>
