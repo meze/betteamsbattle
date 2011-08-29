@@ -30,6 +30,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
             context.MapLanguageRoute("battles/{battleId}/mybets/new", MVC.NotAdmin.BattleBets.MakeBet());
             context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/succeeded", MVC.NotAdmin.BattleBets.BetSucceeded());
             context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/failed", MVC.NotAdmin.BattleBets.BetFailed());
+            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/canceledbybookmaker", MVC.NotAdmin.BattleBets.BetCanceledByBookmaker());
             #endregion
 
             #region AccountsController
