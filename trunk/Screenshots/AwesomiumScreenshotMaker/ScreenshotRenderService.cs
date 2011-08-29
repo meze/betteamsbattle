@@ -15,7 +15,7 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
         {
             WebView webView = null;
             synchronizationContext.Send((object state) => webView = WebCore.CreateWebView(1024, 768), null);
-             
+
             synchronizationContext.Send(((object state) => webView.LoadURL(url)), null);
 
             while (webView.IsLoadingPage)

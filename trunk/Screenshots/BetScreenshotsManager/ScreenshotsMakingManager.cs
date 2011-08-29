@@ -45,6 +45,16 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
             _synchronizationContext = SynchronizationContext.Current;
 
+            var pollingThread = new Thread(StartPolling);
+            pollingThread.Start();
+
+            AwesomiumCore.Shutdown();
+        }
+
+        #endregion
+
+        private void StartPolling()
+        {
             while (true)
             {
                 var notProcessedBetScreenshotsIds =
@@ -55,10 +65,6 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                         Select(qbu => qbu.Id).ToList();
                 if (notProcessedBetScreenshotsIds.Count == 0)
                 {
-                    //var autoResetEvent = new AutoResetEvent(false);
-                    //var timer = new Timer((param) => autoResetEvent.Reset(), null, 1000, Timeout.Infinite);
-                    //autoResetEvent.WaitOne();
-                    Application.DoEvents();
                     Thread.Sleep(1000);
                     continue;
                 }
@@ -75,14 +81,8 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                     var thread = new Thread(ProcessInNewThread);
                     thread.Start(notProcessedBetScreenshotId);
                 }
-
-                //break;
             }
-
-            AwesomiumCore.Shutdown();
         }
-
-        #endregion
 
         private void ProcessInNewThread(object obj)
         {
