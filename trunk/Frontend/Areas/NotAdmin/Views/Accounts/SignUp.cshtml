@@ -15,7 +15,7 @@
     <text>
     @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
     @Forms.TextBox(Html, m => m.Login, Accounts.Login)
-    @Html.HiddenFor(m => m.OpenIdUrl, Model.OpenIdUrl)
+    @Html.HiddenFor(m => m.OpenIdUrl)
     @Forms.SubmitButton(Accounts.SignUp)
     </text>
 }
