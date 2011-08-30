@@ -60,6 +60,10 @@
       <Project>{A7C451BA-6138-489D-B91C-D66DF03BE3D3}</Project>
       <Name>Configuration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Screenshots.Common\Screenshots.Common.csproj">
+      <Project>{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}</Project>
+      <Name>Screenshots.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

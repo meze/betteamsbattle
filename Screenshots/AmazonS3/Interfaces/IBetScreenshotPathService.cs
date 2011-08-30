@@ -1,8 +1,11 @@
-﻿namespace BetTeamsBattle.Screenshots.AmazonS3.Interfaces
+﻿using BetTeamsBattle.Screenshots.Common;
+
+namespace BetTeamsBattle.Screenshots.AmazonS3.Interfaces
 {
     public interface IBetScreenshotPathService
     {
-        string GetPath(long betScreenshotId);
-        string GetUrl(long betScreenshotId);
+        string GetPath(long betScreenshotId, ImageFormat imageFormat);
+        string GetUrl(string fileName);
+        string GetFileName(long betScreenshotId, ImageFormat imageFormat);
     }
 }

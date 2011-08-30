@@ -2,6 +2,7 @@
 using System.Threading;
 using AwesomiumSharp;
 using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
+using BetTeamsBattle.Screenshots.Common;
 
 namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
 {
@@ -17,11 +18,11 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
             _renderBufferToEncodedImageStreamConverter = renderBufferToEncodedImageStreamConverter;
         }
 
-        public Stream GetScreenshotEncodedStream(string url, SynchronizationContext synchronizationContext)
+        public Stream GetScreenshotEncodedStream(string url, SynchronizationContext synchronizationContext, out ImageFormat imageFormat)
         {
             RenderBuffer renderBuffer = _screenshotRenderService.GetRender(url, synchronizationContext);
 
-            return _renderBufferToEncodedImageStreamConverter.ConvertToEncodedImageStream(renderBuffer);
+            return _renderBufferToEncodedImageStreamConverter.ConvertToEncodedImageStream(renderBuffer, out imageFormat);
         }
     }
 }

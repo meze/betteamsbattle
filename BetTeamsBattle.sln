@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.AwesomiumScreen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.AmazonS3", "Screenshots\AmazonS3\Screenshots.AmazonS3.csproj", "{343976EF-889A-4A32-8135-EBF2A96C38F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screenshots.Common", "Screenshots\Screenshots.Common\Screenshots.Common.csproj", "{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +185,16 @@ Global
 		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{343976EF-889A-4A32-8135-EBF2A96C38F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,5 +211,6 @@ Global
 		{4126E87A-FDD0-4AC9-813F-9D752631071B} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 		{7F6CC474-040D-4A51-BF99-12C0B2A0C014} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 		{343976EF-889A-4A32-8135-EBF2A96C38F6} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
+		{AE493EBA-BAD6-4C27-AC36-D0359B256CB0} = {1D37F9D7-C5AB-4F20-B027-C24E6C4AFBF9}
 	EndGlobalSection
 EndGlobal

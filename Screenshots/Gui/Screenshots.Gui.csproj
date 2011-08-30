@@ -119,6 +119,10 @@
       <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
       <Name>Screenshots.BetScreenshotsManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Screenshots.Common\Screenshots.Common.csproj">
+      <Project>{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}</Project>
+      <Name>Screenshots.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Configs\Usage\App.config">

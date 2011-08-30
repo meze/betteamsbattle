@@ -20,6 +20,7 @@ namespace BetTeamsBattle.Data.Model.Entities
             get { return (BetScreenshotStatus)Status; }
             set { Status = (sbyte) value; }
         }
+        public virtual string FileName { get; set; }
 
         public BetScreenshot()
         {
