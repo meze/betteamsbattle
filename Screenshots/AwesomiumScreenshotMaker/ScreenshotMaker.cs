@@ -17,7 +17,7 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
             _renderBufferToEncodedImageStreamConverter = renderBufferToEncodedImageStreamConverter;
         }
 
-        public Stream GetScreenshotJpegStream(string url, SynchronizationContext synchronizationContext)
+        public Stream GetScreenshotEncodedStream(string url, SynchronizationContext synchronizationContext)
         {
             RenderBuffer renderBuffer = _screenshotRenderService.GetRender(url, synchronizationContext);
 
