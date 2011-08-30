@@ -6,6 +6,9 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
 {
     internal class ScreenshotRenderService : IScreenshotRenderService
     {
+        private const int MaxWidth = 2000;
+        private const int MaxHeight = 3000;
+
         private bool _finishedScrollDataReceived;
         private ScrollData _scrollData;
 
@@ -27,7 +30,9 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
             while (!_finishedScrollDataReceived)
                 SleepAndUpdateCore(synchronizationContext);
 
-            webView.Resize(_scrollData.ContentWidth, _scrollData.ContentHeight);
+            var width = _scrollData.ContentWidth > MaxWidth ? MaxWidth : _scrollData.ContentWidth;
+            var height = _scrollData.ContentHeight > MaxHeight ? MaxHeight : _scrollData.ContentHeight;
+            webView.Resize(width, height);
 
             while (webView.IsResizing)
                 SleepAndUpdateCore(synchronizationContext);
