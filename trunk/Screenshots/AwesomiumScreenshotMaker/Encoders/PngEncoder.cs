@@ -8,7 +8,7 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders
     {
         public BitmapEncoder GetEncoder(BitmapSource bitmap)
         {
-            var encoder = new PngBitmapEncoder { Interlace = PngInterlaceOption.On };
+            var encoder = new PngBitmapEncoder { Interlace = PngInterlaceOption.Off };
             encoder.Frames.Add(BitmapFrame.Create(bitmap));
             return encoder;
         }
