@@ -3,8 +3,8 @@ using AwesomiumSharp;
 
 namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces
 {
-    internal interface IRenderBufferToPngStreamConverter
+    internal interface IRenderBufferToJpegStreamConverter
     {
-        Stream ConvertToPngStream(RenderBuffer buffer);
+        Stream ConvertToJpegStream(RenderBuffer buffer);
     }
 }

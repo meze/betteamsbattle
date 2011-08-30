@@ -6,26 +6,22 @@ using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
 
 namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
 {
-    internal class RenderBufferToPngStreamConverter : IRenderBufferToPngStreamConverter
+    internal class RenderBufferToJpegStreamConverter : IRenderBufferToJpegStreamConverter
     {
-        #region IRenderBufferToPngStreamConverter Members
-
-        public Stream ConvertToPngStream(RenderBuffer buffer)
+        public Stream ConvertToJpegStream(RenderBuffer buffer)
         {
             var bitmap = new WriteableBitmap(buffer.Width, buffer.Height, 96, 96,
                                              PixelFormats.Bgra32, BitmapPalettes.WebPaletteTransparent);
 
             buffer.CopyToBitmap(bitmap);
 
-            var encoder = new PngBitmapEncoder {Interlace = PngInterlaceOption.On};
-            encoder.Frames.Add(BitmapFrame.Create(bitmap));
+            var jpegEncoder = new JpegBitmapEncoder() {QualityLevel = 1 };
+            jpegEncoder.Frames.Add(BitmapFrame.Create(bitmap));
 
-            var pngImageStream = new MemoryStream();
-            encoder.Save(pngImageStream);
+            var jpegImageStream = new MemoryStream();
+            jpegEncoder.Save(jpegImageStream);
 
-            return pngImageStream;
+            return jpegImageStream;
         }
-
-        #endregion
     }
 }
