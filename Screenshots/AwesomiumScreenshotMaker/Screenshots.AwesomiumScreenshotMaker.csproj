@@ -85,12 +85,15 @@
   <ItemGroup>
     <Compile Include="AwesomiumCore.cs" />
     <Compile Include="DI\ScreenshotsAwesomiumScreenshotMakerNinjectModule.cs" />
-    <Compile Include="Interfaces\IRenderBufferToJpegStreamConverter.cs" />
+    <Compile Include="Encoders\Interfaces\IEncoder.cs" />
+    <Compile Include="Encoders\JpegEncoder.cs" />
+    <Compile Include="Encoders\PngEncoder.cs" />
+    <Compile Include="Interfaces\IRenderBufferToEncodedImageStreamConverter.cs" />
     <Compile Include="Interfaces\IScreenshotMaker.cs" />
     <Compile Include="Interfaces\IScreenshotMakerFactory.cs" />
     <Compile Include="Interfaces\IScreenshotRenderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RenderBufferToJpegStreamConverter.cs" />
+    <Compile Include="RenderBufferToEncodedImageStreamConverter.cs" />
     <Compile Include="ScreenshotMaker.cs" />
     <Compile Include="ScreenshotMakerFactory.cs" />
     <Compile Include="ScreenshotRenderService.cs" />
