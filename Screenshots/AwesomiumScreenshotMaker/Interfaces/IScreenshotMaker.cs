@@ -5,6 +5,6 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces
 {
     public interface IScreenshotMaker
     {
-        Stream GetScreenshotPngStream(string url, SynchronizationContext synchronizationContext);
+        Stream GetScreenshotJpegStream(string url, SynchronizationContext synchronizationContext);
     }
 }

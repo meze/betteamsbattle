@@ -68,9 +68,9 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
                     betScreenshot.StartedProcessingDateTime = DateTime.UtcNow;
 
-                    var screenshotPngStream = GetScreenshot(battleBet.Url, betScreenshot, synchronizationContext);
+                    var screenshotJpegStream = GetScreenshot(battleBet.Url, betScreenshot, synchronizationContext);
 
-                    PutScreenshot(amazonS3Client, screenshotPngStream, betScreenshot);
+                    PutScreenshot(amazonS3Client, screenshotJpegStream, betScreenshot);
 
                     betScreenshot.FinishedProcessingDateTime = DateTime.UtcNow;
 
@@ -93,19 +93,19 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
             betScreenshot.StartedScreenshotRetrievalDateTime = DateTime.UtcNow;
 
             var screenShotMaker = _screenshotMakerFactory.Create();
-            var screenshotPngStream = screenShotMaker.GetScreenshotPngStream(battleBetUrl, synchronizationContext);
+            var screenshotJpegStream = screenShotMaker.GetScreenshotJpegStream(battleBetUrl, synchronizationContext);
 
             betScreenshot.FinishedScreenshotRetrievalDateTime = DateTime.UtcNow;
 
-            return screenshotPngStream;
+            return screenshotJpegStream;
         }
 
-        private void PutScreenshot(Amazon.S3.AmazonS3 amazonS3Client, Stream screenshotPngStream, BetScreenshot betScreenshot)
+        private void PutScreenshot(Amazon.S3.AmazonS3 amazonS3Client, Stream screenshotJpegStream, BetScreenshot betScreenshot)
         {
             betScreenshot.StartedScreenshotSavingDateTime = DateTime.UtcNow;
 
             var path = _betScreenshotPathService.GetPath(betScreenshot.Id);
-            _screenshotAmazonS3Putter.PutScreenshot(amazonS3Client, AppSettings.AmazonBucketName, path, screenshotPngStream);
+            _screenshotAmazonS3Putter.PutScreenshot(amazonS3Client, AppSettings.AmazonBucketName, path, screenshotJpegStream);
 
             betScreenshot.FinishedScreenshotSavingDateTime = DateTime.UtcNow;
         }

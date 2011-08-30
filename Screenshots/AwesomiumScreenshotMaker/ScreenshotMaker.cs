@@ -7,25 +7,21 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
 {
     internal class ScreenshotMaker : IScreenshotMaker
     {
-        private readonly IRenderBufferToPngStreamConverter _renderBufferToPngStreamConverter;
+        private readonly IRenderBufferToJpegStreamConverter _renderBufferToJpegStreamConverter;
         private readonly IScreenshotRenderService _screenshotRenderService;
 
         public ScreenshotMaker(IScreenshotRenderService screenshotRenderService,
-                               IRenderBufferToPngStreamConverter renderBufferToPngStreamConverter)
+                               IRenderBufferToJpegStreamConverter renderBufferToJpegStreamConverter)
         {
             _screenshotRenderService = screenshotRenderService;
-            _renderBufferToPngStreamConverter = renderBufferToPngStreamConverter;
+            _renderBufferToJpegStreamConverter = renderBufferToJpegStreamConverter;
         }
 
-        #region IScreenshotMaker Members
-
-        public Stream GetScreenshotPngStream(string url, SynchronizationContext synchronizationContext)
+        public Stream GetScreenshotJpegStream(string url, SynchronizationContext synchronizationContext)
         {
             RenderBuffer renderBuffer = _screenshotRenderService.GetRender(url, synchronizationContext);
 
-            return _renderBufferToPngStreamConverter.ConvertToPngStream(renderBuffer);
+            return _renderBufferToJpegStreamConverter.ConvertToJpegStream(renderBuffer);
         }
-
-        #endregion
     }
 }

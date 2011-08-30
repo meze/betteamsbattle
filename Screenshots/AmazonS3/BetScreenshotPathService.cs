@@ -8,7 +8,7 @@ namespace BetTeamsBattle.Screenshots.AmazonS3
     {
         public string GetPath(long betScreenshotId)
         {
-            return String.Format("{0}/{1}.png", AppSettings.AmazonBetsScreenshotsDirectory, betScreenshotId);
+            return String.Format("{0}/{1}.jpg", AppSettings.AmazonBetsScreenshotsDirectory, betScreenshotId);
         }
 
         public string GetUrl(long betScreenshotId)
