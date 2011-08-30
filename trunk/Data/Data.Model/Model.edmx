@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="battles" EntityType="Model.Store.battles" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="battlesbets" EntityType="Model.Store.battlesbets" store:Type="Tables" Schema="betteamsbattle" />
@@ -110,6 +110,7 @@
           <Property Name="FinishedScreenshotSavingDateTime" Type="datetime" />
           <Property Name="FinishedProcessingDateTime" Type="datetime" />
           <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="iptocountry">
           <Key>
@@ -554,6 +555,7 @@
           <Property Type="DateTime" Name="StartedScreenshotSavingDateTime" />
           <Property Type="DateTime" Name="FinishedScreenshotSavingDateTime" />
           <Property Type="DateTime" Name="FinishedProcessingDateTime" />
+          <Property Type="String" Name="FileName" Nullable="false" />
         </EntityType>
         <Association Name="battlesbets_ibfk_4">
           <End Type="Model.BetScreenshot" Role="betsscreenshot" Multiplicity="1" />
@@ -689,6 +691,7 @@
           <EntitySetMapping Name="BetsScreenshots">
             <EntityTypeMapping TypeName="Model.BetScreenshot">
               <MappingFragment StoreEntitySet="betsscreenshots">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="FinishedProcessingDateTime" ColumnName="FinishedProcessingDateTime" />
                 <ScalarProperty Name="FinishedScreenshotSavingDateTime" ColumnName="FinishedScreenshotSavingDateTime" />
                 <ScalarProperty Name="StartedScreenshotSavingDateTime" ColumnName="StartedScreenshotSavingDateTime" />

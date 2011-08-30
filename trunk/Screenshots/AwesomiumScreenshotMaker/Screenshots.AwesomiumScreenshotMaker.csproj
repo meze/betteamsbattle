@@ -85,9 +85,6 @@
   <ItemGroup>
     <Compile Include="AwesomiumCore.cs" />
     <Compile Include="DI\ScreenshotsAwesomiumScreenshotMakerNinjectModule.cs" />
-    <Compile Include="Encoders\Interfaces\IEncoder.cs" />
-    <Compile Include="Encoders\JpegEncoder.cs" />
-    <Compile Include="Encoders\PngEncoder.cs" />
     <Compile Include="Interfaces\IRenderBufferToEncodedImageStreamConverter.cs" />
     <Compile Include="Interfaces\IScreenshotMaker.cs" />
     <Compile Include="Interfaces\IScreenshotMakerFactory.cs" />
@@ -100,6 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Screenshots.Common\Screenshots.Common.csproj">
+      <Project>{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}</Project>
+      <Name>Screenshots.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

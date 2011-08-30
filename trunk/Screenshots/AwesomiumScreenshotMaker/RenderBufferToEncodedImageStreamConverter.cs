@@ -2,8 +2,9 @@
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using AwesomiumSharp;
-using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders.Interfaces;
 using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
+using BetTeamsBattle.Screenshots.Common;
+using BetTeamsBattle.Screenshots.Common.Encoders.Interfaces;
 
 namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
 {
@@ -16,13 +17,14 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker
             _encoder = encoder;
         }
 
-        public Stream ConvertToEncodedImageStream(RenderBuffer buffer)
+        public Stream ConvertToEncodedImageStream(RenderBuffer buffer, out ImageFormat imageFormat)
         {
             var bitmap = new WriteableBitmap(buffer.Width, buffer.Height, 96, 96,
                                              PixelFormats.Bgra32, BitmapPalettes.WebPaletteTransparent);
 
             buffer.CopyToBitmap(bitmap);
 
+            imageFormat = _encoder.ImageFormat;
             var encoder = _encoder.GetEncoder(bitmap);
 
             var imageStream = new MemoryStream();

@@ -1,8 +1,7 @@
-﻿using System.Text;
-using System.Windows.Media.Imaging;
-using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders.Interfaces;
+﻿using System.Windows.Media.Imaging;
+using BetTeamsBattle.Screenshots.Common.Encoders.Interfaces;
 
-namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders
+namespace BetTeamsBattle.Screenshots.Common.Encoders
 {
     internal class PngEncoder : IEncoder
     {
@@ -11,6 +10,11 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders
             var encoder = new PngBitmapEncoder { Interlace = PngInterlaceOption.Off };
             encoder.Frames.Add(BitmapFrame.Create(bitmap));
             return encoder;
+        }
+
+        public ImageFormat ImageFormat
+        {
+            get { return ImageFormat.Png; }
         }
     }
 }

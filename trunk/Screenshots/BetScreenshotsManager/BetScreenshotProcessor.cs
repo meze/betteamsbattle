@@ -12,6 +12,7 @@ using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interface
 using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
 using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Interfaces;
 using BetTeamsBattle.Screenshots.BettScreenshotsManager.Interfaces;
+using BetTeamsBattle.Screenshots.Common;
 using NLog;
 
 namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
@@ -68,9 +69,10 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
                     betScreenshot.StartedProcessingDateTime = DateTime.UtcNow;
 
-                    var screenshotEncodedStream = GetScreenshot(battleBet.Url, betScreenshot, synchronizationContext);
+                    ImageFormat imageFormat;
+                    var screenshotEncodedStream = GetScreenshot(battleBet.Url, betScreenshot, synchronizationContext, out imageFormat);
 
-                    PutScreenshot(amazonS3Client, screenshotEncodedStream, betScreenshot);
+                    PutScreenshot(amazonS3Client, screenshotEncodedStream, betScreenshot, imageFormat);
 
                     betScreenshot.FinishedProcessingDateTime = DateTime.UtcNow;
 
@@ -88,26 +90,28 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
             }
         }
 
-        private Stream GetScreenshot(string battleBetUrl, BetScreenshot betScreenshot, SynchronizationContext synchronizationContext)
+        private Stream GetScreenshot(string battleBetUrl, BetScreenshot betScreenshot, SynchronizationContext synchronizationContext, out ImageFormat imageFormat)
         {
             betScreenshot.StartedScreenshotRetrievalDateTime = DateTime.UtcNow;
 
             var screenShotMaker = _screenshotMakerFactory.Create();
-            var screenshotEncodedStream = screenShotMaker.GetScreenshotEncodedStream(battleBetUrl, synchronizationContext);
+            var screenshotEncodedStream = screenShotMaker.GetScreenshotEncodedStream(battleBetUrl, synchronizationContext, out imageFormat);
 
             betScreenshot.FinishedScreenshotRetrievalDateTime = DateTime.UtcNow;
 
             return screenshotEncodedStream;
         }
 
-        private void PutScreenshot(Amazon.S3.AmazonS3 amazonS3Client, Stream screenshotJpegStream, BetScreenshot betScreenshot)
+        private void PutScreenshot(Amazon.S3.AmazonS3 amazonS3Client, Stream screenshotJpegStream, BetScreenshot betScreenshot, ImageFormat imageFormat)
         {
             betScreenshot.StartedScreenshotSavingDateTime = DateTime.UtcNow;
 
-            var path = _betScreenshotPathService.GetPath(betScreenshot.Id);
+            var path = _betScreenshotPathService.GetPath(betScreenshot.Id, imageFormat);
             _screenshotAmazonS3Putter.PutScreenshot(amazonS3Client, AppSettings.AmazonBucketName, path, screenshotJpegStream);
 
             betScreenshot.FinishedScreenshotSavingDateTime = DateTime.UtcNow;
+
+            betScreenshot.FileName = _betScreenshotPathService.GetFileName(betScreenshot.Id, imageFormat);
         }
     }
 }

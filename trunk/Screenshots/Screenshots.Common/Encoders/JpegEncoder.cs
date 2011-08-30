@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media.Imaging;
-using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders.Interfaces;
+using BetTeamsBattle.Screenshots.Common.Encoders.Interfaces;
 
-namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders
+namespace BetTeamsBattle.Screenshots.Common.Encoders
 {
     internal class JpegEncoder : IEncoder
     {
@@ -10,6 +10,11 @@ namespace BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.Encoders
             var jpegEncoder = new JpegBitmapEncoder() {QualityLevel = 50};
             jpegEncoder.Frames.Add(BitmapFrame.Create(bitmap));
             return jpegEncoder;
+        }
+
+        public ImageFormat ImageFormat
+        {
+            get { return ImageFormat.Jpeg; }
         }
     }
 }
