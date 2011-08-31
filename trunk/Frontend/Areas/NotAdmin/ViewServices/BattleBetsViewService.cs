@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -39,16 +40,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             teams.Insert(0, personalTeam);
             var teamsSelectListItems = teams.Select(
                 t =>
-                    {
-                        string title;
-                        if (t.IsPersonal)
-                            title = BattleBets.MePersonally;
-                        else
-                            title = String.Format("{0} {1}", BattleBets.OfTeam, t.Title);
-                        var isSelected = t.Id == makeBetFormViewModel.TeamId;
-                        var selectListItem = new SelectListItem() {Value = t.Id.ToString(), Text = title, Selected = isSelected};
-                        return selectListItem;
-                    }).
+                {
+                    string title;
+                    if (t.IsPersonal)
+                        title = BattleBets.MePersonally;
+                    else
+                        title = String.Format("{0} {1}", BattleBets.OfTeam, t.Title);
+                    var isSelected = t.Id == makeBetFormViewModel.TeamId;
+                    var selectListItem = new SelectListItem() { Value = t.Id.ToString(), Text = title, Selected = isSelected };
+                    return selectListItem;
+                }).
                 ToList();
 
             var makeBetViewModel = new MakeBetViewModel(battleId, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, teamsSelectListItems, makeBetFormViewModel);
@@ -82,29 +83,47 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                                              Bet = myBet.Bet,
                                              Coefficient = myBet.Coefficient,
                                              IsPrivate = myBet.IsPrivate,
+                                             IsClosed = myBet.IsClosed,
+                                             Status = myBet.StatusEnum
                                          };
 
-                myBetViewModel.OpenDateTime = myBet.OpenDateTime.ToShortDateString();
-                myBetViewModel.OpenScreenshotStatusClass = GetBetScreenshotStatusClass(myBet.OpenBetScreenshot.StatusEnum);
-                myBetViewModel.OpenScreenshotStatusString = GetBetScreenshotStatusString(myBet.OpenBetScreenshot.StatusEnum);
-                if (myBet.OpenBetScreenshot.StatusEnum == BetScreenshotStatus.Succeeded)
-                    myBetViewModel.OpenScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.OpenBetScreenshot.FileName);
+                myBetViewModel.OpenDateAndScreenshot = GetDateAndScreenshot(myBet.OpenDateTime, myBet.OpenBetScreenshot.StatusEnum, myBet.OpenBetScreenshot.FileName);
 
-                if (myBet.CloseBetScreenshotId.HasValue)
+                if (myBet.IsClosed)
                 {
-                    myBetViewModel.CloseDateTime = myBet.CloseDateTime.Value.ToShortDateString();
-                    myBetViewModel.CloseScreenshotStatusClass = GetBetScreenshotStatusClass(myBet.CloseBetScreenshot.StatusEnum);
-                    myBetViewModel.CloseScreenshotStatus = GetBetScreenshotStatusString(myBet.CloseBetScreenshot.StatusEnum);
-                    if (myBet.CloseBetScreenshot.StatusEnum == BetScreenshotStatus.Succeeded)
-                        myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshot.FileName);
+                    myBetViewModel.CloseDateAndScreenshot = GetDateAndScreenshot(myBet.CloseDateTime.Value, myBet.CloseBetScreenshot.StatusEnum, myBet.CloseBetScreenshot.FileName);
+                    myBetViewModel.StatusActionImage = GetBattleBetStatusImages(myBet.Id)[myBet.StatusEnum];
                 }
                 else
-                    myBetViewModel.CloseDateTime = "?";
+                    myBetViewModel.StatusActionImages = GetBattleBetStatusImages(myBet.Id);
 
                 myBetsViewModels.Add(myBetViewModel);
             }
 
             return myBetsViewModels;
+        }
+
+        public IDictionary<BattleBetStatus, StatusActionImageViewModel> GetBattleBetStatusImages(long battleBetId)
+        {
+            return new Dictionary<BattleBetStatus, StatusActionImageViewModel>()
+                { 
+                    { BattleBetStatus.Succeeded, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetSucceeded(battleBetId), "", BattleBets.Succeeded) },
+                    { BattleBetStatus.Failed, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetFailed(battleBetId), "", BattleBets.Failed) },
+                    { BattleBetStatus.CanceledByBookmaker, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(battleBetId), "", BattleBets.CanceledByBookmaker ) }
+                };
+        }
+
+        private DateAndScreenshotViewModel GetDateAndScreenshot(DateTime dateTime, BetScreenshotStatus betScreenshotStatus, string betScreenshotFileName)
+        {
+            var dateAndScreenshot = new DateAndScreenshotViewModel
+                                        {
+                                            DateTime = dateTime.ToShortDateString(),
+                                            ScreenshotStatusClass = GetBetScreenshotStatusClass(betScreenshotStatus),
+                                            ScreenshotStatusString = GetBetScreenshotStatusString(betScreenshotStatus)
+                                        };
+            if (betScreenshotStatus == BetScreenshotStatus.Succeeded)
+                dateAndScreenshot.ScreenshotUrl = _betScreenshotPathService.GetUrl(betScreenshotFileName);
+            return dateAndScreenshot;
         }
 
         private string GetBetScreenshotStatusClass(BetScreenshotStatus betScreenshotStatus)

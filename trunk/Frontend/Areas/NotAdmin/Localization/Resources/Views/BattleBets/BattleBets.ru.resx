@@ -135,6 +135,9 @@
   <data name="CanceledByBookmaker" xml:space="preserve">
     <value>Отменена букмекером</value>
   </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Выберите</value>
+  </data>
   <data name="Coefficient" xml:space="preserve">
     <value>Коэффициент</value>
   </data>

@@ -83,6 +83,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string _DateAndScreenshot = "~/Areas/NotAdmin/Views/BattleBets/_DateAndScreenshot.cshtml";
+            public readonly string _Status = "~/Areas/NotAdmin/Views/BattleBets/_Status.cshtml";
+            public readonly string _StatusActionImage = "~/Areas/NotAdmin/Views/BattleBets/_StatusActionImage.cshtml";
             public readonly string MakeBet = "~/Areas/NotAdmin/Views/BattleBets/MakeBet.cshtml";
             public readonly string MyBets = "~/Areas/NotAdmin/Views/BattleBets/MyBets.cshtml";
         }
