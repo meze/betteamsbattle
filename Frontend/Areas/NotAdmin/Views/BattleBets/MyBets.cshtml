@@ -54,17 +54,17 @@ else
                             @myBet.Coefficient
                         </td>
                         <td class="td1_5">
-                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.OpenDateTime, myBet.OpenScreenshotStatus, myBet.OpenScreenshotUrl))
+                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.OpenDateTime, myBet.OpenScreenshotStatusString, myBet.OpenScreenshotStatusClass, myBet.OpenScreenshotUrl))
                         </td>
                         <td class="td1_5">
-                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotUrl))
+                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotStatusClass, myBet.CloseScreenshotUrl))
                         </td>
                         <td class="td1_8">
-                            @Html.ActionLink(BattleBets.Succeeded, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId))
+                            @Forms.ActionImage(Url, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId), "scr", BattleBets.Succeeded)
                             <br />
-                            @Html.ActionLink(BattleBets.Failed, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId))
+                            @Forms.ActionImage(Url, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId), "scr", BattleBets.Failed)
                             <br />
-                            @Html.ActionLink(BattleBets.CanceledByBookmaker, MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(myBet.BattleBetId))
+                            @Forms.ActionImage(Url, MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(myBet.BattleBetId), "scr", BattleBets.CanceledByBookmaker)
                         </td>
                     </tr>
                 }

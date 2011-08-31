@@ -85,15 +85,17 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                                          };
 
                 myBetViewModel.OpenDateTime = myBet.OpenDateTime.ToShortDateString();
-                myBetViewModel.OpenScreenshotStatus = BetScreenshotStatusToString(myBet.OpenBetScreenshot.StatusEnum);
-                if (myBet.OpenBetScreenshot.StatusEnum == BetScreenshotStatus.Processed)
+                myBetViewModel.OpenScreenshotStatusClass = GetBetScreenshotStatusClass(myBet.OpenBetScreenshot.StatusEnum);
+                myBetViewModel.OpenScreenshotStatusString = GetBetScreenshotStatusString(myBet.OpenBetScreenshot.StatusEnum);
+                if (myBet.OpenBetScreenshot.StatusEnum == BetScreenshotStatus.Succeeded)
                     myBetViewModel.OpenScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.OpenBetScreenshot.FileName);
 
                 if (myBet.CloseBetScreenshotId.HasValue)
                 {
                     myBetViewModel.CloseDateTime = myBet.CloseDateTime.Value.ToShortDateString();
-                    myBetViewModel.CloseScreenshotStatus = BetScreenshotStatusToString(myBet.CloseBetScreenshot.StatusEnum);
-                    if (myBet.CloseBetScreenshot.StatusEnum == BetScreenshotStatus.Processed)
+                    myBetViewModel.CloseScreenshotStatusClass = GetBetScreenshotStatusClass(myBet.CloseBetScreenshot.StatusEnum);
+                    myBetViewModel.CloseScreenshotStatus = GetBetScreenshotStatusString(myBet.CloseBetScreenshot.StatusEnum);
+                    if (myBet.CloseBetScreenshot.StatusEnum == BetScreenshotStatus.Succeeded)
                         myBetViewModel.CloseScreenshotUrl = _betScreenshotPathService.GetUrl(myBet.CloseBetScreenshot.FileName);
                 }
                 else
@@ -105,14 +107,26 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             return myBetsViewModels;
         }
 
-        private string BetScreenshotStatusToString(BetScreenshotStatus betScreenshotStatus)
+        private string GetBetScreenshotStatusClass(BetScreenshotStatus betScreenshotStatus)
         {
-            if (betScreenshotStatus == BetScreenshotStatus.Failed)
-                return "Failed";
+            if (betScreenshotStatus == BetScreenshotStatus.NotProcessed)
+                return "sc_inprogress";
+            else if (betScreenshotStatus == BetScreenshotStatus.Failed)
+                return "sc_failed";
+            else if (betScreenshotStatus == BetScreenshotStatus.Succeeded)
+                return "sc_succeeded";
+            else
+                throw new ArgumentOutOfRangeException("betScreenshotStatus");
+        }
+
+        private string GetBetScreenshotStatusString(BetScreenshotStatus betScreenshotStatus)
+        {
+            if (betScreenshotStatus == BetScreenshotStatus.Succeeded)
+                return BattleBets.Screenshot;
+            else if (betScreenshotStatus == BetScreenshotStatus.Failed)
+                return BattleBets.FailedToMakeScreenshot;
             else if (betScreenshotStatus == BetScreenshotStatus.NotProcessed)
-                return "Retrieving...";
-            else if (betScreenshotStatus == BetScreenshotStatus.Processed)
-                return "Screenshot";
+                return BattleBets.MakingScreenshot;
             else
                 throw new ArgumentOutOfRangeException("betScreenshotStatus");
         }

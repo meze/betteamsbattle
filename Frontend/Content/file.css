@@ -190,7 +190,6 @@ background-position:center;
 
 
 
-
 .form-select{
 	border:none;
 	width:298px;
@@ -276,6 +275,19 @@ float:left;
 
 
 
+.text_aut{
+	    border:none;
+	    width:288px;
+		background-image: url('images/33.png');
+		height:17px;
+		padding-left:8px;
+		padding-right:8px;
+		font-weight:bold;
+		color:#333;
+		padding-top:6px;
+		text-align:center;
+}
+
 
 
 
@@ -287,9 +299,17 @@ float:left;
 	
 }
 
-.stroka_1_forml{
+
+.form_auto{
+
+	height:25px;
 	background-image: url('images/33.png');
+	width:304px;
+	margin:0 auto;
+	
 }
+
+
 
 
 .hed_error{	
@@ -344,21 +364,42 @@ float:left;
 }
 
 .hed_s_text{
-	float:left;
-	margin-left:15px;
-	margin-top:10px;
-	font-size:17px;
+	font-size:18px;
 	font-family:Tahoma, Geneva, sans-serif;
 	color:#FFF;
+	margin:0 auto;
+	width:320px;
+	padding-top:10px;
+	text-align:center;
 	
 }
 
 
 .text_login{
 	color:#FFF;
+	padding:30px;
+	font-size:16px;
+	font-family:Tahoma, Geneva, sans-serif;
+	
+}
+
+.text_login_a{
+	float:left;
+	margin:30px;
+	color:#FFF;
 	padding:20px;
 	font-size:16px;
 	font-family:Tahoma, Geneva, sans-serif;
+	border:2px solid #333;
+	font-weight:bold;
+	
+}
+
+
+.button_aut{
+	margin:0 auto;
+	width:168px;
+	margin-top:30px;
 	
 }
 
@@ -372,13 +413,28 @@ float:left;
 	padding-bottom:2px;
 	padding-top:2px;
 	text-align:center;
+	border:none;
 }
+
+ .pravo_content2_battle .td1_8 a:hover{
+
+	border:none;
+	
+}
+
 
 
 .scr{
-	padding-left:40px;
-	background-color:#06C;
+	border:none;
+
 }
+
+
+.scr a{
+	border:none;
+	border:none;
+}
+
 
 .pravo_content2{
 	width:530px;
@@ -528,17 +584,6 @@ height:36px;
 }
 
 
-.levo_blok1_head_b{
-	height:36px;
-	background-color:#3d3c3c;
-background-image:url("images/rt.png");
-border-bottom:2px solid #686868;
-
-background-repeat:no-repeat;
-
-
-}
-
 
 .pr_blok1_head_2{
 background-color:#3D3C3C;
@@ -575,6 +620,13 @@ height:36px;
 	color:#06F;
 	text-decoration:none;
 	border-bottom:1px dashed;
+	
+}
+
+ .pravo_content2_battle .sc a:hover{
+	color:#06F;
+	text-decoration:none;
+	border:none;
 	
 }
 
@@ -681,8 +733,8 @@ height:36px;
 .text_head{
 color:#FFFFFF;
 font-family:Tahoma,Geneva,sans-serif;
-font-size:17px;
-padding-left:14px;
+font-size:18px;
+text-align:center;
 padding-top:7px;
 text-shadow:1px 1px 1px #333333;
 	

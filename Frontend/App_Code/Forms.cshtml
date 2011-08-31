@@ -1,6 +1,7 @@
 ﻿@*Idea is taken from http://stackoverflow.com/questions/4760783/is-it-possible-to-create-a-generic-helper-method-with-razor
 Thank you, chrismilleruk*@
 @using System.Linq.Expressions;
+@using System.Security.Policy
 @using System.Web.Mvc;
 @using System.Web.Mvc.Html;
 @using SelectListItem = System.Web.Mvc.SelectListItem;
@@ -19,6 +20,11 @@ Thank you, chrismilleruk*@
     public static HelperResult CheckBox<TModel>(HtmlHelper<TModel> html, Expression<Func<TModel, bool>> expr, string title)
     {
         return OneLineFormElement(html.LabelFor(expr, title), html.CheckBoxFor(expr, new { @class = "g" }), html.ValidationMessageFor(expr));
+    }
+    
+    public static HelperResult ActionImage(UrlHelper url, ActionResult actionResult, string imageClass, string imageAlt)
+    {
+        return ActionImage(url.Action(actionResult), imageClass, imageAlt);
     }
 }
 @helper TwoLinesFormElement(MvcHtmlString label, MvcHtmlString element, MvcHtmlString validationMessage)
@@ -49,4 +55,14 @@ Thank you, chrismilleruk*@
         <span class="button">
             <input type="submit" value="@label" /></span>
     </div>
+}
+
+@helper ActionImage(string url, string imageClass, string imageTitle)
+{
+    <a href="@url"><img class="@imageClass" title="@imageTitle" /></a>
+}
+
+@helper Image(string imageClass, string imageTitle)
+{
+    <img class="@imageClass" title="@imageTitle" />
 }
