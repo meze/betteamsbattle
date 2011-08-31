@@ -18,14 +18,15 @@
     @Accounts.SigningIn
 }
 
-@if (Model.Message != null)
+@using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form", style="color:#FFF;" }))
 {
-    <div style="border: solid 1px red">
+    if (Model.Message != null)
+    {
+    <div style="color:#F00; padding-left:20px; text-shadow:1px 1px 1px #000; font-size:16px; font-family:Tahoma, Geneva, sans-serif; font-weight:bold;">
         @Model.Message
     </div>
-}
-@using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form" }))
-{
+    }
+    
     <input type="hidden" name="action" value="verify" />
 
     <fieldset>
