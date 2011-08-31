@@ -96,6 +96,8 @@ namespace BetTeamsBattle.Data.Services
 
                 if (userId != battleBet.UserId)
                     throw new ArgumentException("You are trying to close not your bet");
+                if (battleBet.IsClosed)
+                    throw new ArgumentException("This bet is already closed");
 
                 battleBet.CloseDateTime = DateTime.UtcNow;
                 battleBet.CloseBetScreenshot = new BetScreenshot();

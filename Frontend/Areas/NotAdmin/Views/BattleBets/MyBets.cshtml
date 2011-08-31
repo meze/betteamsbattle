@@ -54,17 +54,13 @@ else
                             @myBet.Coefficient
                         </td>
                         <td class="td1_5">
-                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.OpenDateTime, myBet.OpenScreenshotStatusString, myBet.OpenScreenshotStatusClass, myBet.OpenScreenshotUrl))
+                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)
                         </td>
                         <td class="td1_5">
-                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new DateAndScreenshotViewModel(myBet.CloseDateTime, myBet.CloseScreenshotStatus, myBet.CloseScreenshotStatusClass, myBet.CloseScreenshotUrl))
+                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(myBet.CloseDateAndScreenshot))
                         </td>
                         <td class="td1_8">
-                            @Forms.ActionImage(Url, MVC.NotAdmin.BattleBets.BetSucceeded(myBet.BattleBetId), "scr", BattleBets.Succeeded)
-                            <br />
-                            @Forms.ActionImage(Url, MVC.NotAdmin.BattleBets.BetFailed(myBet.BattleBetId), "scr", BattleBets.Failed)
-                            <br />
-                            @Forms.ActionImage(Url, MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(myBet.BattleBetId), "scr", BattleBets.CanceledByBookmaker)
+                           @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
                         </td>
                     </tr>
                 }

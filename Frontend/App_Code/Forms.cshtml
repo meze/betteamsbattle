@@ -22,9 +22,9 @@ Thank you, chrismilleruk*@
         return OneLineFormElement(html.LabelFor(expr, title), html.CheckBoxFor(expr, new { @class = "g" }), html.ValidationMessageFor(expr));
     }
     
-    public static HelperResult ActionImage(UrlHelper url, ActionResult actionResult, string imageClass, string imageAlt)
+    public static HelperResult ActionImage(UrlHelper url, ActionResult actionResult, string imageClass, string imageTitle)
     {
-        return ActionImage(url.Action(actionResult), imageClass, imageAlt);
+        return ActionImage(url.Action(actionResult), imageClass, imageTitle);
     }
 }
 @helper TwoLinesFormElement(MvcHtmlString label, MvcHtmlString element, MvcHtmlString validationMessage)

@@ -189,6 +189,20 @@ namespace BetTeamsBattle.Data.Services.Tests
             Assert.Throws<ArgumentException>(() => _battlesService.BetFailed(battleBetId, otherUser.Id, out battleId));
         }
 
+        [Test]
+        public void CloseBattleBet_CloseAlreadyClosedBattleBet_Exception()
+        {
+            Battle battle;
+            Team team;
+            User user;
+            SetupBattleAndUserAndTeam(out battle, out team, out user);
+
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            long battleId;
+            _battlesService.BetFailed(battleBetId, user.Id, out battleId);
+            Assert.Throws<ArgumentException>(() => _battlesService.BetFailed(battleBetId, user.Id, out battleId));
+        }
+
         private void AssertOpenedBattleBet(long battleBetId, long battleId, long teamId, long userId, string _betTitle, double bet, double coefficient, string url, bool isPrivate)
         {
             _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.BattleId == battleId && bb.TeamId == teamId && bb.UserId == userId && bb.Title == _betTitle && bb.Bet == bet && bb.Coefficient == coefficient && bb.Url == url && bb.IsPrivate == isPrivate && bb.OpenBetScreenshot.Status == (sbyte)BetScreenshotStatus.NotProcessed).Single();

@@ -1,13 +1,20 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @model DateAndScreenshotViewModel
-<div class="data">@Model.DateTime</div>
-<div class="sc">
-@if (Model.ScreenshotUrl == null)
+@if (Model == null)
 {
-    @Forms.ActionImage(Model.ScreenshotUrl, "scr", Model.ScreenshotStatus)
+    <text>?</text>
 }
 else
 {
-    @Forms.Image("scr", Model.ScreenshotStatus)
+    <div class="data">@Model.DateTime</div>
+    <div class="sc">
+        @if (Model.ScreenshotUrl != null)
+        {
+            @Forms.ActionImage(Model.ScreenshotUrl, "scr", Model.ScreenshotStatusString)
+        }
+        else
+        {
+            @Forms.Image("scr", Model.ScreenshotStatusString)
+        }
+    </div>
 }
-</div>

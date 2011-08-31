@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using BetTeamsBattle.Data.Model.Enums;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 {
@@ -10,14 +12,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
         public string Url { get; set; }
         public double Bet { get; set; }
         public double Coefficient { get; set; }
-        public string OpenDateTime { get; set; }
-        public string OpenScreenshotStatusClass { get; set; }
-        public string OpenScreenshotStatusString { get; set; }
-        public string OpenScreenshotUrl { get; set; }
-        public string CloseDateTime { get; set; }
-        public string CloseScreenshotStatusClass { get; set; }
-        public string CloseScreenshotStatus { get; set; }
-        public string CloseScreenshotUrl { get; set; }
+        public DateAndScreenshotViewModel OpenDateAndScreenshot { get; set; }
+        public DateAndScreenshotViewModel CloseDateAndScreenshot { get; set; }
         public bool IsPrivate { get; set; }
+        public bool IsClosed { get; set; }
+        public BattleBetStatus Status { get; set; }
+        public StatusActionImageViewModel StatusActionImage { get; set; }
+        public IDictionary<BattleBetStatus, StatusActionImageViewModel> StatusActionImages { get; set; }
     }
 }
