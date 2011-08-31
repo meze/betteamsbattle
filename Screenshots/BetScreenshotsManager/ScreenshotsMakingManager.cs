@@ -58,13 +58,23 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
         {
             while (!_closed)
             {
-                var notProcessedBetScreenshotsIds =
-                    _repositoryOfBetScreenshot.Get(
-                        BetScreenshotSpecifications.NotProcessed() &&
-                        EntitySpecifications.IdIsNotContainedIn<BetScreenshot>(_beingProcessedBetScreenshotsIds)).
-                        OrderBy(qbu => qbu.Id).
-                        Select(qbu => qbu.Id).ToList();
-                if (notProcessedBetScreenshotsIds.Count == 0)
+                IEnumerable<long> notProcessedBetScreenshotsIds;
+                try
+                {
+
+                    notProcessedBetScreenshotsIds =
+                        _repositoryOfBetScreenshot.Get(
+                            BetScreenshotSpecifications.NotProcessed() &&
+                            EntitySpecifications.IdIsNotContainedIn<BetScreenshot>(_beingProcessedBetScreenshotsIds)).
+                            OrderBy(qbu => qbu.Id).
+                            Select(qbu => qbu.Id).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Logger.ErrorException("Can't retrieve notProcessedScreenshotsIds", ex);
+                    continue;
+                }
+                if (notProcessedBetScreenshotsIds.Count() == 0)
                 {
                     Thread.Sleep(1000);
                     continue;
