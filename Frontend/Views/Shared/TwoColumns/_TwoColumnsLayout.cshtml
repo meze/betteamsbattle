@@ -1,7 +1,9 @@
 ﻿@{
     Layout = MVC.Shared.Views._OneOrTwoColumnsLayoutBase;
 }
-@RenderSection("Scripts", false)
+@section Scripts {
+    @RenderSection("Scripts", false)
+}
 
 <div class="levo_blok_b">
     @RenderSection("LeftBlock", true)
