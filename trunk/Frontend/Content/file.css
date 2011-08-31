@@ -367,10 +367,8 @@ float:left;
 	font-size:18px;
 	font-family:Tahoma, Geneva, sans-serif;
 	color:#FFF;
-	margin:0 auto;
-	width:320px;
 	padding-top:10px;
-	text-align:center;
+	padding-left:25px;
 	
 }
 
@@ -430,8 +428,53 @@ float:left;
 }
 
 
-.scr a{
+.sc_failed{
+	width:0px;
+	padding-left:21px;
+	background-image: url('images/scr_error.png');
+	background-repeat:no-repeat;
+}
+
+.sc_succeeded{
+	width:0px;
+	padding-left:21px;
+	background-image: url('images/scr.png');
+	background-repeat:no-repeat;
 	border:none;
+}
+
+.sc_inprogress{
+	width:0px;
+	padding-left:21px;
+	background-image: url('images/sc_time.png');
+	background-repeat:no-repeat;
+	border:none;
+}
+
+
+.scr_1{
+	width:0px;
+	padding-left:21px;
+	background-image: url('images/cencel.png');
+	background-repeat:no-repeat;
+	border:none;
+}
+
+
+.scr_2{
+	width:0px;
+	padding-left:21px;
+	background-image: url('images/bet.png');
+	background-repeat:no-repeat;
+	border:none;
+}
+
+
+.scr_3{
+	width:0px;
+	padding-left:21px;
+	background-image: url('images/bet_none.png');
+	background-repeat:no-repeat;
 	border:none;
 }
 
@@ -622,6 +665,8 @@ height:36px;
 	border-bottom:1px dashed;
 	
 }
+
+
 
  .pravo_content2_battle .sc a:hover{
 	color:#06F;

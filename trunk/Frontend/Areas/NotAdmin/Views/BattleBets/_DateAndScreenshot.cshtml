@@ -10,11 +10,11 @@ else
     <div class="sc">
         @if (Model.ScreenshotUrl != null)
         {
-            @Forms.ActionImage(Model.ScreenshotUrl, "scr", Model.ScreenshotStatusString)
+            @Forms.ActionImage(Model.ScreenshotUrl, Model.ScreenshotStatusClass + " scr", Model.ScreenshotStatusString)
         }
         else
         {
-            @Forms.Image("scr", Model.ScreenshotStatusString)
+            @Forms.Image(Model.ScreenshotStatusClass + " scr", Model.ScreenshotStatusString)
         }
     </div>
 }
