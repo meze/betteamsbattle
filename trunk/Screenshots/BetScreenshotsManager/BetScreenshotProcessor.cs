@@ -76,7 +76,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
 
                     betScreenshot.FinishedProcessingDateTime = DateTime.UtcNow;
 
-                    betScreenshot.StatusEnum = BetScreenshotStatus.Processed;
+                    betScreenshot.StatusEnum = BetScreenshotStatus.Succeeded;
                 }
                 catch (Exception ex)
                 {

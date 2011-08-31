@@ -144,6 +144,9 @@
   <data name="Failed" xml:space="preserve">
     <value>Failed</value>
   </data>
+  <data name="FailedToMakeScreenshot" xml:space="preserve">
+    <value>Failed to make screenshot</value>
+  </data>
   <data name="JoinToBattleToMakeBets" xml:space="preserve">
     <value>Join to battle to make bets</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="MakeBetOnBehalfOf" xml:space="preserve">
     <value>Make bet on behalf of</value>
+  </data>
+  <data name="MakingScreenshot" xml:space="preserve">
+    <value>Making screenshot</value>
   </data>
   <data name="MePersonally" xml:space="preserve">
     <value>Me personally</value>
@@ -164,6 +170,9 @@
   </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Private bet</value>
+  </data>
+  <data name="Screenshot" xml:space="preserve">
+    <value>Screenshot</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

@@ -143,6 +143,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to make screenshot.
+        /// </summary>
+        public static string FailedToMakeScreenshot {
+            get {
+                return ResourceManager.GetString("FailedToMakeScreenshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Join to battle to make bets.
         /// </summary>
         public static string JoinToBattleToMakeBets {
@@ -166,6 +175,15 @@ namespace Resources {
         public static string MakeBetOnBehalfOf {
             get {
                 return ResourceManager.GetString("MakeBetOnBehalfOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Making screenshot.
+        /// </summary>
+        public static string MakingScreenshot {
+            get {
+                return ResourceManager.GetString("MakingScreenshot", resourceCulture);
             }
         }
         
@@ -202,6 +220,15 @@ namespace Resources {
         public static string PrivateBet {
             get {
                 return ResourceManager.GetString("PrivateBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screenshot.
+        /// </summary>
+        public static string Screenshot {
+            get {
+                return ResourceManager.GetString("Screenshot", resourceCulture);
             }
         }
         

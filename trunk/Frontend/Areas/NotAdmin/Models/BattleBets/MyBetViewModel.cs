@@ -11,9 +11,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
         public double Bet { get; set; }
         public double Coefficient { get; set; }
         public string OpenDateTime { get; set; }
-        public string OpenScreenshotStatus { get; set; }
+        public string OpenScreenshotStatusClass { get; set; }
+        public string OpenScreenshotStatusString { get; set; }
         public string OpenScreenshotUrl { get; set; }
         public string CloseDateTime { get; set; }
+        public string CloseScreenshotStatusClass { get; set; }
         public string CloseScreenshotStatus { get; set; }
         public string CloseScreenshotUrl { get; set; }
         public bool IsPrivate { get; set; }

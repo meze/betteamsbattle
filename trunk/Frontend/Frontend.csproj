@@ -52,6 +52,12 @@
     <Reference Include="Microsoft.Web.Mvc">
       <HintPath>..\packages\Mvc3Futures.3.0.20105.0\lib\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Samples.ImageOptimizationFramework">
+      <HintPath>..\Libraries\AspNetSprite\Microsoft.Web.Samples.ImageOptimizationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Samples.SpriteHelper">
+      <HintPath>..\Libraries\AspNetSprite\Microsoft.Web.Samples.SpriteHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
@@ -252,6 +258,9 @@
     <Content Include="Content\file.css" />
     <Content Include="Content\menu_style.css" />
     <Content Include="Global.asax" />
+    <Content Include="group1.min.css">
+      <DependentUpon>main.chirp.config</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
     <Content Include="Scripts\jquery-1.6.2.min.js" />
@@ -372,6 +381,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Sprites\" />
     <Folder Include="Areas\Admin\Localization\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\NotAdmin\Models\Teams\" />
@@ -401,6 +411,7 @@
     </Content>
     <Content Include="Areas\NotAdmin\Views\BattleBets\_DateAndScreenshot.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Shared\_BattleLayout.cshtml" />
+    <Content Include="main.chirp.config" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
