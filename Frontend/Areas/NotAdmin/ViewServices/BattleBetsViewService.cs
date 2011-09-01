@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
@@ -10,6 +11,7 @@ using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
+using BetTeamsBattle.Frontend.Extensions;
 using BetTeamsBattle.Screenshots.AmazonS3.Interfaces;
 using Resources;
 
@@ -117,7 +119,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
         {
             var dateAndScreenshot = new DateAndScreenshotViewModel
                                         {
-                                            DateTime = dateTime.ToShortDateString(),
+                                            DateTime = dateTime.ToShortDateLongTimeString(),
                                             ScreenshotStatusClass = GetBetScreenshotStatusClass(betScreenshotStatus),
                                             ScreenshotStatusString = GetBetScreenshotStatusString(betScreenshotStatus)
                                         };

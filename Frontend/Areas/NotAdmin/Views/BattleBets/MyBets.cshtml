@@ -39,10 +39,10 @@ else
                 </tbody>
             </table>
         </div>
-        <table class="table_stavka_1">
-            <tbody>
-                @foreach (var myBet in Model)
-                {
+        <tbody>
+            @foreach (var myBet in Model)
+            {
+                <table class="table_stavka_1">
                     <tr>
                         <td class="td1_1">
                             @myBet.Title
@@ -60,11 +60,11 @@ else
                             @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(myBet.CloseDateAndScreenshot))
                         </td>
                         <td class="td1_8">
-                           @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
+                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
                         </td>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </table>
+            }
+        </tbody>
     </div>
 }
