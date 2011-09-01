@@ -177,6 +177,7 @@
     <Compile Include="Authentication\Services\Interfaces\IFormsAuthenticationService.cs" />
     <Compile Include="DI\FrontendNinjectKernel.cs" />
     <Compile Include="DI\FrontendNinjectModule.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="FrontendConstants.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

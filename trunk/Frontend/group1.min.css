@@ -41,7 +41,7 @@ h1{font-family:Tahoma,Geneva,sans-serif;font-size:20px;padding-left:20px;text-sh
 .pravo_content{padding-bottom:30px;background-repeat:repeat-x;background-position:bottom;color:#FFF}
 .hed_s{height:41px;background-image:url('images/rt.png');background-repeat:no-repeat;background-position:3px 3px}
 .hed_s_n{height:41px;background-image:url('images/rt.png');background-repeat:no-repeat;background-position:0 0}
-.hed_s_text{font-size:18px;font-family:Tahoma,Geneva,sans-serif;color:#FFF;margin:0 auto;width:320px;padding-top:10px;text-align:center}
+.hed_s_text{font-size:18px;font-family:Tahoma,Geneva,sans-serif;color:#FFF;padding-top:10px;padding-left:25px}
 .text_login{color:#FFF;padding:30px;font-size:16px;font-family:Tahoma,Geneva,sans-serif}
 .text_login_a{float:left;margin:30px;color:#FFF;padding:20px;font-size:16px;font-family:Tahoma,Geneva,sans-serif;border:2px solid #333;font-weight:bold}
 .button_aut{margin:0 auto;width:168px;margin-top:30px}
@@ -49,7 +49,12 @@ h1{font-family:Tahoma,Geneva,sans-serif;font-size:20px;padding-left:20px;text-sh
 .sc{width:150px;padding-bottom:2px;padding-top:2px;text-align:center;border:0}
 .pravo_content2_battle .td1_8 a:hover{border:0}
 .scr{border:0}
-.scr a{border:0;border:0}
+.sc_failed{width:0;padding-left:21px;background-image:url('images/scr_error.png');background-repeat:no-repeat}
+.sc_succeeded{width:0;padding-left:21px;background-image:url('images/scr.png');background-repeat:no-repeat;border:0}
+.sc_inprogress{width:0;padding-left:21px;background-image:url('images/sc_time.png');background-repeat:no-repeat;border:0}
+.scr_1{width:0;padding-left:21px;background-image:url('images/cencel.png');background-repeat:no-repeat;border:0}
+.scr_2{width:0;padding-left:21px;background-image:url('images/bet.png');background-repeat:no-repeat;border:0}
+.scr_3{width:0;padding-left:21px;background-image:url('images/bet_none.png');background-repeat:no-repeat;border:0}
 .pravo_content2{width:530px;margin:0 auto;padding-top:8px;font-size:17px}
 .pravo_content2_battle{width:765px;margin:0 auto;font-size:17px;border-bottom:1px solid #616161;border-left:1px solid #616161;border-right:1px solid #616161}
 .pravo_content2_hed{height:38px;background-image:url("images/hed_s.png")}

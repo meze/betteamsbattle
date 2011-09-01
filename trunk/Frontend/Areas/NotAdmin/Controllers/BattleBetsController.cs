@@ -76,7 +76,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        //[HttpPost]
         public virtual ActionResult BetCanceledByBookmaker(long battleBetId)
         {
             long battleId;
