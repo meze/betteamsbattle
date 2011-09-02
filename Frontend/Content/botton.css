@@ -5,8 +5,11 @@
 
 
  span.button input{
-    background-image:url("images/btn.png");
-	width:168px;
+    background-image:url("images/sprite.png");
+	width:167px;
+	background-repeat:no-repeat;
+background-position:-344px 0px;
+height:36px;
 }
 
 
@@ -33,7 +36,7 @@
 
 
  span input:hover{
-    background-image:url("images/btn.png");
+   background-image:url("images/sprite.png");
 
 	color:#FF0;
 	
