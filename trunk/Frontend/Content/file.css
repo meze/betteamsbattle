@@ -138,9 +138,9 @@ background-position:center;
 .pravo_blok_battle{
 	width:786px;
 	margin-left:238px;
-	background-image: url('images/rrr.png');
 
-	
+
+	border:3px solid #686868;
 
 	
 }
@@ -179,7 +179,7 @@ background-position:center;
 .text-form{
 	    border:none;
 	    width:288px;
-		background-image: url('images/33.png');
+		background-image: url('images/sprite.png');
 		height:17px;
 		padding-left:8px;
 		padding-right:8px;
@@ -278,7 +278,7 @@ float:left;
 .text_aut{
 	    border:none;
 	    width:288px;
-		background-image: url('images/33.png');
+		background-image: url('images/sprite.png');
 		height:17px;
 		padding-left:8px;
 		padding-right:8px;
@@ -295,7 +295,7 @@ float:left;
 
 .stroka_1_form{
 	height:25px;
-	background-image: url('images/33.png');
+	background-image: url('images/sprite.png');
 	
 }
 
@@ -303,7 +303,7 @@ float:left;
 .form_auto{
 
 	height:25px;
-	background-image: url('images/33.png');
+	background-image: url('images/sprite.png');
 	width:304px;
 	margin:0 auto;
 	
@@ -348,17 +348,17 @@ float:left;
 
 .hed_s{
 	height:41px;
-	background-image: url('images/rt.png');
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
-	background-position:3px 3px;
-
+	background-position:0px 0px;
+background-position:-1794px 0px;
 	
 }
 .hed_s_n{
 	height:41px;
-	background-image: url('images/rt.png');
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
-	background-position:0px 0px;
+	background-position:-1794px 0px;
 
 	
 }
@@ -429,53 +429,66 @@ float:left;
 
 
 .sc_failed{
-	width:0px;
-	padding-left:21px;
-	background-image: url('images/scr_error.png');
+	width:20px;
+	height:20px;
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
+	background-position:-2864px 0px;
+	margin:0 auto;
 }
 
 .sc_succeeded{
-	width:0px;
-	padding-left:21px;
-	background-image: url('images/scr.png');
+	width:21px;
+	height:21px;
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
 	border:none;
+	background-position:-2843px 0px;
+	margin:0 auto;
 }
 
 .sc_inprogress{
-	width:0px;
-	padding-left:21px;
-	background-image: url('images/sc_time.png');
+	width:21px;
+	height:21px;
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
 	border:none;
+	margin:0 auto;
+	background-position:-2824px 0px;
 }
 
 
-.scr_1{
-	width:0px;
-	padding-left:21px;
-	background-image: url('images/cencel.png');
+.scr_1 {
+	width:16px;
 	background-repeat:no-repeat;
 	border:none;
+	height:21px;
+background-image: url('images/sprite.png');
+background-position:-516px 0px;
+margin:0 auto;
+
 }
 
 
 .scr_2{
-	width:0px;
-	padding-left:21px;
-	background-image: url('images/bet.png');
+	width:20px;
+	height:20px;
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
 	border:none;
+	background-position:-304px 0px;
+	margin:0 auto;
 }
 
 
 .scr_3{
-	width:0px;
-	padding-left:21px;
-	background-image: url('images/bet_none.png');
+	width:19px;
+	height:20px;
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
 	border:none;
+	background-position:-324px 0;
+	margin:0 auto;
 }
 
 
@@ -498,7 +511,8 @@ float:left;
 }
 .pravo_content2_hed{
 	height:38px;
-	background-image:url("images/hed_s.png");
+	background-image:url("images/sprite.png");
+	background-position:-1014px 0px;
 
 }
 
@@ -511,14 +525,15 @@ width:1024px;
 }
 
 .knopka_st{
-background-image:url("images/btn.png");
+background-image:url("images/sprite.png");
 float:left;
 height:36px;
 margin-left:19px;
 margin-top:14px;
-width:180px;
+width:168px;
 cursor:pointer;
 background-repeat:no-repeat;
+background-position:-344px 0px;
 
 }
 .knopka_st_blok{
@@ -620,9 +635,10 @@ border:3px solid #686868;;
 
 .levo_blok1_head{
 background-color:#3D3C3C;
-background-image:url("images/rt.png");
+background-image:url("images/sprite.png");
 background-repeat:no-repeat;
 border-bottom:2px solid #686868;
+background-position:-1794px 0px;
 height:36px;
 }
 
@@ -630,9 +646,10 @@ height:36px;
 
 .pr_blok1_head_2{
 background-color:#3D3C3C;
-background-image:url("images/rt.png");
+background-image:url("images/sprite.png");
 background-repeat:no-repeat;
 border-bottom:2px solid #686868;
+background-position:-1794px 0px;
 height:36px;
 }
 
@@ -689,9 +706,9 @@ height:36px;
 	font-size:13px;
 	padding-left:10px;
 	padding-left:18px;
-		background-image: url('images/h.png');
+		background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
-	background-position:-2px 2px;
+	background-position:-617px 2px;
 }
 
 .list_r{
@@ -702,9 +719,9 @@ height:36px;
 	font-size:13px;
 	padding-left:23px;
 	font-weight:bold;
-	background-image: url('images/h_2.png');
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
-	background-position:-2px 2px;
+	background-position:-614px 2px;
 }
 
 
