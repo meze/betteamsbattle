@@ -518,6 +518,16 @@ namespace Links {
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string botton_css = Url("botton.css")+"?"+T4Extensions.TimestampString(URLPATH + "/botton.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Bundles {
+            private const string URLPATH = "~/Content/Bundles";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string site_css = Url("site.css")+"?"+T4Extensions.TimestampString(URLPATH + "/site.css");
+            public static readonly string site_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.js") ? Url("site.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/site.js") : Url("site.js")+"?"+T4Extensions.TimestampString(URLPATH + "/site.js");
+                          
+        }
+    
         public static readonly string file_css = Url("file.css")+"?"+T4Extensions.TimestampString(URLPATH + "/file.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class images {

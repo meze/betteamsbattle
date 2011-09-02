@@ -1,15 +1,15 @@
 ﻿@using Links
+@using SquishIt.Framework
+@using SquishIt.Mvc
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>@ViewBag.Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="@Scripts.jquery_1_6_2_min_js" type="text/javascript"></script>
-    <script src="@Scripts.jquery_validate_min_js" type="text/javascript"></script>
-    <script src="@Scripts.jquery_validate_unobtrusive_min_js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="@Content.file_css" />
-    <link rel="stylesheet" type="text/css" href="@Content.menu_style_css" />
-    <link rel="stylesheet" type="text/css" href="@Content.botton_css" />
+
+    @Bundle.Css().Add(Content.file_css).Add(Content.menu_style_css).Add(Content.botton_css).RenderMvc(Content.Bundles.site_css)
+    @Bundle.JavaScript().Add(Scripts.jquery_1_6_2_min_js).Add(Scripts.jquery_validate_min_js).Add(Scripts.jquery_validate_unobtrusive_min_js).RenderMvc(Content.Bundles.site_js)
+
     @RenderSection("Scripts", false)
 </head>
 <body>
