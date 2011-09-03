@@ -129,6 +129,8 @@
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Site" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="400" />
           <Property Name="IsPersonal" Type="bool" Nullable="false" />
           <Property Name="Rating" Type="double" Nullable="false" />
           <Property Name="IsPro" Type="bool" Nullable="false" />
@@ -456,6 +458,8 @@
           <NavigationProperty Name="BattlesBets" Relationship="Model.battlesbets_ibfk_21" FromRole="Team" ToRole="BattleBet" />
           <NavigationProperty Name="BattlesTeamStatistics" Relationship="Model.battlesteamsstatistics_ibfk_2" FromRole="Team" ToRole="battlesteamsstatistic" />
           <Property Type="Boolean" Name="IsPro" Nullable="false" />
+          <Property Type="String" Name="Site" />
+          <Property Type="String" Name="Description" />
         </EntityType>
         <EntityType Name="TeamUser">
           <Key>
@@ -657,6 +661,8 @@
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="Model.Team">
               <MappingFragment StoreEntitySet="teams">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
                 <ScalarProperty Name="IsPro" ColumnName="IsPro" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="IsPersonal" ColumnName="IsPersonal" />
