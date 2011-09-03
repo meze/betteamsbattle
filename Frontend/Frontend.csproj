@@ -279,6 +279,7 @@
     <Content Include="Content\Bundles\site.js" />
     <Content Include="Content\Bundles\site.css" />
     <Content Include="Content\file.css" />
+    <Content Include="Content\js\blik.js" />
     <Content Include="Content\menu_style.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
