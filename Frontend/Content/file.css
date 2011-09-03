@@ -36,9 +36,8 @@ h1{
 
 .pravo_content_battle{
 	padding-bottom:80px;
-	background-image: url('images/ryy.png');
-	background-repeat:repeat-x;
-	background-position:bottom;
+	background-image: url('images/ryyy.png');
+	background-repeat:no-repeat;
 	color:#FFF;
 
 }
@@ -136,7 +135,7 @@ background-position:center;
 
 
 .pravo_blok_battle{
-	width:786px;
+	width:781px;
 	margin-left:238px;
 
 
@@ -328,8 +327,7 @@ float:left;
 }
 
 .pravo_blok2_battle{
-	background-image: url('images/ryyy.png');
-	background-repeat:no-repeat;
+	background-image: url('images/fon.png');
 }
 
 
@@ -407,7 +405,7 @@ background-position:-1794px 0px;
 }
 
 .sc{
-	width:150px;
+	width:145px;
 	padding-bottom:2px;
 	padding-top:2px;
 	text-align:center;
@@ -435,6 +433,7 @@ background-position:-1794px 0px;
 	background-repeat:no-repeat;
 	background-position:-2864px 0px;
 	margin:0 auto;
+	display:block;
 }
 
 .sc_succeeded{
@@ -445,6 +444,7 @@ background-position:-1794px 0px;
 	border:none;
 	background-position:-2843px 0px;
 	margin:0 auto;
+	display:block;
 }
 
 .sc_inprogress{
@@ -455,6 +455,7 @@ background-position:-1794px 0px;
 	border:none;
 	margin:0 auto;
 	background-position:-2824px 0px;
+	display:block;
 }
 
 
@@ -466,7 +467,8 @@ background-position:-1794px 0px;
 background-image: url('images/sprite.png');
 background-position:-516px 0px;
 margin:0 auto;
-
+cursor:pointer;
+	display:block;
 }
 
 
@@ -478,6 +480,8 @@ margin:0 auto;
 	border:none;
 	background-position:-304px 0px;
 	margin:0 auto;
+	cursor:pointer;
+	display:block;
 }
 
 
@@ -489,6 +493,17 @@ margin:0 auto;
 	border:none;
 	background-position:-324px 0;
 	margin:0 auto;
+	cursor:pointer;
+	display:block;
+}
+
+.vibor{
+	height: 22px;
+	width: 80px;
+	margin:0 auto;
+	border-collapse:collapse;
+	border-spacing:0;
+	border:0;
 }
 
 
@@ -627,7 +642,6 @@ border:3px solid #686868;;
 	min-height:38px;
 	background-color:#FFF;
 	border:3px solid #686868;
-
 	border-top:3px solid #686868;
 
 }
@@ -1094,26 +1108,26 @@ table{
 }
 
 .td_1_s{
-	width: 140px;
+	width: 180px;
 	text-align:center;
 }
 
 .td_2_s{
-	width: 90px;
+	width: 80px;
 		text-align:center;
 }
 .td_3_s{
-	width: 100px;
+	width: 80px;
 		text-align:center;
 }
 .td_4_s{
-	width: 155px;
+	width: 145px;
 		text-align:center;
 
 }
 
 .td_5_s{
-	width: 155px;
+	width: 145px;
 		text-align:center;
 		
 
@@ -1121,7 +1135,7 @@ table{
 
 
 .td_6_s{
-	width: 125px;
+	width: 115px;
 		text-align:center;
 		
 
@@ -1151,7 +1165,7 @@ table{
 }
 
 .td1_1{
-	width: 140px;
+	width: 180px;
 	text-align:center;
 	padding-bottom:3px;
 	padding-top:3px;
@@ -1159,14 +1173,14 @@ table{
 
 
 .stroka_t{
-	width:140px;
+	width:180px;
 	text-align:center;
 		padding-bottom:2px;
 	padding-top:2px;
 }
 
 .schet{
-		width:140px;
+		width:180px;
 	text-align:center;
 		padding-bottom:2px;
 	padding-top:2px;
@@ -1184,7 +1198,7 @@ table{
 	padding-top:3px;
 }
 .td1_3{
-	width: 90px;
+	width: 80px;
 		text-align:center;
 		color:#FF0;
 		font-size:17px;
@@ -1192,13 +1206,13 @@ table{
 
 
 .td1_4{
-	width: 100px;
+	width: 80px;
 		text-align:center;
 		font-size:17px;
 }
 
 .td1_5{
-	width: 150px;
+	width: 145px;
 text-align:center;
 		
 
@@ -1229,7 +1243,7 @@ text-align:center;
 }
 
 .td1_8{
-	width: 125px;
+	width: 115px;
 text-align:center;
 font-size:16px;
 
