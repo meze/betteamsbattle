@@ -64,11 +64,6 @@ $(".knopka_ros").hover(
   }
 );
 
-
-
-
-
-
     function setEqualHeight(columns)
     {
     var tallestcolumn = 0;
@@ -85,31 +80,7 @@ $(".knopka_ros").hover(
     columns.height(tallestcolumn);
     }
     $(document).ready(function() {
-    setEqualHeight($(".content_blok > div"));
+    setEqualHeight($(".content_blok > div, .content_blok_b > div"));
     });
-
-
-
-    function setEqualHeight(columns)
-    {
-    var tallestcolumn = 0;
-    columns.each(
-    function()
-    {
-    currentHeight = $(this).height();
-    if(currentHeight > tallestcolumn)
-    {
-    tallestcolumn = currentHeight;
-    }
-    }
-    );
-    columns.height(tallestcolumn);
-    }
-    $(document).ready(function() {
-    setEqualHeight($(".content_blok_b > div"));
-    });
-
-
-
 
 }); //Конец ready
