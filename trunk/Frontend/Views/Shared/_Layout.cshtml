@@ -6,10 +6,19 @@
 <head>
     <title>@ViewBag.Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    @Bundle.Css().Add(Content.file_css).Add(Content.menu_style_css).Add(Content.botton_css).RenderMvc(Content.Bundles.site_css)
-    @Bundle.JavaScript().Add(Scripts.jquery_1_6_2_min_js).Add(Scripts.jquery_validate_min_js).Add(Scripts.jquery_validate_unobtrusive_min_js).RenderMvc(Content.Bundles.site_js)
-
+    @Html.Raw(Bundle.Css().
+        Add(Content.file_css).
+        Add(Content.menu_style_css).
+        Add(Content.botton_css).
+        RenderMvc(Content.Bundles.site_css).
+        ToHtmlString())
+    @Html.Raw(Bundle.JavaScript().
+        Add(Scripts.jquery_1_6_2_min_js).
+        Add(Scripts.jquery_validate_min_js).
+        Add(Scripts.jquery_validate_unobtrusive_min_js).
+        Add(Content.js.blik_js).
+        RenderMvc(Content.Bundles.site_js).
+        ToHtmlString())
     @RenderSection("Scripts", false)
 </head>
 <body>
