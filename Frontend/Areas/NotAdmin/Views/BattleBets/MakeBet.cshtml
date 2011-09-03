@@ -7,7 +7,8 @@
 @section RightBlockStart {
 <div class="pravo_blok_battle_n">
 }
-@section RightBlockFinish { </div>
+@section RightBlockFinish { 
+</div>
 }
 @section head_s{
     @Html.Raw("class=\"hed_s_n\"")
@@ -16,7 +17,7 @@
 {
     @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
     
-    @Forms.DropDownList(Html, m => m.MakeBetForm.TeamId, BattleBets.MakeBetOnBehalfOf, Model.Teams)
+    @Forms.HideableDropDownList(Html, m => m.MakeBetForm.TeamId, BattleBets.MakeBetOnBehalfOf, Model.Teams)
     @Forms.TextBox(Html, m => m.MakeBetForm.Title, BattleBets.Title)
     @Forms.TextBox(Html, m => m.MakeBetForm.Url, BattleBets.Url)
     @Forms.TextBox(Html, m => m.MakeBetForm.Bet, BattleBets.Bet)
