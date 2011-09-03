@@ -16,6 +16,11 @@ Thank you, chrismilleruk*@
     {
         return TwoLinesFormElement(html.LabelFor(expr, title), html.DropDownListFor(expr, selectList, new { @class = "form-select" }), html.ValidationMessageFor(expr));
     }
+    
+    public static HelperResult HideableDropDownList<TModel, TItem>(HtmlHelper<TModel> html, Expression<Func<TModel, TItem>> expr, string title, IEnumerable<SelectListItem> selectList)
+    {
+        return TwoLinesFormElement(html.LabelFor(expr, title), html.DropDownListFor(expr, selectList, new { @class = "form-select" }), html.ValidationMessageFor(expr), selectList.Count() != 1);
+    }
 
     public static HelperResult CheckBox<TModel>(HtmlHelper<TModel> html, Expression<Func<TModel, bool>> expr, string title)
     {
@@ -27,9 +32,12 @@ Thank you, chrismilleruk*@
         return ActionImage(url.Action(actionResult), imageClass, imageTitle);
     }
 }
-@helper TwoLinesFormElement(MvcHtmlString label, MvcHtmlString element, MvcHtmlString validationMessage)
+@helper TwoLinesFormElement(MvcHtmlString label, MvcHtmlString element, MvcHtmlString validationMessage, bool visible = true)
     {
-    <div class="stroka_1">
+    <div class="stroka_1" 
+    @if (!visible) { 
+        @:style="display:none" 
+    }>
         <div class="stroka_11">
             <div class="stroka_1_name">@label</div>
             <div class="stroka_1_form">@element</div>
@@ -64,5 +72,5 @@ Thank you, chrismilleruk*@
 
 @helper Image(string imageClass, string imageTitle)
 {
-    <div class="@imageClass" title="@imageTitle" />
+    <span class="@imageClass" title="@imageTitle" />
 }
