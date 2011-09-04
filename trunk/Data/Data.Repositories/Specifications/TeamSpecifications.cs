@@ -9,5 +9,10 @@ namespace BetTeamsBattle.Data.Repositories.Specifications
          {
              return LinqSpec.For<Team>(t => t.TeamUsers.Any(tu => tu.UserId == userId));
          }
+
+        public static LinqSpec<Team> IsPro()
+        {
+            return LinqSpec.For<Team>(t => t.IsPro);
+        }
     }
 }

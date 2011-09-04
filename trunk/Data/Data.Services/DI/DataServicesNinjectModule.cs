@@ -9,6 +9,7 @@ namespace BetTeamsBattle.Data.Services.DI
         {
             Bind<IBattlesService>().To<BattlesService>();
             Bind<IUsersService>().To<UsersService>();
+            Bind<ITeamsService>().To<TeamsService>();
         }
     }
 }

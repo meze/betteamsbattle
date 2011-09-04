@@ -1,0 +1,16 @@
+﻿@using BetTeamsBattle.Data.Model.Entities
+@model IEnumerable<Team>
+@{
+    Layout = MVC.Shared.Views.OneColumn._OneColumnLayout;
+}
+@section Title {
+    Pro teams
+}
+@Html.ActionLink("Create pro team", MVC.Admin.AdminTeams.CreateProTeam()) <br />
+@foreach (var team in Model)
+{
+    @: Id = @team.Id <br />
+    @: Title = @team.Title <br />
+    @: Description = @team.Description <br />
+    @: Url = @team.Site <br /> <br /> <br />
+}

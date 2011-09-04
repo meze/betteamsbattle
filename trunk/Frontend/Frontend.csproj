@@ -119,8 +119,11 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBattlesController.cs" />
-    <Compile Include="Areas\Admin\Models\CreateBattleViewModel.cs" />
-    <Compile Include="Areas\Admin\Validators\BattleViewModelValidator.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminTeamsController.cs" />
+    <Compile Include="Areas\Admin\Models\Battles\CreateBattleFormViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Teams\CreateProTeamViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Battles\CreateBattleViewModel.cs" />
+    <Compile Include="Areas\Admin\Validators\CreateBattleFormViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\TeamsController.cs" />
@@ -242,6 +245,9 @@
     <Compile Include="Services\FractionToPercentsConverter.cs" />
     <Compile Include="Services\Interfaces\IFractionToPercentsConverter.cs" />
     <Compile Include="T4MVC\Admin.AdminBattlesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Admin.AdminTeamsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Admin.SharedController.generated.cs">
@@ -434,6 +440,8 @@
     <Content Include="Areas\NotAdmin\Views\Shared\_BattleLayout.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\_Status.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\_StatusActionImage.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTeams\GetProTeams.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTeams\CreateProTeam.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />

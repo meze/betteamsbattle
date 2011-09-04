@@ -1,11 +1,12 @@
 ﻿using BetTeamsBattle.Frontend.Areas.Admin.Models;
+using BetTeamsBattle.Frontend.Areas.Admin.Models.Battles;
 using FluentValidation;
 
 namespace BetTeamsBattle.Frontend.Areas.Admin.Validators
 {
-    public class BattleViewModelValidator : AbstractValidator<CreateBattleViewModel>
+    public class CreateBattleFormViewModelValidator : AbstractValidator<CreateBattleFormViewModel>
     {
-        public BattleViewModelValidator()
+        public CreateBattleFormViewModelValidator()
         {
             RuleFor(b => b.Budget).GreaterThan(0).WithMessage("Budget should be positive");
         }

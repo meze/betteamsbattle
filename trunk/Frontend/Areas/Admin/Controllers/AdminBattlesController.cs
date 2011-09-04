@@ -9,6 +9,7 @@ using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.Admin.Models;
+using BetTeamsBattle.Frontend.Areas.Admin.Models.Battles;
 
 namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
 {
@@ -23,6 +24,13 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
             _battlesService = battlesService;
         }
 
+        public virtual ActionResult GetBattles()
+        {
+            var battles = _repositoryOfBattles.All().ToList();
+
+            return View(battles);
+        }
+
         [HttpGet]
         public virtual ActionResult CreateBattle()
         {
@@ -32,21 +40,14 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult CreateBattle(CreateBattleViewModel createBattleViewModel)
+        public virtual ActionResult CreateBattle(CreateBattleFormViewModel createBattleForm)
         {
             if (!ModelState.IsValid)
-                return View(createBattleViewModel);
+                return View(new CreateBattleViewModel(createBattleForm));
 
-            _battlesService.CreateBattle(createBattleViewModel.StartDate, createBattleViewModel.EndDate, createBattleViewModel.BattleType, createBattleViewModel.Budget);
+            _battlesService.CreateBattle(createBattleForm.StartDate, createBattleForm.EndDate, createBattleForm.BattleType, createBattleForm.Budget);
 
             return RedirectToAction(MVC.Admin.AdminBattles.GetBattles());
-        }
-
-        public virtual ActionResult GetBattles()
-        {
-            var battles = _repositoryOfBattles.All().ToList();
-
-            return View(battles);
         }
     }
 }
