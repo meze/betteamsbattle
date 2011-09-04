@@ -84,7 +84,8 @@
           <Property Name="Coefficient" Type="double" Nullable="false" />
           <Property Name="Url" Type="varchar" Nullable="false" />
           <Property Name="IsPrivate" Type="bool" Nullable="false" />
-          <Property Name="Status" Type="tinyint" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Result" Type="double" />
         </EntityType>
         <EntityType Name="battlesteamsstatistics">
           <Key>
@@ -420,7 +421,8 @@
           <NavigationProperty Name="OpenBetScreenshot" Relationship="Model.battlesbets_ibfk_4" FromRole="BattleBet" ToRole="betsscreenshot" />
           <Property Type="Int64" Name="CloseBetScreenshotId" />
           <NavigationProperty Name="CloseBetScreenshot" Relationship="Model.battlesbets_ibfk_14" FromRole="BattleBet" ToRole="BetScreenshot" />
-          <Property Type="SByte" Name="Status" />
+          <Property Type="SByte" Name="Status" Nullable="false" />
+          <Property Type="Double" Name="Result" />
         </EntityType>
         <Association Name="battlesbets_ibfk_1">
           <End Type="Model.Battle" Role="Battle" Multiplicity="1" />
@@ -641,6 +643,7 @@
           <EntitySetMapping Name="BattlesBets">
             <EntityTypeMapping TypeName="Model.BattleBet">
               <MappingFragment StoreEntitySet="battlesbets">
+                <ScalarProperty Name="Result" ColumnName="Result" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CloseBetScreenshotId" ColumnName="CloseBetScreenshotId" />
                 <ScalarProperty Name="OpenBetScreenshotId" ColumnName="OpenBetScreenshotId" />
