@@ -121,8 +121,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             return new Dictionary<BattleBetStatus, StatusActionImageViewModel>()
                 { 
                     { BattleBetStatus.Succeeded, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetSucceeded(battleBetId), "scr_2", BattleBets.Succeeded) },
-                    { BattleBetStatus.Failed, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetFailed(battleBetId), "scr_3", BattleBets.Failed) },
-                    { BattleBetStatus.CanceledByBookmaker, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(battleBetId), "scr_1", BattleBets.CanceledByBookmaker ) }
+                    { BattleBetStatus.Failed, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetFailed(battleBetId), "scr_1", BattleBets.Failed) },
+                    { BattleBetStatus.CanceledByBookmaker, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(battleBetId), "scr_3", BattleBets.CanceledByBookmaker ) }
                 };
         }
 
