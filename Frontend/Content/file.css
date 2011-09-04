@@ -425,13 +425,13 @@ background-position:-1794px 0px;
 
 .battel_n{
 	padding:20px;
-	background-color:#333;
-	border:2px solid #F00;
+	background-color:#000;
+	border:1px solid #F00;
 	text-align:center;
 	color:#FF0;
-	font-family:Tahoma, Geneva, sans-serif;
+	font-family:Arial, Helvetica, sans-serif;
 	font-weight:bold;
-	font-size:22px;
+	font-size:16px;
 	width:400px;
 	margin:0 auto;
 	margin-top:15px;
@@ -455,32 +455,53 @@ background-position:-1794px 0px;
 
 .tabl_battel_n1{
 
-	min-width:170px;
+
 }
 
 .tabl_battel_n2{
 
-	min-width:80px;
+
 }
 
 .tabl_battel_n3{
 
-	min-width:80px;
+
 }
 
 .tabl_battel_n4{
 
-	min-width:145px;
+
 }
 
 .tabl_battel_n5{
 
-	min-width:145px;
+
 }
 
 .tabl_battel_n6{
 
-	min-width:115px;
+
+}
+
+
+ul.menu_languge {
+ margin: 0; /* Обнуляем значение отступов */
+ padding: 0; /* Обнуляем значение полей */
+}
+ul .menu_languge li {
+ display: inline; /* Отображать как встроенный элемент */
+ margin-right: 0px; /* Отступ слева */
+ background-color:#0FF;
+
+}
+
+
+.menu_languge .ros  li a:active {
+ display: inline; /* Отображать как встроенный элемент */
+ margin-right: 0px; /* Отступ слева */
+ color:#0F0;
+ background-color:#CF0;
+
 }
 
 
@@ -589,22 +610,8 @@ cursor:pointer;
 }
 
 .help{
-	height:45px;
-	
-	margin-bottom:-35px;
-}
+	margin-left:20px;
 
-
-
-.help_blok{
-	background-image:url("images/sprite.png");
-	background-position:-2953px 0px;
-	height:45px;
-	width:47px;
-	float:right;
-	margin-right:15px;
-	margin-top:10px;
-	border:0;
 }
 
 .pravo_content2_battle{
@@ -1259,19 +1266,14 @@ table{
 	border-bottom:1px solid #616161;
 }
 
-.td1_1{
-	width: 180px;
-	text-align:center;
-	padding-bottom:3px;
-	padding-top:3px;
-}
+
 
 
 .stroka_t{
-	width:180px;
+
 	text-align:center;
 		padding-bottom:3px;
-	padding-top:3px;
+	padding-top:5px;
 	display:block;
 }
 
@@ -1280,16 +1282,31 @@ table{
 	border:none;
 }
 
-.bookmaker {
+.bookmaker_r {
 	border:none;
-	margin-left:3px;
-	margin-right:3px;
-	float:right;
-	margin-top:3px;
+	margin:0 auto;
+	margin-top:0px;
+	display:block;
+	margin-bottom:5px;
+	background-image: url('images/icon_r.png');
+	height:20px;
+	width:20px;
 }
 
+.bookmaker_en {
+	border:none;
+	margin:0 auto;
+	margin-top:0px;
+	display:block;
+	margin-bottom:5px;
+	background-image: url('images/icon.png');
+	height:20px;
+	width:20px;
+}
+
+
 .schet{
-		width:180px;
+
 	text-align:center;
 		padding-bottom:2px;
 	padding-top:2px;
@@ -1302,33 +1319,49 @@ table{
 }
 
 
-.td1_1 a{
-	color:#FFF;
-}
 
-.td1_2{
-	width: 175px;
-		text-align:center;
-	padding-bottom:3px;
-	padding-top:3px;
-}
-.td1_3{
+.bet{
 
 		text-align:center;
 		color:#FF0;
 		font-size:17px;
 		display:block;
 		font-weight:bold;
+		padding:4px;
 }
 
+.betResultPositive{
 
-.td1_4{
-	display:block;
 		text-align:center;
+		color:#27BC29;
 		font-size:17px;
+		display:block;
 		font-weight:bold;
-
 }
+
+.betResultNegative{
+
+		text-align:center;
+		color:#F00;
+		font-size:17px;
+		display:block;
+		font-weight:bold;
+}
+
+
+.betResultZero{
+
+		text-align:center;
+		color:#FFF;
+		font-size:17px;
+		display:block;
+		font-weight:bold;
+}
+
+
+
+
+
 
 .td1_5{
 	width: 145px;
@@ -1358,7 +1391,7 @@ text-align:center;
 	text-align:center;
 	font-size:16px;
 	padding-top:3px;
-	padding-bottom:3px;
+	padding-bottom:4px;
 	display:block;
 
 }

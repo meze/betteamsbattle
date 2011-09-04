@@ -6,12 +6,7 @@
     {
         @: <a href="@UrlCountryCodeHelper.ChangeUrlCountryCodePart(Request.Url, Model.Language)">
     }
-    <span class="@Model.LanguageClass"> 
-    @if (Model.IsCurrentLanguage) 
-    { 
-        <span class="@Model.CurrentLanguageClass"></span> 
-    } 
-    </span> 
+    <span class="@Model.LanguageClass"/> 
     @if (!Model.IsCurrentLanguage)
     {
         @: </a>     

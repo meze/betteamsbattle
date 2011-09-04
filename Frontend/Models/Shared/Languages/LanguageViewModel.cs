@@ -7,20 +7,16 @@ namespace BetTeamsBattle.Frontend.Models.Shared.Languages
     public class LanguageViewModel
     {
         public Language Language { get; set; }
-        public ActionResult ChangeLanguageActionResult { get; set; }
-        public string LanguageClass { get; set; }
-        public string CurrentLanguageClass { get; set; }
 
-        public bool IsCurrentLanguage
-        {
-            get { return Language == CurrentLanguage.Language; }
-        }
+        public bool IsCurrentLanguage { get; private set; }
+        public string LanguageClass { get; private set; }
 
-        public LanguageViewModel(Language language, string languageClass, string currentLanguageClass)
+        public LanguageViewModel(Language language, string notCurrentLanguageClass, string currentLanguageClass)
         {
             Language = language;
-            LanguageClass = languageClass;
-            CurrentLanguageClass = currentLanguageClass;
+
+            IsCurrentLanguage = language == CurrentLanguage.Language;
+            LanguageClass = IsCurrentLanguage ? currentLanguageClass : notCurrentLanguageClass;
         }
     }
 }
