@@ -96,45 +96,19 @@ namespace BetTeamsBattle.Data.Services
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleBet.BattleId, battleBet.TeamId)).Single();
                 var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(battleBet.TeamId)).Single();
 
-                //double betResult = 0;
-                //if (status == BattleBetStatus.Succeeded)
-                //    betResult = battleBet.Bet * battleBet.Coefficient;
-                //else if (status == BattleBetStatus.Failed)
-                //    betResult = -battleBet.Bet;
-                //else if (status == BattleBetStatus.CanceledByBookmaker)
-                //    betResult = 0;
-                //else
-                //    throw new ArgumentOutOfRangeException("status");
-
-                //battleTeamStatistics.Balance += betResult;
-                //team.Rating += betResult;
-
+                double balanceChange;
                 if (status == BattleBetStatus.Succeeded)
-                {
-                    var betResult = battleBet.Bet * battleBet.Coefficient;
-
-                    battleBet.Result = betResult;
-                    battleTeamStatistics.Balance += betResult;
-                    team.Rating += betResult;
-                }
+                    balanceChange = battleBet.Bet * battleBet.Coefficient;
                 else if (status == BattleBetStatus.Failed)
-                {
-                    var betResult = -battleBet.Bet;
-
-                    battleBet.Result = betResult;
-                    battleTeamStatistics.Balance += 0;
-                    team.Rating += betResult;
-                }
+                    balanceChange = 0;
                 else if (status == BattleBetStatus.CanceledByBookmaker)
-                {
-                    var betResult = 0;
-
-                    battleBet.Result = betResult;
-                    battleTeamStatistics.Balance += battleBet.Bet;
-                    team.Rating += betResult;
-                }
+                    balanceChange = battleBet.Bet;
                 else
                     throw new ArgumentOutOfRangeException("status");
+
+                battleBet.Result = balanceChange - battleBet.Bet;
+                battleTeamStatistics.Balance += balanceChange;
+                team.Rating += balanceChange;
 
                 battleTeamStatistics.OpenedBetsCount--;
                 battleTeamStatistics.ClosedBetsCount++;

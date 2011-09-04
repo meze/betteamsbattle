@@ -23,14 +23,18 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
             _repositoryOfUser = repositoryOfUser;
         }
 
-        public void OpenedBattleBet(long battleBetId, long battleId, long teamId, long userId, string _betTitle, double bet, double coefficient, string url, bool isPrivate)
+        public void OpenedBattleBet(long battleBetId, long battleId, long teamId, long userId, string _betTitle, double bet, double coefficient, string url, bool isPrivate, double teamRating, double battleTeamBalance, int openedBetsCount, int closedBetsCount)
         {
             _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.BattleId == battleId && bb.TeamId == teamId && bb.UserId == userId && bb.Title == _betTitle && bb.Url == url && bb.Bet == bet && bb.Coefficient == coefficient && bb.Result == null && bb.IsPrivate == isPrivate && bb.OpenBetScreenshot.Status == (sbyte)BetScreenshotStatus.NotProcessed).Single();
+            Team(teamId, teamRating);
+            BattleTeamStatistics(battleId, teamId, battleTeamBalance, openedBetsCount, closedBetsCount);
         }
 
-        public void ClosedBattleBet(long battleBetId, BattleBetStatus status, double result)
+        public void ClosedBattleBet(long battleBetId, BattleBetStatus status, double result, double teamRating, double battleTeamBalance, int openedBetsCount, int closedBetsCount)
         {
-            _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.CloseBetScreenshotId != null && bb.Status == (sbyte)status && bb.Result == result).Single();
+            var battleBet = _repositoryOfBattleBet.All().Where(bb => bb.Id == battleBetId && bb.CloseDateTime != null && bb.CloseBetScreenshotId != null && bb.Status == (sbyte)status && bb.Result == result).Single();
+            Team(battleBet.TeamId, teamRating);
+            BattleTeamStatistics(battleBet.BattleId, battleBet.TeamId, battleTeamBalance, openedBetsCount, closedBetsCount);
         }
 
         public void BattleTeamStatistics(long battleId, long teamId, double balance, int openedBetsCount, int closedBetsCount)

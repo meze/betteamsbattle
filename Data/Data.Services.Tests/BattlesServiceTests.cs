@@ -1,9 +1,6 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Transactions;
+﻿using System.Transactions;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
-using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Data.Services.Tests.DI;
@@ -78,9 +75,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
             var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
 
-            _entityAssert.OpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-
-            _entityAssert.BattleTeamStatistics(battle.Id, team.Id, battle.Budget - _bet, 1, 0);
+            _entityAssert.OpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate, -_bet, battle.Budget - _bet, 1, 0);
         }
 
         [Test]
@@ -94,11 +89,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             var battleBetId1 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
             var battleBetId2 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
 
-            _entityAssert.OpenedBattleBet(battleBetId1, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-
-            _entityAssert.OpenedBattleBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-
-            _entityAssert.BattleTeamStatistics(battle.Id, team.Id, battle.Budget - _bet * 2, 2, 0);
+            _entityAssert.OpenedBattleBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate, -_bet * 2, battle.Budget - _bet * 2, 2, 0);
         }
 
         [Test]
@@ -113,12 +104,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             long battleId;
             _battlesService.BetSucceeded(battleBetId, user.Id, out battleId);
 
-            var newRating = _bet * _betCoefficient;
-            var newBalance = battle.Budget - _bet + _bet * _betCoefficient;
-
-            _entityAssert.Team(team.Id, newRating);
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Succeeded, _bet * _betCoefficient);
-            _entityAssert.BattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Succeeded, -_bet + _bet * _betCoefficient, -_bet + _bet * _betCoefficient, battle.Budget - _bet + _bet * _betCoefficient, 0, 1);
         }
 
         [Test]
@@ -133,12 +119,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             long battleId;
             _battlesService.BetFailed(battleBetId, user.Id, out battleId);
 
-            var newRating = -_bet;
-            var newBalance = battle.Budget - _bet;
-
-            _entityAssert.Team(team.Id, newRating);
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Failed, -_bet * _betCoefficient);
-            _entityAssert.BattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Failed, -_bet, -_bet, battle.Budget - _bet, 0, 1);
         }
 
         [Test]
@@ -153,12 +134,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             long battleId;
             _battlesService.BetCanceledByBookmaker(battleBetId, user.Id, out battleId);
 
-            var newRating = 0;
-            var newBalance = battle.Budget;
-
-            _entityAssert.Team(team.Id, newRating);
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker, 0);
-            _entityAssert.BattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker, 0, 0, battle.Budget, 0, 1);
         }
 
         [Test]
