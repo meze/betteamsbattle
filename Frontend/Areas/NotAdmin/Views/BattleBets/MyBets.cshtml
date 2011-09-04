@@ -23,9 +23,6 @@
                         <td class="tabl_battel_n2">
                             @BattleBets.Bet
                         </td>
-                        <td class="tabl_battel_n3">
-                            @BattleBets.Coefficient
-                        </td>
                         <td class="tabl_battel_n4">
                             @BattleBets.BetStarted
                         </td>
@@ -41,16 +38,15 @@
                         <tr class="stroca">
                             <td>
                                 <span class="stroka_t">
-                                    @myBet.Title <a href="@myBet.Url">
-                                        <img class="bookmaker" src="../../../../Content/images/icon.png" /></a>
+                                    @myBet.Title 
                                 </span>
                             </td>
                             <td>
-                                <span class="td1_3">
-                                    @myBet.Bet$ </span>
+                                <span class="td1_3">@myBet.Bet$</span> x @myBet.Coefficient 
+                                <a href="@myBet.Url"><img class="bookmaker" src="../../../../Content/images/icon.png" /></a>
                             </td>
                             <td>
-                                <span class="td1_4">@myBet.Coefficient</span>
+                                <span class="td1_4"></span>
                             </td>
                             <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)
