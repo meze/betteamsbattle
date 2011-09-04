@@ -36,8 +36,7 @@ h1{
 
 .pravo_content_battle{
 	padding-bottom:80px;
-	background-image: url('images/ryyy.png');
-	background-repeat:no-repeat;
+
 	color:#FFF;
 
 }
@@ -137,10 +136,8 @@ background-position:center;
 .pravo_blok_battle{
 	width:781px;
 	margin-left:238px;
-
-
 	border:3px solid #686868;
-
+background-image:url("images/fon.png");
 	
 }
 .pravo_blok_battle_n{
@@ -400,8 +397,9 @@ background-position:-1794px 0px;
 }
 
 .data{
-	font-size:15px;
+	font-size:16px;
 	text-align:center;
+	display:block;
 }
 
 .sc{
@@ -425,6 +423,36 @@ background-position:-1794px 0px;
 
 }
 
+.battel_n{
+	padding:30px;
+	background-color:#333;
+	border:3px solid #F00;
+	text-align:center;
+	color:#FF0;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-weight:bold;
+	font-size:22px;
+	width:400px;
+	margin:0 auto;
+	margin-top:15px;
+	float:left;
+	margin-left:13px;
+	
+}
+
+
+.statistics{
+	min-height:10px;
+	color:#FDE406;
+	padding-bottom:2px;
+	padding-left:20px;
+	padding-top:5px;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:16px;
+
+
+}
+
 
 .sc_failed{
 	width:20px;
@@ -434,6 +462,7 @@ background-position:-1794px 0px;
 	background-position:-2864px 0px;
 	margin:0 auto;
 	display:block;
+	margin-top:3px;
 }
 
 .sc_succeeded{
@@ -460,12 +489,12 @@ background-position:-1794px 0px;
 
 
 .scr_1 {
-	width:16px;
+	width:22px;
 	background-repeat:no-repeat;
 	border:none;
-	height:21px;
-background-image: url('images/sprite.png');
-background-position:-516px 0px;
+	height:22px;
+background-image: url('images/sprite2.png');
+background-position:0px 0px;
 margin:0 auto;
 cursor:pointer;
 	display:block;
@@ -473,12 +502,12 @@ cursor:pointer;
 
 
 .scr_2{
-	width:20px;
-	height:20px;
-	background-image: url('images/sprite.png');
+	width:22px;
+	height:22px;
+	background-image: url('images/sprite2.png');
 	background-repeat:no-repeat;
 	border:none;
-	background-position:-304px 0px;
+	background-position:-22px 0px;
 	margin:0 auto;
 	cursor:pointer;
 	display:block;
@@ -486,12 +515,12 @@ cursor:pointer;
 
 
 .scr_3{
-	width:19px;
-	height:20px;
-	background-image: url('images/sprite.png');
+	width:22px;
+	height:22px;
+	background-image: url('images/sprite2.png');
 	background-repeat:no-repeat;
 	border:none;
-	background-position:-324px 0;
+	background-position:-44px 0;
 	margin:0 auto;
 	cursor:pointer;
 	display:block;
@@ -525,9 +554,9 @@ cursor:pointer;
 	
 }
 .pravo_content2_hed{
-	height:38px;
 	background-image:url("images/sprite.png");
 	background-position:-1014px 0px;
+	background-repeat:no-repeat;
 
 }
 
@@ -544,7 +573,7 @@ background-image:url("images/sprite.png");
 float:left;
 height:36px;
 margin-left:19px;
-margin-top:14px;
+margin-top:6px;
 width:168px;
 cursor:pointer;
 background-repeat:no-repeat;
@@ -552,7 +581,7 @@ background-position:-344px 0px;
 
 }
 .knopka_st_blok{
-	height:72px;
+	height:100px;
 	
 }
 
@@ -592,6 +621,7 @@ text-align:center;
 	padding-bottom:7px;
 	font-family:Tahoma, Geneva, sans-serif;
 	margin-top:-21px;
+	height:20px;
 	
 }
 
@@ -687,8 +717,11 @@ height:36px;
 .pravo_content2_battle a{
 	color:#09F;
 	text-decoration:none;
+	border:none;
 	
 }
+
+
 
 .pravo_content2_battle a:hover{
 	color:#06F;
@@ -1175,8 +1208,22 @@ table{
 .stroka_t{
 	width:180px;
 	text-align:center;
-		padding-bottom:2px;
-	padding-top:2px;
+		padding-bottom:3px;
+	padding-top:3px;
+	display:block;
+}
+
+.stroka_t a{
+	color:#FFF;
+	border:none;
+}
+
+.bookmaker {
+	border:none;
+	margin-left:3px;
+	margin-right:3px;
+	float:right;
+	margin-top:3px;
 }
 
 .schet{
@@ -1184,6 +1231,12 @@ table{
 	text-align:center;
 		padding-bottom:2px;
 	padding-top:2px;
+	display:block;
+	font-weight:bold;
+}
+
+.stroca{
+	border-bottom:1px solid #999;
 }
 
 
@@ -1198,17 +1251,21 @@ table{
 	padding-top:3px;
 }
 .td1_3{
-	width: 80px;
+
 		text-align:center;
 		color:#FF0;
 		font-size:17px;
+		display:block;
+		font-weight:bold;
 }
 
 
 .td1_4{
-	width: 80px;
+	display:block;
 		text-align:center;
 		font-size:17px;
+		font-weight:bold;
+
 }
 
 .td1_5{
@@ -1229,16 +1286,18 @@ text-align:center;
 .rezultat{
 	color:#15B1E6;
 	text-align:center;
-	font-size:15px;
+	font-size:16px;
+	display:block;
 
 }
 
 .rezultatt{
 	color:#FFF;
 	text-align:center;
-	font-size:13px;
+	font-size:16px;
 	padding-top:3px;
 	padding-bottom:3px;
+	display:block;
 
 }
 

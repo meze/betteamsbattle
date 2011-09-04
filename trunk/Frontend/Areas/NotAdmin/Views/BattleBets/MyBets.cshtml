@@ -14,57 +14,57 @@ else
 {
     <div class="pravo_content2_battle">
         <div class="pravo_content2_hed">
-            <table class="table_stavka">
+            <table style="width: 765px; text-align: center;" border="0" cellpadding="0" cellspacing="0">
                 <tbody>
-                    <tr>
-                        <td class="td_1_s">
+                    <tr style="height: 39px; text-align: center;">
+                        <td style="color: #FFF; min-width: 170px;">
                             @BattleBets.Title
                         </td>
-                        <td class="td_2_s">
+                        <td style="color: #FFF; min-width: 80px;">
                             @BattleBets.Bet
                         </td>
-                        <td class="td_3_s">
+                        <td style="color: #FFF; min-width: 80px;">
                             @BattleBets.Coefficient
                         </td>
-                        <td class="td_4_s">
+                        <td style="color: #FFF; min-width: 145px;">
                             @BattleBets.BetStarted
                         </td>
-                        <td class="td_5_s">
+                        <td style="color: #FFF; min-width: 145px;">
                             @BattleBets.BetFinished
                         </td>
-                        <td class="td_6_s">
+                        <td style="color: #FFF; min-width: 115px;">
                             @BattleBets.Outcome
                         </td>
                     </tr>
+                    @foreach (var myBet in Model)
+                    {
+                        <tr class="stroka">
+                            <td style="">
+                                <span class="stroka_t">
+                                    @myBet.Title <a href="@myBet.Url">
+                                        <img class="bookmaker" src="../../../../Content/images/icon.png" /></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="td1_3">
+                                    @myBet.Bet$ </span>
+                            </td>
+                            <td>
+                                <span class="td1_4">@myBet.Coefficient</span>
+                            </td>
+                            <td>
+                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)
+                            </td>
+                            <td class="td1_5">
+                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(myBet.CloseDateAndScreenshot))
+                            </td>
+                            <td class="td1_8">
+                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
-            @foreach (var myBet in Model)
-            {
-                <table class="table_stavka_1">
-                    <tr>
-                        <td class="td1_1">
-                            <div class="stroka_t">
-                                @myBet.Title
-                            </div>
-                        </td>
-                        <td class="td1_3">
-                            @myBet.Bet$
-                        </td>
-                        <td class="td1_4">
-                            @myBet.Coefficient
-                        </td>
-                        <td class="td1_5">
-                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)
-                        </td>
-                        <td class="td1_5">
-                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(myBet.CloseDateAndScreenshot))
-                        </td>
-                        <td class="td1_8">
-                            @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
-                        </td>
-                    </tr>
-                </table>
-            }
     </div>
 }
