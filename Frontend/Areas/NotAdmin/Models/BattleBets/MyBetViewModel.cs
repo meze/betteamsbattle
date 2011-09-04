@@ -19,5 +19,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
         public BattleBetStatus Status { get; set; }
         public StatusActionImageViewModel StatusActionImage { get; set; }
         public IDictionary<BattleBetStatus, StatusActionImageViewModel> StatusActionImages { get; set; }
+        public double Result { get; set; }
     }
 }

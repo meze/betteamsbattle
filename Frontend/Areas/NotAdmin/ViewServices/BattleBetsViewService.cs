@@ -86,7 +86,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                                              Coefficient = myBet.Coefficient,
                                              IsPrivate = myBet.IsPrivate,
                                              IsClosed = myBet.IsClosed,
-                                             Status = myBet.StatusEnum
+                                             Status = myBet.StatusEnum,
                                          };
 
                 myBetViewModel.OpenDateAndScreenshot = GetDateAndScreenshot(myBet.OpenDateTime, myBet.OpenBetScreenshot.StatusEnum, myBet.OpenBetScreenshot.FileName);
@@ -95,6 +95,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                 {
                     myBetViewModel.CloseDateAndScreenshot = GetDateAndScreenshot(myBet.CloseDateTime.Value, myBet.CloseBetScreenshot.StatusEnum, myBet.CloseBetScreenshot.FileName);
                     myBetViewModel.StatusActionImage = GetBattleBetStatusImages(myBet.Id)[myBet.StatusEnum];
+                    myBetViewModel.Result = myBet.Result.Value;
                 }
                 else
                     myBetViewModel.StatusActionImages = GetBattleBetStatusImages(myBet.Id);

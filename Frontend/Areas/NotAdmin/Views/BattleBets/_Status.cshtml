@@ -1,16 +1,17 @@
 ﻿@using BetTeamsBattle.Data.Model.Enums
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
-@using Resources
 @model MyBetViewModel
-@if (Model.IsClosed)
-{
-    @Forms.Image(Model.StatusActionImage.ImageClass + " scr", Model.StatusActionImage.Title)
-}
-else
-{
-    <table class="vibor">
-        <tbody>
-            <tr>
+<table class="vibor">
+    <tbody>
+        <tr>
+            @if (Model.IsClosed)
+            {
+                <td>
+                    @Forms.Image(Model.StatusActionImage.ImageClass + " scr", Model.StatusActionImage.Title)
+                </td>
+            }
+            else
+            {
                 <td>
                     @Html.Partial(MVC.NotAdmin.BattleBets.Views._StatusActionImage, Model.StatusActionImages[BattleBetStatus.Succeeded])
                 </td>
@@ -20,7 +21,11 @@ else
                 <td>
                     @Html.Partial(MVC.NotAdmin.BattleBets.Views._StatusActionImage, Model.StatusActionImages[BattleBetStatus.CanceledByBookmaker])
                 </td>
-            </tr>
-        </tbody>
-    </table>
+            }
+        </tr>
+    </tbody>
+</table>
+@if (Model.IsClosed)
+{
+    <span class="td1_3">@Model.Result</span>
 }

@@ -21,7 +21,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual long? CloseBetScreenshotId { get; set; }
         public virtual sbyte Status { get; set; }
         public virtual BattleBetStatus StatusEnum { get { return (BattleBetStatus)Status; } set { Status = (sbyte) value; } }
-        public virtual double Result { get; set; }
+        public virtual double? Result { get; set; }
         public virtual bool IsPrivate { get; set; }
         public bool IsClosed
         {

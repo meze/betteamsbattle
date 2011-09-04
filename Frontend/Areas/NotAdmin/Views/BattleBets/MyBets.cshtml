@@ -14,32 +14,32 @@
         }
         else
         {
-            <table style="width: 765px; text-align: center;" border="0" cellpadding="0" cellspacing="0">
+            <table class="tabl_battel">
                 <tbody>
-                    <tr style="height: 39px; text-align: center;">
-                        <td style="color: #FFF; min-width: 170px;">
+                    <tr class="tabl_battel_n">
+                        <td class="tabl_battel_n1">
                             @BattleBets.Title
                         </td>
-                        <td style="color: #FFF; min-width: 80px;">
+                        <td class="tabl_battel_n2">
                             @BattleBets.Bet
                         </td>
-                        <td style="color: #FFF; min-width: 80px;">
+                        <td class="tabl_battel_n3">
                             @BattleBets.Coefficient
                         </td>
-                        <td style="color: #FFF; min-width: 145px;">
+                        <td class="tabl_battel_n4">
                             @BattleBets.BetStarted
                         </td>
-                        <td style="color: #FFF; min-width: 145px;">
+                        <td class="tabl_battel_n5">
                             @BattleBets.BetFinished
                         </td>
-                        <td style="color: #FFF; min-width: 115px;">
+                        <td class="tabl_battel_n6">
                             @BattleBets.Outcome
                         </td>
                     </tr>
                     @foreach (var myBet in Model)
                     {
-                        <tr class="stroka">
-                            <td style="">
+                        <tr class="stroca">
+                            <td>
                                 <span class="stroka_t">
                                     @myBet.Title <a href="@myBet.Url">
                                         <img class="bookmaker" src="../../../../Content/images/icon.png" /></a>
@@ -55,10 +55,10 @@
                             <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)
                             </td>
-                            <td class="td1_5">
+                            <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(myBet.CloseDateAndScreenshot))
                             </td>
-                            <td class="td1_8">
+                            <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
                             </td>
                         </tr>

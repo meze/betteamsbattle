@@ -424,9 +424,9 @@ background-position:-1794px 0px;
 }
 
 .battel_n{
-	padding:30px;
+	padding:20px;
 	background-color:#333;
-	border:3px solid #F00;
+	border:2px solid #F00;
 	text-align:center;
 	color:#FF0;
 	font-family:Tahoma, Geneva, sans-serif;
@@ -439,6 +439,50 @@ background-position:-1794px 0px;
 	margin-left:13px;
 	
 }
+
+.tabl_battel{
+	border-collapse:collapse;
+	border-spacing:0;
+	width: 765px;
+	text-align:center;
+	border:none;
+}
+
+.tabl_battel_n{
+	height:39px;
+	text-align:center;
+}
+
+.tabl_battel_n1{
+
+	min-width:170px;
+}
+
+.tabl_battel_n2{
+
+	min-width:80px;
+}
+
+.tabl_battel_n3{
+
+	min-width:80px;
+}
+
+.tabl_battel_n4{
+
+	min-width:145px;
+}
+
+.tabl_battel_n5{
+
+	min-width:145px;
+}
+
+.tabl_battel_n6{
+
+	min-width:115px;
+}
+
 
 
 .statistics{
@@ -493,8 +537,8 @@ background-position:-1794px 0px;
 	background-repeat:no-repeat;
 	border:none;
 	height:22px;
-background-image: url('images/sprite2.png');
-background-position:0px 0px;
+background-image: url('images/sprite.png');
+background-position:-2888px 0px;
 margin:0 auto;
 cursor:pointer;
 	display:block;
@@ -504,10 +548,10 @@ cursor:pointer;
 .scr_2{
 	width:22px;
 	height:22px;
-	background-image: url('images/sprite2.png');
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
 	border:none;
-	background-position:-22px 0px;
+	background-position:-2909px 0px;
 	margin:0 auto;
 	cursor:pointer;
 	display:block;
@@ -517,10 +561,10 @@ cursor:pointer;
 .scr_3{
 	width:22px;
 	height:22px;
-	background-image: url('images/sprite2.png');
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
 	border:none;
-	background-position:-44px 0;
+	background-position:-2930px 0;
 	margin:0 auto;
 	cursor:pointer;
 	display:block;
@@ -544,11 +588,29 @@ cursor:pointer;
 	
 }
 
+.help{
+	height:45px;
+	
+	margin-bottom:-35px;
+}
+
+
+
+.help_blok{
+	background-image:url("images/sprite.png");
+	background-position:-2953px 0px;
+	height:45px;
+	width:47px;
+	float:right;
+	margin-right:15px;
+	margin-top:10px;
+	border:0;
+}
+
 .pravo_content2_battle{
 	width:765px;
 	margin:0 auto;
 	font-size:17px;
-	border-bottom:1px solid #616161;
 	border-left:1px solid #616161;
 	border-right:1px solid #616161;
 	
