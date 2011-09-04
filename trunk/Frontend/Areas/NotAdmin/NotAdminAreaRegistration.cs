@@ -22,7 +22,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
             #region BattlesController
             context.MapLanguageRoute("battles/all", MVC.NotAdmin.Battles.AllBattles());
             context.MapLanguageRoute("battles/{battleId}", MVC.NotAdmin.Battles.Battle());
-            context.MapLanguageRoute("battles/{battleId}/topteams", MVC.NotAdmin.Battles.BattleTopTeams());
             #endregion
 
             #region BattleBetsController
@@ -43,8 +42,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
             #endregion
 
             #region TeamsController
-            context.MapLanguageRoute("teams/top", MVC.NotAdmin.Teams.TopTeams());
             context.MapLanguageRoute("teams/{teamId}", MVC.NotAdmin.Teams.Team());
+            context.MapLanguageRoute("teams/top", MVC.NotAdmin.Teams.TopTeams());
+            context.MapLanguageRoute("battles/{battleId}/topteams", MVC.NotAdmin.Teams.BattleTopTeams());
             #endregion
 
             #region UsersController

@@ -54,18 +54,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             return battleViewModel;
         }
 
-        public IEnumerable<TeamViewModel> BattleTopTeams(long battleId)
-        {
-            return
-                _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
-                    OrderByDescending(bts => bts.Balance).
-                    Skip(0).Take(10).
-                    Select(
-                        bus =>
-                        new TeamViewModel() { TeamId = bus.TeamId, Title = bus.Team.Title, Rating = bus.Balance, IsPro = bus.Team.IsPro }).
-                    ToList();
-        }
-
         public AllBattlesViewModel AllBattles()
         {
             var allBattlesViewModel = new AllBattlesViewModel();

@@ -43,13 +43,5 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 
             return View(battleViewModel);
         }
-
-        [ChildActionOnly]
-        public virtual ActionResult BattleTopTeams(long battleId)
-        {
-            var battleTopTeams = _battlesViewService.BattleTopTeams(battleId);
-
-            return PartialView(battleTopTeams);
-        }
     }
 }

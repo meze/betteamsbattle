@@ -1,7 +1,7 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams
 @using BetTeamsBattle.Frontend.Models.Shared
 @using Resources
-@model IEnumerable<TeamViewModel>
+@model IEnumerable<TopTeamViewModel>
            
 @Html.Partial(MVC.Shared.Views.ThreeColumns._RightColumnBlock, new ColumnBlockViewModel(Teams.TopTeams, @<text>
 @foreach (var team in Model)

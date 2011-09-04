@@ -5,7 +5,7 @@
     Layout = MVC.Shared.Views.TwoColumns._TwoColumnsLayout;
 }
 @section LeftBlock {
-    @Html.Action(MVC.NotAdmin.Battles.BattleTopTeams(Model.BattleId))
+    @Html.Action(MVC.NotAdmin.Teams.BattleTopTeams(Model.BattleId))
 }
 @section RightBlock {
     @RenderSection("RightBlockStart", true)

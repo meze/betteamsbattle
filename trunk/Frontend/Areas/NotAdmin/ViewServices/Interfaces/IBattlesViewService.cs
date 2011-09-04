@@ -8,6 +8,5 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces
     {
         BattleViewModel Battle(long battleId, long? nullableUserId);
         AllBattlesViewModel AllBattles();
-        IEnumerable<TeamViewModel> BattleTopTeams(long battleId);
     }
 }
