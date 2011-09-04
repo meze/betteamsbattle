@@ -73,9 +73,9 @@
 .knopka_ros{
 background-image:url("images/sprite.png");
 background-position:-574px 0;
-cursor:pointer;
 height:30px;
 width:40px;
+display:block;
 }
 
 .knopka_ros_hover{
@@ -95,7 +95,7 @@ width:40px;
 	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
 	background-position:-533px 0px;
-	cursor:pointer;
+	display:block;
 }
 
 .knopka_eng_hover{
