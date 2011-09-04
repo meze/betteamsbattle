@@ -204,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CountryCodeHelper.cs" />
     <Compile Include="Helpers\DomainHelper.cs" />
     <Compile Include="Localization\Infrastructure\Cookies\CookiesService.cs" />
     <Compile Include="Localization\Infrastructure\Cookies\Interfaces\ICookiesService.cs" />
@@ -229,8 +230,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\Shared\FormElementViewModel.cs" />
     <Compile Include="Models\Shared\ColumnBlockViewModel.cs" />
+    <Compile Include="Models\Shared\Languages\LanguageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -459,6 +460,8 @@
     <Content Include="App_Code\Forms.cshtml" />
     <Content Include="Views\Shared\OneColumn\_OneColumnLayout.cshtml" />
     <Content Include="Views\Shared\_OneOrTwoColumnsLayoutBase.cshtml" />
+    <Content Include="Views\Shared\Languages\_AllLanguages.cshtml" />
+    <Content Include="Views\Shared\Languages\_Language.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
