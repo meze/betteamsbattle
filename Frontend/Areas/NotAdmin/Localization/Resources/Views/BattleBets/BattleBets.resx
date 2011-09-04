@@ -171,14 +171,14 @@
   <data name="OfTeam" xml:space="preserve">
     <value>team</value>
   </data>
+  <data name="Outcome" xml:space="preserve">
+    <value>Outcome</value>
+  </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Private bet</value>
   </data>
   <data name="Screenshot" xml:space="preserve">
     <value>Screenshot</value>
-  </data>
-  <data name="Status" xml:space="preserve">
-    <value>Status</value>
   </data>
   <data name="Succeeded" xml:space="preserve">
     <value>Succeeded</value>

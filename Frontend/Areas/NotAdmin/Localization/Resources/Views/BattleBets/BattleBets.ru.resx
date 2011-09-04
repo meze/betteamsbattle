@@ -171,14 +171,14 @@
   <data name="OfTeam" xml:space="preserve">
     <value>команды</value>
   </data>
+  <data name="Outcome" xml:space="preserve">
+    <value>Исход</value>
+  </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Приватная ставка</value>
   </data>
   <data name="Screenshot" xml:space="preserve">
     <value>Скриншот</value>
-  </data>
-  <data name="Status" xml:space="preserve">
-    <value>Статус</value>
   </data>
   <data name="Succeeded" xml:space="preserve">
     <value>Сыграла</value>
