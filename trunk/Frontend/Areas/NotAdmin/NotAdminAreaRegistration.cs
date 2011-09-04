@@ -26,7 +26,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
             #endregion
 
             #region BattleBetsController
-            context.MapLanguageRoute("battles/{battleId}/mybets", MVC.NotAdmin.BattleBets.MyBets());
+            context.MapLanguageRoute("battles/{battleId}/mybets", MVC.NotAdmin.BattleBets.MyBattleBets());
+            context.MapLanguageRoute("users/{userId}/bets", MVC.NotAdmin.BattleBets.UserBets());
+            context.MapLanguageRoute("teasm/{teamId}/bets", MVC.NotAdmin.BattleBets.TeamBets());
             context.MapLanguageRoute("battles/{battleId}/mybets/new", MVC.NotAdmin.BattleBets.MakeBet());
             context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/succeeded", MVC.NotAdmin.BattleBets.BetSucceeded());
             context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/failed", MVC.NotAdmin.BattleBets.BetFailed());

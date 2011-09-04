@@ -29,5 +29,5 @@
 }
 @if (CurrentUser.NullableUserId.HasValue)
 {
-    @Html.Action(MVC.NotAdmin.BattleBets.MyBets(Model.BattleId))
+    @Html.Action(MVC.NotAdmin.BattleBets.MyBattleBets(Model.BattleId))
 }

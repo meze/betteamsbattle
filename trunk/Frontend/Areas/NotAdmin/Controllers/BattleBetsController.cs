@@ -23,23 +23,27 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [ChildActionOnly]
-        public virtual ActionResult MyBets(long battleId)
+        public virtual ActionResult MyBattleBets(long battleId)
         {
-            var myBets = _battleBetsViewService.MyBets(battleId, CurrentUser.UserId);
+            var myBattleBets = _battleBetsViewService.MyBattleBets(battleId, CurrentUser.UserId);
 
-            return View(myBets);
+            return View(Views.Bets, myBattleBets);
         }
 
         [ChildActionOnly]
         public virtual ActionResult UserBets(long userId)
         {
-            return View();
+            var userBets = _battleBetsViewService.UserBets(userId);
+
+            return View(Views.Bets, userBets);
         }
 
         [ChildActionOnly]
         public virtual ActionResult TeamBets(long teamId)
         {
-            return View();
+            var teamBets = _battleBetsViewService.TeamBets(teamId);
+
+            return View(Views.Bets, teamBets);
         }
 
         [Authorize]

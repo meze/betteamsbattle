@@ -1,0 +1,66 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+@using Resources
+@model IEnumerable<MyBetViewModel>
+<div class="my_s">
+    @BattleBets.MyBets
+</div>
+<div class="pravo_content2_battle">
+    <div class="pravo_content2_hed">
+        @if (Model.Count() == 0)
+        {
+            <div class="battel_n">
+                @BattleBets.YouHaveMadeNoBetsInThisBattle
+            </div>
+        }
+        else
+        {
+            <table class="tabl_battel">
+                <tbody>
+                    <tr class="tabl_battel_n">
+                        <td class="tabl_battel_n1">
+                            @BattleBets.Title
+                        </td>
+                        <td class="tabl_battel_n2">
+                            @BattleBets.Bet
+                        </td>
+                        <td class="tabl_battel_n4">
+                            @BattleBets.BetStarted
+                        </td>
+                        <td class="tabl_battel_n5">
+                            @BattleBets.BetFinished
+                        </td>
+                        <td class="tabl_battel_n6">
+                            @BattleBets.Outcome
+                        </td>
+                    </tr>
+                    @foreach (var myBet in Model)
+                    {
+                        <tr class="stroca">
+                            <td>
+                                <span class="stroka_t">
+                                    @myBet.Title 
+                                </span>
+                            </td>
+                            <td>
+                                <span class="td1_3">@myBet.Bet$</span> x @myBet.Coefficient 
+                                <a href="@myBet.Url"><img class="bookmaker" src="../../../../Content/images/icon.png" /></a>
+                            </td>
+                            <td>
+                                <span class="td1_4"></span>
+                            </td>
+                            <td>
+                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)
+                            </td>
+                            <td>
+                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(myBet.CloseDateAndScreenshot))
+                            </td>
+                            <td>
+                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
