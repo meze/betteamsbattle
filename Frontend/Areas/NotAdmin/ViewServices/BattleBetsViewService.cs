@@ -64,7 +64,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             return MakeBet(battleId, userId, new MakeBetFormViewModel());
         }
 
-        public IEnumerable<MyBetViewModel> MyBets(long battleId, long userId)
+        public IEnumerable<MyBetViewModel> MyBattleBets(long battleId, long userId)
         {
             var myBets = _repositoryOfBattleBet.
                    Get(BattleBetSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).
@@ -104,6 +104,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             }
 
             return myBetsViewModels;
+        }
+
+        public IEnumerable<MyBetViewModel> TeamBets(long teamId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<MyBetViewModel> UserBets(long userId)
+        {
+            throw new NotImplementedException();
         }
 
         public IDictionary<BattleBetStatus, StatusActionImageViewModel> GetBattleBetStatusImages(long battleBetId)

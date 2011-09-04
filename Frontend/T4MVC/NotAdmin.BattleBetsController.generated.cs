@@ -33,8 +33,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult MyBets() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.MyBets);
+        public System.Web.Mvc.ActionResult MyBattleBets() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.MyBattleBets);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -79,7 +79,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string MyBets = ("MyBets").ToLowerInvariant();
+            public readonly string MyBattleBets = ("MyBattleBets").ToLowerInvariant();
             public readonly string UserBets = ("UserBets").ToLowerInvariant();
             public readonly string TeamBets = ("TeamBets").ToLowerInvariant();
             public readonly string MakeBet = ("MakeBet").ToLowerInvariant();
@@ -97,8 +97,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
             public readonly string _DateAndScreenshot = "~/Areas/NotAdmin/Views/BattleBets/_DateAndScreenshot.cshtml";
             public readonly string _Status = "~/Areas/NotAdmin/Views/BattleBets/_Status.cshtml";
             public readonly string _StatusActionImage = "~/Areas/NotAdmin/Views/BattleBets/_StatusActionImage.cshtml";
+            public readonly string Bets = "~/Areas/NotAdmin/Views/BattleBets/Bets.cshtml";
             public readonly string MakeBet = "~/Areas/NotAdmin/Views/BattleBets/MakeBet.cshtml";
-            public readonly string MyBets = "~/Areas/NotAdmin/Views/BattleBets/MyBets.cshtml";
         }
     }
 
@@ -106,8 +106,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
     public class T4MVC_BattleBetsController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.BattleBetsController {
         public T4MVC_BattleBetsController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult MyBets(long battleId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MyBets);
+        public override System.Web.Mvc.ActionResult MyBattleBets(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MyBattleBets);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }
