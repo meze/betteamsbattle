@@ -13,13 +13,13 @@
             else
             {
                 <td>
-                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._StatusActionImage, Model.StatusActionImages[BattleBetStatus.Succeeded])
+                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._OutcomeActionImage, Model.StatusActionImages[BattleBetStatus.Succeeded])
                 </td>
                 <td>
-                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._StatusActionImage, Model.StatusActionImages[BattleBetStatus.Failed])
+                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._OutcomeActionImage, Model.StatusActionImages[BattleBetStatus.Failed])
                 </td>
                 <td>
-                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._StatusActionImage, Model.StatusActionImages[BattleBetStatus.CanceledByBookmaker])
+                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._OutcomeActionImage, Model.StatusActionImages[BattleBetStatus.CanceledByBookmaker])
                 </td>
             }
         </tr>
@@ -27,5 +27,5 @@
 </table>
 @if (Model.IsClosed)
 {
-    <span class="td1_3">@Model.Result</span>
+    <span class="@BetResult.GetClass(Model.Result)">@Model.Result</span>
 }

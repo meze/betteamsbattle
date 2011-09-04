@@ -78,16 +78,21 @@ width:40px;
 display:block;
 }
 
-.knopka_ros_hover{
-	width:41px;
-	height:30px;
-	background-image: url('images/flag_r_h.png');
-	background-position:574px 0px;
-	cursor:pointer;
-	display:none;
+.knopka_ros_active{
+background-image:url("images/flag_r_activ.png");
+height:30px;
+width:40px;
+display:block;
 }
 
 
+.knopka_eng_active{
+	width:41px;
+	height:30px;
+	background-image: url('images/flag_e_activ.png');
+	background-repeat:no-repeat;
+	display:block;
+}
 
 .knopka_eng{
 	width:41px;

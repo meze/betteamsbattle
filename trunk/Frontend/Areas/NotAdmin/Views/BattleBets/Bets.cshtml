@@ -42,11 +42,8 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="td1_3">@myBet.Bet$</span> x @myBet.Coefficient 
-                                <a href="@myBet.Url"><img class="bookmaker" src="../../../../Content/images/icon.png" /></a>
-                            </td>
-                            <td>
-                                <span class="td1_4"></span>
+                                <span class="bet">@myBet.Bet$</span> x @myBet.Coefficient 
+                                <a href="@myBet.Url"><img class="bookmaker_r" /></a>
                             </td>
                             <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)
@@ -55,7 +52,7 @@
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(myBet.CloseDateAndScreenshot))
                             </td>
                             <td>
-                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._Status, myBet)
+                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._Outcome, myBet)
                             </td>
                         </tr>
                     }

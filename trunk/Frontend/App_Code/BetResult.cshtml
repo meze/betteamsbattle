@@ -1,0 +1,12 @@
+﻿@functions
+{
+    public static string GetClass(double betResult)
+    {
+        if (betResult > 0)
+            return "betResultPositive";
+        else if (betResult < 0)
+            return "betResultNegative";
+        else 
+            return "betResultZero";
+    }
+}
