@@ -38,6 +38,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult UserBets() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.UserBets);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult TeamBets() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.TeamBets);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult MakeBet() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.MakeBet);
         }
@@ -70,6 +80,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string MyBets = ("MyBets").ToLowerInvariant();
+            public readonly string UserBets = ("UserBets").ToLowerInvariant();
+            public readonly string TeamBets = ("TeamBets").ToLowerInvariant();
             public readonly string MakeBet = ("MakeBet").ToLowerInvariant();
             public readonly string BetSucceeded = ("BetSucceeded").ToLowerInvariant();
             public readonly string BetFailed = ("BetFailed").ToLowerInvariant();
@@ -97,6 +109,18 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public override System.Web.Mvc.ActionResult MyBets(long battleId) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MyBets);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult UserBets(long userId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UserBets);
+            callInfo.RouteValueDictionary.Add("userId", userId);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult TeamBets(long teamId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.TeamBets);
+            callInfo.RouteValueDictionary.Add("teamId", teamId);
             return callInfo;
         }
 
