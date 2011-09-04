@@ -1,22 +1,17 @@
-﻿@using BetTeamsBattle.Frontend.Areas.Admin.Models
+﻿@using BetTeamsBattle.Frontend.Areas.Admin.Models.Battles
 @model CreateBattleViewModel
 @{
-    Layout = MVC.Shared.Views._Layout;
-    ViewBag.Title = "CreateBattle";
+    Layout = MVC.Shared.Views.OneColumn._OneColumnLayout;
 }
 <h2>CreateBattle</h2>
-@Html.ValidationSummary(true)
 @using (@Html.BeginForm(MVC.Admin.AdminBattles.CreateBattle(), FormMethod.Post))
 { 
-    <text> 
-    Start date @Html.TextBoxFor(b => b.StartDate) @Html.ValidationMessageFor(b => b.StartDate)
-    <br />
-    End date @Html.TextBoxFor(b => b.EndDate) @Html.ValidationMessageFor(b => b.EndDate)
-    <br />
-    Battle type @Html.DropDownListFor(b => b.BattleType, Model.BattleTypes) @Html.ValidationMessageFor(b => b.BattleType)
-    <br />
-    Budget @Html.TextBoxFor(b => b.Budget) @Html.ValidationMessageFor(b => b.Budget)
-    <br />
+    @Html.ValidationSummary(true)
+
+    @Forms.TextBox(Html, m => m.CreateBattleForm.StartDate, "Start date")
+    @Forms.TextBox(Html, m => m.CreateBattleForm.EndDate, "End date") 
+    @Forms.DropDownList(Html, m => m.CreateBattleForm.BattleType, "Battle type", Model.BattleTypes)
+    @Forms.TextBox(Html, m => m.CreateBattleForm.Budget, "Budget")
+    
     <input type="submit" name="Create" />
-    </text>
 }

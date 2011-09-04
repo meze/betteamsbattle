@@ -21,9 +21,9 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
 namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers {
-    public partial class AdminBattlesController {
+    public partial class AdminTeamsController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected AdminBattlesController(Dummy d) { }
+        protected AdminTeamsController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -33,19 +33,19 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers {
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AdminBattlesController Actions { get { return MVC.Admin.AdminBattles; } }
+        public AdminTeamsController Actions { get { return MVC.Admin.AdminTeams; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "admin";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "adminbattles";
+        public readonly string Name = "adminteams";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string GetBattles = ("GetBattles").ToLowerInvariant();
-            public readonly string CreateBattle = ("CreateBattle").ToLowerInvariant();
+            public readonly string GetProTeams = ("GetProTeams").ToLowerInvariant();
+            public readonly string CreateProTeam = ("CreateProTeam").ToLowerInvariant();
         }
 
 
@@ -54,28 +54,28 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string CreateBattle = "~/Areas/Admin/Views/AdminBattles/CreateBattle.cshtml";
-            public readonly string GetBattles = "~/Areas/Admin/Views/AdminBattles/GetBattles.cshtml";
+            public readonly string CreateProTeam = "~/Areas/Admin/Views/AdminTeams/CreateProTeam.cshtml";
+            public readonly string GetProTeams = "~/Areas/Admin/Views/AdminTeams/GetProTeams.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_AdminBattlesController: BetTeamsBattle.Frontend.Areas.Admin.Controllers.AdminBattlesController {
-        public T4MVC_AdminBattlesController() : base(Dummy.Instance) { }
+    public class T4MVC_AdminTeamsController: BetTeamsBattle.Frontend.Areas.Admin.Controllers.AdminTeamsController {
+        public T4MVC_AdminTeamsController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult GetBattles() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetBattles);
+        public override System.Web.Mvc.ActionResult GetProTeams() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetProTeams);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateBattle() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateBattle);
+        public override System.Web.Mvc.ActionResult CreateProTeam() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateProTeam);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateBattle(BetTeamsBattle.Frontend.Areas.Admin.Models.Battles.CreateBattleFormViewModel createBattleForm) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateBattle);
-            callInfo.RouteValueDictionary.Add("createBattleForm", createBattleForm);
+        public override System.Web.Mvc.ActionResult CreateProTeam(BetTeamsBattle.Frontend.Areas.Admin.Models.Teams.CreateProTeamViewModel createProTeamViewModel) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateProTeam);
+            callInfo.RouteValueDictionary.Add("createProTeamViewModel", createProTeamViewModel);
             return callInfo;
         }
 

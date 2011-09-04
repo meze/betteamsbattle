@@ -35,6 +35,7 @@ namespace T4MVC {
     public class AdminClass {
         public readonly string Name = "admin";
         public BetTeamsBattle.Frontend.Areas.Admin.Controllers.AdminBattlesController AdminBattles = new BetTeamsBattle.Frontend.Areas.Admin.Controllers.T4MVC_AdminBattlesController();
+        public BetTeamsBattle.Frontend.Areas.Admin.Controllers.AdminTeamsController AdminTeams = new BetTeamsBattle.Frontend.Areas.Admin.Controllers.T4MVC_AdminTeamsController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
