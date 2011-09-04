@@ -136,8 +136,16 @@
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.Designer.cs" />
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.Designer.cs" />
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru.Designer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teams.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Teams.resx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,7 +165,8 @@
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\BattleViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\DateAndScreenshotViewModel.cs" />
-    <Compile Include="Areas\NotAdmin\Models\Shared\TeamViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Teams\TopTeamViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Teams\TeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Users\UserViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
@@ -385,7 +394,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Localization\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\NotAdmin\Models\Teams\" />
     <Folder Include="Content\images\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
@@ -404,7 +412,7 @@
     <Content Include="Areas\NotAdmin\Views\Battles\AllBattles.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\TopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\Battle.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Battles\BattleTopTeams.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Teams\BattleTopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AccountLink.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Shared\_Team.cshtml" />
     <Content Include="..\Configs\Usage\Web.config">
@@ -419,6 +427,7 @@
     <Content Include="Areas\Admin\Views\AdminTeams\CreateProTeam.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Users\User.cshtml" />
     <Content Include="App_Code\BetResult.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Teams\Team.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -477,8 +486,16 @@
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.resx" />
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.resx" />
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru.resx" />
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teams1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Teams.ru1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Users\Users.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Users.Designer.cs</LastGenOutput>

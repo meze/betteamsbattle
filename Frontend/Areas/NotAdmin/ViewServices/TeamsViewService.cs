@@ -12,18 +12,31 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
     internal class TeamsViewService : ITeamsViewService
     {
         private readonly IRepository<Team> _repositoryOfTeam;
+        private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
 
-        public TeamsViewService(IRepository<Team> repositoryOfTeam)
+        public TeamsViewService(IRepository<Team> repositoryOfTeam, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
         {
             _repositoryOfTeam = repositoryOfTeam;
+            _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
         }
 
-        public IEnumerable<TeamViewModel> TopTeams()
+        public IEnumerable<TopTeamViewModel> TopTeams()
         {
             return _repositoryOfTeam.All().OrderByDescending(t => t.Rating).
                 Skip(0).Take(10).
-                Select(t => new TeamViewModel() { TeamId =  t.Id, Title = t.Title, Rating = t.Rating, IsPro = t.IsPro }).
+                Select(t => new TopTeamViewModel() { TeamId =  t.Id, Title = t.Title, Rating = t.Rating, IsPro = t.IsPro }).
                 ToList();
+        }
+
+        public IEnumerable<TopTeamViewModel> BattleTopTeams(long battleId)
+        {
+            var battleTopTeams = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
+                    OrderByDescending(bts => bts.Balance).
+                    Skip(0).Take(10).
+                    Select(
+                        bus =>
+                        new TopTeamViewModel() { TeamId = bus.TeamId, Title = bus.Team.Title, Rating = bus.Balance, IsPro = bus.Team.IsPro }).
+                    ToList();
         }
     }
 }

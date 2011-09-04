@@ -36,6 +36,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public System.Web.Mvc.ActionResult Team() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Team);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult BattleTopTeams() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.BattleTopTeams);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public TeamsController Actions { get { return MVC.NotAdmin.Teams; } }
@@ -49,8 +54,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string TopTeams = ("TopTeams").ToLowerInvariant();
             public readonly string Team = ("Team").ToLowerInvariant();
+            public readonly string TopTeams = ("TopTeams").ToLowerInvariant();
+            public readonly string BattleTopTeams = ("BattleTopTeams").ToLowerInvariant();
         }
 
 
@@ -59,6 +65,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string BattleTopTeams = "~/Areas/NotAdmin/Views/Teams/BattleTopTeams.cshtml";
+            public readonly string Team = "~/Areas/NotAdmin/Views/Teams/Team.cshtml";
             public readonly string TopTeams = "~/Areas/NotAdmin/Views/Teams/TopTeams.cshtml";
         }
     }
@@ -67,14 +75,20 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
     public class T4MVC_TeamsController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.TeamsController {
         public T4MVC_TeamsController() : base(Dummy.Instance) { }
 
+        public override System.Web.Mvc.ActionResult Team(long teamId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Team);
+            callInfo.RouteValueDictionary.Add("teamId", teamId);
+            return callInfo;
+        }
+
         public override System.Web.Mvc.PartialViewResult TopTeams() {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.TopTeams);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Team(long teamId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Team);
-            callInfo.RouteValueDictionary.Add("teamId", teamId);
+        public override System.Web.Mvc.ActionResult BattleTopTeams(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.BattleTopTeams);
+            callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }
 

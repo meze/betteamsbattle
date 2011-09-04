@@ -19,6 +19,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             _teamsViewService = teamsViewService;
         }
 
+        public virtual ActionResult Team(long teamId)
+        {
+
+
+            return View();
+        }
+
         [ChildActionOnly]
         public virtual PartialViewResult TopTeams()
         {
@@ -27,11 +34,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             return PartialView(topTeams);
         }
 
-        public virtual ActionResult Team(long teamId)
+        [ChildActionOnly]
+        public virtual ActionResult BattleTopTeams(long battleId)
         {
+            var battleTopTeams = _teamsViewService.BattleTopTeams(battleId);
 
-
-            return View();
+            return PartialView(battleTopTeams);
         }
     }
 }
