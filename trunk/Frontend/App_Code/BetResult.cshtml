@@ -1,12 +1,20 @@
 ﻿@functions
 {
+
     public static string GetClass(double betResult)
     {
         if (betResult > 0)
             return "betResultPositive";
         else if (betResult < 0)
-            return "betResultNegative";
-        else 
-            return "betResultZero";
+                 return "betResultNegative";
+             else
+                 return "betResultZero";
+    }
+
+    public static string GetSignedValue(double betResult)
+    {
+        if (betResult > 0)
+            return "+" + betResult;
+        return betResult.ToString();
     }
 }
