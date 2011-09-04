@@ -130,8 +130,16 @@
     <Compile Include="Areas\NotAdmin\Controllers\UsersController.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru.Designer.cs" />
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.Designer.cs" />
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.ru.Designer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BattleBets.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BattleBets.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.Designer.cs" />
@@ -270,7 +278,9 @@
     <Content Include="Content\Bundles\site.css" />
     <Content Include="Content\file.css" />
     <Content Include="Content\js\blik.js" />
+    <Content Include="Content\js\tooltip.js" />
     <Content Include="Content\menu_style.css" />
+    <Content Include="Content\tooltip.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
@@ -428,6 +438,7 @@
     <Content Include="Areas\NotAdmin\Views\Users\User.cshtml" />
     <Content Include="App_Code\BetResult.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\Team.cshtml" />
+    <Content Include="App_Code\BookmakerIcon.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -480,8 +491,16 @@
   <ItemGroup>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru.resx" />
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.resx" />
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.ru.resx" />
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BattleBets.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BattleBets.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.resx" />

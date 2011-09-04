@@ -10,6 +10,7 @@
         Add(Content.file_css).
         Add(Content.menu_style_css).
         Add(Content.botton_css).
+        Add(Content.tooltip_css).
         RenderMvc(Content.Bundles.site_css).
         ToHtmlString())
     @Html.Raw(Bundle.JavaScript().
@@ -17,6 +18,7 @@
         Add(Scripts.jquery_validate_min_js).
         Add(Scripts.jquery_validate_unobtrusive_min_js).
         Add(Content.js.blik_js).
+        Add(Content.js.tooltip_js).
         RenderMvc(Content.Bundles.site_js).
         ToHtmlString())
     @RenderSection("Scripts", false)

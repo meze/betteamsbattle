@@ -126,6 +126,9 @@
   <data name="BetIsOutOfYourLimit" xml:space="preserve">
     <value>Ставка превышает ваш лимит</value>
   </data>
+  <data name="BetOnBookmakersSite" xml:space="preserve">
+    <value>Ставка на сайте букмекера</value>
+  </data>
   <data name="BetShouldBeMoreThanZero" xml:space="preserve">
     <value>Ставка должна быть больше нуля</value>
   </data>

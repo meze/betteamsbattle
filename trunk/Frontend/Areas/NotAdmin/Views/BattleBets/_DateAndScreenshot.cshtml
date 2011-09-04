@@ -7,14 +7,12 @@
 else
 {
     <div class="data">@Model.DateTime</div>
-    <div class="sc">
-        @if (Model.ScreenshotUrl != null)
-        {
-            @Forms.ActionImage(Model.ScreenshotUrl, Model.ScreenshotStatusClass + " scr", Model.ScreenshotStatusString)
-        }
-        else
-        {
-            @Forms.Image(Model.ScreenshotStatusClass + " scr", Model.ScreenshotStatusString)
-        }
-    </div>
+    if (Model.ScreenshotUrl != null)
+    {
+        @Forms.ActionImage(Model.ScreenshotUrl, Model.ScreenshotStatusClass, Model.ScreenshotStatusString)
+    }
+    else
+    {
+        @Forms.Image(Model.ScreenshotStatusClass, Model.ScreenshotStatusString)
+    }
 }
