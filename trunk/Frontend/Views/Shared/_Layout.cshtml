@@ -57,22 +57,7 @@
                                 @Html.Partial(MVC.NotAdmin.Accounts.Views.AccountLink)
                                 @Html.Partial(MVC.NotAdmin.Accounts.Views.SignInOrSignOutLink)
                             </td>
-                            <td>
-                                <a href="">
-                                    <div class="knopka_ros">
-                                        <div class="knopka_ros_hover">
-                                        </div>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="">
-                                    <div class="knopka_eng">
-                                        <div class="knopka_eng_hover">
-                                        </div>
-                                    </div>
-                                </a>
-                            </td>
+                            @Html.Partial(MVC.Shared.Views.Languages._AllLanguages)
                         </tr>
                     </tbody>
                 </table>

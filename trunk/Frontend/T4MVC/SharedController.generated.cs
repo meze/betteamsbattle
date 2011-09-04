@@ -31,6 +31,12 @@ namespace T4MVC {
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _OneOrTwoColumnsLayoutBase = "~/Views/Shared/_OneOrTwoColumnsLayoutBase.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
+            static readonly _Languages s_Languages = new _Languages();
+            public _Languages Languages { get { return s_Languages; } }
+            public partial class _Languages{
+                public readonly string _AllLanguages = "~/Views/Shared/Languages/_AllLanguages.cshtml";
+                public readonly string _Language = "~/Views/Shared/Languages/_Language.cshtml";
+            }
             static readonly _OneColumn s_OneColumn = new _OneColumn();
             public _OneColumn OneColumn { get { return s_OneColumn; } }
             public partial class _OneColumn{
