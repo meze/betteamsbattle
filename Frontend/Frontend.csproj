@@ -127,6 +127,7 @@
     <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\TeamsController.cs" />
+    <Compile Include="Areas\NotAdmin\Controllers\UsersController.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.Designer.cs">
       <DependentUpon>Accounts.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -270,6 +271,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\NotAdmin.TeamsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\NotAdmin.UsersController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">

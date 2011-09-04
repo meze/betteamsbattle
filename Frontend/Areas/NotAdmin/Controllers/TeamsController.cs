@@ -26,5 +26,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 
             return PartialView(topTeams);
         }
+
+        public virtual ActionResult Team(long teamId)
+        {
+
+
+            return View();
+        }
     }
 }

@@ -42,6 +42,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
 
             #region TeamsController
             context.MapLanguageRoute("teams/top", MVC.NotAdmin.Teams.TopTeams());
+            context.MapLanguageRoute("teams/{teamId}", MVC.NotAdmin.Teams.Team());
+            #endregion
+
+            #region UsersController
+            context.MapLanguageRoute("users/{userId}", MVC.NotAdmin.Users.User());
             #endregion
         }
     }

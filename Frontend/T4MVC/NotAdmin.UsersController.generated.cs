@@ -21,9 +21,12 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
-    public partial class TeamsController {
+    public partial class UsersController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected TeamsController(Dummy d) { }
+        public UsersController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        protected UsersController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -33,24 +36,23 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Team() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Team);
+        public System.Web.Mvc.ActionResult User() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.User);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public TeamsController Actions { get { return MVC.NotAdmin.Teams; } }
+        public UsersController Actions { get { return MVC.NotAdmin.Users; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "notadmin";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "teams";
+        public readonly string Name = "users";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string TopTeams = ("TopTeams").ToLowerInvariant();
-            public readonly string Team = ("Team").ToLowerInvariant();
+            public readonly string User = ("User").ToLowerInvariant();
         }
 
 
@@ -59,22 +61,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string TopTeams = "~/Areas/NotAdmin/Views/Teams/TopTeams.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_TeamsController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.TeamsController {
-        public T4MVC_TeamsController() : base(Dummy.Instance) { }
+    public class T4MVC_UsersController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.UsersController {
+        public T4MVC_UsersController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.PartialViewResult TopTeams() {
-            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.TopTeams);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Team(long teamId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Team);
-            callInfo.RouteValueDictionary.Add("teamId", teamId);
+        public override System.Web.Mvc.ActionResult User(long userId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.User);
+            callInfo.RouteValueDictionary.Add("userId", userId);
             return callInfo;
         }
 
