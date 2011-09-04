@@ -6,6 +6,7 @@
 @section Title {
     Battles
 }
+@Html.ActionLink("Create battle", MVC.Admin.AdminBattles.CreateBattle()) <br />
 @foreach (var battle in Model)
 {
     <text> Id @battle.Id
