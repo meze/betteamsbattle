@@ -6,9 +6,11 @@
         <tr>
             @if (Model.IsClosed)
             {
+                <td></td>
                 <td>
-                    @Forms.Image(Model.StatusActionImage.ImageClass + " scr", Model.StatusActionImage.Title)
+                    @Forms.Image(Model.StatusActionImage.ImageClass, Model.StatusActionImage.Title)
                 </td>
+                <td></td>
             }
             else
             {

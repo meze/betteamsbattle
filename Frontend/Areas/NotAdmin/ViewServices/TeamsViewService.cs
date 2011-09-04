@@ -22,10 +22,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
 
         public IEnumerable<TopTeamViewModel> TopTeams()
         {
-            return _repositoryOfTeam.All().OrderByDescending(t => t.Rating).
+            var topTeams = _repositoryOfTeam.All().OrderByDescending(t => t.Rating).
                 Skip(0).Take(10).
                 Select(t => new TopTeamViewModel() { TeamId =  t.Id, Title = t.Title, Rating = t.Rating, IsPro = t.IsPro }).
                 ToList();
+            return topTeams;
         }
 
         public IEnumerable<TopTeamViewModel> BattleTopTeams(long battleId)
@@ -37,6 +38,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
                         bus =>
                         new TopTeamViewModel() { TeamId = bus.TeamId, Title = bus.Team.Title, Rating = bus.Balance, IsPro = bus.Team.IsPro }).
                     ToList();
+            return battleTopTeams;
         }
     }
 }

@@ -126,6 +126,9 @@
   <data name="BetIsOutOfYourLimit" xml:space="preserve">
     <value>Bet is out of your limit</value>
   </data>
+  <data name="BetOnBookmakersSite" xml:space="preserve">
+    <value>Bet on bookmaker's site</value>
+  </data>
   <data name="BetShouldBeMoreThanZero" xml:space="preserve">
     <value>Bet should be more that zero</value>
   </data>

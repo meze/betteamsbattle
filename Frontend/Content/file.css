@@ -114,7 +114,11 @@ background-position:center;
 	
 }
 
+.content_blok_b a{
+	border:none;
 
+	
+}
 
 .levo_blok{
 	
@@ -448,6 +452,8 @@ background-position:-1794px 0px;
 	border:none;
 }
 
+
+
 .tabl_battel_n{
 	height:39px;
 	text-align:center;
@@ -610,7 +616,9 @@ cursor:pointer;
 }
 
 .help{
-	margin-left:20px;
+	margin-left:5px;
+	border:none;
+	margin-bottom:-3px;
 
 }
 
@@ -1270,6 +1278,8 @@ table{
 
 
 .stroka_t{
+	max-width:300px;
+	min-width:180px;
 
 	text-align:center;
 		padding-bottom:3px;
@@ -1291,8 +1301,12 @@ table{
 	background-image: url('images/icon_r.png');
 	height:20px;
 	width:20px;
+	text-decoration:none;
+		margin-top:-3px;
+
 }
 
+ 
 .bookmaker_en {
 	border:none;
 	margin:0 auto;
@@ -1302,7 +1316,9 @@ table{
 	background-image: url('images/icon.png');
 	height:20px;
 	width:20px;
+	margin-top:-3px;
 }
+
 
 
 .schet{
@@ -1321,6 +1337,7 @@ table{
 
 
 .bet{
+	border:none;
 
 		text-align:center;
 		color:#FF0;
@@ -1329,6 +1346,8 @@ table{
 		font-weight:bold;
 		padding:4px;
 }
+
+
 
 .betResultPositive{
 

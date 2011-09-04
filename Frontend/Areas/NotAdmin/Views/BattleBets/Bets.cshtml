@@ -38,12 +38,14 @@
                         <tr class="stroca">
                             <td>
                                 <span class="stroka_t">
-                                    @myBet.Title 
+                                    @myBet.Title
                                 </span>
                             </td>
                             <td>
-                                <span class="bet">@myBet.Bet$</span> x @myBet.Coefficient 
-                                <a href="@myBet.Url"><img class="bookmaker_r" /></a>
+                                <div class="y">
+                                    <span class="bet">@myBet.Bet$</span> x @myBet.Coefficient
+                                    @Forms.ActionImage(@myBet.Url, BookmakerIcon.GetClass(), BattleBets.BetOnBookmakersSite)
+                                </div>
                             </td>
                             <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)

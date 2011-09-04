@@ -545,9 +545,12 @@ namespace Links {
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string blik_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/blik.min.js") ? Url("blik.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/blik.js") : Url("blik.js")+"?"+T4Extensions.TimestampString(URLPATH + "/blik.js");
                           
+            public static readonly string tooltip_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tooltip.min.js") ? Url("tooltip.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/tooltip.js") : Url("tooltip.js")+"?"+T4Extensions.TimestampString(URLPATH + "/tooltip.js");
+                          
         }
     
         public static readonly string menu_style_css = Url("menu_style.css")+"?"+T4Extensions.TimestampString(URLPATH + "/menu_style.css");
+        public static readonly string tooltip_css = Url("tooltip.css")+"?"+T4Extensions.TimestampString(URLPATH + "/tooltip.css");
     }
 
 }

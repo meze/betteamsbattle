@@ -80,18 +80,20 @@ display:block;
 
 .knopka_ros_active{
 background-image:url("images/flag_r_activ.png");
-height:30px;
+height:29px;
 width:40px;
 display:block;
+background-repeat:no-repeat;
 }
 
 
 .knopka_eng_active{
 	width:41px;
-	height:30px;
+	height:29px;
 	background-image: url('images/flag_e_activ.png');
 	background-repeat:no-repeat;
 	display:block;
+	background-repeat:no-repeat;
 }
 
 .knopka_eng{
