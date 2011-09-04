@@ -117,7 +117,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             var newBalance = battle.Budget - _bet + _bet * _betCoefficient;
 
             _entityAssert.Team(team.Id, newRating);
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Succeeded);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Succeeded, _bet * _betCoefficient);
             _entityAssert.BattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
         }
 
@@ -137,7 +137,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             var newBalance = battle.Budget - _bet;
 
             _entityAssert.Team(team.Id, newRating);
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Failed);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Failed, -_bet * _betCoefficient);
             _entityAssert.BattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
         }
 
@@ -157,7 +157,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             var newBalance = battle.Budget;
 
             _entityAssert.Team(team.Id, newRating);
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker, 0);
             _entityAssert.BattleTeamStatistics(battle.Id, team.Id, newBalance, 0, 1);
         }
 

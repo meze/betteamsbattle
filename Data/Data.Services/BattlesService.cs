@@ -63,28 +63,18 @@ namespace BetTeamsBattle.Data.Services
                     battleTeamStatistics = new BattleTeamStatistics(battleId, teamId, battleBudget);
                     _repositoryOfBattleTeamStatistics.Add(battleTeamStatistics);
                 }
+
+                var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(teamId)).Single();
+
+                team.Rating -= bet;
                 battleTeamStatistics.Balance -= bet;
+
                 battleTeamStatistics.OpenedBetsCount++;
 
                 unitOfWorkScope.SaveChanges();
 
                 return battleBet.Id;
             }
-        }
-
-        public void BetSucceeded(long battleBetId, long userId, out long battleId)
-        {
-            CloseBet(battleBetId, userId, BattleBetStatus.Succeeded, out battleId);
-        }
-
-        public void BetFailed(long battleBetId, long userId, out long battleId)
-        {
-            CloseBet(battleBetId, userId, BattleBetStatus.Failed, out battleId);
-        }
-
-        public void BetCanceledByBookmaker(long battleBetId, long userId, out long battleId)
-        {
-            CloseBet(battleBetId, userId, BattleBetStatus.CanceledByBookmaker, out battleId);
         }
 
         public void CloseBet(long battleBetId, long userId, BattleBetStatus status, out long battleId)
@@ -105,17 +95,44 @@ namespace BetTeamsBattle.Data.Services
 
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleBet.BattleId, battleBet.TeamId)).Single();
                 var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(battleBet.TeamId)).Single();
+
+                //double betResult = 0;
+                //if (status == BattleBetStatus.Succeeded)
+                //    betResult = battleBet.Bet * battleBet.Coefficient;
+                //else if (status == BattleBetStatus.Failed)
+                //    betResult = -battleBet.Bet;
+                //else if (status == BattleBetStatus.CanceledByBookmaker)
+                //    betResult = 0;
+                //else
+                //    throw new ArgumentOutOfRangeException("status");
+
+                //battleTeamStatistics.Balance += betResult;
+                //team.Rating += betResult;
+
                 if (status == BattleBetStatus.Succeeded)
                 {
-                    var betWin = battleBet.Bet * battleBet.Coefficient;
+                    var betResult = battleBet.Bet * battleBet.Coefficient;
 
-                    battleTeamStatistics.Balance += betWin;
-                    team.Rating += betWin;
+                    battleBet.Result = betResult;
+                    battleTeamStatistics.Balance += betResult;
+                    team.Rating += betResult;
                 }
                 else if (status == BattleBetStatus.Failed)
-                    team.Rating -= battleBet.Bet;
+                {
+                    var betResult = -battleBet.Bet;
+
+                    battleBet.Result = betResult;
+                    battleTeamStatistics.Balance += 0;
+                    team.Rating += betResult;
+                }
                 else if (status == BattleBetStatus.CanceledByBookmaker)
+                {
+                    var betResult = 0;
+
+                    battleBet.Result = betResult;
                     battleTeamStatistics.Balance += battleBet.Bet;
+                    team.Rating += betResult;
+                }
                 else
                     throw new ArgumentOutOfRangeException("status");
 
@@ -124,6 +141,21 @@ namespace BetTeamsBattle.Data.Services
 
                 unitOfWorkScope.SaveChanges();
             }
+        }
+
+        public void BetSucceeded(long battleBetId, long userId, out long battleId)
+        {
+            CloseBet(battleBetId, userId, BattleBetStatus.Succeeded, out battleId);
+        }
+
+        public void BetFailed(long battleBetId, long userId, out long battleId)
+        {
+            CloseBet(battleBetId, userId, BattleBetStatus.Failed, out battleId);
+        }
+
+        public void BetCanceledByBookmaker(long battleBetId, long userId, out long battleId)
+        {
+            CloseBet(battleBetId, userId, BattleBetStatus.CanceledByBookmaker, out battleId);
         }
     }
 }
