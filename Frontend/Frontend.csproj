@@ -424,7 +424,7 @@
     <Content Include="Areas\NotAdmin\Views\Battles\Battle.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\BattleTopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AccountLink.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Shared\_Team.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Teams\_Team.cshtml" />
     <Content Include="..\Configs\Usage\Web.config">
       <Link>Web.config</Link>
       <SubType>Designer</SubType>
@@ -435,9 +435,9 @@
     <Content Include="Areas\NotAdmin\Views\BattleBets\_OutcomeActionImage.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\GetProTeams.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\CreateProTeam.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Users\User.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Users\GetUser.cshtml" />
     <Content Include="App_Code\BetResult.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Teams\Team.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Teams\GetTeam.cshtml" />
     <Content Include="App_Code\BookmakerIcon.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
