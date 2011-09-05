@@ -42,13 +42,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
             #endregion
 
             #region TeamsController
-            context.MapLanguageRoute("teams/{teamId}", MVC.NotAdmin.Teams.Team());
+            context.MapLanguageRoute("teams/{teamId}", MVC.NotAdmin.Teams.GetTeam());
             context.MapLanguageRoute("teams/top", MVC.NotAdmin.Teams.TopTeams());
             context.MapLanguageRoute("battles/{battleId}/topteams", MVC.NotAdmin.Teams.BattleTopTeams());
             #endregion
 
             #region UsersController
-            context.MapLanguageRoute("users/{userId}", MVC.NotAdmin.Users.User());
+            context.MapLanguageRoute("users/{userId}", MVC.NotAdmin.Users.GetUser());
             #endregion
         }
     }

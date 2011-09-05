@@ -1,7 +1,7 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams
 @model TopTeamViewModel
 
-<a>@Model.Title</a>
+@Html.ActionLink(Model.Title, Model.TeamOrUserActionResult)
 @if (Model.IsPro)
 {
     <img class="pro" />

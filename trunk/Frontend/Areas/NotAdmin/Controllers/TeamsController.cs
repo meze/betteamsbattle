@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
+using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
@@ -13,17 +15,19 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
     public partial class TeamsController : Controller
     {
         private readonly ITeamsViewService _teamsViewService;
+        private readonly IRepository<Team> _repositoryOfTeam;
 
-        public TeamsController(ITeamsViewService teamsViewService)
+        public TeamsController(ITeamsViewService teamsViewService, IRepository<Team> repositoryOfTeam)
         {
             _teamsViewService = teamsViewService;
+            _repositoryOfTeam = repositoryOfTeam;
         }
 
-        public virtual ActionResult Team(long teamId)
+        public virtual ActionResult GetTeam(long teamId)
         {
+            var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(teamId)).Single();
 
-
-            return View();
+            return View(team);
         }
 
         [ChildActionOnly]

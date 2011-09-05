@@ -12,33 +12,60 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
     internal class TeamsViewService : ITeamsViewService
     {
         private readonly IRepository<Team> _repositoryOfTeam;
+        private readonly IRepository<TeamUser> _repositoryOfTeamUser;
         private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
 
-        public TeamsViewService(IRepository<Team> repositoryOfTeam, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
+        public TeamsViewService(IRepository<Team> repositoryOfTeam, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics, IRepository<TeamUser> repositoryOfTeamUser)
         {
             _repositoryOfTeam = repositoryOfTeam;
             _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
+            _repositoryOfTeamUser = repositoryOfTeamUser;
         }
 
         public IEnumerable<TopTeamViewModel> TopTeams()
         {
             var topTeams = _repositoryOfTeam.All().OrderByDescending(t => t.Rating).
                 Skip(0).Take(10).
-                Select(t => new TopTeamViewModel() { TeamId =  t.Id, Title = t.Title, Rating = t.Rating, IsPro = t.IsPro }).
+                Select(t => new TopTeamViewModel() {TeamId = t.Id, Title = t.Title, Rating = t.Rating, IsPro = t.IsPro, IsPersonal = t.IsPersonal}).
                 ToList();
-            return topTeams;
+            return ProcessTopTeams(topTeams);
         }
 
         public IEnumerable<TopTeamViewModel> BattleTopTeams(long battleId)
         {
+            //ToDo: rework when http://bugs.mysql.com/bug.php?id=62349&thanks=5&notify=3 is fixed
+
             var battleTopTeams = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
                     OrderByDescending(bts => bts.Balance).
                     Skip(0).Take(10).
-                    Select(
-                        bus =>
-                        new TopTeamViewModel() { TeamId = bus.TeamId, Title = bus.Team.Title, Rating = bus.Balance, IsPro = bus.Team.IsPro }).
+                    Select(bts => new TopTeamViewModel() { TeamId = bts.TeamId, Title = bts.Team.Title, Rating = bts.Team.Rating, IsPro = bts.Team.IsPro, IsPersonal = bts.Team.IsPersonal }).
                     ToList();
-            return battleTopTeams;
+            return ProcessTopTeams(battleTopTeams);
+        }
+
+        private IEnumerable<TopTeamViewModel> ProcessTopTeams(IEnumerable<TopTeamViewModel> topTeams)
+        {
+            SetUserIdForPersonalTeams(topTeams);
+            SetTeamOrUserActionResult(topTeams);
+            return topTeams;
+        }
+
+        private void SetUserIdForPersonalTeams(IEnumerable<TopTeamViewModel> topTeams)
+        {
+            var personalTeams = topTeams.Where(tt => tt.IsPersonal).Select(tt => tt.TeamId).ToList();
+            var personalTeamsUsersMapping = _repositoryOfTeamUser.All().Where(tu => personalTeams.Contains(tu.TeamId)).ToDictionary(tu => tu.TeamId, tu => tu.UserId);
+
+            foreach (var topTeam in topTeams)
+                if (topTeam.IsPersonal)
+                    topTeam.UserId = personalTeamsUsersMapping[topTeam.TeamId];
+        }
+
+        private void SetTeamOrUserActionResult(IEnumerable<TopTeamViewModel> topTeams)
+        {
+            foreach (var topTeam in topTeams)
+                topTeam.TeamOrUserActionResult = topTeam.IsPersonal
+                                                     ? MVC.NotAdmin.Users.GetUser(topTeam.UserId)
+                                                     : MVC.NotAdmin.Teams.GetTeam(topTeam.TeamId);
         }
     }
 }

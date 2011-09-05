@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+pre{
+	display:block;
+	font-family:Tahoma, Geneva, sans-serif;
+	padding:10px;
+	border:1px solid #bae2f0;	
+	margin:0 0;
+	overflow:auto;
+	width:800px;
+}
+
+
+/*  */
+
+#tooltip{
+	position:absolute;
+	border:1px solid #F00;
+	padding:2px 8px;
+	color:#000;
+	display:none;
+	background-image:url("images/tooltip.png");
+	}	
