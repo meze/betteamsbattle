@@ -13,35 +13,35 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 {
     public partial class BattleBetsController : Controller
     {
-        private readonly IBattleBetsViewService _battleBetsViewService;
+        private readonly IBetsViewService _betsViewService;
         private readonly IBattlesService _battlesService;
 
-        public BattleBetsController(IBattleBetsViewService battleBetsViewService, IBattlesService battlesService)
+        public BattleBetsController(IBetsViewService betsViewService, IBattlesService battlesService)
         {
-            _battleBetsViewService = battleBetsViewService;
+            _betsViewService = betsViewService;
             _battlesService = battlesService;
         }
 
         [ChildActionOnly]
-        public virtual ActionResult MyBattleBets(long battleId)
+        public virtual ActionResult GetMyBattleBets(long battleId)
         {
-            var myBattleBets = _battleBetsViewService.MyBattleBets(battleId, CurrentUser.UserId);
+            var myBattleBets = _betsViewService.GetMyBattleBets(battleId, CurrentUser.UserId);
 
             return View(Views.Bets, myBattleBets);
         }
 
         [ChildActionOnly]
-        public virtual ActionResult UserBets(long userId)
+        public virtual ActionResult GetUserBets(long userId)
         {
-            var userBets = _battleBetsViewService.UserBets(userId);
+            var userBets = _betsViewService.GetUserBets(userId, CurrentUser.NullableUserId);
 
             return View(Views.Bets, userBets);
         }
 
         [ChildActionOnly]
-        public virtual ActionResult TeamBets(long teamId)
+        public virtual ActionResult GetTeamBets(long teamId)
         {
-            var teamBets = _battleBetsViewService.TeamBets(teamId);
+            var teamBets = _betsViewService.GetTeamBets(teamId);
 
             return View(Views.Bets, teamBets);
         }
@@ -50,7 +50,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         [HttpGet]
         public virtual ActionResult MakeBet(long battleId)
         {
-            var makeBetViewModel = _battleBetsViewService.MakeBet(battleId, CurrentUser.UserId);
+            var makeBetViewModel = _betsViewService.MakeBet(battleId, CurrentUser.UserId);
 
             return View(makeBetViewModel);
         }
@@ -60,7 +60,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         public virtual ActionResult MakeBet(long battleId, MakeBetFormViewModel makeBetForm)
         {
             if (!ModelState.IsValid)
-                return View(_battleBetsViewService.MakeBet(battleId, CurrentUser.UserId, makeBetForm));
+                return View(_betsViewService.MakeBet(battleId, CurrentUser.UserId, makeBetForm));
 
             _battlesService.MakeBet(battleId, makeBetForm.TeamId, CurrentUser.UserId, makeBetForm.Title, makeBetForm.Bet, makeBetForm.Coefficient, makeBetForm.Url, makeBetForm.IsPrivate);
 

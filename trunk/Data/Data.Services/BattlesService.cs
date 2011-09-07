@@ -18,17 +18,17 @@ namespace BetTeamsBattle.Data.Services
         private readonly ITransactionScopeFactory _transactionScopeFactory;
         private readonly IRepository<Battle> _repositoryOfBattle;
         private readonly IRepository<Team> _repositoryOfTeam;
-        private readonly IRepository<BattleBet> _repositoryOfBattleBet;
+        private readonly IRepository<Bet> _repositoryOfBet;
         private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
         private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
 
-        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattle, IRepository<Team> repositoryOfTeam, IRepository<BattleBet> repositoryOfBattleBet, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
+        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattle, IRepository<Team> repositoryOfTeam, IRepository<Bet> repositoryOfBet, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _repositoryOfBattle = repositoryOfBattle;
             _repositoryOfTeam = repositoryOfTeam;
-            _repositoryOfBattleBet = repositoryOfBattleBet;
+            _repositoryOfBet = repositoryOfBet;
             _repositoryOfBetScreenshot = repositoryOfBetScreenshot;
             _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
@@ -52,9 +52,9 @@ namespace BetTeamsBattle.Data.Services
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
-                var battleBet = new BattleBet(battleId, teamId, userId, title, bet, coefficient, url, isPrivate);
+                var battleBet = new Bet(battleId, teamId, userId, title, bet, coefficient, url, isPrivate);
                 battleBet.OpenBetScreenshot = new BetScreenshot();
-                _repositoryOfBattleBet.Add(battleBet);
+                _repositoryOfBet.Add(battleBet);
 
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).SingleOrDefault();
                 if (battleTeamStatistics == null)
@@ -81,32 +81,32 @@ namespace BetTeamsBattle.Data.Services
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
-                var battleBet = _repositoryOfBattleBet.Get(EntitySpecifications.IdIsEqualTo<BattleBet>(battleBetId)).Single();
-                battleId = battleBet.BattleId;
+                var bet = _repositoryOfBet.Get(EntitySpecifications.IdIsEqualTo<Bet>(battleBetId)).Single();
+                battleId = bet.BattleId;
 
-                if (userId != battleBet.UserId)
+                if (userId != bet.UserId)
                     throw new ArgumentException("You are trying to close not your bet");
-                if (battleBet.IsClosed)
+                if (bet.IsClosed)
                     throw new ArgumentException("This bet is already closed");
 
-                battleBet.CloseDateTime = DateTime.UtcNow;
-                battleBet.CloseBetScreenshot = new BetScreenshot();
-                battleBet.StatusEnum = status;
+                bet.CloseDateTime = DateTime.UtcNow;
+                bet.CloseBetScreenshot = new BetScreenshot();
+                bet.StatusEnum = status;
 
-                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleBet.BattleId, battleBet.TeamId)).Single();
-                var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(battleBet.TeamId)).Single();
+                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(bet.BattleId, bet.TeamId)).Single();
+                var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(bet.TeamId)).Single();
 
                 double balanceChange;
                 if (status == BattleBetStatus.Succeeded)
-                    balanceChange = battleBet.Bet * battleBet.Coefficient;
+                    balanceChange = bet.Amount * bet.Coefficient;
                 else if (status == BattleBetStatus.Failed)
                     balanceChange = 0;
                 else if (status == BattleBetStatus.CanceledByBookmaker)
-                    balanceChange = battleBet.Bet;
+                    balanceChange = bet.Amount;
                 else
                     throw new ArgumentOutOfRangeException("status");
 
-                battleBet.Result = balanceChange - battleBet.Bet;
+                bet.Result = balanceChange - bet.Amount;
                 battleTeamStatistics.Balance += balanceChange;
                 team.Rating += balanceChange;
 

@@ -1,6 +1,6 @@
 ﻿@using BetTeamsBattle.Data.Model.Enums
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
-@model MyBetViewModel
+@model BetViewModel
 <table class="vibor">
     <tbody>
         <tr>
@@ -15,13 +15,10 @@
             else
             {
                 <td>
-                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._OutcomeActionImage, Model.StatusActionImages[BattleBetStatus.Succeeded])
-                </td>
-                <td>
-                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._OutcomeActionImage, Model.StatusActionImages[BattleBetStatus.Failed])
-                </td>
-                <td>
-                    @Html.Partial(MVC.NotAdmin.BattleBets.Views._OutcomeActionImage, Model.StatusActionImages[BattleBetStatus.CanceledByBookmaker])
+                @foreach (var statusActionImage in Model.StatusActionImages)
+                {
+                    @Forms.ActionImage(Url, statusActionImage.ActionResult, statusActionImage.ImageClass, statusActionImage.Title)
+                }
                 </td>
             }
         </tr>

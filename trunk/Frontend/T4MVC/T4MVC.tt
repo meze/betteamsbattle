@@ -362,6 +362,33 @@ public class T4MVC_<#=resultType.Name #> : <#=resultType.FullName #>, <#=ActionR
     public string Controller { get; set; }
     public string Action { get; set; }
     public RouteValueDictionary RouteValueDictionary { get; set; }
+
+	public override bool Equals(object obj)
+    {
+        if (Object.ReferenceEquals(this, obj))
+            return true;
+
+        var other = (T4MVC_ActionResult)obj;
+
+        if (this.Controller != other.Controller)
+            return false;
+        if (this.Action != other.Action)
+            return false;
+
+        if (this.RouteValueDictionary.Count != other.RouteValueDictionary.Count)
+            return false;
+        foreach (var routeKeyValue in this.RouteValueDictionary)
+        {
+            if (!other.RouteValueDictionary.ContainsKey(routeKeyValue.Key))
+                return false;
+            var otherRouteValue = other.RouteValueDictionary[routeKeyValue.Key];
+
+            if (!routeKeyValue.Value.Equals(otherRouteValue))
+                return false;
+        }
+
+        return true;
+    }
 }
 <#} #>
 

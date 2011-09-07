@@ -15,7 +15,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual int? PasswordSalt { get; set; }
 
         public virtual UserProfile UserProfile { get; set; } 
-        public virtual ICollection<BattleBet> UserBets { get; set; }
+        public virtual ICollection<Bet> UserBets { get; set; }
         public virtual ICollection<TeamUser> TeamsUser { get; set; } 
 
         public User()

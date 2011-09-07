@@ -298,7 +298,7 @@
             <End Role="user" EntitySet="Users" />
             <End Role="UserProfile" EntitySet="UserProfiles" />
           </AssociationSet>
-          <EntitySet Name="BattlesBets" EntityType="Model.BattleBet" />
+          <EntitySet Name="BattlesBets" EntityType="Model.Bet" />
           <AssociationSet Name="battlesbets_ibfk_1" Association="Model.battlesbets_ibfk_1">
             <End Role="Battle" EntitySet="Battles" />
             <End Role="battlesbet" EntitySet="BattlesBets" />
@@ -399,14 +399,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="BattleBet">
+        <EntityType Name="Bet">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int64" Name="BattleId" Nullable="false" />
           <Property Type="Int64" Name="UserId" Nullable="false" />
-          <Property Type="Double" Name="Bet" Nullable="false" />
+          <Property Type="Double" Name="Amount" Nullable="false" />
           <Property Type="String" Name="Url" Nullable="false" />
           <NavigationProperty Name="Battle" Relationship="Model.battlesbets_ibfk_1" FromRole="battlesbet" ToRole="Battle" />
           <NavigationProperty Name="User" Relationship="Model.battlesbets_ibfk_2" FromRole="battlesbet" ToRole="User" />
@@ -426,7 +426,7 @@
         </EntityType>
         <Association Name="battlesbets_ibfk_1">
           <End Type="Model.Battle" Role="Battle" Multiplicity="1" />
-          <End Type="Model.BattleBet" Role="battlesbet" Multiplicity="*" />
+          <End Type="Model.Bet" Role="battlesbet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Battle">
               <PropertyRef Name="Id" />
@@ -438,7 +438,7 @@
         </Association>
         <Association Name="battlesbets_ibfk_2">
           <End Type="Model.User" Role="User" Multiplicity="1" />
-          <End Type="Model.BattleBet" Role="battlesbet" Multiplicity="*" />
+          <End Type="Model.Bet" Role="battlesbet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Id" />
@@ -526,7 +526,7 @@
         </Association>
         <Association Name="battlesbets_ibfk_21">
           <End Type="Model.Team" Role="Team" Multiplicity="1" />
-          <End Type="Model.BattleBet" Role="BattleBet" Multiplicity="*" />
+          <End Type="Model.Bet" Role="BattleBet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Team">
               <PropertyRef Name="Id" />
@@ -565,7 +565,7 @@
         </EntityType>
         <Association Name="battlesbets_ibfk_4">
           <End Type="Model.BetScreenshot" Role="betsscreenshot" Multiplicity="1" />
-          <End Type="Model.BattleBet" Role="BattleBet" Multiplicity="*" />
+          <End Type="Model.Bet" Role="BattleBet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="betsscreenshot">
               <PropertyRef Name="Id" />
@@ -577,7 +577,7 @@
         </Association>
         <Association Name="battlesbets_ibfk_14">
           <End Type="Model.BetScreenshot" Role="BetScreenshot" Multiplicity="0..1" />
-          <End Type="Model.BattleBet" Role="BattleBet" Multiplicity="*" />
+          <End Type="Model.Bet" Role="BattleBet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BetScreenshot">
               <PropertyRef Name="Id" />
@@ -641,7 +641,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BattlesBets">
-            <EntityTypeMapping TypeName="Model.BattleBet">
+            <EntityTypeMapping TypeName="Model.Bet">
               <MappingFragment StoreEntitySet="battlesbets">
                 <ScalarProperty Name="Result" ColumnName="Result" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -654,7 +654,7 @@
                 <ScalarProperty Name="CloseDateTime" ColumnName="CloseDateTime" />
                 <ScalarProperty Name="OpenDateTime" ColumnName="OpenDateTime" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Bet" ColumnName="Bet" />
+                <ScalarProperty Name="Amount" ColumnName="Bet" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="BattleId" ColumnName="BattleId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -743,7 +743,7 @@
           <ConnectorPoint PointX="1.09375" PointY="4.576396484375" />
           <ConnectorPoint PointX="1.09375" PointY="4.875" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.BattleBet" Width="1.5" PointX="9.125" PointY="4.5" Height="4.6725065104166656" />
+        <EntityTypeShape EntityType="Model.Bet" Width="1.5" PointX="9.125" PointY="4.5" Height="4.6725065104166656" />
         <AssociationConnector Association="Model.battlesbets_ibfk_1" >
           <ConnectorPoint PointX="9.875" PointY="3.8071907552083331" />
           <ConnectorPoint PointX="9.875" PointY="4.5" />

@@ -62,11 +62,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet.
+        ///   Looks up a localized string similar to Amount.
         /// </summary>
-        public static string Bet {
+        public static string Amount {
             get {
-                return ResourceManager.GetString("Bet", resourceCulture);
+                return ResourceManager.GetString("Amount", resourceCulture);
             }
         }
         

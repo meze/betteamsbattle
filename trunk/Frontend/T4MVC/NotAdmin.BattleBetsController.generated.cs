@@ -33,18 +33,18 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult MyBattleBets() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.MyBattleBets);
+        public System.Web.Mvc.ActionResult GetMyBattleBets() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetMyBattleBets);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult UserBets() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.UserBets);
+        public System.Web.Mvc.ActionResult GetUserBets() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetUserBets);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult TeamBets() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.TeamBets);
+        public System.Web.Mvc.ActionResult GetTeamBets() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetTeamBets);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -79,9 +79,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string MyBattleBets = ("MyBattleBets").ToLowerInvariant();
-            public readonly string UserBets = ("UserBets").ToLowerInvariant();
-            public readonly string TeamBets = ("TeamBets").ToLowerInvariant();
+            public readonly string GetMyBattleBets = ("GetMyBattleBets").ToLowerInvariant();
+            public readonly string GetUserBets = ("GetUserBets").ToLowerInvariant();
+            public readonly string GetTeamBets = ("GetTeamBets").ToLowerInvariant();
             public readonly string MakeBet = ("MakeBet").ToLowerInvariant();
             public readonly string BetSucceeded = ("BetSucceeded").ToLowerInvariant();
             public readonly string BetFailed = ("BetFailed").ToLowerInvariant();
@@ -106,20 +106,20 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
     public class T4MVC_BattleBetsController: BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers.BattleBetsController {
         public T4MVC_BattleBetsController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult MyBattleBets(long battleId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MyBattleBets);
+        public override System.Web.Mvc.ActionResult GetMyBattleBets(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetMyBattleBets);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult UserBets(long userId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UserBets);
+        public override System.Web.Mvc.ActionResult GetUserBets(long userId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetUserBets);
             callInfo.RouteValueDictionary.Add("userId", userId);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult TeamBets(long teamId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.TeamBets);
+        public override System.Web.Mvc.ActionResult GetTeamBets(long teamId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetTeamBets);
             callInfo.RouteValueDictionary.Add("teamId", teamId);
             return callInfo;
         }

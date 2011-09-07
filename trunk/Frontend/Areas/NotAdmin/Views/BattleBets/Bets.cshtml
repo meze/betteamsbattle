@@ -1,6 +1,6 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @using Resources
-@model IEnumerable<MyBetViewModel>
+@model IEnumerable<BetViewModel>
 <div class="my_s">
     @BattleBets.MyBets
 </div>
@@ -21,7 +21,7 @@
                             @BattleBets.Title
                         </td>
                         <td class="tabl_battel_n2">
-                            @BattleBets.Bet
+                            @BattleBets.Amount
                         </td>
                         <td class="tabl_battel_n4">
                             @BattleBets.BetStarted
@@ -43,7 +43,7 @@
                             </td>
                             <td>
                                 <div class="y">
-                                    <span class="bet">@myBet.Bet$</span> x @myBet.Coefficient
+                                    <span class="bet">@myBet.Amount$</span> x @myBet.Coefficient
                                     @Forms.ActionImage(@myBet.Url, BookmakerIcon.GetClass(), BattleBets.BetOnBookmakersSite)
                                 </div>
                             </td>

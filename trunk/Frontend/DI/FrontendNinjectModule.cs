@@ -28,8 +28,6 @@ namespace BetTeamsBattle.Frontend.DI
     {
         public override void Load()
         {
-            Bind<ModelContext>().To<ModelContext>().InRequestScope();
-
             Bind<ICookiesService>().To<CookiesService>();
 
             Bind<IIpToNumberConverter>().To<IpToNumberConverter>();
@@ -41,7 +39,7 @@ namespace BetTeamsBattle.Frontend.DI
 
             Bind<IBattlesViewService>().To<BattlesViewService>();
             Bind<ITeamsViewService>().To<TeamsViewService>();
-            Bind<IBattleBetsViewService>().To<BattleBetsViewService>();
+            Bind<IBetsViewService>().To<BetsViewService>();
 
             Bind<IInDaysLocalizer>().To<InDaysEnglishLocalizer>().When(r => CurrentLanguage.Language == Language.English);
             Bind<IInDaysLocalizer>().To<InDaysRussianLocalizer>().When(r => CurrentLanguage.Language == Language.Russian);

@@ -3,6 +3,7 @@
     public class DateAndScreenshotViewModel
     {
         public string DateTime { get; set; }
+        public bool ScreenshotIsVisible { get; set; }
         public string ScreenshotStatusString { get; set; }
         public string ScreenshotStatusClass { get; set; }
         public string ScreenshotUrl { get; set; }
