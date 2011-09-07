@@ -25,5 +25,5 @@
 </table>
 @if (Model.IsClosed)
 {
-    <span class="@BetResult.GetClass(Model.Result)">@BetResult.GetSignedValue(Model.Result)</span>
+    @ColoredNumber.Span(Model.Result)
 }

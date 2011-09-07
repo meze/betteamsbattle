@@ -147,6 +147,9 @@
   <data name="More" xml:space="preserve">
     <value>More</value>
   </data>
+  <data name="MyBattleStatistics" xml:space="preserve">
+    <value>My battle statistics</value>
+  </data>
   <data name="MyBets" xml:space="preserve">
     <value>My bets</value>
   </data>

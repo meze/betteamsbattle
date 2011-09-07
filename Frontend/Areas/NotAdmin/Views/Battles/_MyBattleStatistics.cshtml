@@ -1,0 +1,14 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battles
+@using Resources
+@model BattleViewModel
+<div class="my_s">
+    @Battles.MyBattleStatistics
+</div>
+<div class="pravo_content2_battle">
+    <div class="pravo_content2_hed">
+        Balance @Model.Balance <br />
+        Earned @ColoredNumber.Span(Model.Earned) @ColoredNumber.Span(Model.EarnedPercents, "%") <br/>
+        Total bets @Model.TotalBetsCount <br/>
+        Not closed bets @Model.OpenBetsCount <br/>
+    </div>
+</div>

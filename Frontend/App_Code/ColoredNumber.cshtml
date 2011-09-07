@@ -1,0 +1,25 @@
+﻿@functions
+{
+    private static string GetClass(double betResult)
+    {
+        if (betResult > 0)
+            return "betResultPositive";
+        else if (betResult < 0)
+            return "betResultNegative";
+        else
+            return "betResultZero";
+    }
+
+    private static string GetSignedValue(double number)
+    {
+        if (number > 0)
+            return "+" + number;
+        return number.ToString();
+    }
+}
+@helper Span(double number) {
+    @Span(number, String.Empty)
+}
+@helper Span(double number, string measure){
+    <span class="@GetClass(number)">@GetSignedValue(number)@measure</span>
+}
