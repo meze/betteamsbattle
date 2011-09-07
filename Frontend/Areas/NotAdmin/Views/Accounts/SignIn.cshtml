@@ -1,13 +1,22 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Accounts
 @using Resources
+@using SquishIt.Framework
+@using SquishIt.Mvc
 @model SignInViewModel
 @{
     Layout = MVC.Shared.Views.OneColumn._OneColumnLayout;               
 }
 @section Scripts {
-    <link href="@Links.Scripts.openid_selector.css.openid_css" rel="stylesheet" type="text/css" />
-    <script src="@Links.Scripts.openid_selector.js.openid_jquery_js" type="text/javascript"></script>
-    <script src="@Links.Scripts.openid_selector.js.openid_en_js" type="text/javascript"></script>
+    @Html.Raw(@Bundle.Css().
+        Add(Links.Scripts.openid_selector.css.openid_css).
+        RenderMvc(Links.Content.Bundles.signin_css).
+        ToHtmlString())
+    
+    @Html.Raw(@Bundle.JavaScript().
+        Add(Links.Scripts.openid_selector.js.openid_jquery_js).
+        Add(Links.Scripts.openid_selector.js.openid_en_js).
+        RenderMvc(Links.Content.Bundles.signin_js).
+        ToHtmlString())
     <script type="text/javascript">
         $(document).ready(function () {
             openid.init('openIdIdentifier');
