@@ -579,6 +579,9 @@ namespace Links {
             private const string URLPATH = "~/Content/Bundles";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string signin_css = Url("signin.css")+"?"+T4Extensions.TimestampString(URLPATH + "/signin.css");
+            public static readonly string signin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/signin.min.js") ? Url("signin.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/signin.js") : Url("signin.js")+"?"+T4Extensions.TimestampString(URLPATH + "/signin.js");
+                          
             public static readonly string site_css = Url("site.css")+"?"+T4Extensions.TimestampString(URLPATH + "/site.css");
             public static readonly string site_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/site.min.js") ? Url("site.min.js")+"?"+T4Extensions.TimestampString(URLPATH + "/site.js") : Url("site.js")+"?"+T4Extensions.TimestampString(URLPATH + "/site.js");
                           
