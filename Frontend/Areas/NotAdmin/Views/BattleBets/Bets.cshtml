@@ -42,10 +42,8 @@
                                 </span>
                             </td>
                             <td>
-                                <div class="y">
-                                    <span class="bet">@myBet.Amount$</span> x @myBet.Coefficient
-                                    @Forms.ActionImage(@myBet.Url, BookmakerIcon.GetClass(), BattleBets.BetOnBookmakersSite)
-                                </div>
+                                <span class="bet">@myBet.Amount$<span class="cof"> x @myBet.Coefficient</span></span>
+                                @Forms.ActionImage(@myBet.Url, BookmakerIcon.GetClass(), BattleBets.BetOnBookmakersSite)
                             </td>
                             <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, myBet.OpenDateAndScreenshot)

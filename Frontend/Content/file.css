@@ -427,20 +427,26 @@ background-position:-1794px 0px;
 
 }
 
+
+.bet .cof{
+	color:#FFF;
+	margin-left:3px;
+	
+}
+
 .battel_n{
-	padding:20px;
-	background-color:#000;
-	border:1px solid #F00;
 	text-align:center;
-	color:#FF0;
+	color:#FFF;
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight:bold;
 	font-size:16px;
 	width:400px;
 	margin:0 auto;
 	margin-top:15px;
+	margin:0 auto;
+	margin-bottom:10px;
 	float:left;
-	margin-left:13px;
+	margin-left:180px;
 	
 }
 
@@ -450,6 +456,7 @@ background-position:-1794px 0px;
 	width: 765px;
 	text-align:center;
 	border:none;
+	border-bottom:1px solid #999;
 }
 
 
@@ -1279,7 +1286,6 @@ table{
 
 .stroka_t{
 	max-width:300px;
-	min-width:180px;
 
 	text-align:center;
 		padding-bottom:3px;
@@ -1350,6 +1356,8 @@ table{
 
 
 .betResultPositive{
+	margin:0 auto;
+	min-width:20px;
 
 		text-align:center;
 		color:#27BC29;
@@ -1357,6 +1365,14 @@ table{
 		display:block;
 		font-weight:bold;
 }
+@media screen and (-webkit-min-device-pixel-ratio:0){.betResultPositive {
+	padding-right:2px}}
+	
+	@media screen and (-webkit-min-device-pixel-ratio:0){.betResultNegative {
+	padding-right:2px}}
+	
+	@media screen and (-webkit-min-device-pixel-ratio:0){.betResultZero {
+	padding-right:2px}}
 
 .betResultNegative{
 
