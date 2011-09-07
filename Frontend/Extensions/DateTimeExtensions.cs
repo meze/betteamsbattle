@@ -2,7 +2,7 @@
 
 namespace BetTeamsBattle.Frontend.Extensions
 {
-    internal static class DateTimeExtensions
+    public static class DateTimeExtensions
     {
          public static string ToShortDateLongTimeString(this DateTime dateTime)
          {

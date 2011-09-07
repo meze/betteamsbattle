@@ -51,7 +51,7 @@
     <Compile Include="Base\ContextManagerBase.cs" />
     <Compile Include="ExpressionVisitorExtensions.cs" />
     <Compile Include="LinqSpecExtensions.cs" />
-    <Compile Include="Specifications\BattleBetSpecifications.cs" />
+    <Compile Include="Specifications\BetSpecifications.cs" />
     <Compile Include="Specifications\BattleSpecifications.cs" />
     <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
     <Compile Include="Base\Interfaces\IRepository.cs" />

@@ -6,7 +6,7 @@ using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 
 namespace BetTeamsBattle.Data.Services.Tests.Helpers
 {
-    internal class Creator
+    public class Creator
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<Battle> _repositoryOfBattle;

@@ -90,7 +90,9 @@ namespace BetTeamsBattle.Frontend
 
         protected override IKernel CreateKernel()
         {
-            return FrontendNinjectKernel.CreateKernel();
+            var kernel = FrontendNinjectKernel.CreateKernel();
+            kernel.Bind<ModelContext>().To<ModelContext>().InRequestScope();
+            return kernel;
         }
     }
 }

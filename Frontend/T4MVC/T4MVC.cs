@@ -315,6 +315,33 @@ public class T4MVC_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResul
     public string Controller { get; set; }
     public string Action { get; set; }
     public RouteValueDictionary RouteValueDictionary { get; set; }
+
+	public override bool Equals(object obj)
+    {
+        if (Object.ReferenceEquals(this, obj))
+            return true;
+
+        var other = (T4MVC_ActionResult)obj;
+
+        if (this.Controller != other.Controller)
+            return false;
+        if (this.Action != other.Action)
+            return false;
+
+        if (this.RouteValueDictionary.Count != other.RouteValueDictionary.Count)
+            return false;
+        foreach (var routeKeyValue in this.RouteValueDictionary)
+        {
+            if (!other.RouteValueDictionary.ContainsKey(routeKeyValue.Key))
+                return false;
+            var otherRouteValue = other.RouteValueDictionary[routeKeyValue.Key];
+
+            if (!routeKeyValue.Value.Equals(otherRouteValue))
+                return false;
+        }
+
+        return true;
+    }
 }
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public class T4MVC_PartialViewResult : System.Web.Mvc.PartialViewResult, IT4MVCActionResult {
@@ -325,6 +352,33 @@ public class T4MVC_PartialViewResult : System.Web.Mvc.PartialViewResult, IT4MVCA
     public string Controller { get; set; }
     public string Action { get; set; }
     public RouteValueDictionary RouteValueDictionary { get; set; }
+
+	public override bool Equals(object obj)
+    {
+        if (Object.ReferenceEquals(this, obj))
+            return true;
+
+        var other = (T4MVC_ActionResult)obj;
+
+        if (this.Controller != other.Controller)
+            return false;
+        if (this.Action != other.Action)
+            return false;
+
+        if (this.RouteValueDictionary.Count != other.RouteValueDictionary.Count)
+            return false;
+        foreach (var routeKeyValue in this.RouteValueDictionary)
+        {
+            if (!other.RouteValueDictionary.ContainsKey(routeKeyValue.Key))
+                return false;
+            var otherRouteValue = other.RouteValueDictionary[routeKeyValue.Key];
+
+            if (!routeKeyValue.Value.Equals(otherRouteValue))
+                return false;
+        }
+
+        return true;
+    }
 }
 
 

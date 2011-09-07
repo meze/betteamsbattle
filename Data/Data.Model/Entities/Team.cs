@@ -16,15 +16,15 @@ namespace BetTeamsBattle.Data.Model.Entities
         private ICollection<TeamUser> _teamUsers;
         public virtual ICollection<TeamUser> TeamUsers
         {
-            //get 
-            //{  
-            //    if (_teamUsers == null)
-            //        _teamUsers = new List<TeamUser>();
-            //    return _teamUsers;
-            //}
-            //set { _teamUsers = value; }
-            get; set; }
-        public virtual ICollection<BattleBet> BattlesBets { get; set; }
+            get
+            {
+                if (_teamUsers == null)
+                    _teamUsers = new List<TeamUser>();
+                return _teamUsers;
+            }
+            set { _teamUsers = value; }
+            }
+        public virtual ICollection<Bet> BattlesBets { get; set; }
         public virtual ICollection<BattleTeamStatistics> BattlesTeamStatistics { get; set; }
 
         public Team()

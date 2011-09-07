@@ -24,17 +24,17 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
         private readonly ITransactionScopeFactory _transactionScopeFactory;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
         private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
-        private readonly IRepository<BattleBet> _repositoryOfBattleBet;
+        private readonly IRepository<Bet> _repositoryOfBet;
         private readonly IScreenshotMakerFactory _screenshotMakerFactory;
         private readonly IScreenshotAmazonS3Putter _screenshotAmazonS3Putter;
         private readonly IBetScreenshotPathService _betScreenshotPathService;
 
-        public BetScreenshotProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleBet> repositoryOfBattleBet, IScreenshotMakerFactory screenshotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter, IBetScreenshotPathService betScreenshotPathService)
+        public BetScreenshotProcessor(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<Bet> repositoryOfBet, IScreenshotMakerFactory screenshotMakerFactory, IScreenshotAmazonS3Putter screenshotAmazonS3Putter, IBetScreenshotPathService betScreenshotPathService)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
             _repositoryOfBetScreenshot = repositoryOfBetScreenshot;
-            _repositoryOfBattleBet = repositoryOfBattleBet;
+            _repositoryOfBet = repositoryOfBet;
             _screenshotMakerFactory = screenshotMakerFactory;
             _screenshotAmazonS3Putter = screenshotAmazonS3Putter;
             _betScreenshotPathService = betScreenshotPathService;
@@ -65,7 +65,7 @@ namespace BetTeamsBattle.Screenshots.BettScreenshotsManager
                 try
                 {
                     betScreenshot = _repositoryOfBetScreenshot.Get(EntitySpecifications.IdIsEqualTo<BetScreenshot>(betScreenshotId)).Single();
-                    var battleBet = _repositoryOfBattleBet.Get(BattleBetSpecifications.BetScreenshotOwner(betScreenshot.Id)).Single();
+                    var battleBet = _repositoryOfBet.Get(BetSpecifications.BetScreenshotOwner(betScreenshot.Id)).Single();
 
                     betScreenshot.StartedProcessingDateTime = DateTime.UtcNow;
 

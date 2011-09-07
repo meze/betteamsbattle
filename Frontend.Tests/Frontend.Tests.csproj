@@ -31,11 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="Ninject, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,16 +52,47 @@
   <ItemGroup>
     <Compile Include="Areas\NotAdmin\Localizers\InDays\InDaysEnglishLocalizerTests.cs" />
     <Compile Include="Areas\NotAdmin\Localizers\InDays\InDaysRussianLocalizerTests.cs" />
+    <Compile Include="Areas\NotAdmin\ViewServices\BetViewServiceTests.cs" />
+    <Compile Include="DI\TestNinjectKernel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FractionToPercentsConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.Model\Data.Model.csproj">
+      <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
+      <Name>Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.Repositories.Infrastructure\Data.Repositories.Infrastructure.csproj">
+      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
+      <Name>Data.Repositories.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.Repositories\Data.Repositories.csproj">
+      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
+      <Name>Data.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.Services.Tests\Data.Services.Tests.csproj">
+      <Project>{B386F5A3-D586-41D3-A7C1-214C4E514F31}</Project>
+      <Name>Data.Services.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.Services\Data.Services.csproj">
+      <Project>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</Project>
+      <Name>Data.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Frontend\Frontend.csproj">
       <Project>{866A503C-6D2A-430E-B1D2-AC4325BA93ED}</Project>
       <Name>Frontend</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Screenshots\AmazonS3\Screenshots.AmazonS3.csproj">
+      <Project>{343976EF-889A-4A32-8135-EBF2A96C38F6}</Project>
+      <Name>Screenshots.AmazonS3</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\Configs\Testing\App.config">
+      <Link>App.config</Link>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
