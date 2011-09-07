@@ -147,6 +147,9 @@
   <data name="More" xml:space="preserve">
     <value>Подробнее</value>
   </data>
+  <data name="MyBattleStatistics" xml:space="preserve">
+    <value>Моя статистика турнира</value>
+  </data>
   <data name="MyBets" xml:space="preserve">
     <value>Мои ставки</value>
   </data>

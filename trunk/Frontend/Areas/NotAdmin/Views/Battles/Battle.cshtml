@@ -6,17 +6,23 @@
     Layout = MVC.NotAdmin.Shared.Views._BattleLayout;
 }
 @section RightBlockStart {
-<div class="pravo_blok_battle"> <div class="pravo_blok2_battle"> <div class="pravo_content_battle">
+    <div class="pravo_blok_battle"> <div class="pravo_blok2_battle"> <div class="pravo_content_battle">
 }
-@section RightBlockFinish { </div></div></div>
+@section RightBlockFinish { 
+    </div></div></div>
 }
 @section head_s{
     @Html.Raw("class=\"hed_s\"")
 }
+@if (CurrentUser.NullableUserId.HasValue)
+{
+    <div class="statistics">
+        @Html.Partial(MVC.NotAdmin.Battles.Views._MyBattleStatistics)
+    </div>
+}
 @if (Model.BattleIsActive)
-{ 
- <div class="knopka_st_blok">
-        <div class="statistics">Statistics</div>
+{
+    <div class="knopka_st_blok">
         <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
             <div class="knopka_st">
                 <div class="knopka_st_text">
@@ -27,7 +33,4 @@
         </a>
     </div>
 }
-@if (CurrentUser.NullableUserId.HasValue)
-{
-    @Html.Action(MVC.NotAdmin.BattleBets.GetMyBattleBets(Model.BattleId))
-}
+@Html.Action(MVC.NotAdmin.BattleBets.GetMyBattleBets(Model.BattleId))

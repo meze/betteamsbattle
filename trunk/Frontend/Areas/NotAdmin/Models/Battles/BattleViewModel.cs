@@ -4,6 +4,7 @@
     {
         public bool BattleIsActive { get; set; }
 
+        public double Balance { get; set; }
         public double Earned { get; set; }
         public double EarnedPercents { get; set; }
         public int TotalBetsCount { get; set; }

@@ -25,7 +25,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         [ChildActionOnly]
         public virtual ActionResult GetMyBattleBets(long battleId)
         {
-            var myBattleBets = _betsViewService.GetMyBattleBets(battleId, CurrentUser.UserId);
+            IEnumerable<BetViewModel> myBattleBets = new List<BetViewModel>();
+            if (CurrentUser.NullableUserId.HasValue)
+                myBattleBets = _betsViewService.GetMyBattleBets(battleId, CurrentUser.UserId);
 
             return View(Views.Bets, myBattleBets);
         }

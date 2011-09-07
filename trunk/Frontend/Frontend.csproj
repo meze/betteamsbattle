@@ -140,8 +140,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BattleBets.ru.resx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.Designer.cs" />
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.Designer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Battles.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Battles.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru1.Designer.cs">
@@ -439,9 +447,10 @@
     <Content Include="Areas\Admin\Views\AdminTeams\GetProTeams.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\CreateProTeam.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Users\GetUser.cshtml" />
-    <Content Include="App_Code\BetResult.cshtml" />
+    <Content Include="App_Code\ColoredNumber.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\GetTeam.cshtml" />
     <Content Include="App_Code\BookmakerIcon.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Battles\_MyBattleStatistics.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -504,8 +513,16 @@
       <LastGenOutput>BattleBets.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.resx" />
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.resx" />
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Battles.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Battles.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.resx">

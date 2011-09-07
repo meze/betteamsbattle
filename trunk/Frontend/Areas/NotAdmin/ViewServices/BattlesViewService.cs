@@ -38,18 +38,19 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
 
             var battleViewModel = new BattleViewModel(battle.Id, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, battleIsActive);
 
-            //if (battleViewModel.UserIsJoinedToBattle)
-            //{
-            //var battleUserStatistics = _repositoryOfBattleUserStatistics.Get(BattleUserStatisticsSpecifications.BattleIdAndUserIdAreEqualTo(battleId, nullableUserId.Value)).Single();
+            if (nullableUserId.HasValue)
+            {
+                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, nullableUserId.Value)).Single();
 
-            //var earned = battleUserStatistics.Balance - battle.Budget;
-            //var earnedPercents = earned/battle.Budget;
-            //battleViewModel.Earned = earned;
-            //battleViewModel.EarnedPercents = earnedPercents;
+                var earned = battleTeamStatistics.Balance - battle.Budget;
+                var earnedPercents = earned / battle.Budget * 100;
+                battleViewModel.Balance = battleTeamStatistics.Balance;
+                battleViewModel.Earned = earned;
+                battleViewModel.EarnedPercents = earnedPercents;
 
-            //battleViewModel.TotalBetsCount = battleUserStatistics.OpenedBetsCount + battleUserStatistics.ClosedBetsCount;
-            //battleViewModel.OpenBetsCount = battleUserStatistics.OpenedBetsCount;
-            //}
+                battleViewModel.TotalBetsCount = battleTeamStatistics.OpenedBetsCount + battleTeamStatistics.ClosedBetsCount;
+                battleViewModel.OpenBetsCount = battleTeamStatistics.OpenedBetsCount;
+            }
 
             return battleViewModel;
         }
@@ -63,17 +64,17 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
                 AsEnumerable().
                 Select(b => new CurrentBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate = b.EndDate.ToShortDateString() }).
                 ToList();
-            
+
             allBattlesViewModel.NotStartedBattlesViewModels = _repositoryOfBattle.Get(BattleSpecifications.NotStarted()).
                 OrderBy(b => b.StartDate).
                 AsEnumerable().
-                Select(b => new NotStartedBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate = b.EndDate.ToShortDateString()}).
+                Select(b => new NotStartedBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate = b.EndDate.ToShortDateString() }).
                 ToList();
 
             allBattlesViewModel.FinishedBattlesViewModels = _repositoryOfBattle.Get(BattleSpecifications.Finished()).
                 OrderBy(b => b.StartDate).
                 AsEnumerable().
-                Select(b => new FinishedBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate =  b.EndDate.ToShortDateString() }).
+                Select(b => new FinishedBattleViewModel() { BattleId = b.Id, Budget = b.Budget, BetLimit = b.BetLimit, StartDate = b.StartDate.ToShortDateString(), EndDate = b.EndDate.ToShortDateString() }).
                 ToList();
 
             return allBattlesViewModel;

@@ -59,6 +59,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string _MyBattleStatistics = "~/Areas/NotAdmin/Views/Battles/_MyBattleStatistics.cshtml";
             public readonly string AllBattles = "~/Areas/NotAdmin/Views/Battles/AllBattles.cshtml";
             public readonly string Battle = "~/Areas/NotAdmin/Views/Battles/Battle.cshtml";
         }
