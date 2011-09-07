@@ -9,6 +9,7 @@ using BetTeamsBattle.Data.Model.Helpers;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.Specifications;
+using BetTeamsBattle.Data.Services.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Localizers.InDays.Interfaces;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battles;
 using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams;
@@ -22,7 +23,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
     {
         private readonly IRepository<Battle> _repositoryOfBattle;
         private readonly IInDaysLocalizer _inDaysLocalizer;
-        private IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
+        private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
+        private readonly IBattlesService _battlesService;
 
         public BattlesViewService(IRepository<Battle> repositoryOfBattle, IInDaysLocalizer inDaysLocalizer, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
         {
@@ -40,16 +42,27 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
 
             if (nullableUserId.HasValue)
             {
-                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, nullableUserId.Value)).Single();
+                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, nullableUserId.Value)).SingleOrDefault();
+                if (battleTeamStatistics != null)
+                {
+                    var earned = battleTeamStatistics.Balance - battle.Budget;
+                    var earnedPercents = earned/battle.Budget*100;
+                    battleViewModel.Balance = battleTeamStatistics.Balance;
+                    battleViewModel.Earned = earned;
+                    battleViewModel.EarnedPercents = earnedPercents;
 
-                var earned = battleTeamStatistics.Balance - battle.Budget;
-                var earnedPercents = earned / battle.Budget * 100;
-                battleViewModel.Balance = battleTeamStatistics.Balance;
-                battleViewModel.Earned = earned;
-                battleViewModel.EarnedPercents = earnedPercents;
+                    battleViewModel.TotalBetsCount = battleTeamStatistics.OpenedBetsCount + battleTeamStatistics.ClosedBetsCount;
+                    battleViewModel.OpenBetsCount = battleTeamStatistics.OpenedBetsCount;
+                }
+                else
+                {
+                    battleViewModel.Balance = battle.Budget;
+                    battleViewModel.Earned = 0;
+                    battleViewModel.EarnedPercents = 0;
 
-                battleViewModel.TotalBetsCount = battleTeamStatistics.OpenedBetsCount + battleTeamStatistics.ClosedBetsCount;
-                battleViewModel.OpenBetsCount = battleTeamStatistics.OpenedBetsCount;
+                    battleViewModel.TotalBetsCount = 0;
+                    battleViewModel.OpenBetsCount = 0;
+                }
             }
 
             return battleViewModel;

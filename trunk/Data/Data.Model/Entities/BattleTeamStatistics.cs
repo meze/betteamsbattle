@@ -14,15 +14,15 @@
 
         public BattleTeamStatistics()
         {
+            OpenedBetsCount = 0;
+            ClosedBetsCount = 0;
         }
 
-        public BattleTeamStatistics(long battleId, long teamId, double balance)
+        public BattleTeamStatistics(long battleId, long teamId, double balance) : this()
         {
             BattleId = battleId;
             TeamId = teamId;
             Balance = balance;
-            OpenedBetsCount = 0;
-            ClosedBetsCount = 0;
         }
     }
 }
