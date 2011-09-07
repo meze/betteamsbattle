@@ -6,20 +6,19 @@
         <tr>
             @if (Model.IsClosed)
             {
-                <td></td>
                 <td>
                     @Forms.Image(Model.StatusActionImage.ImageClass, Model.StatusActionImage.Title)
                 </td>
-                <td></td>
             }
             else
             {
-                <td>
-                @foreach (var statusActionImage in Model.StatusActionImages)
+                foreach (var statusActionImage in Model.StatusActionImages)
                 {
+                <td>
                     @Forms.ActionImage(Url, statusActionImage.ActionResult, statusActionImage.ImageClass, statusActionImage.Title)
-                }
                 </td>
+                }
+
             }
         </tr>
     </tbody>
