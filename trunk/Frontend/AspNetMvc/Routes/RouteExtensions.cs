@@ -16,20 +16,32 @@ namespace BetTeamsBattle.Frontend.AspNetMvc.Routes
             T4Extensions.MapRoute(routes, GetRouteName(), url, (ActionResult) actionResult, null, constraints);
         }
 
+        public static void MapLanguageRoute(this RouteCollection routes, string url, ActionResult actionResult)
+        {
+            routes.MapRoute(GetRouteName(), GetLanguageRouteUrl(url), actionResult, null, GetLangaugeRouteConstraints());
+        }
+
         public static void MapLanguageRoute(this AreaRegistrationContext context, string url, ActionResult actionResult)
         {
-            if (url != String.Empty)
-                url = "/" + url;
-            url = "{language}" + url;
-
-            var route = context.MapRouteArea(GetRouteName(), url, actionResult, new { language = RegexRouteConstraints.LanguageConstraint });
-           // route.RouteHandler = new LanguagelessMvcRouteHandler();
+            context.MapRouteArea(GetRouteName(), GetLanguageRouteUrl(url), actionResult, null, GetLangaugeRouteConstraints());
         }
 
         private static string GetRouteName()
         {
             // route names should be different to keep RouteCollection search efficient
             return Guid.NewGuid().ToString() + DateTime.UtcNow.ToString();
+        }
+
+        private static string GetLanguageRouteUrl(string url)
+        {
+            if (url != String.Empty)
+                url = "/" + url;
+            return "{language}" + url;
+        }
+
+        private static object GetLangaugeRouteConstraints()
+        {
+            return new {language = RegexRouteConstraints.LanguageConstraint};
         }
     }
 }

@@ -27,6 +27,7 @@ public static class MVC {
     public static AdminClass Admin { get { return s_Admin; } }
     static readonly NotAdminClass s_NotAdmin = new NotAdminClass();
     public static NotAdminClass NotAdmin { get { return s_NotAdmin; } }
+    public static BetTeamsBattle.Frontend.Controllers.ErrorController Error = new BetTeamsBattle.Frontend.Controllers.T4MVC_ErrorController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

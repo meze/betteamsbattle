@@ -33,6 +33,8 @@ namespace BetTeamsBattle.Frontend
             routes.IgnoreRoute("Content/{*pathInfo}");
             routes.IgnoreRoute("Scripts/{*pathInfo}");
 
+            routes.MapLanguageRoute("error", MVC.Error.Index());
+
             #region Language-inspecific queries
             //This route is catched by LanguageActionFilter and redirected to page with specific language
             //None of these routes will really come to Home.Index action
