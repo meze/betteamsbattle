@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, an error occurred while processing your request.
+        /// </summary>
+        public static string SorryErrorOccurredWhileProcessingYourRequest {
+            get {
+                return ResourceManager.GetString("SorryErrorOccurredWhileProcessingYourRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please correct the following errors:.
         /// </summary>
         public static string ValidationSummaryCaption {
