@@ -123,8 +123,20 @@
   <data name="Battle" xml:space="preserve">
     <value>Турнир</value>
   </data>
+  <data name="BattleBetLimit" xml:space="preserve">
+    <value>Сумма ставки не может превышать указанную в процентах часть баланса участника</value>
+  </data>
+  <data name="BattleBudget" xml:space="preserve">
+    <value>Бюджет турнира (сумма, доступная участнику на момент начала турнира)</value>
+  </data>
+  <data name="BattleEndDate" xml:space="preserve">
+    <value>Дата окончания турнира</value>
+  </data>
   <data name="BattleLeaders" xml:space="preserve">
     <value>Лидеры турнира</value>
+  </data>
+  <data name="BattleStartDate" xml:space="preserve">
+    <value>Дата начала турнира</value>
   </data>
   <data name="CloseAsFailed" xml:space="preserve">
     <value>Проиграл</value>

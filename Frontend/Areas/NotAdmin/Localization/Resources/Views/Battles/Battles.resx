@@ -123,8 +123,20 @@
   <data name="Battle" xml:space="preserve">
     <value>Battle</value>
   </data>
+  <data name="BattleBetLimit" xml:space="preserve">
+    <value>Bet amount can not exceed specified in percents part of participant's balance</value>
+  </data>
+  <data name="BattleBudget" xml:space="preserve">
+    <value>Battle budget (amout of money available to participant at the moment of battle start)</value>
+  </data>
+  <data name="BattleEndDate" xml:space="preserve">
+    <value>Battle end date</value>
+  </data>
   <data name="BattleLeaders" xml:space="preserve">
     <value>Battle leaders</value>
+  </data>
+  <data name="BattleStartDate" xml:space="preserve">
+    <value>Battle start date</value>
   </data>
   <data name="CloseAsFailed" xml:space="preserve">
     <value>Failed</value>

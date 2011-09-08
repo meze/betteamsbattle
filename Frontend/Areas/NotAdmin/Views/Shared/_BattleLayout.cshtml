@@ -11,7 +11,7 @@
     @RenderSection("RightBlockStart", true)
     <div @RenderSection("head_s", true)>
         <div class="hed_s_text">
-            @Battles.Battle @Model.StartDate - @Model.EndDate @Model.Budget @Model.BetLimit
+             @BattleName.Get(Model.StartDate, Model.EndDate, Model.Budget, Model.BetLimit)
         </div>
     </div>
     @RenderBody()

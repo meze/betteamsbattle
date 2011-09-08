@@ -37,7 +37,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Battle(long battleId)
+        public virtual ActionResult GetBattle(long battleId)
         {
             var battleViewModel = _battlesViewService.Battle(battleId, CurrentUser.NullableUserId);
 

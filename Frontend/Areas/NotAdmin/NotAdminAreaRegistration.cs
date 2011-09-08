@@ -21,7 +21,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
 
             #region BattlesController
             context.MapLanguageRoute("battles/all", MVC.NotAdmin.Battles.AllBattles());
-            context.MapLanguageRoute("battles/{battleId}", MVC.NotAdmin.Battles.Battle());
+            context.MapLanguageRoute("battles/{battleId}", MVC.NotAdmin.Battles.GetBattle());
             #endregion
 
             #region BattleBetsController
