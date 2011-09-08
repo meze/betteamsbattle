@@ -1,0 +1,5 @@
+﻿@using Resources
+@helper Get(string startDate, string endDate, int budget, int betLimit)
+{
+    @: <span title="@Battles.BattleStartDate">@startDate</span>-<span title="@Battles.BattleEndDate">@endDate</span> <span title="@Battles.BattleBudget">@budget</span> <span title="@Battles.BattleBetLimit">@betLimit%</span>
+}

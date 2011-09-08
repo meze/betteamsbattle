@@ -80,11 +80,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bet amount can not exceed specified in percents part of participant&apos;s balance.
+        /// </summary>
+        public static string BattleBetLimit {
+            get {
+                return ResourceManager.GetString("BattleBetLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle budget (amout of money available to participant at the moment of battle start).
+        /// </summary>
+        public static string BattleBudget {
+            get {
+                return ResourceManager.GetString("BattleBudget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle end date.
+        /// </summary>
+        public static string BattleEndDate {
+            get {
+                return ResourceManager.GetString("BattleEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Battle leaders.
         /// </summary>
         public static string BattleLeaders {
             get {
                 return ResourceManager.GetString("BattleLeaders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle start date.
+        /// </summary>
+        public static string BattleStartDate {
+            get {
+                return ResourceManager.GetString("BattleStartDate", resourceCulture);
             }
         }
         

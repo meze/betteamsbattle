@@ -64,7 +64,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 
             _battlesService.MakeBet(battleId, makeBetForm.TeamId, CurrentUser.UserId, makeBetForm.Title, makeBetForm.Bet, makeBetForm.Coefficient, makeBetForm.Url, makeBetForm.IsPrivate);
 
-            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
+            return RedirectToAction(MVC.NotAdmin.Battles.GetBattle(battleId));
         }
 
         [Authorize]
@@ -74,7 +74,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             long battleId;
             _battlesService.BetSucceeded(battleBetId, CurrentUser.UserId, out battleId);
 
-            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
+            return RedirectToAction(MVC.NotAdmin.Battles.GetBattle(battleId));
         }
 
         [Authorize]
@@ -84,7 +84,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             long battleId;
             _battlesService.BetFailed(battleBetId, CurrentUser.UserId, out battleId);
 
-            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
+            return RedirectToAction(MVC.NotAdmin.Battles.GetBattle(battleId));
         }
 
         [Authorize]
@@ -94,7 +94,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             long battleId;
             _battlesService.BetCanceledByBookmaker(battleBetId, CurrentUser.UserId, out battleId);
 
-            return RedirectToAction(MVC.NotAdmin.Battles.Battle(battleId));
+            return RedirectToAction(MVC.NotAdmin.Battles.GetBattle(battleId));
         }
     }
 }

@@ -435,7 +435,7 @@
     <Content Include="Areas\NotAdmin\Views\BattleBets\MakeBet.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\AllBattles.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\TopTeams.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Battles\Battle.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Battles\GetBattle.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\BattleTopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\AccountLink.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\_Team.cshtml" />
@@ -454,6 +454,7 @@
     <Content Include="Areas\NotAdmin\Views\Teams\GetTeam.cshtml" />
     <Content Include="App_Code\BookmakerIcon.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\_MyBattleStatistics.cshtml" />
+    <Content Include="App_Code\BattleName.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />

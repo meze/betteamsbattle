@@ -7,8 +7,8 @@
 @foreach (var currentBattle in Model.CurrentBattlesViewModels)
 { 
     <div class="list">
-        @currentBattle.StartDate-@currentBattle.EndDate / @currentBattle.Budget / @currentBattle.BetLimit%
-        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(currentBattle.BattleId))
+        @BattleName.Get(currentBattle.StartDate, currentBattle.EndDate, currentBattle.Budget, currentBattle.BetLimit)
+        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.GetBattle(currentBattle.BattleId))
     </div> 
 }
 </text>))
@@ -16,8 +16,8 @@
 @foreach (var notStartedBattle in Model.NotStartedBattlesViewModels)
 {
     <div class="list">
-        @notStartedBattle.StartDate-@notStartedBattle.EndDate / @notStartedBattle.Budget / @notStartedBattle.BetLimit%
-        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(notStartedBattle.BattleId))
+        @BattleName.Get(notStartedBattle.StartDate, notStartedBattle.EndDate, notStartedBattle.Budget, notStartedBattle.BetLimit)
+        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.GetBattle(notStartedBattle.BattleId))
     </div>
 }
 </text>))
@@ -25,8 +25,8 @@
 @foreach (var finishedBattle in Model.FinishedBattlesViewModels)
 {
     <div class="list">
-        @finishedBattle.StartDate-@finishedBattle.EndDate / @finishedBattle.Budget / @finishedBattle.BetLimit%
-        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.Battle(finishedBattle.BattleId))
+        @BattleName.Get(finishedBattle.StartDate, finishedBattle.EndDate, finishedBattle.Budget, finishedBattle.BetLimit)
+        @Html.ActionLink(Battles.More, MVC.NotAdmin.Battles.GetBattle(finishedBattle.BattleId))
     </div>
 }
 </text>))

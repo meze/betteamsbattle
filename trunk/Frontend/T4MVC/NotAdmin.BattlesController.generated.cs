@@ -33,8 +33,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Battle() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Battle);
+        public System.Web.Mvc.ActionResult GetBattle() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetBattle);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -50,7 +50,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string AllBattles = ("AllBattles").ToLowerInvariant();
-            public readonly string Battle = ("Battle").ToLowerInvariant();
+            public readonly string GetBattle = ("GetBattle").ToLowerInvariant();
         }
 
 
@@ -61,7 +61,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public class ViewNames {
             public readonly string _MyBattleStatistics = "~/Areas/NotAdmin/Views/Battles/_MyBattleStatistics.cshtml";
             public readonly string AllBattles = "~/Areas/NotAdmin/Views/Battles/AllBattles.cshtml";
-            public readonly string Battle = "~/Areas/NotAdmin/Views/Battles/Battle.cshtml";
+            public readonly string GetBattle = "~/Areas/NotAdmin/Views/Battles/GetBattle.cshtml";
         }
     }
 
@@ -74,8 +74,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Battle(long battleId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Battle);
+        public override System.Web.Mvc.ActionResult GetBattle(long battleId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetBattle);
             callInfo.RouteValueDictionary.Add("battleId", battleId);
             return callInfo;
         }
