@@ -1,6 +1,17 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @using Resources
 @model BetsViewModel
+@helper PossiblyInvisibleElement(Func<object, dynamic> content, BetViewModel betViewModel)
+    {
+        if (betViewModel.IsVisible)
+        {
+    @: content(null)
+    }
+        else
+        {
+            Forms.Image(betViewModel.InvisibleIconClass, betViewModel.InvisibleIconTitle);
+        }
+}
 <div class="my_s">
     @Model.Title
 </div>
@@ -37,13 +48,14 @@
                     {
                         <tr class="stroca">
                             <td>
-                                <span class="stroka_t">
-                                    @bet.Title
-                                </span>
+                                @PossiblyInvisibleElement(@<span class="stroka_t">bet.Title</span>, bet)
                             </td>
                             <td>
+                                @PossiblyInvisibleElement(@<text>
                                 <span class="bet">@bet.Amount$<span class="cof"> x @bet.Coefficient</span></span>
                                 @Forms.ActionImage(bet.Url, BookmakerIcon.GetClass(), BattleBets.BetOnBookmakersSite)
+                                </text>, bet)
+                                
                             </td>
                             <td>
                                 @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, bet.OpenDateAndScreenshot)

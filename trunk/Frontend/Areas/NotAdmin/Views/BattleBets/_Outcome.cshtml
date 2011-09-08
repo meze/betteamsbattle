@@ -10,7 +10,11 @@
                     @Forms.Image(Model.StatusActionImage.ImageClass, Model.StatusActionImage.Title)
                 </td>
             }
-            else
+            else if (!Model.IsClosed && !Model.IsVisible)
+            {
+                @: ?
+            }
+            else if (!Model.IsClosed && Model.IsEditable)
             {
                 foreach (var statusActionImage in Model.StatusActionImages)
                 {
@@ -18,7 +22,6 @@
                     @Forms.ActionImage(Url, statusActionImage.ActionResult, statusActionImage.ImageClass, statusActionImage.Title)
                 </td>
                 }
-
             }
         </tr>
     </tbody>

@@ -20,5 +20,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
         public bool IsVisible { get; set; }
         public bool IsEditable { get; set; }
         public string InvisibleIconClass { get; set; }
+        public string InvisibleIconTitle { get; set; }
     }
 }
