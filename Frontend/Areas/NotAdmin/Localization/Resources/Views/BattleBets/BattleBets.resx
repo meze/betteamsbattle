@@ -120,6 +120,9 @@
   <data name="Amount" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="AmountHelpMessage" xml:space="preserve">
+    <value>Amount of money you want to bet</value>
+  </data>
   <data name="BetFinished" xml:space="preserve">
     <value>Bet finished</value>
   </data>
@@ -135,6 +138,9 @@
   <data name="BetStarted" xml:space="preserve">
     <value>Bet started</value>
   </data>
+  <data name="BookmakerUrl" xml:space="preserve">
+    <value>Url on bookmaker's site</value>
+  </data>
   <data name="CanceledByBookmaker" xml:space="preserve">
     <value>Canceled by bookmaker</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="Coefficient" xml:space="preserve">
     <value>Coefficient</value>
   </data>
+  <data name="CoefficientHelpMessage" xml:space="preserve">
+    <value>Coefficient should correspond to the value on bookmaker's site</value>
+  </data>
   <data name="CoefficientShouldBeGreaterThanOne" xml:space="preserve">
     <value>Coefficient should be greater than 1</value>
   </data>
@@ -152,6 +161,9 @@
   </data>
   <data name="FailedToMakeScreenshot" xml:space="preserve">
     <value>Failed to make screenshot</value>
+  </data>
+  <data name="IsPrivateHelpMessage" xml:space="preserve">
+    <value>Usually your bet details become visible to other users right after you have chosen bet outcome. It won't happen if you mark your bet as private (but even in this case bet details will be visible to moderator who will check your bet for cheating)</value>
   </data>
   <data name="JoinToBattleToMakeBets" xml:space="preserve">
     <value>Join to battle to make bets</value>
@@ -195,14 +207,17 @@
   <data name="Title" xml:space="preserve">
     <value>Title</value>
   </data>
+  <data name="TitleHelpMessage" xml:space="preserve">
+    <value>Title should uniquely identify your bet. For example: "Barcelona - Real Madrid, draw"</value>
+  </data>
   <data name="TitleIsTooLong" xml:space="preserve">
     <value>Title is too long</value>
   </data>
   <data name="TitleShouldNotBeEmpty" xml:space="preserve">
     <value>Title should not be empty</value>
   </data>
-  <data name="Url" xml:space="preserve">
-    <value>Url</value>
+  <data name="UrlHelpMessage" xml:space="preserve">
+    <value>Url should lead to bookmaker's site page where your bet is described. To prevent cheating system will make this page screenshot.</value>
   </data>
   <data name="UrlIsIncorrect" xml:space="preserve">
     <value>Url is incorrect</value>

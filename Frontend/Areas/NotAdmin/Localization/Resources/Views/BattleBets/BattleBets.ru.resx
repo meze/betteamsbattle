@@ -135,6 +135,9 @@
   <data name="BetStarted" xml:space="preserve">
     <value>Ставка начата</value>
   </data>
+  <data name="BookmakerUrl" xml:space="preserve">
+    <value>Url на сайте букмекера</value>
+  </data>
   <data name="CanceledByBookmaker" xml:space="preserve">
     <value>Отменена букмекером</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="Coefficient" xml:space="preserve">
     <value>Коэффициент</value>
   </data>
+  <data name="CoefficientHelpMessage" xml:space="preserve">
+    <value>Коэффициент должен соответствовать значению на сайте букмекера</value>
+  </data>
   <data name="CoefficientShouldBeGreaterThanOne" xml:space="preserve">
     <value>Коэффициент должен быть больше 1</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="FailedToMakeScreenshot" xml:space="preserve">
     <value>Не удалось сделать скриншот</value>
+  </data>
+  <data name="IsPrivateHelpMessage" xml:space="preserve">
+    <value>Обычно детали вашей ставки становятся видны другим пользователям сразу после того, как вы выбираете ее исход. Этого не произойдет, если вы пометите ставку как приватную (но даже в этом случае детали ставки будут видны модератору, который проверит ее на факт мошенничества)</value>
   </data>
   <data name="JoinToBattleToMakeBets" xml:space="preserve">
     <value>Присоединитесь к турниру прежде чем делать ставки</value>
@@ -195,14 +204,17 @@
   <data name="Title" xml:space="preserve">
     <value>Название</value>
   </data>
+  <data name="TitleHelpMessage" xml:space="preserve">
+    <value>Название должно идентифицировать ставку. Например, "Барселона - Реал, ничья"</value>
+  </data>
   <data name="TitleIsTooLong" xml:space="preserve">
     <value>Название слишком длинное</value>
   </data>
   <data name="TitleShouldNotBeEmpty" xml:space="preserve">
     <value>Название должно быть заполнено</value>
   </data>
-  <data name="Url" xml:space="preserve">
-    <value>Ссылка</value>
+  <data name="UrlHelpMessage" xml:space="preserve">
+    <value>Ссылка должна вести на страницу сайта букмекера, которая описывает вашу ставку. Для борьбы с мошенничеством система сделаем скриншот этой страницы.</value>
   </data>
   <data name="UrlIsIncorrect" xml:space="preserve">
     <value>Некорректная ссылка</value>

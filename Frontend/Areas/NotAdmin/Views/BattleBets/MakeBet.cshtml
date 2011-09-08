@@ -17,12 +17,12 @@
 {
     @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
     
-    @Forms.HideableDropDownList(Html, m => m.MakeBetForm.TeamId, BattleBets.MakeBetOnBehalfOf, Model.Teams)
-    @Forms.TextBox(Html, m => m.MakeBetForm.Title, BattleBets.Title)
-    @Forms.TextBox(Html, m => m.MakeBetForm.Url, BattleBets.Url)
-    @Forms.TextBox(Html, m => m.MakeBetForm.Bet, BattleBets.Amount)
-    @Forms.TextBox(Html, m => m.MakeBetForm.Coefficient, BattleBets.Coefficient)
-    @Forms.CheckBox(Html, m => m.MakeBetForm.IsPrivate, BattleBets.PrivateBet)
+    @Forms.DropDownList(Html, m => m.MakeBetForm.TeamId, BattleBets.MakeBetOnBehalfOf, Model.Teams)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Title, BattleBets.Title, BattleBets.TitleHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Url, BattleBets.BookmakerUrl, BattleBets.UrlHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Bet, BattleBets.Amount + ", $", BattleBets.AmountHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Coefficient, BattleBets.Coefficient, BattleBets.CoefficientHelpMessage)
+    @Forms.CheckBox(Html, m => m.MakeBetForm.IsPrivate, BattleBets.PrivateBet, BattleBets.IsPrivateHelpMessage)
 
     @Forms.SubmitButton(BattleBets.MakeBet)
 }
