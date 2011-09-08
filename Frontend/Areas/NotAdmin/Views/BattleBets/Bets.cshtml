@@ -5,11 +5,11 @@
     {
         if (betViewModel.IsVisible)
         {
-    @: content(null)
-    }
+            @: @content(null)
+        }
         else
         {
-            Forms.Image(betViewModel.InvisibleIconClass, betViewModel.InvisibleIconTitle);
+            @Forms.Image(betViewModel.InvisibleIconClass, betViewModel.InvisibleIconTitle);
         }
 }
 <div class="my_s">

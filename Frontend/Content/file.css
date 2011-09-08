@@ -18,6 +18,43 @@ h1{
 	text-align:center;
 	
 }
+#openid_form{
+	color:#FFF;
+}
+
+.tittle_aut{
+ padding-left:20px;
+ 
+}
+
+#openid_choice{
+	display:block;
+	
+}
+
+
+.eye_red{
+	display:block;
+	width:24px;
+	height:16px;
+	background-image: url('images/2.png');
+	margin:0 auto;
+}
+
+
+.eye_blek{
+	display:block;
+	width:24px;
+	height:16px;
+	background-image: url('images/3.png');
+	margin:0 auto;
+}
+
+#form_autorization{
+	border:none;
+	font-size:18px;
+	font-family:Tahoma, Geneva, sans-serif;
+}
 
 .osnova{
 	width:1024px;
@@ -520,15 +557,34 @@ ul .menu_languge li {
 
 
 .statistics{
-	min-height:10px;
-	color:#FDE406;
-	padding-bottom:2px;
-	padding-left:20px;
-	padding-top:5px;
-	font-family:Tahoma, Geneva, sans-serif;
-	font-size:16px;
+background-image:url("images/background.png");
+border:1px solid #777777;
+color:#FFFFFF;
+font-family:Tahoma,Geneva,sans-serif;
+font-size:16px;
+margin-bottom:-65px;
+margin-left:560px;
+margin-top:4px;
+max-width:210px;
+min-height:10px;
+padding-bottom:8px;
+padding-top:0;
 
+}
 
+.rezulnat_st{
+	float:right;
+	padding-right:15px;
+	color:#0F0;
+	
+}
+
+.statistiks_line{
+	padding-left:15px;
+	font-size:15px;
+	padding-top:0px;
+	display:block;
+	
 }
 
 
@@ -572,7 +628,7 @@ ul .menu_languge li {
 	border:none;
 	height:22px;
 background-image: url('images/sprite.png');
-background-position:-2888px 0px;
+background-position:-2886px 0px;
 margin:0 auto;
 cursor:pointer;
 	display:block;
@@ -654,7 +710,7 @@ width:1024px;
 
 .knopka_st{
 background-image:url("images/sprite.png");
-float:left;
+
 height:36px;
 margin-left:19px;
 margin-top:6px;
@@ -673,7 +729,7 @@ background-position:-344px 0px;
 	color:#FFF;
 	font-size:21px;
 	font-family:Georgia, "Times New Roman", Times, serif;
-	float:left;
+
 width:168px;
 padding-top:5px;
 text-align:center;
@@ -701,10 +757,10 @@ text-align:center;
 .my_s{
 	text-align:center;
 	color:#FDE406;
-	font-size:17px;
+	font-size:18px;
 	padding-bottom:7px;
 	font-family:Tahoma, Geneva, sans-serif;
-	margin-top:-21px;
+	margin-top:10px;
 	height:20px;
 	
 }
@@ -1355,26 +1411,22 @@ table{
 
 
 
-.betResultPositive{
-	margin:0 auto;
-	min-width:20px;
-
+.coloredNumberPositive{
 		text-align:center;
 		color:#27BC29;
 		font-size:17px;
-		display:block;
 		font-weight:bold;
 }
-@media screen and (-webkit-min-device-pixel-ratio:0){.betResultPositive {
+@media screen and (-webkit-min-device-pixel-ratio:0){.coloredNumberPositive {
 	padding-right:2px}}
 	
-	@media screen and (-webkit-min-device-pixel-ratio:0){.betResultNegative {
+	@media screen and (-webkit-min-device-pixel-ratio:0){.coloredNumberNegative {
 	padding-right:2px}}
 	
-	@media screen and (-webkit-min-device-pixel-ratio:0){.betResultZero {
+	@media screen and (-webkit-min-device-pixel-ratio:0){.coloredNumberZero {
 	padding-right:2px}}
 
-.betResultNegative{
+.coloredNumberNegative{
 
 		text-align:center;
 		color:#F00;
@@ -1384,7 +1436,7 @@ table{
 }
 
 
-.betResultZero{
+.coloredNumberZero{
 
 		text-align:center;
 		color:#FFF;

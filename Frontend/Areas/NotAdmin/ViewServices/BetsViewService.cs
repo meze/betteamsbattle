@@ -138,12 +138,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                     if (bet.IsPrivate)
                     {
                         betViewModel.IsVisible = false;
-                        betViewModel.InvisibleIconClass = "betIsPrivate";
+                        betViewModel.InvisibleIconClass = "eye_red";
                     }
                     else if (!bet.IsClosed)
                     {
                         betViewModel.IsVisible = false;
-                        betViewModel.InvisibleIconClass = "betIsNotClosed";
+                        betViewModel.InvisibleIconClass = "eye_blek";
                     }
                 }
 

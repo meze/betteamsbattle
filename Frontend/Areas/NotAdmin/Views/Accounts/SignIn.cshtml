@@ -27,9 +27,10 @@
     @Accounts.SigningIn
 }
 
-@using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form", style="color:#FFF;" }))
+@using (Html.BeginForm(MVC.NotAdmin.Accounts.Authenticate(), FormMethod.Post, new { id = "openid_form" }))
 {
-    if (Model.Message != null)
+    <div class="tittle_aut">
+    @if (Model.Message != null)
     {
     <div style="color:#F00; padding-left:20px; text-shadow:1px 1px 1px #000; font-size:16px; font-family:Tahoma, Geneva, sans-serif; font-weight:bold;">
         @Model.Message
@@ -38,7 +39,7 @@
     
     <input type="hidden" name="action" value="verify" />
 
-    <fieldset>
+    <fieldset id="form_autorization">
         <div id="openid_choice">
             <p>@Accounts.ClickIconToSignIn:</p>
             <div id="openid_btns">
@@ -49,4 +50,5 @@
             <input id="openid_submit" type="submit" value="@Accounts.SignIn" />
         </div>
     </fieldset>
+    </div>
 }
