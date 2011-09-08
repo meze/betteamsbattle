@@ -64,30 +64,54 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             return MakeBet(battleId, userId, new MakeBetFormViewModel());
         }
 
-        public IEnumerable<BetViewModel> GetMyBattleBets(long battleId, long userId)
+        public BetsViewModel GetMyBattleBets(long battleId, long? userId)
         {
-            var myBattleBets = GetBetsQuery(BetSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId)).ToList();
-            return GetBetViewModels(myBattleBets, true, false, false);
+            var betsViewModel = new BetsViewModel();
+            betsViewModel.Title = BattleBets.MyBets;
+            betsViewModel.NoBetsMessage = BattleBets.YouHaveMadeNoBetsInThisBattle;
+            if (!userId.HasValue)
+                return betsViewModel;
+
+            var myBattleBets = GetBetsQuery(BetSpecifications.BattleIdAndUserIdAreEqualTo(battleId, userId.Value)).ToList();
+            betsViewModel.Bets = GetBetViewModels(myBattleBets, true, false, false);
+
+            return betsViewModel;
         }
 
-        public IEnumerable<BetViewModel> GetUserBets(long userId, long? currentUserId)
+        public BetsViewModel GetUserBets(long userId, long? currentUserId)
         {
+            var betsViewModel = new BetsViewModel();
+
             if (userId == currentUserId)
             {
+                betsViewModel.Title = BattleBets.MyBets;
+                betsViewModel.NoBetsMessage = BattleBets.YouHaveMadeNoBets;
+
                 var myBets = GetBetsQuery(BetSpecifications.UserIdIsEqualTo(userId)).Include(b => b.Battle).ToList();
-                return GetBetViewModels(myBets, true, true, false);
+                betsViewModel.Bets = GetBetViewModels(myBets, true, true, false);
             }
             else
             {
+                betsViewModel.Title = BattleBets.UserBets;
+                betsViewModel.NoBetsMessage = BattleBets.UserHasMadeNoBets;
+
                 var userBets = GetBetsQuery(BetSpecifications.UserIdIsEqualTo(userId)).Include(b => b.Battle).ToList();
-                return GetBetViewModels(userBets, false, true, false);
+                betsViewModel.Bets = GetBetViewModels(userBets, false, true, false);
             }
+
+            return betsViewModel;
         }
 
-        public IEnumerable<BetViewModel> GetTeamBets(long teamId)
+        public BetsViewModel GetTeamBets(long teamId)
         {
+            var betsViewModel = new BetsViewModel();
+            betsViewModel.Title = BattleBets.TeamBets;
+            betsViewModel.NoBetsMessage = BattleBets.TeamHasMadeNoBets;
+
             var teamBets = GetBetsQuery(BetSpecifications.TeamIdIsEqualTo(teamId)).Include(b => b.User).ToList();
-            return GetBetViewModels(teamBets, false, false, true);
+            betsViewModel.Bets = GetBetViewModels(teamBets, false, false, true);
+
+            return betsViewModel;
         }
 
         private IQueryable<Bet> GetBetsQuery(LinqSpec<Bet> specification)

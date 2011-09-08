@@ -25,27 +25,25 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         [ChildActionOnly]
         public virtual ActionResult GetMyBattleBets(long battleId)
         {
-            IEnumerable<BetViewModel> myBattleBets = new List<BetViewModel>();
-            if (CurrentUser.NullableUserId.HasValue)
-                myBattleBets = _betsViewService.GetMyBattleBets(battleId, CurrentUser.UserId);
+            var betsViewModel = _betsViewService.GetMyBattleBets(battleId, CurrentUser.NullableUserId);
 
-            return View(Views.Bets, myBattleBets);
+            return View(Views.Bets, betsViewModel);
         }
 
         [ChildActionOnly]
         public virtual ActionResult GetUserBets(long userId)
         {
-            var userBets = _betsViewService.GetUserBets(userId, CurrentUser.NullableUserId);
+            var betViewModel = _betsViewService.GetUserBets(userId, CurrentUser.NullableUserId);
 
-            return View(Views.Bets, userBets);
+            return View(Views.Bets, betViewModel);
         }
 
         [ChildActionOnly]
         public virtual ActionResult GetTeamBets(long teamId)
         {
-            var teamBets = _betsViewService.GetTeamBets(teamId);
+            var betsViewModel = _betsViewService.GetTeamBets(teamId);
 
-            return View(Views.Bets, teamBets);
+            return View(Views.Bets, betsViewModel);
         }
 
         [Authorize]

@@ -186,6 +186,12 @@
   <data name="Succeeded" xml:space="preserve">
     <value>Сыграла</value>
   </data>
+  <data name="TeamBets" xml:space="preserve">
+    <value>Ставки команды</value>
+  </data>
+  <data name="TeamHasMadeNoBets" xml:space="preserve">
+    <value>Команда не сделали ни одной ставки</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>
   </data>
@@ -200,6 +206,15 @@
   </data>
   <data name="UrlIsIncorrect" xml:space="preserve">
     <value>Некорректная ссылка</value>
+  </data>
+  <data name="UserBets" xml:space="preserve">
+    <value>Ставки пользователя</value>
+  </data>
+  <data name="UserHasMadeNoBets" xml:space="preserve">
+    <value>Пользователь не сделали ни одной ставки</value>
+  </data>
+  <data name="YouHaveMadeNoBets" xml:space="preserve">
+    <value>Вы не сделали ни одной ставки</value>
   </data>
   <data name="YouHaveMadeNoBetsInThisBattle" xml:space="preserve">
     <value>Вы не сделали ни одной ставки в этом турнире</value>

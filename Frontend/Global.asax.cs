@@ -37,7 +37,7 @@ namespace BetTeamsBattle.Frontend
 
             #region Language-inspecific queries
             //This route is catched by LanguageActionFilter and redirected to page with specific language
-            //None of these routes will really come to Home.Index action
+            //This route will not really come to Home.Index action
 
             routes.MapRoute("{*something}", MVC.NotAdmin.Home.Index(), new { something = RegexRouteConstraints.StartsNotFromLanguageConstraint }); //doesn't start from language
 
