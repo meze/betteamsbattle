@@ -93,55 +93,83 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
         }
 
         [Test]
-        public void GetMyBattleBets()
+        public void GetMyBattleBets_UserIdIsNull_NoBets()
         {
-            var myBattleBets = _betsViewService.GetMyBattleBets(_battleId, _userId);
+            var betsViewModel = _betsViewService.GetMyBattleBets(_battleId, null);
 
-            Assert.AreEqual(4, myBattleBets.Count());
-            AssertOpenedMyBattleBet(_myOpenedPrivateBet, myBattleBets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
-            AssertClosedMyBattleBet(_myClosedPrivateBet, myBattleBets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
-            AssertOpenedMyBattleBet(_myOpenedPublicBet, myBattleBets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
-            AssertClosedMyBattleBet(_myClosedPublicBet, myBattleBets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
+            Assert.AreEqual(BattleBets.MyBets, betsViewModel.Title);
+            Assert.AreEqual(BattleBets.YouHaveMadeNoBetsInThisBattle, betsViewModel.NoBetsMessage);
+
+            Assert.AreEqual(0, betsViewModel.Bets.Count());
+        }
+
+        [Test]
+        public void GetMyBattleBets_UserIdIsNotNull()
+        {
+            var betsViewModel = _betsViewService.GetMyBattleBets(_battleId, _userId);
+
+            Assert.AreEqual(BattleBets.MyBets, betsViewModel.Title);
+            Assert.AreEqual(BattleBets.YouHaveMadeNoBetsInThisBattle, betsViewModel.NoBetsMessage);
+
+            var bets = betsViewModel.Bets;
+            Assert.AreEqual(4, bets.Count());
+            AssertOpenedMyBattleBet(_myOpenedPrivateBet, bets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
+            AssertClosedMyBattleBet(_myClosedPrivateBet, bets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
+            AssertOpenedMyBattleBet(_myOpenedPublicBet, bets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
+            AssertClosedMyBattleBet(_myClosedPublicBet, bets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
         }
 
         [Test]
         public void GetUserBets_Me()
         {
-            var userBets = _betsViewService.GetUserBets(_userId, _userId);
+            var betsViewModel = _betsViewService.GetUserBets(_userId, _userId);
 
-            Assert.AreEqual(5, userBets.Count());
-            AssertClosedMyBet(_myClosedPrivateBet, userBets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
-            AssertOpenedMyBet(_myOpenedPrivateBet, userBets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
-            AssertClosedMyBet(_myClosedPublicBet, userBets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
-            AssertOpenedMyBet(_myOpenedPublicBet, userBets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
-            AssertOpenedMyBet(_myOtherBattleOpenedPrivateBet, userBets.Where(bb => bb.BetId == _myOtherBattleOpenedPrivateBet.Id).Single());
+            Assert.AreEqual(BattleBets.MyBets, betsViewModel.Title);
+            Assert.AreEqual(BattleBets.YouHaveMadeNoBets, betsViewModel.NoBetsMessage);
+
+            var bets = betsViewModel.Bets;
+            Assert.AreEqual(5, bets.Count());
+            AssertClosedMyBet(_myClosedPrivateBet, bets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
+            AssertOpenedMyBet(_myOpenedPrivateBet, bets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
+            AssertClosedMyBet(_myClosedPublicBet, bets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
+            AssertOpenedMyBet(_myOpenedPublicBet, bets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
+            AssertOpenedMyBet(_myOtherBattleOpenedPrivateBet, bets.Where(bb => bb.BetId == _myOtherBattleOpenedPrivateBet.Id).Single());
         }
 
         [Test]
         public void GetUserBets_NotMe()
         {
-            var userBets = _betsViewService.GetUserBets(_userId, _notMeUserId);
+            var betsViewModel = _betsViewService.GetUserBets(_userId, _notMeUserId);
 
-            Assert.AreEqual(5, userBets.Count());
-            AssertOpenedPrivateUserBet(_myOpenedPrivateBet, userBets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
-            AssertClosedPrivateUserBet(_myClosedPrivateBet, userBets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
-            AssertOpenedPublicUserBet(_myOpenedPublicBet, userBets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
-            AssertClosedPublicUserBet(_myClosedPublicBet, userBets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
-            AssertOpenedPrivateUserBet(_myOtherBattleOpenedPrivateBet, userBets.Where(bb => bb.BetId == _myOtherBattleOpenedPrivateBet.Id).Single());
+            Assert.AreEqual(BattleBets.UserBets, betsViewModel.Title);
+            Assert.AreEqual(BattleBets.UserHasMadeNoBets, betsViewModel.NoBetsMessage);
+
+            var bets = betsViewModel.Bets;
+
+            Assert.AreEqual(5, bets.Count());
+            AssertOpenedPrivateUserBet(_myOpenedPrivateBet, bets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
+            AssertClosedPrivateUserBet(_myClosedPrivateBet, bets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
+            AssertOpenedPublicUserBet(_myOpenedPublicBet, bets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
+            AssertClosedPublicUserBet(_myClosedPublicBet, bets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
+            AssertOpenedPrivateUserBet(_myOtherBattleOpenedPrivateBet, bets.Where(bb => bb.BetId == _myOtherBattleOpenedPrivateBet.Id).Single());
         }
 
         [Test]
         public void GetTeamBets()
         {
-            var teamBets = _betsViewService.GetTeamBets(_teamId);
+            var betsViewModel = _betsViewService.GetTeamBets(_teamId);
 
-            Assert.AreEqual(6, teamBets.Count());
-            AssertOpenedPrivateTeamBet(_myOpenedPrivateBet, teamBets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
-            AssertClosedPrivateTeamBet(_myClosedPrivateBet, teamBets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
-            AssertOpenedPublicTeamBet(_myOpenedPublicBet, teamBets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
-            AssertClosedPublicTeamBet(_myClosedPublicBet, teamBets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
-            AssertOpenedPrivateTeamBet(_notMyOpenedPrivateBet, teamBets.Where(bb => bb.BetId == _notMyOpenedPrivateBet.Id).Single());
-            AssertOpenedPrivateTeamBet(_myOtherBattleOpenedPrivateBet, teamBets.Where(bb => bb.BetId == _myOtherBattleOpenedPrivateBet.Id).Single());
+            Assert.AreEqual(BattleBets.TeamBets, betsViewModel.Title);
+            Assert.AreEqual(BattleBets.TeamHasMadeNoBets, betsViewModel.NoBetsMessage);
+
+            var bets = betsViewModel.Bets;
+            Assert.AreEqual(6, bets.Count());
+            AssertOpenedPrivateTeamBet(_myOpenedPrivateBet, bets.Where(bb => bb.BetId == _myOpenedPrivateBet.Id).Single());
+            AssertClosedPrivateTeamBet(_myClosedPrivateBet, bets.Where(bb => bb.BetId == _myClosedPrivateBet.Id).Single());
+            AssertOpenedPublicTeamBet(_myOpenedPublicBet, bets.Where(bb => bb.BetId == _myOpenedPublicBet.Id).Single());
+            AssertClosedPublicTeamBet(_myClosedPublicBet, bets.Where(bb => bb.BetId == _myClosedPublicBet.Id).Single());
+            AssertOpenedPrivateTeamBet(_notMyOpenedPrivateBet, bets.Where(bb => bb.BetId == _notMyOpenedPrivateBet.Id).Single());
+            AssertOpenedPrivateTeamBet(_myOtherBattleOpenedPrivateBet, bets.Where(bb => bb.BetId == _myOtherBattleOpenedPrivateBet.Id).Single());
         }
 
         private Bet GetBet(long betId)

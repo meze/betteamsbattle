@@ -269,6 +269,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team bets.
+        /// </summary>
+        public static string TeamBets {
+            get {
+                return ResourceManager.GetString("TeamBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team has made no bets.
+        /// </summary>
+        public static string TeamHasMadeNoBets {
+            get {
+                return ResourceManager.GetString("TeamHasMadeNoBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title.
         /// </summary>
         public static string Title {
@@ -310,6 +328,33 @@ namespace Resources {
         public static string UrlIsIncorrect {
             get {
                 return ResourceManager.GetString("UrlIsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User bets.
+        /// </summary>
+        public static string UserBets {
+            get {
+                return ResourceManager.GetString("UserBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User has made no bets.
+        /// </summary>
+        public static string UserHasMadeNoBets {
+            get {
+                return ResourceManager.GetString("UserHasMadeNoBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have made no bets.
+        /// </summary>
+        public static string YouHaveMadeNoBets {
+            get {
+                return ResourceManager.GetString("YouHaveMadeNoBets", resourceCulture);
             }
         }
         

@@ -8,8 +8,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces
     {
         MakeBetViewModel MakeBet(long battleId, long userId, MakeBetFormViewModel makeBetFormViewModel);
         MakeBetViewModel MakeBet(long battleId, long userId);
-        IEnumerable<BetViewModel> GetMyBattleBets(long battleId, long userId);
-        IEnumerable<BetViewModel> GetUserBets(long userId, long? currentUserId);
-        IEnumerable<BetViewModel> GetTeamBets(long teamId);
+        BetsViewModel GetMyBattleBets(long battleId, long? userId);
+        BetsViewModel GetUserBets(long userId, long? currentUserId);
+        BetsViewModel GetTeamBets(long teamId);
     }
 }

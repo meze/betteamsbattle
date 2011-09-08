@@ -8,3 +8,5 @@
 @section Title {
     @Users.User @Model.Login
 }
+
+@Html.Action(MVC.NotAdmin.BattleBets.GetUserBets(Model.Id))
