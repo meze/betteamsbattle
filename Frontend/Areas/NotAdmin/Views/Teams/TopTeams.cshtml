@@ -6,7 +6,7 @@
 @Html.Partial(MVC.Shared.Views.ThreeColumns._RightColumnBlock, new ColumnBlockViewModel(Teams.TopTeams, @<text>
 @foreach (var team in Model)
 {
-    <div class="list_r">
+    <div class="list">
         @Html.Partial(MVC.NotAdmin.Teams.Views._Team, team)
     </div>
 }
