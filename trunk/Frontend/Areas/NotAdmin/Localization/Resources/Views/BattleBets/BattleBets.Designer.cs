@@ -71,6 +71,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount of money you want to bet.
+        /// </summary>
+        public static string AmountHelpMessage {
+            get {
+                return ResourceManager.GetString("AmountHelpMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet finished.
         /// </summary>
         public static string BetFinished {
@@ -116,6 +125,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Url on bookmaker&apos;s site.
+        /// </summary>
+        public static string BookmakerUrl {
+            get {
+                return ResourceManager.GetString("BookmakerUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Canceled by bookmaker.
         /// </summary>
         public static string CanceledByBookmaker {
@@ -143,6 +161,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coefficient should correspond to the value on bookmaker&apos;s site.
+        /// </summary>
+        public static string CoefficientHelpMessage {
+            get {
+                return ResourceManager.GetString("CoefficientHelpMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Coefficient should be greater than 1.
         /// </summary>
         public static string CoefficientShouldBeGreaterThanOne {
@@ -166,6 +193,15 @@ namespace Resources {
         public static string FailedToMakeScreenshot {
             get {
                 return ResourceManager.GetString("FailedToMakeScreenshot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usually your bet details become visible to other users right after you have chosen bet outcome. It won&apos;t happen if you mark your bet as private (but even in this case bet details will be visible to moderator who will check your bet for cheating).
+        /// </summary>
+        public static string IsPrivateHelpMessage {
+            get {
+                return ResourceManager.GetString("IsPrivateHelpMessage", resourceCulture);
             }
         }
         
@@ -296,6 +332,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Title should uniquely identify your bet. For example: &quot;Barcelona - Real Madrid, draw&quot;.
+        /// </summary>
+        public static string TitleHelpMessage {
+            get {
+                return ResourceManager.GetString("TitleHelpMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title is too long.
         /// </summary>
         public static string TitleIsTooLong {
@@ -314,11 +359,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Url.
+        ///   Looks up a localized string similar to Url should lead to bookmaker&apos;s site page where your bet is described. To prevent cheating system will make this page screenshot..
         /// </summary>
-        public static string Url {
+        public static string UrlHelpMessage {
             get {
-                return ResourceManager.GetString("Url", resourceCulture);
+                return ResourceManager.GetString("UrlHelpMessage", resourceCulture);
             }
         }
         
