@@ -5,13 +5,13 @@
     {
         if (betViewModel.IsVisible)
         {
-            @: @content(null)
+            @content(null)
         }
         else
         {
             @Forms.Image(betViewModel.InvisibleIconClass, betViewModel.InvisibleIconTitle);
         }
-}
+    }
 <div class="my_s">
     @Model.Title
 </div>
@@ -48,7 +48,7 @@
                     {
                         <tr class="stroca">
                             <td>
-                                @PossiblyInvisibleElement(@<span class="stroka_t">bet.Title</span>, bet)
+                                @PossiblyInvisibleElement(@<span class="stroka_t">@bet.Title</span>, bet)
                             </td>
                             <td>
                                 @PossiblyInvisibleElement(@<text>

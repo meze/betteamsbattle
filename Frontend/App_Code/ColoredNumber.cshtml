@@ -3,11 +3,11 @@
     private static string GetClass(double betResult)
     {
         if (betResult > 0)
-            return "betResultPositive";
+            return "coloredNumberPositive";
         else if (betResult < 0)
-            return "betResultNegative";
+            return "coloredNumberNegative";
         else
-            return "betResultZero";
+            return "coloredNumberZero";
     }
 
     private static string GetSignedValue(double number)
