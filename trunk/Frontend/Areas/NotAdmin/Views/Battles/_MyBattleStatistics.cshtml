@@ -5,16 +5,14 @@
     <div class="my_s">
         @Battles.MyBattleStatistics
     </div>
-    <span class="statistiks_line">Balance <span class="rezulnat_st">@Model.Balance</span>
+    <span class="statistiks_line">@Battles.Balance <span class="rezulnat_st">@Model.Balance</span>
     </span>
-    <span class="statistiks_line">Earned 
-        <span class="rezulnat_st">@ColoredNumber.Span(Model.Earned)</span>
-        <span class="rezulnat_st">@ColoredNumber.Span(Model.EarnedPercents, "%")</span>
+    <span class="statistiks_line">@Battles.Gain
+        <span class="rezulnat_st">@ColoredNumber.Span(Model.Earned) @ColoredNumber.Span(Model.EarnedPercents, "%")</span>
     </span>
-    <span class="statistiks_line">Total bets <span class="rezulnat_st">@Model.TotalBetsCount</span>
+    <span class="statistiks_line">@Battles.TotalBets <span class="rezulnat_st">@Model.TotalBetsCount</span>
     </span>
-    <span class="statistiks_line">
-        Not closed bets
+    <span class="statistiks_line">@Battles.OpenedBets
         <span class="rezulnat_st">@Model.OpenBetsCount</span>
     </span>
 </div>

@@ -120,6 +120,9 @@
   <data name="ActualBattles" xml:space="preserve">
     <value>Actual battles</value>
   </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
   <data name="Battle" xml:space="preserve">
     <value>Battle</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="FinishedBattles" xml:space="preserve">
     <value>Finished battles</value>
   </data>
+  <data name="Gain" xml:space="preserve">
+    <value>Gain</value>
+  </data>
   <data name="Join" xml:space="preserve">
     <value>Join</value>
   </data>
@@ -170,5 +176,11 @@
   </data>
   <data name="NotStartedBattles" xml:space="preserve">
     <value>Future battles</value>
+  </data>
+  <data name="OpenedBets" xml:space="preserve">
+    <value>Opened bets</value>
+  </data>
+  <data name="TotalBets" xml:space="preserve">
+    <value>Total bets</value>
   </data>
 </root>
