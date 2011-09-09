@@ -446,7 +446,6 @@
     <Content Include="Areas\NotAdmin\Views\BattleBets\_DateAndScreenshot.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Shared\_BattleLayout.cshtml" />
     <Content Include="Areas\NotAdmin\Views\BattleBets\_Outcome.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\BattleBets\_OutcomeActionImage.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\GetProTeams.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\CreateProTeam.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Users\GetUser.cshtml" />
