@@ -120,6 +120,9 @@
   <data name="ActualBattles" xml:space="preserve">
     <value>Актуальные турниры</value>
   </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Баланс</value>
+  </data>
   <data name="Battle" xml:space="preserve">
     <value>Турнир</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="FinishedBattles" xml:space="preserve">
     <value>Завершившиеся турниры</value>
   </data>
+  <data name="Gain" xml:space="preserve">
+    <value>Прибыль</value>
+  </data>
   <data name="Join" xml:space="preserve">
     <value>Присоединиться</value>
   </data>
@@ -170,5 +176,11 @@
   </data>
   <data name="NotStartedBattles" xml:space="preserve">
     <value>Будущие турниры</value>
+  </data>
+  <data name="OpenedBets" xml:space="preserve">
+    <value>Открытых ставок</value>
+  </data>
+  <data name="TotalBets" xml:space="preserve">
+    <value>Ставок</value>
   </data>
 </root>

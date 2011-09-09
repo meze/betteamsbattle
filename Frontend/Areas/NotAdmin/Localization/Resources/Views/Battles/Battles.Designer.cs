@@ -71,6 +71,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Balance.
+        /// </summary>
+        public static string Balance {
+            get {
+                return ResourceManager.GetString("Balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Battle.
         /// </summary>
         public static string Battle {
@@ -161,6 +170,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gain.
+        /// </summary>
+        public static string Gain {
+            get {
+                return ResourceManager.GetString("Gain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Join.
         /// </summary>
         public static string Join {
@@ -220,6 +238,24 @@ namespace Resources {
         public static string NotStartedBattles {
             get {
                 return ResourceManager.GetString("NotStartedBattles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opened bets.
+        /// </summary>
+        public static string OpenedBets {
+            get {
+                return ResourceManager.GetString("OpenedBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total bets.
+        /// </summary>
+        public static string TotalBets {
+            get {
+                return ResourceManager.GetString("TotalBets", resourceCulture);
             }
         }
     }
