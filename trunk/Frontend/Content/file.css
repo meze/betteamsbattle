@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 html, body  {
@@ -640,7 +640,6 @@ padding-top:0;
 background-image: url('images/sprite.png');
 background-position:-2886px 0px;
 margin:0 auto;
-cursor:pointer;
 	display:block;
 }
 
@@ -653,7 +652,6 @@ cursor:pointer;
 	border:none;
 	background-position:-2909px 0px;
 	margin:0 auto;
-	cursor:pointer;
 	display:block;
 }
 
@@ -666,7 +664,6 @@ cursor:pointer;
 	border:none;
 	background-position:-2930px 0;
 	margin:0 auto;
-	cursor:pointer;
 	display:block;
 }
 
@@ -699,6 +696,7 @@ cursor:pointer;
 	width:765px;
 	margin:0 auto;
 	font-size:17px;
+	color:#FFF;
 	border-left:1px solid #616161;
 	border-right:1px solid #616161;
 	
