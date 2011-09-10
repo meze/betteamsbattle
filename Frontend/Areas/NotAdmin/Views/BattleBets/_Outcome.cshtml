@@ -1,32 +1,35 @@
 ﻿@using BetTeamsBattle.Data.Model.Enums
 @using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 @model BetViewModel
-<table class="vibor">
-    <tbody>
-        <tr>
-            @if (Model.IsClosed)
-            {
-                <td>
-                    @Forms.Image(Model.StatusActionImage.ImageClass, Model.StatusActionImage.Title)
-                </td>
-            }
-            else if (!Model.IsClosed && !Model.IsVisible)
-            {
-                @: ?
-            }
-            else if (!Model.IsClosed && Model.IsEditable)
-            {
-                foreach (var statusActionImage in Model.StatusActionImages)
-                {
-                <td>
-                    @Forms.ActionImage(Url, statusActionImage.ActionResult, statusActionImage.ImageClass, statusActionImage.Title)
-                </td>
-                }
-            }
-        </tr>
-    </tbody>
-</table>
-@if (Model.IsClosed)
+@if (!Model.IsClosed && !Model.IsVisible)
 {
-    <span class="blNumber">@ColoredNumber.Span(Model.Result)</span>
+    @: ?
+}
+else
+{
+    <table class="vibor">
+        <tbody>
+            <tr>
+                @if (Model.IsClosed)
+                {
+                    <td>
+                        @Forms.Image(Model.StatusActionImage.ImageClass, Model.StatusActionImage.Title)
+                    </td>
+                }
+                else if (!Model.IsClosed && Model.IsEditable)
+                {
+                    foreach (var statusActionImage in Model.StatusActionImages)
+                    {
+                    <td>
+                        @Forms.ActionImage(Url, statusActionImage.ActionResult, statusActionImage.ImageClass, statusActionImage.Title)
+                    </td>
+                    }
+                }
+            </tr>
+        </tbody>
+    </table>
+    if (Model.IsClosed)
+    {
+        <span class="blNumber">@ColoredNumber.Span(Model.Result)</span>
+    }
 }
