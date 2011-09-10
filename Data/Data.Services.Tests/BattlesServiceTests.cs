@@ -20,7 +20,7 @@ namespace BetTeamsBattle.Data.Services.Tests
         private int _battleBudget = 10000;
 
         private string _betTitle = "_betTitle";
-        private double _bet = 100;
+        private double _amount = 100;
         private double _betCoefficient = 2.5;
         private string _betUrl = "http://url";
         private bool _betIsPrivate = true;
@@ -73,9 +73,9 @@ namespace BetTeamsBattle.Data.Services.Tests
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
 
-            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
 
-            _entityAssert.OpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate, -_bet, battle.Budget - _bet, 1, 0);
+            _entityAssert.OpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate, -_amount, -_amount, 1, 0);
         }
 
         [Test]
@@ -86,10 +86,10 @@ namespace BetTeamsBattle.Data.Services.Tests
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
 
-            var battleBetId1 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
-            var battleBetId2 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId1 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId2 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
 
-            _entityAssert.OpenedBattleBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate, -_bet * 2, battle.Budget - _bet * 2, 2, 0);
+            _entityAssert.OpenedBattleBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate, -_amount * 2, -_amount * 2, 2, 0);
         }
 
         [Test]
@@ -100,11 +100,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
 
-            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
             long battleId;
             _battlesService.BetSucceeded(battleBetId, user.Id, out battleId);
 
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Succeeded, -_bet + _bet * _betCoefficient, -_bet + _bet * _betCoefficient, battle.Budget - _bet + _bet * _betCoefficient, 0, 1);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Succeeded, -_amount + _amount * _betCoefficient, -_amount + _amount * _betCoefficient, -_amount + _amount * _betCoefficient, 0, 1);
         }
 
         [Test]
@@ -115,11 +115,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
 
-            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
             long battleId;
             _battlesService.BetFailed(battleBetId, user.Id, out battleId);
 
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Failed, -_bet, -_bet, battle.Budget - _bet, 0, 1);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Failed, -_amount, -_amount, -_amount, 0, 1);
         }
 
         [Test]
@@ -130,11 +130,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
 
-            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
             long battleId;
             _battlesService.BetCanceledByBookmaker(battleBetId, user.Id, out battleId);
 
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker, 0, 0, battle.Budget, 0, 1);
+            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker, 0, 0, 0, 0, 1);
         }
 
         [Test]
@@ -147,7 +147,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
             var otherUser = _creator.CreateUser("login1", "openIdUrl1");
 
-            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
             long battleId;
             Assert.Throws<ArgumentException>(() => _battlesService.BetFailed(battleBetId, otherUser.Id, out battleId));
         }
@@ -160,7 +160,7 @@ namespace BetTeamsBattle.Data.Services.Tests
             User user;
             SetupBattleAndUserAndTeam(out battle, out team, out user);
 
-            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _bet, _betCoefficient, _betUrl, _betIsPrivate);
+            var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
             long battleId;
             _battlesService.BetFailed(battleBetId, user.Id, out battleId);
             Assert.Throws<ArgumentException>(() => _battlesService.BetFailed(battleBetId, user.Id, out battleId));

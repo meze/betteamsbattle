@@ -89,11 +89,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You will see bet details as soon as author chooses its output.
+        /// </summary>
+        public static string BetIsNotClosed {
+            get {
+                return ResourceManager.GetString("BetIsNotClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bet is out of your limit.
         /// </summary>
         public static string BetIsOutOfYourLimit {
             get {
                 return ResourceManager.GetString("BetIsOutOfYourLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bet is private so you won&apos;t be able to see its details.
+        /// </summary>
+        public static string BetIsPrivate {
+            get {
+                return ResourceManager.GetString("BetIsPrivate", resourceCulture);
             }
         }
         

@@ -126,8 +126,14 @@
   <data name="BetFinished" xml:space="preserve">
     <value>Bet finished</value>
   </data>
+  <data name="BetIsNotClosed" xml:space="preserve">
+    <value>You will see bet details as soon as author chooses its output</value>
+  </data>
   <data name="BetIsOutOfYourLimit" xml:space="preserve">
     <value>Bet is out of your limit</value>
+  </data>
+  <data name="BetIsPrivate" xml:space="preserve">
+    <value>Bet is private so you won't be able to see its details</value>
   </data>
   <data name="BetOnBookmakersSite" xml:space="preserve">
     <value>Bet on bookmaker's site</value>

@@ -180,6 +180,9 @@
   <data name="OpenedBets" xml:space="preserve">
     <value>Opened bets</value>
   </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
   <data name="TotalBets" xml:space="preserve">
     <value>Total bets</value>
   </data>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using BetTeamsBattle.Data.Model.Entities;
@@ -13,20 +14,35 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
     {
         private readonly IRepository<Team> _repositoryOfTeam;
         private readonly IRepository<TeamUser> _repositoryOfTeamUser;
-        private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
+        private readonly IRepository<TeamBattleStatistics> _repositoryOfBattleTeamStatistics;
 
-        public TeamsViewService(IRepository<Team> repositoryOfTeam, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics, IRepository<TeamUser> repositoryOfTeamUser)
+        public TeamsViewService(IRepository<Team> repositoryOfTeam, IRepository<TeamBattleStatistics> repositoryOfBattleTeamStatistics, IRepository<TeamUser> repositoryOfTeamUser)
         {
             _repositoryOfTeam = repositoryOfTeam;
             _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
             _repositoryOfTeamUser = repositoryOfTeamUser;
         }
 
+        public TeamViewModel GetTeam(long teamId)
+        {
+            var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(teamId)).Include(t => t.TeamStatistics).Single();
+            
+            var teamViewModel = new TeamViewModel()
+                                    {
+                                        TeamId = team.Id,
+                                        Title = team.Title,
+                                    };
+
+
+
+            return teamViewModel;
+        }
+
         public IEnumerable<TopTeamViewModel> TopTeams()
         {
-            var topTeams = _repositoryOfTeam.All().OrderByDescending(t => t.Rating).
+            var topTeams = _repositoryOfTeam.All().OrderByDescending(t => t.TeamStatistics.Rating).
                 Skip(0).Take(10).
-                Select(t => new TopTeamViewModel() {TeamId = t.Id, Title = t.Title, Rating = t.Rating, IsPro = t.IsPro, IsPersonal = t.IsPersonal}).
+                Select(t => new TopTeamViewModel() { TeamId = t.Id, Title = t.Title, Rating = t.TeamStatistics.Rating, IsPro = t.IsPro, IsPersonal = t.IsPersonal }).
                 ToList();
             return ProcessTopTeams(topTeams);
         }
@@ -34,11 +50,10 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
         public IEnumerable<TopTeamViewModel> BattleTopTeams(long battleId)
         {
             //ToDo: rework when http://bugs.mysql.com/bug.php?id=62349&thanks=5&notify=3 is fixed
-
-            var battleTopTeams = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
-                    OrderByDescending(bts => bts.Balance).
+            var battleTopTeams = _repositoryOfBattleTeamStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdIsEqualTo(battleId)).
+                    OrderByDescending(bts => bts.Gain).
                     Skip(0).Take(10).
-                    Select(bts => new TopTeamViewModel() { TeamId = bts.TeamId, Title = bts.Team.Title, Rating = bts.Team.Rating, IsPro = bts.Team.IsPro, IsPersonal = bts.Team.IsPersonal }).
+                    Select(bts => new TopTeamViewModel() { TeamId = bts.TeamId, Title = bts.Team.Title, Rating = bts.Gain, IsPro = bts.Team.IsPro, IsPersonal = bts.Team.IsPersonal }).
                     ToList();
             return ProcessTopTeams(battleTopTeams);
         }

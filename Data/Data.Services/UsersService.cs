@@ -30,10 +30,8 @@ namespace BetTeamsBattle.Data.Services
                 user.UserProfile = new UserProfile() {LanguageEnum = language};
                 _repositoryOfUser.Add(user);
 
-                var team = new Team(login, true, 0);
-                var teamUser = new TeamUser() { User = user, ActionEnum = TeamUserAction.Join, DateTime = DateTime.UtcNow };
-                team.TeamUsers.Add(teamUser);
-                _repositoryOfTeam.Add(team);
+                var personalTeam = Team.CreatePersonalTeam(login, user);
+                _repositoryOfTeam.Add(personalTeam);
 
                 unitOfWorkScope.SaveChanges();
 

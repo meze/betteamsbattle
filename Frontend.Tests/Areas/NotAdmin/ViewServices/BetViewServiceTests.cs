@@ -205,21 +205,21 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
 
         private void AssertOpenedPrivateUserBet(Bet bet, BetViewModel betViewModel)
         {
-            AssertNotVisibleBetCommon(bet, false, false, "betIsPrivate", betViewModel);
+            AssertNotVisibleBetCommon(bet, false, false, "eye_red", BattleBets.BetIsPrivate, betViewModel);
 
             AssertNotClosedNotEditableBetCommon(bet, betViewModel);
         }
 
         private void AssertOpenedPublicUserBet(Bet bet, BetViewModel betViewModel)
         {
-            AssertNotVisibleBetCommon(bet, false, false, "betIsNotClosed", betViewModel);
+            AssertNotVisibleBetCommon(bet, false, false, "eye_blek", BattleBets.BetIsNotClosed, betViewModel);
 
             AssertNotClosedNotEditableBetCommon(bet, betViewModel);
         }
 
         private void AssertClosedPrivateUserBet(Bet bet, BetViewModel betViewModel)
         {
-            AssertNotVisibleBetCommon(bet, true, false, "betIsPrivate", betViewModel);
+            AssertNotVisibleBetCommon(bet, true, false, "eye_red", BattleBets.BetIsPrivate, betViewModel);
 
             AssertClosedBetCommon(bet, false, betViewModel);
         }
@@ -272,7 +272,7 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
             AssertVisibleDateAndScreenshot(bet.OpenBetScreenshot.CreationDateTime, BattleBets.MakingScreenshot, "sc_inprogress", null, betViewModel.OpenDateAndScreenshot);
         }
 
-        private void AssertNotVisibleBetCommon(Bet bet, bool isClosed, bool isEditable, string invisibleIconClass, BetViewModel betViewModel)
+        private void AssertNotVisibleBetCommon(Bet bet, bool isClosed, bool isEditable, string invisibleIconClass, string invisibleIconTitle, BetViewModel betViewModel)
         {
             Assert.AreEqual(bet.Id, betViewModel.BetId);
             Assert.IsNull(betViewModel.Title);
@@ -285,6 +285,7 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
 
             Assert.IsFalse(betViewModel.IsVisible);
             Assert.AreEqual(invisibleIconClass, betViewModel.InvisibleIconClass);
+            Assert.AreEqual(invisibleIconTitle, betViewModel.InvisibleIconTitle);
 
             AssertNotVisibleDateAndScreenshot(bet.OpenBetScreenshot.CreationDateTime, betViewModel.OpenDateAndScreenshot);
         }

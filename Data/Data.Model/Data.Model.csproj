@@ -45,11 +45,12 @@
   <ItemGroup>
     <Compile Include="Entities\Battle.cs" />
     <Compile Include="Entities\Bet.cs" />
+    <Compile Include="Entities\TeamStatistics.cs" />
     <Compile Include="Enums\BattleType.cs" />
     <Compile Include="Enums\BetScreenshotStatus.cs" />
     <Compile Include="Enums\TeamUserAction.cs" />
     <Compile Include="Enums\BattleBetStatus.cs" />
-    <Compile Include="Entities\BattleTeamStatistics.cs" />
+    <Compile Include="Entities\TeamBattleStatistics.cs" />
     <Compile Include="Entities\IpToCountry.cs" />
     <Compile Include="Entities\BetScreenshot.cs" />
     <Compile Include="Entities\Team.cs" />
@@ -72,6 +73,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

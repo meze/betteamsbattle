@@ -45,7 +45,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
             _usersService.Register(login, openIdUrl, language);
 
-            _entityAssert.UserAndPersonalTeam(login, openIdUrl, language);
+            _entityAssert.User(login, openIdUrl, language);
         }
     }
 }

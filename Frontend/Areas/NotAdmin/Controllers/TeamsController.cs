@@ -25,7 +25,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 
         public virtual ActionResult GetTeam(long teamId)
         {
-            var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(teamId)).Single();
+            var team = _teamsViewService.GetTeam(teamId);
 
             return View(team);
         }

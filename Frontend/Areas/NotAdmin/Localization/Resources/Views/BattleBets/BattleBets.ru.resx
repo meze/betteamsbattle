@@ -123,8 +123,14 @@
   <data name="BetFinished" xml:space="preserve">
     <value>Ставка закончена</value>
   </data>
+  <data name="BetIsNotClosed" xml:space="preserve">
+    <value>Детали ставки станут доступны вам как только пользователь выберет исход ставки</value>
+  </data>
   <data name="BetIsOutOfYourLimit" xml:space="preserve">
     <value>Ставка превышает ваш лимит</value>
+  </data>
+  <data name="BetIsPrivate" xml:space="preserve">
+    <value>Ставка приватная, а значит вам не доступны для просмотра ее детали</value>
   </data>
   <data name="BetOnBookmakersSite" xml:space="preserve">
     <value>Ставка на сайте букмекера</value>

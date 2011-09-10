@@ -180,6 +180,9 @@
   <data name="OpenedBets" xml:space="preserve">
     <value>Открытых ставок</value>
   </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Рейтинг</value>
+  </data>
   <data name="TotalBets" xml:space="preserve">
     <value>Ставок</value>
   </data>

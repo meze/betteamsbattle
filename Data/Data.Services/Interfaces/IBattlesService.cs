@@ -7,7 +7,7 @@ namespace BetTeamsBattle.Data.Services.Interfaces
     public interface IBattlesService
     {
         long CreateBattle(DateTime startDate, DateTime endDate, BattleType battleType, int budget);
-        long MakeBet(long battleId, long teamId, long userId, string title, double bet, double coefficient, string url, bool isPrivate);
+        long MakeBet(long battleId, long teamId, long userId, string title, double amount, double coefficient, string url, bool isPrivate);
         void BetSucceeded(long battleBetId, long userId, out long battleId);
         void BetFailed(long battleBetId, long userId, out long battleId);
         void CloseBet(long battleBetId, long userId, BattleBetStatus status, out long battleId);

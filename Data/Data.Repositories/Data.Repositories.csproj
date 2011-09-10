@@ -55,7 +55,7 @@
     <Compile Include="Specifications\BattleSpecifications.cs" />
     <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
     <Compile Include="Base\Interfaces\IRepository.cs" />
-    <Compile Include="Specifications\BattleTeamStatisticsSpecifications.cs" />
+    <Compile Include="Specifications\TeamBattleStatisticsSpecifications.cs" />
     <Compile Include="Specifications\EntitySpecifications.cs" />
     <Compile Include="Specifications\IpToCountrySpecifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

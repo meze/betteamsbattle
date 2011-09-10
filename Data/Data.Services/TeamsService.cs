@@ -20,7 +20,7 @@ namespace BetTeamsBattle.Data.Services
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
-                var proTeam = new Team() { Title = title, Description = description, Site = site, IsPersonal = false, IsPro = true, Rating = 0 };
+                var proTeam = Team.CreateProTeam(title, description, site);
                 _repositoryOfTeam.Add(proTeam);
 
                 unitOfWorkScope.SaveChanges();
