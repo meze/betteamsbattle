@@ -20,17 +20,19 @@ namespace BetTeamsBattle.Data.Services
         private readonly IRepository<Team> _repositoryOfTeam;
         private readonly IRepository<Bet> _repositoryOfBet;
         private readonly IRepository<BetScreenshot> _repositoryOfBetScreenshot;
-        private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
+        private readonly IRepository<TeamStatistics> _repositoryOfTeamStatistics; 
+        private readonly IRepository<TeamBattleStatistics> _repositoryOfTeamBattleStatistics;
         private readonly IUnitOfWorkScopeFactory _unitOfWorkScopeFactory;
 
-        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattle, IRepository<Team> repositoryOfTeam, IRepository<Bet> repositoryOfBet, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics)
+        public BattlesService(ITransactionScopeFactory transactionScopeFactory, IUnitOfWorkScopeFactory unitOfWorkScopeFactory, IRepository<Battle> repositoryOfBattle, IRepository<Team> repositoryOfTeam, IRepository<Bet> repositoryOfBet, IRepository<BetScreenshot> repositoryOfBetScreenshot, IRepository<TeamBattleStatistics> repositoryOfTeamBattleStatistics, IRepository<TeamStatistics> repositoryOfTeamStatistics)
         {
             _transactionScopeFactory = transactionScopeFactory;
             _repositoryOfBattle = repositoryOfBattle;
             _repositoryOfTeam = repositoryOfTeam;
             _repositoryOfBet = repositoryOfBet;
             _repositoryOfBetScreenshot = repositoryOfBetScreenshot;
-            _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
+            _repositoryOfTeamBattleStatistics = repositoryOfTeamBattleStatistics;
+            _repositoryOfTeamStatistics = repositoryOfTeamStatistics;
             _unitOfWorkScopeFactory = unitOfWorkScopeFactory;
         }
 
@@ -48,32 +50,31 @@ namespace BetTeamsBattle.Data.Services
             }
         }
 
-        public long MakeBet(long battleId, long teamId, long userId, string title, double bet, double coefficient, string url, bool isPrivate)
+        public long MakeBet(long battleId, long teamId, long userId, string title, double amount, double coefficient, string url, bool isPrivate)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
-                var battleBet = new Bet(battleId, teamId, userId, title, bet, coefficient, url, isPrivate);
-                battleBet.OpenBetScreenshot = new BetScreenshot();
-                _repositoryOfBet.Add(battleBet);
+                var bet = new Bet(battleId, teamId, userId, title, amount, coefficient, url, isPrivate);
+                _repositoryOfBet.Add(bet);
 
-                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).SingleOrDefault();
-                if (battleTeamStatistics == null)
+                var teamBattleStatistics = _repositoryOfTeamBattleStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).SingleOrDefault();
+                if (teamBattleStatistics == null)
                 {
-                    var battleBudget = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Select(b => b.Budget).Single();
-                    battleTeamStatistics = new BattleTeamStatistics(battleId, teamId, battleBudget);
-                    _repositoryOfBattleTeamStatistics.Add(battleTeamStatistics);
+                    teamBattleStatistics = new TeamBattleStatistics(battleId, teamId);
+                    _repositoryOfTeamBattleStatistics.Add(teamBattleStatistics);
                 }
 
-                var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(teamId)).Single();
+                var teamStatistics = _repositoryOfTeamStatistics.Get(EntitySpecifications.IdIsEqualTo<TeamStatistics>(teamId)).Single();
 
-                team.Rating -= bet;
-                battleTeamStatistics.Balance -= bet;
+                teamStatistics.Rating -= amount;
+                teamBattleStatistics.Gain -= amount;
 
-                battleTeamStatistics.OpenedBetsCount++;
+                teamStatistics.OpenedBetsCount++;
+                teamBattleStatistics.OpenedBetsCount++;
 
                 unitOfWorkScope.SaveChanges();
 
-                return battleBet.Id;
+                return bet.Id;
             }
         }
 
@@ -93,8 +94,8 @@ namespace BetTeamsBattle.Data.Services
                 bet.CloseBetScreenshot = new BetScreenshot();
                 bet.StatusEnum = status;
 
-                var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(bet.BattleId, bet.TeamId)).Single();
-                var team = _repositoryOfTeam.Get(EntitySpecifications.IdIsEqualTo<Team>(bet.TeamId)).Single();
+                var teamStatistics = _repositoryOfTeamStatistics.Get(EntitySpecifications.IdIsEqualTo<TeamStatistics>(bet.TeamId)).Single();
+                var teamBattleStatistics = _repositoryOfTeamBattleStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(bet.BattleId, bet.TeamId)).Single();
 
                 double balanceChange;
                 if (status == BattleBetStatus.Succeeded)
@@ -107,11 +108,14 @@ namespace BetTeamsBattle.Data.Services
                     throw new ArgumentOutOfRangeException("status");
 
                 bet.Result = balanceChange - bet.Amount;
-                battleTeamStatistics.Balance += balanceChange;
-                team.Rating += balanceChange;
+                teamStatistics.Rating += balanceChange;
+                teamBattleStatistics.Gain += balanceChange;
 
-                battleTeamStatistics.OpenedBetsCount--;
-                battleTeamStatistics.ClosedBetsCount++;
+                teamStatistics.OpenedBetsCount--;
+                teamBattleStatistics.OpenedBetsCount--;
+
+                teamStatistics.ClosedBetsCount++;
+                teamBattleStatistics.ClosedBetsCount++;
 
                 unitOfWorkScope.SaveChanges();
             }

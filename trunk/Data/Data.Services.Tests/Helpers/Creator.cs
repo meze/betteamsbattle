@@ -45,7 +45,7 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
 
         public Team CreateTeam(User user)
         {
-            var team = new Team("team", true, 0);
+            var team = Team.CreatePersonalTeam("PersonalTeam", user);
 
             _repositoryOfTeam.Add(team);
 

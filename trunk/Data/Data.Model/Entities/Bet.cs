@@ -34,7 +34,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual BetScreenshot OpenBetScreenshot { get; set; }
         public virtual BetScreenshot CloseBetScreenshot { get; set; }
 
-        public Bet()
+        protected Bet()
         {
         }
 
@@ -50,6 +50,8 @@ namespace BetTeamsBattle.Data.Model.Entities
             OpenDateTime = DateTime.UtcNow;
             IsPrivate = isPrivate;
             StatusEnum = BattleBetStatus.NotFinished;
+
+            OpenBetScreenshot = new BetScreenshot();
         }
     }
 }

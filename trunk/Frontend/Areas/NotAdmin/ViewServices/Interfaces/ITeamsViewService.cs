@@ -7,5 +7,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles.Interfaces
     {
         IEnumerable<TopTeamViewModel> TopTeams();
         IEnumerable<TopTeamViewModel> BattleTopTeams(long battleId);
+        TeamViewModel GetTeam(long teamId);
     }
 }

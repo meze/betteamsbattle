@@ -8,10 +8,11 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="battles" EntityType="Model.Store.battles" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="battlesbets" EntityType="Model.Store.battlesbets" store:Type="Tables" Schema="betteamsbattle" />
-          <EntitySet Name="battlesteamsstatistics" EntityType="Model.Store.battlesteamsstatistics" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="betsscreenshots" EntityType="Model.Store.betsscreenshots" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="iptocountry" EntityType="Model.Store.iptocountry" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="teams" EntityType="Model.Store.teams" store:Type="Tables" Schema="betteamsbattle" />
+          <EntitySet Name="teamsbattlesstatistics" EntityType="Model.Store.teamsbattlesstatistics" store:Type="Tables" Schema="betteamsbattle" />
+          <EntitySet Name="teamsstatistics" EntityType="Model.Store.teamsstatistics" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="teamsusers" EntityType="Model.Store.teamsusers" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="users" EntityType="Model.Store.users" store:Type="Tables" Schema="betteamsbattle" />
           <EntitySet Name="usersprofiles" EntityType="Model.Store.usersprofiles" store:Type="Tables" Schema="betteamsbattle" />
@@ -35,13 +36,17 @@
             <End Role="betsscreenshots" EntitySet="betsscreenshots" />
             <End Role="battlesbets" EntitySet="battlesbets" />
           </AssociationSet>
-          <AssociationSet Name="battlesteamsstatistics_ibfk_1" Association="Model.Store.battlesteamsstatistics_ibfk_1">
+          <AssociationSet Name="teamsbattlesstatistics_ibfk_1" Association="Model.Store.teamsbattlesstatistics_ibfk_1">
             <End Role="battles" EntitySet="battles" />
-            <End Role="battlesteamsstatistics" EntitySet="battlesteamsstatistics" />
+            <End Role="teamsbattlesstatistics" EntitySet="teamsbattlesstatistics" />
           </AssociationSet>
-          <AssociationSet Name="battlesteamsstatistics_ibfk_2" Association="Model.Store.battlesteamsstatistics_ibfk_2">
+          <AssociationSet Name="teamsbattlesstatistics_ibfk_2" Association="Model.Store.teamsbattlesstatistics_ibfk_2">
             <End Role="teams" EntitySet="teams" />
-            <End Role="battlesteamsstatistics" EntitySet="battlesteamsstatistics" />
+            <End Role="teamsbattlesstatistics" EntitySet="teamsbattlesstatistics" />
+          </AssociationSet>
+          <AssociationSet Name="teamsstatistics_ibfk_1" Association="Model.Store.teamsstatistics_ibfk_1">
+            <End Role="teams" EntitySet="teams" />
+            <End Role="teamsstatistics" EntitySet="teamsstatistics" />
           </AssociationSet>
           <AssociationSet Name="teamsusers_ibfk_1" Association="Model.Store.teamsusers_ibfk_1">
             <End Role="teams" EntitySet="teams" />
@@ -87,17 +92,6 @@
           <Property Name="Status" Type="tinyint" Nullable="false" />
           <Property Name="Result" Type="double" />
         </EntityType>
-        <EntityType Name="battlesteamsstatistics">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="BattleId" Type="bigint" Nullable="false" />
-          <Property Name="TeamId" Type="bigint" Nullable="false" />
-          <Property Name="Balance" Type="double" Nullable="false" />
-          <Property Name="OpenBetsCount" Type="int" Nullable="false" />
-          <Property Name="ClosedBetsCount" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="betsscreenshots">
           <Key>
             <PropertyRef Name="Id" />
@@ -133,8 +127,27 @@
           <Property Name="Site" Type="varchar" MaxLength="200" />
           <Property Name="Description" Type="varchar" MaxLength="400" />
           <Property Name="IsPersonal" Type="bool" Nullable="false" />
-          <Property Name="Rating" Type="double" Nullable="false" />
           <Property Name="IsPro" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teamsbattlesstatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BattleId" Type="bigint" Nullable="false" />
+          <Property Name="TeamId" Type="bigint" Nullable="false" />
+          <Property Name="Gain" Type="double" Nullable="false" />
+          <Property Name="OpenedBetsCount" Type="int" Nullable="false" />
+          <Property Name="ClosedBetsCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teamsstatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Rating" Type="double" Nullable="false" />
+          <Property Name="OpenedBetsCount" Type="int" Nullable="false" />
+          <Property Name="ClosedBetsCount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="teamsusers">
           <Key>
@@ -225,27 +238,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="battlesteamsstatistics_ibfk_1">
+        <Association Name="teamsbattlesstatistics_ibfk_1">
           <End Role="battles" Type="Model.Store.battles" Multiplicity="1" />
-          <End Role="battlesteamsstatistics" Type="Model.Store.battlesteamsstatistics" Multiplicity="*" />
+          <End Role="teamsbattlesstatistics" Type="Model.Store.teamsbattlesstatistics" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="battles">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="battlesteamsstatistics">
+            <Dependent Role="teamsbattlesstatistics">
               <PropertyRef Name="BattleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="battlesteamsstatistics_ibfk_2">
+        <Association Name="teamsbattlesstatistics_ibfk_2">
           <End Role="teams" Type="Model.Store.teams" Multiplicity="1" />
-          <End Role="battlesteamsstatistics" Type="Model.Store.battlesteamsstatistics" Multiplicity="*" />
+          <End Role="teamsbattlesstatistics" Type="Model.Store.teamsbattlesstatistics" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="teams">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="battlesteamsstatistics">
+            <Dependent Role="teamsbattlesstatistics">
               <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="teamsstatistics_ibfk_1">
+          <End Role="teams" Type="Model.Store.teams" Multiplicity="1" />
+          <End Role="teamsstatistics" Type="Model.Store.teamsstatistics" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="teams">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="teamsstatistics">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -317,18 +342,9 @@
             <End Role="User" EntitySet="Users" />
             <End Role="teamsuser" EntitySet="TeamsUsers" />
           </AssociationSet>
-          <EntitySet Name="BattlesTeamsStatistics" EntityType="Model.BattleTeamStatistics" />
-          <AssociationSet Name="battlesteamsstatistics_ibfk_1" Association="Model.battlesteamsstatistics_ibfk_1">
-            <End Role="Battle" EntitySet="Battles" />
-            <End Role="battlesteamsstatistic" EntitySet="BattlesTeamsStatistics" />
-          </AssociationSet>
           <AssociationSet Name="battlesbets_ibfk_21" Association="Model.battlesbets_ibfk_21">
             <End Role="Team" EntitySet="Teams" />
             <End Role="BattleBet" EntitySet="BattlesBets" />
-          </AssociationSet>
-          <AssociationSet Name="battlesteamsstatistics_ibfk_2" Association="Model.battlesteamsstatistics_ibfk_2">
-            <End Role="Team" EntitySet="Teams" />
-            <End Role="battlesteamsstatistic" EntitySet="BattlesTeamsStatistics" />
           </AssociationSet>
           <EntitySet Name="BetsScreenshots" EntityType="Model.BetScreenshot" />
           <AssociationSet Name="battlesbets_ibfk_4" Association="Model.battlesbets_ibfk_4">
@@ -338,6 +354,20 @@
           <AssociationSet Name="battlesbets_ibfk_14" Association="Model.battlesbets_ibfk_14">
             <End Role="BetScreenshot" EntitySet="BetsScreenshots" />
             <End Role="BattleBet" EntitySet="BattlesBets" />
+          </AssociationSet>
+          <EntitySet Name="TeamsBattlesStatistics" EntityType="Model.TeamBattleStatistics" />
+          <AssociationSet Name="teamsbattlesstatistics_ibfk_1" Association="Model.teamsbattlesstatistics_ibfk_1">
+            <End Role="Battle" EntitySet="Battles" />
+            <End Role="teamsbattlesstatistic" EntitySet="TeamsBattlesStatistics" />
+          </AssociationSet>
+          <AssociationSet Name="teamsbattlesstatistics_ibfk_2" Association="Model.teamsbattlesstatistics_ibfk_2">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="teamsbattlesstatistic" EntitySet="TeamsBattlesStatistics" />
+          </AssociationSet>
+          <EntitySet Name="TeamsStatistics" EntityType="Model.TeamStatistics" />
+          <AssociationSet Name="teamsstatistics_ibfk_1" Association="Model.teamsstatistics_ibfk_1">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="teamsstatistic" EntitySet="TeamsStatistics" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="IpToCountry">
@@ -370,7 +400,7 @@
           <Property Type="DateTime" Name="StartDate" Nullable="false" />
           <NavigationProperty Name="BattleBets" Relationship="Model.battlesbets_ibfk_1" FromRole="Battle" ToRole="battlesbet" />
           <Property Type="Int32" Name="BetLimit" Nullable="false" />
-          <NavigationProperty Name="BattleTeamsStatistics" Relationship="Model.battlesteamsstatistics_ibfk_1" FromRole="Battle" ToRole="battlesteamsstatistic" />
+          <NavigationProperty Name="TeamsBattleStatistics" Relationship="Model.teamsbattlesstatistics_ibfk_1" FromRole="Battle" ToRole="teamsbattlesstatistic" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -456,13 +486,13 @@
           <Property Type="String" Name="Title" Nullable="false" />
           <Property Type="Boolean" Name="IsPersonal" Nullable="false" />
           <NavigationProperty Name="TeamUsers" Relationship="Model.teamsusers_ibfk_1" FromRole="team" ToRole="teamsuser" />
-          <Property Type="Double" Name="Rating" Nullable="false" />
           <NavigationProperty Name="BattlesBets" Relationship="Model.battlesbets_ibfk_21" FromRole="Team" ToRole="BattleBet" />
-          <NavigationProperty Name="BattlesTeamStatistics" Relationship="Model.battlesteamsstatistics_ibfk_2" FromRole="Team" ToRole="battlesteamsstatistic" />
           <Property Type="Boolean" Name="IsPro" Nullable="false" />
           <Property Type="String" Name="Site" />
           <Property Type="String" Name="Description" />
-        </EntityType>
+          <NavigationProperty Name="TeamBattlesStatistics" Relationship="Model.teamsbattlesstatistics_ibfk_2" FromRole="Team" ToRole="teamsbattlesstatistic" />
+          <NavigationProperty Name="TeamStatistics" Relationship="Model.teamsstatistics_ibfk_1" FromRole="Team" ToRole="teamsstatistic" />
+          </EntityType>
         <EntityType Name="TeamUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -499,31 +529,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="BattleTeamStatistics">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int64" Name="BattleId" Nullable="false" />
-          <Property Type="Int64" Name="TeamId" Nullable="false" />
-          <Property Type="Double" Name="Balance" Nullable="false" />
-          <Property Type="Int32" Name="OpenedBetsCount" Nullable="false" />
-          <Property Type="Int32" Name="ClosedBetsCount" Nullable="false" />
-          <NavigationProperty Name="Battle" Relationship="Model.battlesteamsstatistics_ibfk_1" FromRole="battlesteamsstatistic" ToRole="Battle" />
-          <NavigationProperty Name="Team" Relationship="Model.battlesteamsstatistics_ibfk_2" FromRole="battlesteamsstatistic" ToRole="Team" />
-        </EntityType>
-        <Association Name="battlesteamsstatistics_ibfk_1">
-          <End Type="Model.Battle" Role="Battle" Multiplicity="1" />
-          <End Type="Model.BattleTeamStatistics" Role="battlesteamsstatistic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Battle">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="battlesteamsstatistic">
-              <PropertyRef Name="BattleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="battlesbets_ibfk_21">
           <End Type="Model.Team" Role="Team" Multiplicity="1" />
           <End Type="Model.Bet" Role="BattleBet" Multiplicity="*" />
@@ -532,18 +537,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="BattleBet">
-              <PropertyRef Name="TeamId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="battlesteamsstatistics_ibfk_2">
-          <End Type="Model.Team" Role="Team" Multiplicity="1" />
-          <End Type="Model.BattleTeamStatistics" Role="battlesteamsstatistic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Team">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="battlesteamsstatistic">
               <PropertyRef Name="TeamId" />
             </Dependent>
           </ReferentialConstraint>
@@ -584,6 +577,65 @@
             </Principal>
             <Dependent Role="BattleBet">
               <PropertyRef Name="CloseBetScreenshotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TeamBattleStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="BattleId" Nullable="false" />
+          <Property Type="Int64" Name="TeamId" Nullable="false" />
+          <Property Type="Int32" Name="OpenedBetsCount" Nullable="false" />
+          <Property Type="Int32" Name="ClosedBetsCount" Nullable="false" />
+          <NavigationProperty Name="Battle" Relationship="Model.teamsbattlesstatistics_ibfk_1" FromRole="teamsbattlesstatistic" ToRole="Battle" />
+          <NavigationProperty Name="Team" Relationship="Model.teamsbattlesstatistics_ibfk_2" FromRole="teamsbattlesstatistic" ToRole="Team" />
+          <Property Type="Double" Name="Gain" Nullable="false" />
+        </EntityType>
+        <Association Name="teamsbattlesstatistics_ibfk_1">
+          <End Type="Model.Battle" Role="Battle" Multiplicity="1" />
+          <End Type="Model.TeamBattleStatistics" Role="teamsbattlesstatistic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Battle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="teamsbattlesstatistic">
+              <PropertyRef Name="BattleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="teamsbattlesstatistics_ibfk_2">
+          <End Type="Model.Team" Role="Team" Multiplicity="1" />
+          <End Type="Model.TeamBattleStatistics" Role="teamsbattlesstatistic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="teamsbattlesstatistic">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TeamStatistics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="OpenedBetsCount" Nullable="false" />
+          <Property Type="Int32" Name="ClosedBetsCount" Nullable="false" />
+          <NavigationProperty Name="Team" Relationship="Model.teamsstatistics_ibfk_1" FromRole="teamsstatistic" ToRole="Team" />
+          <Property Type="Double" Name="Rating" Nullable="false" />
+        </EntityType>
+        <Association Name="teamsstatistics_ibfk_1">
+          <End Type="Model.Team" Role="Team" Multiplicity="1" />
+          <End Type="Model.TeamStatistics" Role="teamsstatistic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="teamsstatistic">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -667,7 +719,6 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Site" ColumnName="Site" />
                 <ScalarProperty Name="IsPro" ColumnName="IsPro" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="IsPersonal" ColumnName="IsPersonal" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -685,18 +736,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BattlesTeamsStatistics">
-            <EntityTypeMapping TypeName="Model.BattleTeamStatistics">
-              <MappingFragment StoreEntitySet="battlesteamsstatistics">
-                <ScalarProperty Name="ClosedBetsCount" ColumnName="ClosedBetsCount" />
-                <ScalarProperty Name="OpenedBetsCount" ColumnName="OpenBetsCount" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
-                <ScalarProperty Name="BattleId" ColumnName="BattleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BetsScreenshots">
             <EntityTypeMapping TypeName="Model.BetScreenshot">
               <MappingFragment StoreEntitySet="betsscreenshots">
@@ -709,6 +748,28 @@
                 <ScalarProperty Name="StartedProcessingDateTime" ColumnName="StartedProcessingDateTime" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CreationDateTime" ColumnName="CreationDateTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamsBattlesStatistics">
+            <EntityTypeMapping TypeName="Model.TeamBattleStatistics">
+              <MappingFragment StoreEntitySet="teamsbattlesstatistics">
+                <ScalarProperty Name="Gain" ColumnName="Gain" />
+                <ScalarProperty Name="ClosedBetsCount" ColumnName="ClosedBetsCount" />
+                <ScalarProperty Name="OpenedBetsCount" ColumnName="OpenedBetsCount" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="BattleId" ColumnName="BattleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamsStatistics">
+            <EntityTypeMapping TypeName="Model.TeamStatistics">
+              <MappingFragment StoreEntitySet="teamsstatistics">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ClosedBetsCount" ColumnName="ClosedBetsCount" />
+                <ScalarProperty Name="OpenedBetsCount" ColumnName="OpenedBetsCount" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -740,24 +801,25 @@
         <EntityTypeShape EntityType="Model.Battle" Width="1.5" PointX="9.125" PointY="1.25" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="0.5" PointY="1.25" Height="2.9417936197916665" />
         <AssociationConnector Association="Model.usersprofiles_ibfk_1" >
-          <ConnectorPoint PointX="1.09375" PointY="4.576396484375" />
+          <ConnectorPoint PointX="1.09375" PointY="4.1917936197916665" />
           <ConnectorPoint PointX="1.09375" PointY="4.875" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.Bet" Width="1.5" PointX="9.125" PointY="4.5" Height="4.6725065104166656" />
+        <EntityTypeShape EntityType="Model.Bet" Width="1.5" PointX="9.125" PointY="5.375" Height="4.8648079427083335" />
         <AssociationConnector Association="Model.battlesbets_ibfk_1" >
           <ConnectorPoint PointX="9.875" PointY="3.8071907552083331" />
-          <ConnectorPoint PointX="9.875" PointY="4.5" />
+          <ConnectorPoint PointX="9.875" PointY="5.375" />
         </AssociationConnector>
         <AssociationConnector Association="Model.battlesbets_ibfk_2" >
           <ConnectorPoint PointX="2" PointY="4.19063877363782" />
-          <ConnectorPoint PointX="2.375" PointY="4.56563877363782" />
-          <ConnectorPoint PointX="2.375" PointY="4.125" />
-          <ConnectorPoint PointX="4.947916666666667" PointY="4.1249999999999991" />
-          <ConnectorPoint PointX="5.114583333333333" PointY="4.125" />
-          <ConnectorPoint PointX="8.75" PointY="4.125" />
-          <ConnectorPoint PointX="9.125" PointY="4.5" />
+          <ConnectorPoint PointX="2.3761548461538462" PointY="4.5667936197916665" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="4.5667936197916656" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="4.5667936197916665" />
+          <ConnectorPoint PointX="6.6039753589743588" PointY="4.5667936197916656" />
+          <ConnectorPoint PointX="6.7706420256410249" PointY="4.5667936197916665" />
+          <ConnectorPoint PointX="9.468748" PointY="4.5667936197916665" />
+          <ConnectorPoint PointX="9.468748" PointY="5.375" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.Team" Width="1.5" PointX="4.75" PointY="1.25" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="Model.Team" Width="1.5" PointX="4.75" PointY="1.25" Height="2.9417936197916665" />
         <EntityTypeShape EntityType="Model.TeamUser" Width="1.5" PointX="2.75" PointY="1.25" Height="1.9802864583333317" />
         <AssociationConnector Association="Model.teamsusers_ibfk_1" >
           <ConnectorPoint PointX="4.75" PointY="2.4324446614583328" />
@@ -767,28 +829,36 @@
           <ConnectorPoint PointX="2" PointY="2.4324446614583328" />
           <ConnectorPoint PointX="2.75" PointY="2.4324446614583328" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.BattleTeamStatistics" Width="1.5" PointX="7" PointY="1.25" Height="2.5571907552083353" />
-        <AssociationConnector Association="Model.battlesteamsstatistics_ibfk_1" >
-          <ConnectorPoint PointX="9.125" PointY="2.5285953776041667" />
-          <ConnectorPoint PointX="8.5" PointY="2.5285953776041667" />
-        </AssociationConnector>
         <AssociationConnector Association="Model.battlesbets_ibfk_21" >
-          <ConnectorPoint PointX="5.03125" PointY="3.8071907552083331" />
-          <ConnectorPoint PointX="5.03125" PointY="8.2422493489583317" />
-          <ConnectorPoint PointX="9.125" PointY="8.2422493489583317" />
+          <ConnectorPoint PointX="6.25" PointY="4.1294849274839747" />
+          <ConnectorPoint PointX="6.7498086923076928" PointY="4.6292936197916674" />
+          <ConnectorPoint PointX="9.7916666666666661" PointY="4.6292936197916665" />
+          <ConnectorPoint PointX="9.9583333333333339" PointY="4.6292936197916674" />
+          <ConnectorPoint PointX="10.281252" PointY="4.6292936197916674" />
+          <ConnectorPoint PointX="10.281252" PointY="5.375" />
         </AssociationConnector>
-        <AssociationConnector Association="Model.battlesteamsstatistics_ibfk_2" >
-          <ConnectorPoint PointX="6.25" PointY="2.4324446614583337" />
-          <ConnectorPoint PointX="7" PointY="2.4324446614583337" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="Model.BetScreenshot" Width="2.625" PointX="5.375" PointY="4.5" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Model.BetScreenshot" Width="2.625" PointX="5.25" PointY="7.375" Height="2.9417936197916656" />
         <AssociationConnector Association="Model.battlesbets_ibfk_4" >
-          <ConnectorPoint PointX="8" PointY="6.3957007607612244" />
-          <ConnectorPoint PointX="9.125" PointY="6.3957007607612244" />
+          <ConnectorPoint PointX="7.875" PointY="8.8074039713541676" />
+          <ConnectorPoint PointX="9.125" PointY="8.8074039713541676" />
         </AssociationConnector>
         <AssociationConnector Association="Model.battlesbets_ibfk_14" >
-          <ConnectorPoint PointX="8" PointY="5.416602880380613" />
-          <ConnectorPoint PointX="9.125" PointY="5.416602880380613" />
+          <ConnectorPoint PointX="7.875" PointY="9.58610595703125" />
+          <ConnectorPoint PointX="9.125" PointY="9.58610595703125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.TeamBattleStatistics" Width="1.5" PointX="6.875" PointY="1.25" Height="2.5571907552083339" />
+        <AssociationConnector Association="Model.teamsbattlesstatistics_ibfk_1" >
+          <ConnectorPoint PointX="9.125" PointY="2.5285953776041667" />
+          <ConnectorPoint PointX="8.375" PointY="2.5285953776041667" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.teamsbattlesstatistics_ibfk_2" >
+          <ConnectorPoint PointX="6.25" PointY="2.5285953776041667" />
+          <ConnectorPoint PointX="6.875" PointY="2.5285953776041667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.TeamStatistics" Width="1.5" PointX="4.75" PointY="5" Height="1.9802864583333335" />
+        <AssociationConnector Association="Model.teamsstatistics_ibfk_1" >
+          <ConnectorPoint PointX="5.5" PointY="4.1917936197916665" />
+          <ConnectorPoint PointX="5.5" PointY="5" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

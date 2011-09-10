@@ -1,6 +1,6 @@
-﻿@using BetTeamsBattle.Data.Model.Entities
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams
 @using Resources
-@model Team
+@model TeamViewModel
 @{
     Layout = MVC.Shared.Views.OneColumn._OneColumnLayout;
 }
@@ -9,4 +9,17 @@
     @Teams.Team @Model.Title
 }
 
-@Html.Action(MVC.NotAdmin.BattleBets.GetTeamBets(Model.Id))
+<div class="statistics">
+    <div class="my_s">
+        @Battles.MyBattleStatistics
+    </div>
+    <span class="statistiks_line">@Battles.Rating <span class="rezulnat_st">@ColoredNumber.Span(@Model.Rating)</span>
+    </span>
+    <span class="statistiks_line">@Battles.TotalBets <span class="rezulnat_st">@Model.TotalBetsCount</span>
+    </span>
+    <span class="statistiks_line">@Battles.OpenedBets
+        <span class="rezulnat_st">@Model.OpenedBetsCount</span>
+    </span>
+</div>
+
+@Html.Action(MVC.NotAdmin.BattleBets.GetTeamBets(Model.TeamId))

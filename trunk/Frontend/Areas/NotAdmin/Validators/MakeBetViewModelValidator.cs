@@ -20,11 +20,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
 {
     public class MakeBetViewModelValidator : AbstractValidator<MakeBetFormViewModel>
     {
-        private readonly IRepository<BattleTeamStatistics> _repositoryOfBattleTeamStatistics;
+        private readonly IRepository<TeamBattleStatistics> _repositoryOfBattleTeamStatistics;
         private IBattlesService _battlesService;
         private IRepository<Battle> _repositoryOfBattle;
 
-        public MakeBetViewModelValidator(IRepository<BattleTeamStatistics> repositoryOfBattleTeamStatistics, IBattlesService battlesService, IRepository<Battle> repositoryOfBattle)
+        public MakeBetViewModelValidator(IRepository<TeamBattleStatistics> repositoryOfBattleTeamStatistics, IBattlesService battlesService, IRepository<Battle> repositoryOfBattle)
         {
             _repositoryOfBattleTeamStatistics = repositoryOfBattleTeamStatistics;
             _battlesService = battlesService;
@@ -41,15 +41,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
 
                     var battle = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Single();
 
-                    var balance = _repositoryOfBattleTeamStatistics.Get(BattleTeamStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Select(bts => (double?)bts.Balance).SingleOrDefault();
-                    if (balance == null)
-                    {
-                        balance = battle.Budget;
-                    }
+                    throw new NotImplementedException();
+                    //var balance = _repositoryOfBattleTeamStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Select(bts => (double?)bts.Balance).SingleOrDefault();
+                    //if (balance == null)
+                    //{
+                    //    balance = battle.Budget;
+                    //}
 
-                    var betLimit = balance * (battle.BetLimit / 100d);
+                    //var betLimit = balance * (battle.BetLimit / 100d);
 
-                    return bet > betLimit;
+                    //return bet > betLimit;
                 }).WithMessage(BattleBets.BetIsOutOfYourLimit);
 
             RuleFor(mb => mb.Coefficient).GreaterThan(1).WithMessage(BattleBets.CoefficientShouldBeGreaterThanOne);
