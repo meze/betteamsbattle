@@ -45,12 +45,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, nullableUserId.Value)).SingleOrDefault();
                 if (battleTeamStatistics != null)
                 {
-                    throw new NotImplementedException();
-                    //var earned = battleTeamStatistics.Balance - battle.Budget;
-                    //var earnedPercents = earned/battle.Budget*100;
-                    //battleViewModel.Balance = battleTeamStatistics.Balance;
-                    //battleViewModel.Gain = earned;
-                    //battleViewModel.GainInPercents = earnedPercents;
+                    var gain = battleTeamStatistics.Gain;
+                    var gainInPercents = gain / battle.Budget * 100;
+                    battleViewModel.Balance = battle.Budget + gain;
+                    battleViewModel.Gain = gain;
+                    battleViewModel.GainInPercents = gainInPercents;
 
                     battleViewModel.TotalBetsCount = battleTeamStatistics.OpenedBetsCount + battleTeamStatistics.ClosedBetsCount;
                     battleViewModel.OpenBetsCount = battleTeamStatistics.OpenedBetsCount;

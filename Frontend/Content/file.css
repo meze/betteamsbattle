@@ -733,6 +733,11 @@ background-position:-344px 0px;
 	
 }
 
+#openid_btns, #openid_btns br{
+	width:800px;
+	
+}
+
 .knopka_st_text{
 	color:#FFF;
 	font-size:21px;
@@ -1420,37 +1425,36 @@ table{
 
 
 .coloredNumberPositive{
-		text-align:center;
 		color:#27BC29;
+
+}
+
+
+
+
+.blNumber{
+		text-align:center;
 		font-size:17px;
 		font-weight:bold;
 }
-@media screen and (-webkit-min-device-pixel-ratio:0){.coloredNumberPositive {
+
+@media screen and (-webkit-min-device-pixel-ratio:0){.blNumber {
 	padding-right:2px}}
 	
-	@media screen and (-webkit-min-device-pixel-ratio:0){.coloredNumberNegative {
-	padding-right:2px}}
-	
-	@media screen and (-webkit-min-device-pixel-ratio:0){.coloredNumberZero {
-	padding-right:2px}}
+
 
 .coloredNumberNegative{
 
-		text-align:center;
+
 		color:#F00;
-		font-size:17px;
-		display:block;
-		font-weight:bold;
+
 }
 
 
 .coloredNumberZero{
 
-		text-align:center;
 		color:#FFF;
-		font-size:17px;
-		display:block;
-		font-weight:bold;
+
 }
 
 

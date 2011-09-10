@@ -41,16 +41,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
 
                     var battle = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Single();
 
-                    throw new NotImplementedException();
-                    //var balance = _repositoryOfBattleTeamStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Select(bts => (double?)bts.Balance).SingleOrDefault();
-                    //if (balance == null)
-                    //{
-                    //    balance = battle.Budget;
-                    //}
+                    var gain = _repositoryOfBattleTeamStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Select(bts => bts.Gain).SingleOrDefault();
+                    var balance = battle.Budget + gain;
 
-                    //var betLimit = balance * (battle.BetLimit / 100d);
+                    var betLimit = balance * (battle.BetLimit / 100d);
 
-                    //return bet > betLimit;
+                    return bet <= betLimit;
                 }).WithMessage(BattleBets.BetIsOutOfYourLimit);
 
             RuleFor(mb => mb.Coefficient).GreaterThan(1).WithMessage(BattleBets.CoefficientShouldBeGreaterThanOne);
