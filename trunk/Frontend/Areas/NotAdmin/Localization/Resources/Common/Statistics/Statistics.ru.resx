@@ -117,58 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActualBattles" xml:space="preserve">
-    <value>Actual battles</value>
+  <data name="Balance" xml:space="preserve">
+    <value>Баланс</value>
   </data>
-  <data name="Battle" xml:space="preserve">
-    <value>Battle</value>
+  <data name="Gain" xml:space="preserve">
+    <value>Прибыль</value>
   </data>
-  <data name="BattleBetLimit" xml:space="preserve">
-    <value>Bet amount can not exceed specified in percents part of participant's balance</value>
+  <data name="OpenedBets" xml:space="preserve">
+    <value>Открытых ставок</value>
   </data>
-  <data name="BattleBudget" xml:space="preserve">
-    <value>Battle budget (amout of money available to participant at the moment of battle start)</value>
+  <data name="Rating" xml:space="preserve">
+    <value>Рейтинг</value>
   </data>
-  <data name="BattleEndDate" xml:space="preserve">
-    <value>Battle end date</value>
-  </data>
-  <data name="BattleLeaders" xml:space="preserve">
-    <value>Battle leaders</value>
-  </data>
-  <data name="BattleStartDate" xml:space="preserve">
-    <value>Battle start date</value>
-  </data>
-  <data name="CloseAsFailed" xml:space="preserve">
-    <value>Failed</value>
-  </data>
-  <data name="CloseAsSucceeded" xml:space="preserve">
-    <value>Succeeded</value>
-  </data>
-  <data name="CurrentBattles" xml:space="preserve">
-    <value>Current battles</value>
-  </data>
-  <data name="FinishedBattles" xml:space="preserve">
-    <value>Finished battles</value>
-  </data>
-  <data name="Join" xml:space="preserve">
-    <value>Join</value>
-  </data>
-  <data name="Leave" xml:space="preserve">
-    <value>Leave</value>
-  </data>
-  <data name="More" xml:space="preserve">
-    <value>More</value>
-  </data>
-  <data name="MyBattleStatistics" xml:space="preserve">
-    <value>My battle statistics</value>
-  </data>
-  <data name="MyBets" xml:space="preserve">
-    <value>My bets</value>
-  </data>
-  <data name="NextBattleStartsIn" xml:space="preserve">
-    <value>Next battle starts in</value>
-  </data>
-  <data name="NotStartedBattles" xml:space="preserve">
-    <value>Future battles</value>
+  <data name="TotalBets" xml:space="preserve">
+    <value>Ставок</value>
   </data>
 </root>

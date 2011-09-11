@@ -9,17 +9,6 @@
     @Teams.Team @Model.Title
 }
 
-<div class="statistics">
-    <div class="my_s">
-        @Battles.MyBattleStatistics
-    </div>
-    <span class="statistiks_line">@Battles.Rating <span class="rezulnat_st">@ColoredNumber.Span(@Model.Rating)</span>
-    </span>
-    <span class="statistiks_line">@Battles.TotalBets <span class="rezulnat_st">@Model.TotalBetsCount</span>
-    </span>
-    <span class="statistiks_line">@Battles.OpenedBets
-        <span class="rezulnat_st">@Model.OpenedBetsCount</span>
-    </span>
-</div>
+
 
 @Html.Action(MVC.NotAdmin.BattleBets.GetTeamBets(Model.TeamId))

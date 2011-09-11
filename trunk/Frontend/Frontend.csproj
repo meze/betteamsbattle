@@ -128,6 +128,16 @@
     <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\TeamsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Common\Statistics\Statistics.Designer.cs">
+      <DependentUpon>Statistics.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Common\Statistics\Statistics.ru.Designer.cs">
+      <DependentUpon>Statistics.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru.Designer.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.Designer.cs">
@@ -454,6 +464,7 @@
     <Content Include="App_Code\BookmakerIcon.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\_MyBattleStatistics.cshtml" />
     <Content Include="App_Code\BattleName.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Teams\_TeamStatistics.cshtml" />
     <None Include="Scripts\openid-selector\generate-sprite.rb" />
     <None Include="Scripts\openid-selector\generate-sprite.sh" />
     <None Include="Scripts\openid-selector\remcomments.sed" />
@@ -504,6 +515,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Common\Statistics\Statistics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Statistics.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Common\Statistics\Statistics.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Statistics.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru.resx" />
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.resx">

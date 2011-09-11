@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Teams {
+    public class Statistics {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Teams() {
+        internal Statistics() {
         }
         
         /// <summary>
@@ -39,7 +39,8 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Views.Teams.Teams", typeof(Teams).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BetTeamsBattle.Frontend.Areas.NotAdmin.Localization.Resources.Common.Statistics.S" +
+                            "tatistics", typeof(Statistics).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +62,47 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Team.
+        ///   Looks up a localized string similar to Balance.
         /// </summary>
-        public static string Team {
+        public static string Balance {
             get {
-                return ResourceManager.GetString("Team", resourceCulture);
+                return ResourceManager.GetString("Balance", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Team statistics.
+        ///   Looks up a localized string similar to Gain.
         /// </summary>
-        public static string TeamStatistics {
+        public static string Gain {
             get {
-                return ResourceManager.GetString("TeamStatistics", resourceCulture);
+                return ResourceManager.GetString("Gain", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Top teams.
+        ///   Looks up a localized string similar to Opened bets.
         /// </summary>
-        public static string TopTeams {
+        public static string OpenedBets {
             get {
-                return ResourceManager.GetString("TopTeams", resourceCulture);
+                return ResourceManager.GetString("OpenedBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rating.
+        /// </summary>
+        public static string Rating {
+            get {
+                return ResourceManager.GetString("Rating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total bets.
+        /// </summary>
+        public static string TotalBets {
+            get {
+                return ResourceManager.GetString("TotalBets", resourceCulture);
             }
         }
     }
