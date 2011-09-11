@@ -120,6 +120,9 @@
   <data name="Team" xml:space="preserve">
     <value>Команда</value>
   </data>
+  <data name="TeamStatistics" xml:space="preserve">
+    <value>Статистика команды</value>
+  </data>
   <data name="TopTeams" xml:space="preserve">
     <value>Лучшие команды</value>
   </data>
