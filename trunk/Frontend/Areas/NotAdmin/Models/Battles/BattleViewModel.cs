@@ -4,11 +4,7 @@
     {
         public bool BattleIsActive { get; set; }
 
-        public double Balance { get; set; }
-        public double Gain { get; set; }
-        public double GainInPercents { get; set; }
-        public int TotalBetsCount { get; set; }
-        public int OpenBetsCount { get; set; }
+        public BattleStatisticsViewModel BattleStatistics { get; set; }
 
         public BattleViewModel(long battleId, string startDate, string endDate, int budget, int betLimit, bool battleIsActive) : base(battleId, startDate, endDate, budget, betLimit)
         {

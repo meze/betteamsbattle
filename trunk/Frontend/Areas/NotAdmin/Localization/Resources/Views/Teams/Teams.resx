@@ -126,4 +126,7 @@
   <data name="TopTeams" xml:space="preserve">
     <value>Top teams</value>
   </data>
+  <data name="UserStatistics" xml:space="preserve">
+    <value>User statistics</value>
+  </data>
 </root>

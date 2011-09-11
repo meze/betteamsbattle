@@ -43,26 +43,31 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices.Battles
             if (nullableUserId.HasValue)
             {
                 var battleTeamStatistics = _repositoryOfBattleTeamStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, nullableUserId.Value)).SingleOrDefault();
+
+                var battleStatisticsViewModel = new BattleStatisticsViewModel();
+
                 if (battleTeamStatistics != null)
                 {
                     var gain = battleTeamStatistics.Gain;
                     var gainInPercents = gain / battle.Budget * 100;
-                    battleViewModel.Balance = battle.Budget + gain;
-                    battleViewModel.Gain = gain;
-                    battleViewModel.GainInPercents = gainInPercents;
+                    battleStatisticsViewModel.Balance = battle.Budget + gain;
+                    battleStatisticsViewModel.Gain = gain;
+                    battleStatisticsViewModel.GainInPercents = gainInPercents;
 
-                    battleViewModel.TotalBetsCount = battleTeamStatistics.OpenedBetsCount + battleTeamStatistics.ClosedBetsCount;
-                    battleViewModel.OpenBetsCount = battleTeamStatistics.OpenedBetsCount;
+                    battleStatisticsViewModel.TotalBetsCount = battleTeamStatistics.OpenedBetsCount + battleTeamStatistics.ClosedBetsCount;
+                    battleStatisticsViewModel.OpenBetsCount = battleTeamStatistics.OpenedBetsCount;
                 }
                 else
                 {
-                    battleViewModel.Balance = battle.Budget;
-                    battleViewModel.Gain = 0;
-                    battleViewModel.GainInPercents = 0;
+                    battleStatisticsViewModel.Balance = battle.Budget;
+                    battleStatisticsViewModel.Gain = 0;
+                    battleStatisticsViewModel.GainInPercents = 0;
 
-                    battleViewModel.TotalBetsCount = 0;
-                    battleViewModel.OpenBetsCount = 0;
+                    battleStatisticsViewModel.TotalBetsCount = 0;
+                    battleStatisticsViewModel.OpenBetsCount = 0;
                 }
+
+                battleViewModel.BattleStatistics = battleStatisticsViewModel;
             }
 
             return battleViewModel;

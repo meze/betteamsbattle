@@ -5,8 +5,6 @@
         public long TeamId { get; set; }
         public string Title { get; set; }
 
-        public double Rating { get; set; }
-        public int TotalBetsCount { get; set; }
-        public int OpenedBetsCount { get; set; }
+        public TeamStatisticsViewModel Statistics { get; set; }
     }
 }

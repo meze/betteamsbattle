@@ -15,7 +15,7 @@
 }
 @if (CurrentUser.NullableUserId.HasValue)
 {
-    @Html.Partial(MVC.NotAdmin.Battles.Views._MyBattleStatistics)
+    @Html.Partial(MVC.NotAdmin.Battles.Views._MyBattleStatistics, Model.BattleStatistics)
 }
 @if (Model.BattleIsActive)
 {

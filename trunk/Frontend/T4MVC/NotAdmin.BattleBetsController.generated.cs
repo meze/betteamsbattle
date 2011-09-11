@@ -96,7 +96,6 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers {
         public class ViewNames {
             public readonly string _DateAndScreenshot = "~/Areas/NotAdmin/Views/BattleBets/_DateAndScreenshot.cshtml";
             public readonly string _Outcome = "~/Areas/NotAdmin/Views/BattleBets/_Outcome.cshtml";
-            public readonly string _OutcomeActionImage = "~/Areas/NotAdmin/Views/BattleBets/_OutcomeActionImage.cshtml";
             public readonly string Bets = "~/Areas/NotAdmin/Views/BattleBets/Bets.cshtml";
             public readonly string MakeBet = "~/Areas/NotAdmin/Views/BattleBets/MakeBet.cshtml";
         }

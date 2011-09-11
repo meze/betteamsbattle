@@ -86,5 +86,14 @@ namespace Resources {
                 return ResourceManager.GetString("TopTeams", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User statistics.
+        /// </summary>
+        public static string UserStatistics {
+            get {
+                return ResourceManager.GetString("UserStatistics", resourceCulture);
+            }
+        }
     }
 }

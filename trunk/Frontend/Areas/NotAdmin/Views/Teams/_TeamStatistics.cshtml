@@ -1,16 +1,12 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Teams
 @using Resources
-@model TeamViewModel
+@model TeamStatisticsViewModel
 
 <div class="statistics">
     <div class="my_s">
-        @Teams.TeamStatistics
+        @Model.Title
     </div>
-    <span class="statistiks_line">@Statistics.Rating <span class="rezulnat_st">@ColoredNumber.Span(@Model.Rating)</span>
-    </span>
-    <span class="statistiks_line">@Statistics.TotalBets <span class="rezulnat_st">@Model.TotalBetsCount</span>
-    </span>
-    <span class="statistiks_line">@Statistics.OpenedBets
-        <span class="rezulnat_st">@Model.OpenedBetsCount</span>
-    </span>
+    <span class="statistiks_line">@Statistics.Rating <span class="rezulnat_st">@ColoredNumber.Span(@Model.Rating)</span></span>
+    <span class="statistiks_line">@Statistics.ClosedBets <span class="rezulnat_st">@Model.ClosedBetsCount</span></span>
+    <span class="statistiks_line">@Statistics.OpenedBets <span class="rezulnat_st">@Model.OpenedBetsCount</span></span>
 </div>

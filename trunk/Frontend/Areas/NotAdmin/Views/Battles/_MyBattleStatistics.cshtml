@@ -1,20 +1,13 @@
 ﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.Battles
 @using Resources
-@model BattleViewModel
+@model BattleStatisticsViewModel
 <div class="statistics">
     <div class="my_s">
         @Battles.MyBattleStatistics
     </div>
-    <span class="statistiks_line">@Statistics.Balance <span class="rezulnat_st">@Model.Balance</span>
-    </span>
-    <span class="statistiks_line">@Statistics.Gain
-        <span class="rezulnat_st">@ColoredNumber.Span(Model.Gain)</span>
-    </span>
-    <span class="statistiks_line">@Statistics.Gain, % <span class="rezulnat_st">@ColoredNumber.Span(Model.GainInPercents)</span>
-    </span>
-    <span class="statistiks_line">@Statistics.TotalBets <span class="rezulnat_st">@Model.TotalBetsCount</span>
-    </span>
-    <span class="statistiks_line">@Statistics.OpenedBets
-        <span class="rezulnat_st">@Model.OpenBetsCount</span>
-    </span>
+    <span class="statistiks_line">@Statistics.Balance <span class="rezulnat_st">@Model.Balance</span></span>
+    <span class="statistiks_line">@Statistics.Gain <span class="rezulnat_st">@ColoredNumber.Span(Model.Gain)</span></span>
+    <span class="statistiks_line">@Statistics.Gain, % <span class="rezulnat_st">@ColoredNumber.Span(Model.GainInPercents)</span></span>
+    <span class="statistiks_line">@Statistics.ClosedBets <span class="rezulnat_st">@Model.TotalBetsCount</span></span>
+    <span class="statistiks_line">@Statistics.OpenedBets <span class="rezulnat_st">@Model.OpenBetsCount</span></span>
 </div>
