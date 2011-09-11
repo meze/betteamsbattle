@@ -137,8 +137,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.Designer.cs" />
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru.Designer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Accounts.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Accounts.resx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,8 +167,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Battles.ru.resx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.Designer.cs" />
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.Designer.cs" />
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Home.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Home.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.ru1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -524,8 +540,16 @@
       <LastGenOutput>Statistics.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.resx" />
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru.resx" />
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Accounts1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Accounts\Accounts.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Accounts.ru1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BattleBets.Designer.cs</LastGenOutput>
@@ -546,8 +570,16 @@
       <LastGenOutput>Battles.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.resx" />
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.resx" />
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Home\Home.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Teams\Teams.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Teams1.Designer.cs</LastGenOutput>
