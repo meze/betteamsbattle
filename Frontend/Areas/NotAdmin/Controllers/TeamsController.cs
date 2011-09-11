@@ -30,6 +30,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             return View(team);
         }
 
+        public virtual ActionResult GetPersonalTeam(long userId)
+        {
+            var personalTeam = _teamsViewService.GetPersonalTeam(userId);
+
+            return View(personalTeam);
+        }
+
         [ChildActionOnly]
         public virtual PartialViewResult TopTeams()
         {

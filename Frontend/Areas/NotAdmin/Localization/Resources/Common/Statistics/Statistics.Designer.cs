@@ -71,6 +71,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closed bets.
+        /// </summary>
+        public static string ClosedBets {
+            get {
+                return ResourceManager.GetString("ClosedBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gain.
         /// </summary>
         public static string Gain {
@@ -94,15 +103,6 @@ namespace Resources {
         public static string Rating {
             get {
                 return ResourceManager.GetString("Rating", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total bets.
-        /// </summary>
-        public static string TotalBets {
-            get {
-                return ResourceManager.GetString("TotalBets", resourceCulture);
             }
         }
     }

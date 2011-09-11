@@ -127,7 +127,6 @@
     <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\TeamsController.cs" />
-    <Compile Include="Areas\NotAdmin\Controllers\UsersController.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Common\Statistics\Statistics.Designer.cs">
       <DependentUpon>Statistics.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -186,15 +185,17 @@
     <Compile Include="Areas\NotAdmin\Models\Accounts\SignUpViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\BetsViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\StatusActionImageViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Battles\BattleStatisticsViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Shared\BattleBaseViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\MakeBetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\BetViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\AllBattlesViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Battles\BattleViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\BattleBets\DateAndScreenshotViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Teams\TeamStatisticsViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Teams\TopTeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Teams\TeamViewModel.cs" />
-    <Compile Include="Areas\NotAdmin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\NotAdmin\Models\Teams\PersonalTeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
     <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
@@ -281,9 +282,6 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\NotAdmin.TeamsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\NotAdmin.UsersController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
@@ -429,6 +427,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Localization\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\NotAdmin\Models\Users\" />
     <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
@@ -458,7 +457,7 @@
     <Content Include="Areas\NotAdmin\Views\BattleBets\_Outcome.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\GetProTeams.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\CreateProTeam.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\Users\GetUser.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Teams\GetPersonalTeam.cshtml" />
     <Content Include="App_Code\ColoredNumber.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\GetTeam.cshtml" />
     <Content Include="App_Code\BookmakerIcon.cshtml" />

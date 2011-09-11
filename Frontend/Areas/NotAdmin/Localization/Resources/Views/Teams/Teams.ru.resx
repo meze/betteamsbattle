@@ -126,4 +126,7 @@
   <data name="TopTeams" xml:space="preserve">
     <value>Лучшие команды</value>
   </data>
+  <data name="UserStatistics" xml:space="preserve">
+    <value>Статистика пользователя</value>
+  </data>
 </root>

@@ -120,6 +120,9 @@
   <data name="Balance" xml:space="preserve">
     <value>Баланс</value>
   </data>
+  <data name="ClosedBets" xml:space="preserve">
+    <value>Закрытых ставок</value>
+  </data>
   <data name="Gain" xml:space="preserve">
     <value>Прибыль</value>
   </data>
@@ -128,8 +131,5 @@
   </data>
   <data name="Rating" xml:space="preserve">
     <value>Рейтинг</value>
-  </data>
-  <data name="TotalBets" xml:space="preserve">
-    <value>Ставок</value>
   </data>
 </root>
