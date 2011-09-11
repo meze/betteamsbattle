@@ -8,7 +8,9 @@
     <span class="statistiks_line">@Battles.Balance <span class="rezulnat_st">@Model.Balance</span>
     </span>
     <span class="statistiks_line">@Battles.Gain
-        <span class="rezulnat_st">@ColoredNumber.Span(Model.Gain) @ColoredNumber.Span(Model.GainInPercents, "%")</span>
+        <span class="rezulnat_st">@ColoredNumber.Span(Model.Gain)</span>
+    </span>
+    <span class="statistiks_line">@Battles.Gain, % <span class="rezulnat_st">@ColoredNumber.Span(Model.GainInPercents)</span>
     </span>
     <span class="statistiks_line">@Battles.TotalBets <span class="rezulnat_st">@Model.TotalBetsCount</span>
     </span>
