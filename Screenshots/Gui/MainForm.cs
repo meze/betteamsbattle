@@ -23,12 +23,12 @@ namespace BetTeamsBattle.Screenshots.Gui
             _screenshotsMakingManager = kernel.Get<IScreenshotsMakingManager>();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             _screenshotsMakingManager.Run();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _screenshotsMakingManager.Stop();
         }
