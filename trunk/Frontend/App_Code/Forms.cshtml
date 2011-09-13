@@ -85,9 +85,9 @@ Thank you, @chrismilleruk*@
             <input type="submit" value="@label" /></span>
     </div>
 }
-@helper ActionImage(string url, string imageClass, string imageTitle)
+@helper ActionImage(string url, string imageClass, string imageTitle, bool openInNewWindow = false)
     {
-    <a href="@url"><span class="@imageClass" title="@imageTitle" /></a>
+    <a href="@url" @if (openInNewWindow) { <text>target="_blank"</text> }><span class="@imageClass" title="@imageTitle" /></a>
 }
 @helper Image(string imageClass, string imageTitle)
     {
