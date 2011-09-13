@@ -17,7 +17,7 @@
 {
     @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
     
-    @Forms.DropDownList(Html, m => m.MakeBetForm.TeamId, BattleBets.MakeBetOnBehalfOf, Model.Teams)
+    @Forms.HideableDropDownList(Html, m => m.MakeBetForm.TeamId, BattleBets.MakeBetOnBehalfOf, Model.Teams)
     @Forms.TextBox(Html, m => m.MakeBetForm.Title, BattleBets.Title, BattleBets.TitleHelpMessage)
     @Forms.TextBox(Html, m => m.MakeBetForm.Url, BattleBets.BookmakerUrl, BattleBets.UrlHelpMessage)
     @Forms.TextBox(Html, m => m.MakeBetForm.Bet, BattleBets.Amount + ", $", BattleBets.AmountHelpMessage)
