@@ -24,11 +24,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 
     public class MakeBetFormViewModel
     {
+        public long TeamId { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
+        public double Amount { get; set; }
         public double Coefficient { get; set; }
-        public double Bet { get; set; }
-        public long TeamId { get; set; }
         public bool IsPrivate { get; set; }
     }
 }
