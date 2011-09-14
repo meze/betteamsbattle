@@ -62,7 +62,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
             if (!ModelState.IsValid)
                 return View(_betsViewService.MakeBet(battleId, CurrentUser.UserId, makeBetForm));
 
-            _battlesService.MakeBet(battleId, makeBetForm.TeamId, CurrentUser.UserId, makeBetForm.Title, makeBetForm.Bet, makeBetForm.Coefficient, makeBetForm.Url, makeBetForm.IsPrivate);
+            _battlesService.MakeBet(battleId, makeBetForm.TeamId, CurrentUser.UserId, makeBetForm.Title, makeBetForm.Amount, makeBetForm.Coefficient, makeBetForm.Url, makeBetForm.IsPrivate);
 
             return RedirectToAction(MVC.NotAdmin.Battles.GetBattle(battleId));
         }

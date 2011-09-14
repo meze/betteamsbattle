@@ -53,6 +53,16 @@ namespace BetTeamsBattle.Frontend
 
             ViewEngines.Engines.RemoveAt(0); //Remove WebForms ViewEngine
 
+            //Remove ClientDataTypeModelValidatorProvider to remove client messages which do not respect CultureInfo
+            foreach (ModelValidatorProvider prov in ModelValidatorProviders.Providers)
+            {
+                if (prov.GetType().Equals(typeof(ClientDataTypeModelValidatorProvider)))
+                {
+                    ModelValidatorProviders.Providers.Remove(prov);
+                    break;
+                }
+            }
+
             var validatorFactory = new NinjectValidatorFactory(Kernel);
             FluentValidationModelValidatorProvider.Configure(x =>
                 {

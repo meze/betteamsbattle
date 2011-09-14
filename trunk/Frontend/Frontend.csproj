@@ -213,7 +213,7 @@
     <Compile Include="Areas\NotAdmin\Models\Teams\TeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\Models\Teams\PersonalTeamViewModel.cs" />
     <Compile Include="Areas\NotAdmin\NotAdminAreaRegistration.cs" />
-    <Compile Include="Areas\NotAdmin\Validators\MakeBetViewModelValidator.cs" />
+    <Compile Include="Areas\NotAdmin\Validators\MakeBetFormViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Validators\SignUpViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\BetsViewService.cs" />
     <Compile Include="Areas\NotAdmin\ViewServices\BattlesViewService.cs" />
