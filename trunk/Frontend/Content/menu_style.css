@@ -79,7 +79,8 @@ display:block;
 }
 
 .knopka_ros_active{
-background-image:url("images/flag_r_activ.png");
+background-image: url('images/sprite.png');
+	background-position:-88px -80px;
 height:29px;
 width:40px;
 display:block;
@@ -91,7 +92,8 @@ margin-top:-1px;
 .knopka_eng_active{
 	width:41px;
 	height:29px;
-	background-image: url('images/flag_e_activ.png');
+	background-image: url('images/sprite.png');
+	background-position:-129px -80px;
 	background-repeat:no-repeat;
 	display:block;
 	background-repeat:no-repeat;

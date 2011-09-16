@@ -33,28 +33,22 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
             RuleFor(mb => mb.Title).NotEmpty().WithMessage(BattleBets.TitleShouldNotBeEmpty);
             RuleFor(mb => mb.Title).Length(1, 200).WithMessage(BattleBets.TitleIsTooLong);
 
-            RuleFor(mb => mb.Amount).GreaterThan(0).WithMessage(BattleBets.BetShouldBeMoreThanZero);
-            RuleFor(mb => mb.Amount).Must((mb, bet) =>
+            RuleFor(mb => mb.AmountString).NotNull().WithMessage(BattleBets.PleaseInputCorrectFloatingNumber);
+            RuleFor(mb => mb.AmountString).Must((mb, amountString) => mb.Amount.Value > 0).WithMessage(BattleBets.BetShouldBeMoreThanZero);
+            RuleFor(mb => mb.AmountString).Must((mb, amountString) =>
                 {
                     var battleId = Convert.ToInt32(RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["battleId"]);
                     var teamId = Convert.ToInt32(RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["teamId"]);
 
-                    var battle = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Single();
+                    mb.BetLimit = _battlesService.GetBetLimit(battleId, teamId);
 
-                    var gain = _repositoryOfBattleTeamStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Select(bts => bts.Gain).SingleOrDefault();
-                    var balance = battle.Budget + gain;
+                    return mb.Amount.Value <= mb.BetLimit;
+                }).WithMessage(BattleBets.BetShouldBeLessThan, mb => mb.BetLimit);
 
-                    var betLimit = balance * (battle.BetLimit / 100d);
+            RuleFor(mb => mb.CoefficientString).NotNull().WithMessage(BattleBets.PleaseInputCorrectFloatingNumber);
+            RuleFor(mb => mb.CoefficientString).Must((mb, coefficientString) => mb.Coefficient.Value > 1).WithMessage(BattleBets.CoefficientShouldBeGreaterThanOne);
 
-                    return bet <= betLimit;
-                }).WithMessage(BattleBets.BetIsOutOfYourLimit);
-
-            RuleFor(mb => mb.Coefficient).GreaterThan(1).WithMessage(BattleBets.CoefficientShouldBeGreaterThanOne);
-
-            RuleFor(mb => mb.Url).Must(url =>
-                {
-                    return Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute);
-                }).WithMessage(BattleBets.UrlIsIncorrect);
+            RuleFor(mb => mb.Url).Must(url => Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute)).WithMessage(BattleBets.UrlIsIncorrect);
         }
     }
 }

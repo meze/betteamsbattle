@@ -19,11 +19,12 @@
 }
 @if (Model.BattleIsActive)
 {
-    <div class="knopka_st">
-        <div class="knopka_st_text">
-            <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">
-                @BattleBets.MakeBet </a>
+    @*<a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">*@
+        <div class="knopka_st">
+            <div class="knopka_st_text">
+                <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">@BattleBets.MakeBet</a>
+            </div>
         </div>
-    </div>
+    @*</a>*@
 }
 @Html.Action(MVC.NotAdmin.BattleBets.GetMyBattleBets(Model.BattleId))

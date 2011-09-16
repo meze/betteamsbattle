@@ -37,7 +37,8 @@ h1{
 	display:block;
 	width:24px;
 	height:16px;
-	background-image: url('images/2.png');
+		background-image: url('images/sprite.png');
+	background-position:-40px -89px;
 	margin:0 auto;
 }
 
@@ -46,7 +47,8 @@ h1{
 	display:block;
 	width:24px;
 	height:16px;
-	background-image: url('images/3.png');
+	background-image: url('images/sprite.png');
+	background-position:-64px -89px;
 	margin:0 auto;
 }
 
@@ -111,7 +113,9 @@ width:190px;
 
   .menu{
 	  height:30px;
-	  background-image: url('images/menu_1.png');
+	  	background-image: url('images/sprite2.png');
+	background-position:0px -38px;
+	background-repeat:repeat-x;
 	  
   }
   
@@ -123,7 +127,7 @@ width:190px;
 #osnova_d{
 
 position:relative;
-min-height:100%;
+min-height:90%;
 height:auto !important;
 height:100%;
 padding:0px;
@@ -689,7 +693,12 @@ margin:0 auto;
 	margin-left:5px;
 	border:none;
 	margin-bottom:-3px;
-
+background-image:url("images/sprite.png");
+background-position:-170px -89px;
+height:20px;
+width:20px;
+display:inline-block;
+display:-moz-inline-block;
 }
 
 .pravo_content2_battle{
@@ -780,9 +789,10 @@ text-align:center;
 
 
 .copyright{
-	height:37px;
-	background-image: url('images/footer_1.png');
+	height:20px;
+	background-image: url('images/sprite2.png');
 	background-repeat:repeat-x;
+	background-position:0px 0px;
 	text-align:center;
 	color:#FFF;
 	font-size:17px;
@@ -927,23 +937,26 @@ height:36px;
 
 .pro_m{
 		height:15px;
-		width:0px;
+		width:36px;
 		margin-bottom:-3px;
-	background-image: url('images/pro.png');
-	padding-left:36px;
+	background-image: url('images/sprite.png');
 	background-repeat:no-repeat;
-
+	display:inline-block;
+		display:-moz-inline-block;
+		background-position:-189px -94px;
 }
 
 
 .pro{
+	width:36px;
 		height:15px;
-		width:0px;
 		margin-bottom:-3px;
-	background-image: url('images/pro.png');
+	background-image: url('images/sprite.png');
 	margin-left:20px;
-	padding-left:36px;
 	background-repeat:no-repeat;
+	display:inline-block;
+		display:-moz-inline-block;
+background-position:-189px -94px;
 
 }
 
@@ -1111,8 +1124,12 @@ padding-right:5px;
 padding-left:10px;
 	background-repeat:no-repeat;
 	background-position:left;
-	background-image: url('images/1.png');
+	background-image: url('images/sprite2.png');
+	background-position:-67px 0;
 	margin-left:10px;
+	height:30px;
+	width:3px;
+
 }
 
 .r{
@@ -1373,7 +1390,8 @@ table{
 	margin-top:0px;
 	display:block;
 	margin-bottom:5px;
-	background-image: url('images/icon_r.png');
+		background-image: url('images/sprite.png');
+	background-position:-20px -89px;;
 	height:20px;
 	width:20px;
 	text-decoration:none;
@@ -1388,7 +1406,8 @@ table{
 	margin-top:0px;
 	display:block;
 	margin-bottom:5px;
-	background-image: url('images/icon.png');
+	background-image: url('images/sprite.png');
+	background-position:0px -89px;
 	height:20px;
 	width:20px;
 	margin-top:-3px;
