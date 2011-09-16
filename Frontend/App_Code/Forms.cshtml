@@ -13,9 +13,9 @@ Thank you, @chrismilleruk*@
 
     public static HelperResult TextBox<TModel, TItem>(HtmlHelper<TModel> html, Expression<Func<TModel, TItem>> expr, string title, string helpMessage)
     {
-        return TwoLinesFormElement(html.LabelFor(expr, title), html.TextBoxFor(expr, new { @class = "text-form" }), html.ValidationMessageFor(expr), helpMessage: helpMessage);
+        return TwoLinesFormElement(html.LabelFor(expr, title), html.TextBoxFor(expr, new { @class="text-form" }), html.ValidationMessageFor(expr), helpMessage: helpMessage);
     }
-
+    
     public static HelperResult DropDownList<TModel, TItem>(HtmlHelper<TModel> html, Expression<Func<TModel, TItem>> expr, string title, IEnumerable<SelectListItem> selectList)
     {
         return TwoLinesFormElement(html.LabelFor(expr, title), html.DropDownListFor(expr, selectList, new { @class = "form-select" }), html.ValidationMessageFor(expr));
@@ -95,7 +95,7 @@ Thank you, @chrismilleruk*@
 }
 @helper HelpMessage(string helpMessage)
     {
-    <a href="" class="tooltip" title="@helpMessage">
-        <img class="help" src="/Content/images/help.png" />
+    <a class="tooltip" title="@helpMessage">
+        <span class="help" />
     </a>
 }

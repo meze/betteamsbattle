@@ -12,5 +12,6 @@ namespace BetTeamsBattle.Data.Services.Interfaces
         void BetFailed(long battleBetId, long userId, out long battleId);
         void CloseBet(long battleBetId, long userId, BattleBetStatus status, out long battleId);
         void BetCanceledByBookmaker(long battleBetId, long userId, out long battleId);
+        double GetBetLimit(long battleId, long teamId);
     }
 }

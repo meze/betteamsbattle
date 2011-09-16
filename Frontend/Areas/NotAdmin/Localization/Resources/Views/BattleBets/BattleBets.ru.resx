@@ -126,14 +126,14 @@
   <data name="BetIsNotClosed" xml:space="preserve">
     <value>Детали ставки станут доступны вам как только пользователь выберет исход ставки</value>
   </data>
-  <data name="BetIsOutOfYourLimit" xml:space="preserve">
-    <value>Ставка превышает ваш лимит</value>
-  </data>
   <data name="BetIsPrivate" xml:space="preserve">
     <value>Ставка приватная, а значит вам не доступны для просмотра ее детали</value>
   </data>
   <data name="BetOnBookmakersSite" xml:space="preserve">
     <value>Ставка на сайте букмекера</value>
+  </data>
+  <data name="BetShouldBeLessThan" xml:space="preserve">
+    <value>Ставка должна быть меньше {0}</value>
   </data>
   <data name="BetShouldBeMoreThanZero" xml:space="preserve">
     <value>Ставка должна быть больше нуля</value>
@@ -191,6 +191,9 @@
   </data>
   <data name="Outcome" xml:space="preserve">
     <value>Исход</value>
+  </data>
+  <data name="PleaseInputCorrectFloatingNumber" xml:space="preserve">
+    <value>Пожалуйста введите число (например, 123,456)</value>
   </data>
   <data name="PrivateBet" xml:space="preserve">
     <value>Приватная ставка</value>

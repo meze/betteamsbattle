@@ -135,5 +135,16 @@ namespace BetTeamsBattle.Data.Services
         {
             CloseBet(battleBetId, userId, BattleBetStatus.CanceledByBookmaker, out battleId);
         }
+
+        //ToDo: Write test to it
+        public double GetBetLimit(long battleId, long teamId)
+        {
+            var battle = _repositoryOfBattle.Get(EntitySpecifications.IdIsEqualTo<Battle>(battleId)).Single();
+
+            var gain = _repositoryOfTeamBattleStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(battleId, teamId)).Select(bts => bts.Gain).SingleOrDefault();
+            var balance = battle.Budget + gain;
+
+            return balance * (battle.BetLimit / 100d);
+        }
     }
 }

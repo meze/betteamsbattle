@@ -98,15 +98,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet is out of your limit.
-        /// </summary>
-        public static string BetIsOutOfYourLimit {
-            get {
-                return ResourceManager.GetString("BetIsOutOfYourLimit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bet is private so you won&apos;t be able to see its details.
         /// </summary>
         public static string BetIsPrivate {
@@ -121,6 +112,15 @@ namespace Resources {
         public static string BetOnBookmakersSite {
             get {
                 return ResourceManager.GetString("BetOnBookmakersSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bet should be less than {0}.
+        /// </summary>
+        public static string BetShouldBeLessThan {
+            get {
+                return ResourceManager.GetString("BetShouldBeLessThan", resourceCulture);
             }
         }
         
@@ -292,6 +292,15 @@ namespace Resources {
         public static string Outcome {
             get {
                 return ResourceManager.GetString("Outcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please input number (e. g. 123.456).
+        /// </summary>
+        public static string PleaseInputCorrectFloatingNumber {
+            get {
+                return ResourceManager.GetString("PleaseInputCorrectFloatingNumber", resourceCulture);
             }
         }
         
