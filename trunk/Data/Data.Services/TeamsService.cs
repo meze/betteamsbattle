@@ -1,4 +1,5 @@
-﻿using BetTeamsBattle.Data.Model.Entities;
+﻿using System.Collections.Generic;
+using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
 using BetTeamsBattle.Data.Repositories.UnitOfWork.Interfaces;
 using BetTeamsBattle.Data.Services.Interfaces;
@@ -16,11 +17,11 @@ namespace BetTeamsBattle.Data.Services
             _repositoryOfTeam = repositoryOfTeam;
         }
 
-        public long CreateProTeam(string title, string description, string site)
+        public long CreateProTeam(string title, string description, string site, IEnumerable<long> usersIds)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
-                var proTeam = Team.CreateProTeam(title, description, site);
+                var proTeam = Team.CreateProTeam(title, description, site, usersIds);
                 _repositoryOfTeam.Add(proTeam);
 
                 unitOfWorkScope.SaveChanges();

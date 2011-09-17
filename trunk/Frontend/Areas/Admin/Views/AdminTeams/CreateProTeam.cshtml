@@ -4,13 +4,18 @@
     Layout = MVC.Shared.Views.OneColumn._OneColumnLayout;
 }
 @section Title {
-    Create pro team
+Create pro team
 }
 @using (Html.BeginForm(MVC.Admin.AdminTeams.CreateProTeam(), FormMethod.Post, new { @class = "form" }))
 {
     @Forms.TextBox(Html, m => m.Title, "Title")
     @Forms.TextBox(Html, m => m.Description, "Description")
     @Forms.TextBox(Html, m => m.Url, "Url")
+
+    for (var i = 0; i < Model.UsersIds.Count; i++)
+    {
+        @Forms.TextBox(Html, m => m.UsersIds[i], "UserId " + (i + 1))
+    }
 
     @Forms.SubmitButton("Create pro team")
 }

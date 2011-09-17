@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
+using NUnit.Framework;
 
 namespace BetTeamsBattle.Data.Services.Tests.Helpers
 {
@@ -10,10 +13,10 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
     {
         private readonly IRepository<Battle> _repositoryOfBattle;
         private readonly IRepository<Bet> _repositoryOfBet;
-        private readonly IRepository<TeamStatistics> _repositoryOfTeamStatistics; 
+        private readonly IRepository<TeamStatistics> _repositoryOfTeamStatistics;
         private readonly IRepository<TeamBattleStatistics> _repositoryOfBattleTeamStatistics;
         private readonly IRepository<Team> _repositoryOfTeam;
-        private readonly IRepository<TeamUser> _repositoryOfTeamUser; 
+        private readonly IRepository<TeamUser> _repositoryOfTeamUser;
         private readonly IRepository<User> _repositoryOfUser;
 
         public EntityAssert(IRepository<Battle> repositoryOfBattle, IRepository<Bet> repositoryOfBet, IRepository<TeamStatistics> repositoryOfTeamStatistics, IRepository<TeamBattleStatistics> repositoryOfTeamBattleStatistics, IRepository<Team> repositoryOfTeam, IRepository<User> repositoryOfUser, IRepository<TeamUser> repositoryOfTeamUser)
@@ -63,9 +66,10 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
             _repositoryOfTeam.All().Where(t => t.Id == teamId).Single();
         }
 
-        public void ProTeam(string title, string description, string site)
+        public void ProTeam(string title, string description, string site, IEnumerable<long> usersIds)
         {
-            var team = _repositoryOfTeam.All().Where(t => !t.IsPersonal && t.IsPro && t.Title == title && t.Description == description && t.Site == site).Single();
+            var team = _repositoryOfTeam.All().Where(t => !t.IsPersonal && t.IsPro && t.Title == title && t.Description == description && t.Site == site).Include(t => t.TeamUsers).Single();
+            TeamUsers(usersIds, team.TeamUsers);
             TeamStatistics(team.Id, 0, 0, 0);
         }
 
@@ -77,6 +81,12 @@ namespace BetTeamsBattle.Data.Services.Tests.Helpers
         public void JoinedTeamUser(long teamId, long userId)
         {
             _repositoryOfTeamUser.All().Where(ts => ts.TeamId == teamId && ts.UserId == ts.UserId && ts.Action == (sbyte)TeamUserAction.Join).Single();
+        }
+
+        private void TeamUsers(IEnumerable<long> usersIds, IEnumerable<TeamUser> teamUsers)
+        {
+            Assert.AreEqual(usersIds.Count(), teamUsers.Count());
+            Assert.IsTrue(teamUsers.All(tu => usersIds.Contains(tu.UserId)));
         }
 
         public void User(string login, string openIdUrl, Language language)

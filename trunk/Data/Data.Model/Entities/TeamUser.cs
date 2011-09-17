@@ -18,5 +18,22 @@ namespace BetTeamsBattle.Data.Model.Entities
 
         public virtual Team Team { get; set; }
         public virtual User User { get; set; }
+
+        internal TeamUser()
+        {
+            DateTime = DateTime.UtcNow;
+        }
+
+        public TeamUser(long userId, TeamUserAction action) : this()
+        {
+            UserId = userId;
+            ActionEnum = action;
+        }
+
+        public TeamUser(User user, TeamUserAction action) : this()
+        {
+            User = user;
+            ActionEnum = action;
+        }
     }
 }

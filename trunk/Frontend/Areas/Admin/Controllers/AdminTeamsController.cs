@@ -46,7 +46,7 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(createProTeamViewModel);
 
-            _teamsService.CreateProTeam(createProTeamViewModel.Title, createProTeamViewModel.Description, createProTeamViewModel.Url);
+            _teamsService.CreateProTeam(createProTeamViewModel.Title, createProTeamViewModel.Description, createProTeamViewModel.Url, createProTeamViewModel.UsersIds.Where(ui => ui.HasValue).Select(ui => ui.Value).ToList());
 
             return RedirectToAction(MVC.Admin.AdminTeams.GetProTeams());
         }
