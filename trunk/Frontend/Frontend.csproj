@@ -644,8 +644,7 @@
   <PropertyGroup>
     <PreBuildEvent>copy /Y "$(SolutionDir)Configs\Usage\AppSettings.config" "$(ProjectDir)"
 copy /Y "$(SolutionDir)Configs\Usage\ConnectionStrings.config" "$(ProjectDir)"
-copy /Y "$(SolutionDir)Configs\Usage\Web.config" "$(ProjectDir)"
-</PreBuildEvent>
+copy /Y "$(SolutionDir)Configs\Usage\Web.config" "$(ProjectDir)"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
