@@ -1,0 +1,1 @@
+1. Install Libraries/mysql-connector-net-6.4.3.msi 

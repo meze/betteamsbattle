@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySQL.VisualStudio">
+      <HintPath>..\..\..\..\..\Users\Idsa\Downloads\mysql-connector-net-6.4.3-folder\PFiles\MySQL\MySQL Connector Net 6.4.3\Visual Studio Integration\2010\MySQL.VisualStudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
