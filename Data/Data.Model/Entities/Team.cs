@@ -29,7 +29,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual TeamStatistics TeamStatistics { get; set; } 
         public virtual ICollection<TeamBattleStatistics> TeamBattlesStatistics { get; set; }
 
-        protected Team()
+        internal Team()
         {
         }
 
@@ -39,16 +39,20 @@ namespace BetTeamsBattle.Data.Model.Entities
 
             personalTeam.TeamStatistics = new TeamStatistics();
 
-            var teamUser = new TeamUser() { User = user, ActionEnum = TeamUserAction.Join, DateTime = DateTime.UtcNow };
+            var teamUser = new TeamUser(user, TeamUserAction.Join);
             personalTeam.TeamUsers.Add(teamUser);
 
             return personalTeam;
         }
 
-        public static Team CreateProTeam(string title, string description, string site)
+        public static Team CreateProTeam(string title, string description, string site, IEnumerable<long> usersIds)
         {
             var proTeam = new Team() { Title = title, Description = description, Site = site, IsPersonal = false, IsPro = true };
             proTeam.TeamStatistics = new TeamStatistics();
+
+            foreach (var userId in usersIds)
+                proTeam.TeamUsers.Add(new TeamUser(userId, TeamUserAction.Join));
+
             return proTeam;
         }
     }
