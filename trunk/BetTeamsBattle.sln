@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories", "Data\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Services", "Data\Data.Services\Data.Services.csproj", "{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFx", "Data\Data.Repositories.Infrastructure\NetFx.csproj", "{1FC3176B-A5DD-4626-B0B3-E6599B138B57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFx", "NetFx\NetFx.csproj", "{1FC3176B-A5DD-4626-B0B3-E6599B138B57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories.Tests", "Data\Data.Repositories.Tests\Data.Repositories.Tests.csproj", "{31EE08FA-D22B-4FF3-AF38-5C09C757234D}"
 EndProject
