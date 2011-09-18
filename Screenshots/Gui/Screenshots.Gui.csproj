@@ -99,7 +99,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\Data.Repositories.Infrastructure\NetFx.csproj">
+    <ProjectReference Include="..\..\NetFx\NetFx.csproj">
       <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
       <Name>NetFx</Name>
     </ProjectReference>
