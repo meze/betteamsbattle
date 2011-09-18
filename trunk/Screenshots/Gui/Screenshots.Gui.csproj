@@ -99,9 +99,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\Data.Repositories.Infrastructure\Data.Repositories.Infrastructure.csproj">
+    <ProjectReference Include="..\..\Data\Data.Repositories.Infrastructure\NetFx.csproj">
       <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
-      <Name>Data.Repositories.Infrastructure</Name>
+      <Name>NetFx</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\Data.Repositories\Data.Repositories.csproj">
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>

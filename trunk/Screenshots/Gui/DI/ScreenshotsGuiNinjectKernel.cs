@@ -1,5 +1,4 @@
 ﻿using BetTeamsBattle.Data.Repositories.DI;
-using BetTeamsBattle.Data.Repositories.Infrastructure.DI;
 using BetTeamsBattle.Screenshots.AmazonS3.DI;
 using BetTeamsBattle.Screenshots.AwesomiumScreenshotMaker.DI;
 using BetTeamsBattle.Screenshots.BettScreenshotsManager.DI;
@@ -13,7 +12,6 @@ namespace BetTeamsBattle.Screenshots.Gui.DI
         public static IKernel CreateKernel()
         {
             return new StandardKernel(
-                new DataRepositoriesInfrastructureNinjectModule(),
                 new DataRepositoriesNinjectModule(), 
                 new ScreenshotsCommonNinjectModule(),
                 new ScreenshotsAwesomiumScreenshotMakerNinjectModule(),
