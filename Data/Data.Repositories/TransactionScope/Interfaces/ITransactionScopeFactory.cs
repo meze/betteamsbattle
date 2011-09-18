@@ -1,4 +1,4 @@
-﻿namespace BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interfaces
+﻿namespace BetTeamsBattle.Data.Repositories.TransactionScope.Interfaces
 {
     public interface ITransactionScopeFactory
     {

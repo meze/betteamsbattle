@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using BetTeamsBattle.Data.Model.Entities;
 
-namespace BetTeamsBattle.Data.Repositories.Specifications
+namespace BetTeamsBattle.Data.Model.Specifications
 {
     public class TeamSpecifications
     {

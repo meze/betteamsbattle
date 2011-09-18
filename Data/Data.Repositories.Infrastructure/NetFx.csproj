@@ -8,8 +8,8 @@
     <ProjectGuid>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.Data.Repositories.Infrastructure</RootNamespace>
-    <AssemblyName>BetTeamsBattle.Data.Repositories.Infrastructure</AssemblyName>
+    <RootNamespace>BetTeamsBattle.NetFx</RootNamespace>
+    <AssemblyName>BetTeamsBattle.NetFx</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,13 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DI\DataRepositoriesInfrastructureNinjectModule.cs" />
     <Compile Include="netfx\Patterns\LinqSpecs\LinqSpec.cs" />
     <Compile Include="netfx\Patterns\LinqSpecs\Visibility.cs" />
     <Compile Include="netfx\System\Linq\Expressions\ExpressionCombiner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransactionScope\Interfaces\ITransactionScopeFactory.cs" />
-    <Compile Include="TransactionScope\TransactionScopeFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

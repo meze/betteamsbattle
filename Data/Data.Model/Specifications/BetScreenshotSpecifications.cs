@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using BetTeamsBattle.Data.Model.Entities;
+﻿using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
 
-namespace BetTeamsBattle.Data.Repositories.Specifications
+namespace BetTeamsBattle.Data.Model.Specifications
 {
     public class BetScreenshotSpecifications
     {

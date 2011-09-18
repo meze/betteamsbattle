@@ -1,7 +1,7 @@
 ﻿using System.Transactions;
-using BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope.Interfaces;
+using BetTeamsBattle.Data.Repositories.TransactionScope.Interfaces;
 
-namespace BetTeamsBattle.Data.Repositories.Infrastructure.TransactionScope
+namespace BetTeamsBattle.Data.Repositories.TransactionScope
 {
     internal class TransactionScopeFactory : ITransactionScopeFactory
     {

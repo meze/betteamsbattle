@@ -4,9 +4,9 @@ using System.Linq;
 using System.Collections.Generic;
 using BetTeamsBattle.Data.Model.Entities;
 using BetTeamsBattle.Data.Model.Enums;
+using BetTeamsBattle.Data.Model.Specifications;
 using BetTeamsBattle.Data.Repositories.Base;
 using BetTeamsBattle.Data.Repositories.Base.Interfaces;
-using BetTeamsBattle.Data.Repositories.Specifications;
 using BetTeamsBattle.Frontend.Localization.Infrastructure.IP.Interfaces;
 
 #endregion
