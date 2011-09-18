@@ -190,7 +190,7 @@
     <value>My bets</value>
   </data>
   <data name="OfTeam" xml:space="preserve">
-    <value>team</value>
+    <value>Team</value>
   </data>
   <data name="Outcome" xml:space="preserve">
     <value>Outcome</value>
