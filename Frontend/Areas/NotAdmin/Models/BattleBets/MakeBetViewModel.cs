@@ -59,8 +59,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
 
         public MakeBetFormViewModel()
         {
-            AmountString = "0.00";
-            CoefficientString = "0.00";
+            AmountString = 0.ToString("N2");
+            CoefficientString = 0.ToString("N2");
         }
     }
 }
