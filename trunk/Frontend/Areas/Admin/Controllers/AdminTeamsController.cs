@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,7 +26,7 @@ namespace BetTeamsBattle.Frontend.Areas.Admin.Controllers
 
         public virtual ActionResult GetProTeams()
         {
-            var proTeams = _repositoryOfTeam.Get(TeamSpecifications.IsPro()).OrderBy(t => t.Title).ToList();
+            var proTeams = _repositoryOfTeam.Get(TeamSpecifications.IsPro()).Include(t => t.TeamUsers).OrderBy(t => t.Title).ToList();
 
             return View(proTeams);
         }
