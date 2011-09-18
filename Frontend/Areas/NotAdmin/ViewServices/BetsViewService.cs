@@ -48,11 +48,12 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                         title = BattleBets.MePersonally;
                     else
                         title = String.Format("{0} {1}", BattleBets.OfTeam, t.Title);
-                    var isSelected = t.Id == makeBetFormViewModel.TeamId;
-                    var selectListItem = new SelectListItem() { Value = t.Id.ToString(), Text = title, Selected = isSelected };
+                    var selectListItem = new SelectListItem() { Value = t.Id.ToString(), Text = title };
                     return selectListItem;
                 }).
                 ToList();
+            if (makeBetFormViewModel.TeamId == 0 && teamsSelectListItems.Count == 2)
+                makeBetFormViewModel.TeamId = teams[1].Id; //select non-personal team by default
 
             var makeBetViewModel = new MakeBetViewModel(battleId, battle.StartDate.ToShortDateString(), battle.EndDate.ToShortDateString(), battle.Budget, battle.BetLimit, teamsSelectListItems, makeBetFormViewModel);
 
