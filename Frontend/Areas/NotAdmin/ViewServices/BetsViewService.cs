@@ -45,9 +45,9 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                 {
                     string title;
                     if (t.IsPersonal)
-                        title = BattleBets.MePersonally;
+                        title = Bets.MePersonally;
                     else
-                        title = String.Format("{0} {1}", BattleBets.OfTeam, t.Title);
+                        title = String.Format("{0} {1}", Bets.OfTeam, t.Title);
                     var selectListItem = new SelectListItem() { Value = t.Id.ToString(), Text = title };
                     return selectListItem;
                 }).
@@ -68,8 +68,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
         public BetsViewModel GetMyBattleBets(long battleId, long? userId)
         {
             var betsViewModel = new BetsViewModel();
-            betsViewModel.Title = BattleBets.MyBets;
-            betsViewModel.NoBetsMessage = BattleBets.YouHaveMadeNoBetsInThisBattle;
+            betsViewModel.Title = Bets.MyBets;
+            betsViewModel.NoBetsMessage = Bets.YouHaveMadeNoBetsInThisBattle;
             if (!userId.HasValue)
                 return betsViewModel;
 
@@ -85,16 +85,16 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
 
             if (userId == currentUserId)
             {
-                betsViewModel.Title = BattleBets.MyBets;
-                betsViewModel.NoBetsMessage = BattleBets.YouHaveMadeNoBets;
+                betsViewModel.Title = Bets.MyBets;
+                betsViewModel.NoBetsMessage = Bets.YouHaveMadeNoBets;
 
                 var myBets = GetBetsQuery(BetSpecifications.UserIdIsEqualTo(userId)).Include(b => b.Battle).ToList();
                 betsViewModel.Bets = GetBetViewModels(myBets, true, true, false);
             }
             else
             {
-                betsViewModel.Title = BattleBets.UserBets;
-                betsViewModel.NoBetsMessage = BattleBets.UserHasMadeNoBets;
+                betsViewModel.Title = Bets.UserBets;
+                betsViewModel.NoBetsMessage = Bets.UserHasMadeNoBets;
 
                 var userBets = GetBetsQuery(BetSpecifications.UserIdIsEqualTo(userId)).Include(b => b.Battle).ToList();
                 betsViewModel.Bets = GetBetViewModels(userBets, false, true, false);
@@ -106,8 +106,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
         public BetsViewModel GetTeamBets(long teamId)
         {
             var betsViewModel = new BetsViewModel();
-            betsViewModel.Title = BattleBets.TeamBets;
-            betsViewModel.NoBetsMessage = BattleBets.TeamHasMadeNoBets;
+            betsViewModel.Title = Bets.TeamBets;
+            betsViewModel.NoBetsMessage = Bets.TeamHasMadeNoBets;
 
             var teamBets = GetBetsQuery(BetSpecifications.TeamIdIsEqualTo(teamId)).Include(b => b.User).ToList();
             betsViewModel.Bets = GetBetViewModels(teamBets, false, false, true);
@@ -140,13 +140,13 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                     {
                         betViewModel.IsVisible = false;
                         betViewModel.InvisibleIconClass = "eye_red";
-                        betViewModel.InvisibleIconTitle = BattleBets.BetIsPrivate;
+                        betViewModel.InvisibleIconTitle = Bets.BetIsPrivate;
                     }
                     else if (!bet.IsClosed)
                     {
                         betViewModel.IsVisible = false;
                         betViewModel.InvisibleIconClass = "eye_blek";
-                        betViewModel.InvisibleIconTitle = BattleBets.BetIsNotClosed;
+                        betViewModel.InvisibleIconTitle = Bets.BetIsNotClosed;
                     }
                 }
 
@@ -163,11 +163,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
                 if (bet.IsClosed)
                 {
                     betViewModel.CloseDateAndScreenshot = GetDateAndScreenshot(bet.CloseBetScreenshot, betViewModel.IsVisible);
-                    betViewModel.StatusActionImage = GetBattleBetStatusImage(bet.Id, bet.StatusEnum);
+                    betViewModel.StatusActionImage = GeBetStatusImage(bet.Id, bet.StatusEnum);
                     betViewModel.Result = bet.Result.Value;
                 }
                 else if (isEditable)
-                    betViewModel.StatusActionImages = GetBattleBetStatusImages(bet.Id);
+                    betViewModel.StatusActionImages = GetBetStatusImages(bet.Id);
 
                 if (displayBattle)
                 {
@@ -185,23 +185,23 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
             return betViewModels;
         }
 
-        private IEnumerable<StatusActionImageViewModel> GetBattleBetStatusImages(long battleBetId)
+        private IEnumerable<StatusActionImageViewModel> GetBetStatusImages(long battleBetId)
         {
-            return GetBattleBetStatusImageMappings(battleBetId).Values;
+            return GetBetStatusImageMappings(battleBetId).Values;
         }
 
-        private StatusActionImageViewModel GetBattleBetStatusImage(long battleBetId, BattleBetStatus battleBetStatus)
+        private StatusActionImageViewModel GeBetStatusImage(long battleBetId, BetStatus betStatus)
         {
-            return GetBattleBetStatusImageMappings(battleBetId)[battleBetStatus];
+            return GetBetStatusImageMappings(battleBetId)[betStatus];
         }
 
-        private IDictionary<BattleBetStatus, StatusActionImageViewModel> GetBattleBetStatusImageMappings(long battleBetId)
+        private IDictionary<BetStatus, StatusActionImageViewModel> GetBetStatusImageMappings(long battleBetId)
         {
-            return new Dictionary<BattleBetStatus, StatusActionImageViewModel>()
+            return new Dictionary<BetStatus, StatusActionImageViewModel>()
                 { 
-                    { BattleBetStatus.Succeeded, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetSucceeded(battleBetId), "scr_2", BattleBets.Succeeded) },
-                    { BattleBetStatus.Failed, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetFailed(battleBetId), "scr_1", BattleBets.Failed) },
-                    { BattleBetStatus.CanceledByBookmaker, new StatusActionImageViewModel(MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(battleBetId), "scr_3", BattleBets.CanceledByBookmaker) }
+                    { BetStatus.Succeeded, new StatusActionImageViewModel(MVC.NotAdmin.Bets.BetSucceeded(battleBetId), "scr_2", Bets.Succeeded) },
+                    { BetStatus.Failed, new StatusActionImageViewModel(MVC.NotAdmin.Bets.BetFailed(battleBetId), "scr_1", Bets.Failed) },
+                    { BetStatus.CanceledByBookmaker, new StatusActionImageViewModel(MVC.NotAdmin.Bets.BetCanceledByBookmaker(battleBetId), "scr_3", Bets.CanceledByBookmaker) }
                 };
         }
 
@@ -238,11 +238,11 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.ViewServices
         private string GetBetScreenshotStatusString(BetScreenshotStatus betScreenshotStatus)
         {
             if (betScreenshotStatus == BetScreenshotStatus.Succeeded)
-                return BattleBets.Screenshot;
+                return Bets.Screenshot;
             else if (betScreenshotStatus == BetScreenshotStatus.Failed)
-                return BattleBets.FailedToMakeScreenshot;
+                return Bets.FailedToMakeScreenshot;
             else if (betScreenshotStatus == BetScreenshotStatus.NotProcessed)
-                return BattleBets.MakingScreenshot;
+                return Bets.MakingScreenshot;
             else
                 throw new ArgumentOutOfRangeException("betScreenshotStatus");
         }

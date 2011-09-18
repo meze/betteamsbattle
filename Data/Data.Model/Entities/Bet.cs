@@ -20,7 +20,7 @@ namespace BetTeamsBattle.Data.Model.Entities
         public virtual DateTime? CloseDateTime { get; set; }
         public virtual long? CloseBetScreenshotId { get; set; }
         public virtual sbyte Status { get; set; }
-        public virtual BattleBetStatus StatusEnum { get { return (BattleBetStatus)Status; } set { Status = (sbyte) value; } }
+        public virtual BetStatus StatusEnum { get { return (BetStatus)Status; } set { Status = (sbyte) value; } }
         public virtual double? Result { get; set; }
         public virtual bool IsPrivate { get; set; }
         public bool IsClosed
@@ -49,7 +49,7 @@ namespace BetTeamsBattle.Data.Model.Entities
             Url = url;
             OpenDateTime = DateTime.UtcNow;
             IsPrivate = isPrivate;
-            StatusEnum = BattleBetStatus.NotFinished;
+            StatusEnum = BetStatus.NotFinished;
 
             OpenBetScreenshot = new BetScreenshot();
         }

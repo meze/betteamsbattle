@@ -11,12 +11,12 @@ using BetTeamsBattle.Frontend.Authentication;
 
 namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
 {
-    public partial class BattleBetsController : Controller
+    public partial class BetsController : Controller
     {
         private readonly IBetsViewService _betsViewService;
         private readonly IBattlesService _battlesService;
 
-        public BattleBetsController(IBetsViewService betsViewService, IBattlesService battlesService)
+        public BetsController(IBetsViewService betsViewService, IBattlesService battlesService)
         {
             _betsViewService = betsViewService;
             _battlesService = battlesService;
@@ -27,7 +27,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         {
             var betsViewModel = _betsViewService.GetMyBattleBets(battleId, CurrentUser.NullableUserId);
 
-            return View(Views.Bets, betsViewModel);
+            return View(Views.GetBets, betsViewModel);
         }
 
         [ChildActionOnly]
@@ -35,7 +35,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         {
             var betViewModel = _betsViewService.GetUserBets(userId, CurrentUser.NullableUserId);
 
-            return View(Views.Bets, betViewModel);
+            return View(Views.GetBets, betViewModel);
         }
 
         [ChildActionOnly]
@@ -43,7 +43,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Controllers
         {
             var betsViewModel = _betsViewService.GetTeamBets(teamId);
 
-            return View(Views.Bets, betsViewModel);
+            return View(Views.GetBets, betsViewModel);
         }
 
         [Authorize]

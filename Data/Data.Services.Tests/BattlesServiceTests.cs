@@ -75,7 +75,7 @@ namespace BetTeamsBattle.Data.Services.Tests
 
             var battleBetId = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
 
-            _entityAssert.OpenedBattleBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate, -_amount, -_amount, 1, 0);
+            _entityAssert.OpenedBet(battleBetId, battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate, -_amount, -_amount, 1, 0);
         }
 
         [Test]
@@ -89,11 +89,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             var battleBetId1 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
             var battleBetId2 = _battlesService.MakeBet(battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate);
 
-            _entityAssert.OpenedBattleBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate, -_amount * 2, -_amount * 2, 2, 0);
+            _entityAssert.OpenedBet(battleBetId2, battle.Id, team.Id, user.Id, _betTitle, _amount, _betCoefficient, _betUrl, _betIsPrivate, -_amount * 2, -_amount * 2, 2, 0);
         }
 
         [Test]
-        public void CloseBattleBet_Succeeded()
+        public void CloseBet_Succeeded()
         {
             Battle battle;
             Team team;
@@ -104,11 +104,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             long battleId;
             _battlesService.BetSucceeded(battleBetId, user.Id, out battleId);
 
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Succeeded, -_amount + _amount * _betCoefficient, -_amount + _amount * _betCoefficient, -_amount + _amount * _betCoefficient, 0, 1);
+            _entityAssert.ClosedBet(battleBetId, BetStatus.Succeeded, -_amount + _amount * _betCoefficient, -_amount + _amount * _betCoefficient, -_amount + _amount * _betCoefficient, 0, 1);
         }
 
         [Test]
-        public void CloseBattleBet_Failed()
+        public void CloseBet_Failed()
         {
             Battle battle;
             Team team;
@@ -119,11 +119,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             long battleId;
             _battlesService.BetFailed(battleBetId, user.Id, out battleId);
 
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.Failed, -_amount, -_amount, -_amount, 0, 1);
+            _entityAssert.ClosedBet(battleBetId, BetStatus.Failed, -_amount, -_amount, -_amount, 0, 1);
         }
 
         [Test]
-        public void CloseBattleBet_CanceledByBookmaker()
+        public void CloseBet_CanceledByBookmaker()
         {
             Battle battle;
             Team team;
@@ -134,11 +134,11 @@ namespace BetTeamsBattle.Data.Services.Tests
             long battleId;
             _battlesService.BetCanceledByBookmaker(battleBetId, user.Id, out battleId);
 
-            _entityAssert.ClosedBattleBet(battleBetId, BattleBetStatus.CanceledByBookmaker, 0, 0, 0, 0, 1);
+            _entityAssert.ClosedBet(battleBetId, BetStatus.CanceledByBookmaker, 0, 0, 0, 0, 1);
         }
 
         [Test]
-        public void CloseBattleBet_NotMineBattleBet_Exception()
+        public void CloseBet_NotMineBattleBet_Exception()
         {
             Battle battle;
             Team team;
@@ -153,7 +153,7 @@ namespace BetTeamsBattle.Data.Services.Tests
         }
 
         [Test]
-        public void CloseBattleBet_CloseAlreadyClosedBattleBet_Exception()
+        public void CloseBet_CloseAlreadyClosedBet_Exception()
         {
             Battle battle;
             Team team;

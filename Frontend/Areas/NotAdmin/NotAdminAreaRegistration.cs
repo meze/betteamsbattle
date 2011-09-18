@@ -24,14 +24,14 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin
             context.MapLanguageRoute("battles/{battleId}", MVC.NotAdmin.Battles.GetBattle());
             #endregion
 
-            #region BattleBetsController
-            context.MapLanguageRoute("battles/{battleId}/mybets", MVC.NotAdmin.BattleBets.GetMyBattleBets());
-            context.MapLanguageRoute("users/{userId}/bets", MVC.NotAdmin.BattleBets.GetUserBets());
-            context.MapLanguageRoute("teasm/{teamId}/bets", MVC.NotAdmin.BattleBets.GetTeamBets());
-            context.MapLanguageRoute("battles/{battleId}/mybets/new", MVC.NotAdmin.BattleBets.MakeBet());
-            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/succeeded", MVC.NotAdmin.BattleBets.BetSucceeded());
-            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/failed", MVC.NotAdmin.BattleBets.BetFailed());
-            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/canceledbybookmaker", MVC.NotAdmin.BattleBets.BetCanceledByBookmaker());
+            #region BetsController
+            context.MapLanguageRoute("battles/{battleId}/mybets", MVC.NotAdmin.Bets.GetMyBattleBets());
+            context.MapLanguageRoute("users/{userId}/bets", MVC.NotAdmin.Bets.GetUserBets());
+            context.MapLanguageRoute("teasm/{teamId}/bets", MVC.NotAdmin.Bets.GetTeamBets());
+            context.MapLanguageRoute("battles/{battleId}/mybets/new", MVC.NotAdmin.Bets.MakeBet());
+            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/succeeded", MVC.NotAdmin.Bets.BetSucceeded());
+            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/failed", MVC.NotAdmin.Bets.BetFailed());
+            context.MapLanguageRoute("battles/{battleId}/mybets/{battleBetId}/canceledbybookmaker", MVC.NotAdmin.Bets.BetCanceledByBookmaker());
             #endregion
 
             #region AccountsController

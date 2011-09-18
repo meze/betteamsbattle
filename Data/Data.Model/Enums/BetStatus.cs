@@ -1,6 +1,6 @@
 namespace BetTeamsBattle.Data.Model.Enums
 {
-    public enum BattleBetStatus
+    public enum BetStatus
     {
         NotFinished = 1,
         Succeeded = 2,

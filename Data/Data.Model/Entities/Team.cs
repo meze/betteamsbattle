@@ -25,7 +25,7 @@ namespace BetTeamsBattle.Data.Model.Entities
             }
             set { _teamUsers = value; }
             }
-        public virtual ICollection<Bet> BattlesBets { get; set; }
+        public virtual ICollection<Bet> Bets { get; set; }
         public virtual TeamStatistics TeamStatistics { get; set; } 
         public virtual ICollection<TeamBattleStatistics> TeamBattlesStatistics { get; set; }
 

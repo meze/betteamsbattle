@@ -222,7 +222,7 @@
           <Property Type="DateTime" Name="EndDate" Nullable="false" />
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="DateTime" Name="StartDate" Nullable="false" />
-          <NavigationProperty Name="BattleBets" Relationship="Model.battlesbets_ibfk_1" FromRole="Battle" ToRole="battlesbet" />
+          <NavigationProperty Name="Bets" Relationship="Model.battlesbets_ibfk_1" FromRole="Battle" ToRole="battlesbet" />
           <Property Type="Int32" Name="BetLimit" Nullable="false" />
           <NavigationProperty Name="TeamsBattleStatistics" Relationship="Model.teamsbattlesstatistics_ibfk_1" FromRole="Battle" ToRole="teamsbattlesstatistic" />
         </EntityType>
@@ -310,7 +310,7 @@
           <Property Type="String" Name="Title" Nullable="false" />
           <Property Type="Boolean" Name="IsPersonal" Nullable="false" />
           <NavigationProperty Name="TeamUsers" Relationship="Model.teamsusers_ibfk_1" FromRole="team" ToRole="teamsuser" />
-          <NavigationProperty Name="BattlesBets" Relationship="Model.battlesbets_ibfk_21" FromRole="Team" ToRole="BattleBet" />
+          <NavigationProperty Name="Bets" Relationship="Model.battlesbets_ibfk_21" FromRole="Team" ToRole="BattleBet" />
           <Property Type="Boolean" Name="IsPro" Nullable="false" />
           <Property Type="String" Name="Site" />
           <Property Type="String" Name="Description" />

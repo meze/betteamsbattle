@@ -125,7 +125,7 @@
     <Compile Include="Areas\Admin\Models\Battles\CreateBattleViewModel.cs" />
     <Compile Include="Areas\Admin\Validators\CreateBattleFormViewModelValidator.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\AccountsController.cs" />
-    <Compile Include="Areas\NotAdmin\Controllers\BattleBetsController.cs" />
+    <Compile Include="Areas\NotAdmin\Controllers\BetsController.cs" />
     <Compile Include="Areas\NotAdmin\Controllers\TeamsController.cs" />
     <Compile Include="Areas\NotAdmin\Localization\Resources\Common\Statistics\Statistics.Designer.cs">
       <DependentUpon>Statistics.resx</DependentUpon>
@@ -147,15 +147,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Accounts.resx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.Designer.cs">
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Bets\Bets.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BattleBets.resx</DependentUpon>
+      <DependentUpon>Bets.resx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.ru.Designer.cs">
+    <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Bets\Bets.ru.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BattleBets.ru.resx</DependentUpon>
+      <DependentUpon>Bets.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -285,10 +285,10 @@
     <Compile Include="T4MVC\NotAdmin.AccountsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\NotAdmin.BattleBetsController.generated.cs">
+    <Compile Include="T4MVC\NotAdmin.BattlesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\NotAdmin.BattlesController.generated.cs">
+    <Compile Include="T4MVC\NotAdmin.BetsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\NotAdmin.HomeController.generated.cs">
@@ -456,8 +456,8 @@
     <Content Include="Areas\NotAdmin\Views\Accounts\SignUp.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Accounts\SignInOrSignOutLink.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\BattleBets\Bets.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\BattleBets\MakeBet.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Bets\GetBets.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Bets\MakeBet.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\AllBattles.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\TopTeams.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Battles\GetBattle.cshtml" />
@@ -468,9 +468,9 @@
       <Link>Web.config</Link>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\NotAdmin\Views\BattleBets\_DateAndScreenshot.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Bets\_DateAndScreenshot.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Shared\_BattleLayout.cshtml" />
-    <Content Include="Areas\NotAdmin\Views\BattleBets\_Outcome.cshtml" />
+    <Content Include="Areas\NotAdmin\Views\Bets\_Outcome.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\GetProTeams.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTeams\CreateProTeam.cshtml" />
     <Content Include="Areas\NotAdmin\Views\Teams\GetPersonalTeam.cshtml" />
@@ -550,14 +550,14 @@
       <LastGenOutput>Accounts.ru1.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.resx">
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Bets\Bets.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>BattleBets.Designer.cs</LastGenOutput>
+      <LastGenOutput>Bets.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\BattleBets\BattleBets.ru.resx">
+    <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Bets\Bets.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>BattleBets.ru.Designer.cs</LastGenOutput>
+      <LastGenOutput>Bets.ru.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Areas\NotAdmin\Localization\Resources\Views\Battles\Battles.resx">

@@ -1,0 +1,28 @@
+﻿@using BetTeamsBattle.Frontend.Areas.NotAdmin.Models.BattleBets
+@using Resources
+@model MakeBetViewModel
+@{
+    Layout = MVC.NotAdmin.Shared.Views._BattleLayout;
+}
+@section RightBlockStart {
+<div class="pravo_blok_battle_n">
+}
+@section RightBlockFinish { 
+</div>
+}
+@section head_s{
+    @Html.Raw("class=\"hed_s_n\"")
+}
+@using (Html.BeginForm(MVC.NotAdmin.Bets.MakeBet(Model.BattleId), FormMethod.Post, new { @class = "form" }))
+{
+    @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
+    
+    @Forms.HideableDropDownList(Html, m => m.MakeBetForm.TeamId, Bets.MakeBetOnBehalfOf, Model.Teams)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Title, Bets.Title, Bets.TitleHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Url, Bets.BookmakerUrl, Bets.UrlHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.AmountString, Bets.Amount + ", $", Bets.AmountHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.CoefficientString, Bets.Coefficient, Bets.CoefficientHelpMessage)
+    @Forms.CheckBox(Html, m => m.MakeBetForm.IsPrivate, Bets.PrivateBet, Bets.IsPrivateHelpMessage)
+    
+    @Forms.SubmitButton(Bets.MakeBet)
+}
