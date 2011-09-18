@@ -12,5 +12,11 @@
     @: Id = @team.Id <br />
     @: Title = @team.Title <br />
     @: Description = @team.Description <br />
-    @: Url = @team.Site <br /> <br /> <br />
+    @: Url = @team.Site <br /> 
+    @: Users ids:
+    foreach (var teamUser in team.TeamUsers)
+    {
+        @teamUser.UserId
+    }
+    <br /> <br />
 }
