@@ -97,8 +97,8 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
         {
             var betsViewModel = _betsViewService.GetMyBattleBets(_battleId, null);
 
-            Assert.AreEqual(BattleBets.MyBets, betsViewModel.Title);
-            Assert.AreEqual(BattleBets.YouHaveMadeNoBetsInThisBattle, betsViewModel.NoBetsMessage);
+            Assert.AreEqual(Bets.MyBets, betsViewModel.Title);
+            Assert.AreEqual(Bets.YouHaveMadeNoBetsInThisBattle, betsViewModel.NoBetsMessage);
 
             Assert.AreEqual(0, betsViewModel.Bets.Count());
         }
@@ -108,8 +108,8 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
         {
             var betsViewModel = _betsViewService.GetMyBattleBets(_battleId, _userId);
 
-            Assert.AreEqual(BattleBets.MyBets, betsViewModel.Title);
-            Assert.AreEqual(BattleBets.YouHaveMadeNoBetsInThisBattle, betsViewModel.NoBetsMessage);
+            Assert.AreEqual(Bets.MyBets, betsViewModel.Title);
+            Assert.AreEqual(Bets.YouHaveMadeNoBetsInThisBattle, betsViewModel.NoBetsMessage);
 
             var bets = betsViewModel.Bets;
             Assert.AreEqual(4, bets.Count());
@@ -124,8 +124,8 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
         {
             var betsViewModel = _betsViewService.GetUserBets(_userId, _userId);
 
-            Assert.AreEqual(BattleBets.MyBets, betsViewModel.Title);
-            Assert.AreEqual(BattleBets.YouHaveMadeNoBets, betsViewModel.NoBetsMessage);
+            Assert.AreEqual(Bets.MyBets, betsViewModel.Title);
+            Assert.AreEqual(Bets.YouHaveMadeNoBets, betsViewModel.NoBetsMessage);
 
             var bets = betsViewModel.Bets;
             Assert.AreEqual(5, bets.Count());
@@ -141,8 +141,8 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
         {
             var betsViewModel = _betsViewService.GetUserBets(_userId, _notMeUserId);
 
-            Assert.AreEqual(BattleBets.UserBets, betsViewModel.Title);
-            Assert.AreEqual(BattleBets.UserHasMadeNoBets, betsViewModel.NoBetsMessage);
+            Assert.AreEqual(Bets.UserBets, betsViewModel.Title);
+            Assert.AreEqual(Bets.UserHasMadeNoBets, betsViewModel.NoBetsMessage);
 
             var bets = betsViewModel.Bets;
 
@@ -159,8 +159,8 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
         {
             var betsViewModel = _betsViewService.GetTeamBets(_teamId);
 
-            Assert.AreEqual(BattleBets.TeamBets, betsViewModel.Title);
-            Assert.AreEqual(BattleBets.TeamHasMadeNoBets, betsViewModel.NoBetsMessage);
+            Assert.AreEqual(Bets.TeamBets, betsViewModel.Title);
+            Assert.AreEqual(Bets.TeamHasMadeNoBets, betsViewModel.NoBetsMessage);
 
             var bets = betsViewModel.Bets;
             Assert.AreEqual(6, bets.Count());
@@ -205,21 +205,21 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
 
         private void AssertOpenedPrivateUserBet(Bet bet, BetViewModel betViewModel)
         {
-            AssertNotVisibleBetCommon(bet, false, false, "eye_red", BattleBets.BetIsPrivate, betViewModel);
+            AssertNotVisibleBetCommon(bet, false, false, "eye_red", Bets.BetIsPrivate, betViewModel);
 
             AssertNotClosedNotEditableBetCommon(bet, betViewModel);
         }
 
         private void AssertOpenedPublicUserBet(Bet bet, BetViewModel betViewModel)
         {
-            AssertNotVisibleBetCommon(bet, false, false, "eye_blek", BattleBets.BetIsNotClosed, betViewModel);
+            AssertNotVisibleBetCommon(bet, false, false, "eye_blek", Bets.BetIsNotClosed, betViewModel);
 
             AssertNotClosedNotEditableBetCommon(bet, betViewModel);
         }
 
         private void AssertClosedPrivateUserBet(Bet bet, BetViewModel betViewModel)
         {
-            AssertNotVisibleBetCommon(bet, true, false, "eye_red", BattleBets.BetIsPrivate, betViewModel);
+            AssertNotVisibleBetCommon(bet, true, false, "eye_red", Bets.BetIsPrivate, betViewModel);
 
             AssertClosedBetCommon(bet, false, betViewModel);
         }
@@ -269,7 +269,7 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
             Assert.IsTrue(betViewModel.IsVisible);
             Assert.IsNull(betViewModel.InvisibleIconClass);
 
-            AssertVisibleDateAndScreenshot(bet.OpenBetScreenshot.CreationDateTime, BattleBets.MakingScreenshot, "sc_inprogress", null, betViewModel.OpenDateAndScreenshot);
+            AssertVisibleDateAndScreenshot(bet.OpenBetScreenshot.CreationDateTime, Bets.MakingScreenshot, "sc_inprogress", null, betViewModel.OpenDateAndScreenshot);
         }
 
         private void AssertNotVisibleBetCommon(Bet bet, bool isClosed, bool isEditable, string invisibleIconClass, string invisibleIconTitle, BetViewModel betViewModel)
@@ -311,7 +311,7 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
         private void AssertClosedBetCommon(Bet bet, bool visible, BetViewModel betViewModel)
         {
             if (visible)
-                AssertVisibleDateAndScreenshot(bet.CloseBetScreenshot.CreationDateTime, BattleBets.MakingScreenshot, "sc_inprogress", null, betViewModel.CloseDateAndScreenshot);
+                AssertVisibleDateAndScreenshot(bet.CloseBetScreenshot.CreationDateTime, Bets.MakingScreenshot, "sc_inprogress", null, betViewModel.CloseDateAndScreenshot);
             else
                 AssertNotVisibleDateAndScreenshot(bet.CloseBetScreenshot.CreationDateTime, betViewModel.CloseDateAndScreenshot);
             AssertSucceedStatusActionImage(bet.Id, betViewModel.StatusActionImage);
@@ -349,17 +349,17 @@ namespace BetTeamsBattle.Frontend.Tests.Areas.NotAdmin.ViewServices
 
         private void AssertSucceedStatusActionImage(long battleBetId, StatusActionImageViewModel statusActionImage)
         {
-            AssertStatusActionImage(BattleBets.Succeeded, "scr_2", MVC.NotAdmin.BattleBets.BetSucceeded(battleBetId), statusActionImage);
+            AssertStatusActionImage(Bets.Succeeded, "scr_2", MVC.NotAdmin.Bets.BetSucceeded(battleBetId), statusActionImage);
         }
 
         private void AssertFailedStatusActionImage(long battleBetId, StatusActionImageViewModel statusActionImage)
         {
-            AssertStatusActionImage(BattleBets.Failed, "scr_1", MVC.NotAdmin.BattleBets.BetFailed(battleBetId), statusActionImage);
+            AssertStatusActionImage(Bets.Failed, "scr_1", MVC.NotAdmin.Bets.BetFailed(battleBetId), statusActionImage);
         }
 
         private void AssertCanceledByBookmakerActionImage(long battleBetId, StatusActionImageViewModel statusActionImage)
         {
-            AssertStatusActionImage(BattleBets.CanceledByBookmaker, "scr_3", MVC.NotAdmin.BattleBets.BetCanceledByBookmaker(battleBetId), statusActionImage);
+            AssertStatusActionImage(Bets.CanceledByBookmaker, "scr_3", MVC.NotAdmin.Bets.BetCanceledByBookmaker(battleBetId), statusActionImage);
         }
 
         private void AssertStatusActionImage(string title, string imageClass, ActionResult actionResult, StatusActionImageViewModel statusActionImage)

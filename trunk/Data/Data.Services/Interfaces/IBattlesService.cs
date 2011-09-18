@@ -10,7 +10,7 @@ namespace BetTeamsBattle.Data.Services.Interfaces
         long MakeBet(long battleId, long teamId, long userId, string title, double amount, double coefficient, string url, bool isPrivate);
         void BetSucceeded(long battleBetId, long userId, out long battleId);
         void BetFailed(long battleBetId, long userId, out long battleId);
-        void CloseBet(long battleBetId, long userId, BattleBetStatus status, out long battleId);
+        void CloseBet(long battleBetId, long userId, BetStatus status, out long battleId);
         void BetCanceledByBookmaker(long battleBetId, long userId, out long battleId);
         double GetBetLimit(long battleId, long teamId);
     }

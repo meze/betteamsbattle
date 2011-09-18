@@ -22,9 +22,9 @@
     @*<a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">*@
         <div class="knopka_st">
             <div class="knopka_st_text">
-                <a href="@Url.Action(MVC.NotAdmin.BattleBets.MakeBet(Model.BattleId))">@BattleBets.MakeBet</a>
+                <a href="@Url.Action(MVC.NotAdmin.Bets.MakeBet(Model.BattleId))">@Bets.MakeBet</a>
             </div>
         </div>
     @*</a>*@
 }
-@Html.Action(MVC.NotAdmin.BattleBets.GetMyBattleBets(Model.BattleId))
+@Html.Action(MVC.NotAdmin.Bets.GetMyBattleBets(Model.BattleId))

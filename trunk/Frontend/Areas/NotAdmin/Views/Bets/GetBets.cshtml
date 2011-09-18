@@ -29,19 +29,19 @@
                 <tbody>
                     <tr class="tabl_battel_n">
                         <td class="tabl_battel_n1">
-                            @BattleBets.Title
+                            @Bets.Title
                         </td>
                         <td class="tabl_battel_n2">
-                            @BattleBets.Amount
+                            @Bets.Amount
                         </td>
                         <td class="tabl_battel_n4">
-                            @BattleBets.BetStarted
+                            @Bets.BetStarted
                         </td>
                         <td class="tabl_battel_n5">
-                            @BattleBets.BetFinished
+                            @Bets.BetFinished
                         </td>
                         <td class="tabl_battel_n6">
-                            @BattleBets.Outcome
+                            @Bets.Outcome
                         </td>
                     </tr>
                     @foreach (var bet in Model.Bets)
@@ -53,18 +53,18 @@
                             <td>
                                 @PossiblyInvisibleElement(@<text>
                                 <span class="bet">@bet.Amount$<span class="cof"> x @bet.Coefficient</span></span>
-                                @Forms.ActionImage(bet.Url, BookmakerIcon.GetClass(), BattleBets.BetOnBookmakersSite, true)
+                                @Forms.ActionImage(bet.Url, BookmakerIcon.GetClass(), Bets.BetOnBookmakersSite, true)
                                 </text>, bet)
                                 
                             </td>
                             <td>
-                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, bet.OpenDateAndScreenshot)
+                                @Html.Partial(MVC.NotAdmin.Bets.Views._DateAndScreenshot, bet.OpenDateAndScreenshot)
                             </td>
                             <td>
-                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._DateAndScreenshot, new ViewDataDictionary(bet.CloseDateAndScreenshot))
+                                @Html.Partial(MVC.NotAdmin.Bets.Views._DateAndScreenshot, new ViewDataDictionary(bet.CloseDateAndScreenshot))
                             </td>
                             <td>
-                                @Html.Partial(MVC.NotAdmin.BattleBets.Views._Outcome, bet)
+                                @Html.Partial(MVC.NotAdmin.Bets.Views._Outcome, bet)
                             </td>
                         </tr>
                     }

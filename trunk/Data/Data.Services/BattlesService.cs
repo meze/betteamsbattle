@@ -78,7 +78,7 @@ namespace BetTeamsBattle.Data.Services
             }
         }
 
-        public void CloseBet(long battleBetId, long userId, BattleBetStatus status, out long battleId)
+        public void CloseBet(long battleBetId, long userId, BetStatus status, out long battleId)
         {
             using (var unitOfWorkScope = _unitOfWorkScopeFactory.Create())
             {
@@ -98,11 +98,11 @@ namespace BetTeamsBattle.Data.Services
                 var teamBattleStatistics = _repositoryOfTeamBattleStatistics.Get(TeamBattleStatisticsSpecifications.BattleIdAndTeamIdAreEqualTo(bet.BattleId, bet.TeamId)).Single();
 
                 double balanceChange;
-                if (status == BattleBetStatus.Succeeded)
+                if (status == BetStatus.Succeeded)
                     balanceChange = bet.Amount * bet.Coefficient;
-                else if (status == BattleBetStatus.Failed)
+                else if (status == BetStatus.Failed)
                     balanceChange = 0;
-                else if (status == BattleBetStatus.CanceledByBookmaker)
+                else if (status == BetStatus.CanceledByBookmaker)
                     balanceChange = bet.Amount;
                 else
                     throw new ArgumentOutOfRangeException("status");
@@ -123,17 +123,17 @@ namespace BetTeamsBattle.Data.Services
 
         public void BetSucceeded(long battleBetId, long userId, out long battleId)
         {
-            CloseBet(battleBetId, userId, BattleBetStatus.Succeeded, out battleId);
+            CloseBet(battleBetId, userId, BetStatus.Succeeded, out battleId);
         }
 
         public void BetFailed(long battleBetId, long userId, out long battleId)
         {
-            CloseBet(battleBetId, userId, BattleBetStatus.Failed, out battleId);
+            CloseBet(battleBetId, userId, BetStatus.Failed, out battleId);
         }
 
         public void BetCanceledByBookmaker(long battleBetId, long userId, out long battleId)
         {
-            CloseBet(battleBetId, userId, BattleBetStatus.CanceledByBookmaker, out battleId);
+            CloseBet(battleBetId, userId, BetStatus.CanceledByBookmaker, out battleId);
         }
 
         //ToDo: Write test to it
