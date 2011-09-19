@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{31EE08FA-D22B-4FF3-AF38-5C09C757234D}</ProjectGuid>
+    <ProjectGuid>{343976EF-889A-4A32-8135-EBF2A96C38F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.Data.Repositories.Tests</RootNamespace>
-    <AssemblyName>BetTeamsBattle.Data.Repositories.Tests</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Screenshots.AmazonS3</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Screenshots.AmazonS3</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,25 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions">
-      <HintPath>..\..\packages\FluentAssertions.1.5.0.0\Lib\.NetFramework 4.0\FluentAssertions.dll</HintPath>
-    </Reference>
-    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+    <Reference Include="AWSSDK, Version=1.3.10.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+      <HintPath>..\..\Libraries\AWSSDK.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.mocks">
-      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="pnunit.framework">
-      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,23 +48,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BetScreenshotPathService.cs" />
+    <Compile Include="DI\ScreenshotsAmazonS3NinjectModule.cs" />
+    <Compile Include="Interfaces\IBetScreenshotPathService.cs" />
+    <Compile Include="Interfaces\IScreenshotAmazonS3Putter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenshotAmazonS3Putter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Configs\Testing\App.config">
-      <Link>App.config</Link>
-    </None>
+    <ProjectReference Include="..\..\Configuration\Configuration.csproj">
+      <Project>{A7C451BA-6138-489D-B91C-D66DF03BE3D3}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data.Model\Data.Model.csproj">
-      <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
-      <Name>Data.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data.Repositories\Data.Repositories.csproj">
-      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
-      <Name>Data.Repositories</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
