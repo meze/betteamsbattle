@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</ProjectGuid>
+    <ProjectGuid>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.Screenshots.BettScreenshotsManager</RootNamespace>
-    <AssemblyName>BetTeamsBattle.Screenshots.BetScreenshotsManager</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Data.Repositories</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Data.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,49 +30,41 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AWSSDK, Version=1.3.10.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\AWSSDK.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
+    <Reference Include="Ninject, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Transactions" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DI\ScreenshotsBetScreenshotsManagerNinjectModule.cs" />
-    <Compile Include="Interfaces\IBetScreenshotProcessor.cs" />
-    <Compile Include="BetScreenshotProcessor.cs" />
-    <Compile Include="Interfaces\IScreenshotsMakingManager.cs" />
+    <Compile Include="Base\ContextManagerBase.cs" />
+    <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
+    <Compile Include="Base\Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenshotsMakingManager.cs" />
+    <Compile Include="Base\Repository.cs" />
+    <Compile Include="TransactionScope\Interfaces\ITransactionScopeFactory.cs" />
+    <Compile Include="TransactionScope\TransactionScopeFactory.cs" />
+    <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScope.cs" />
+    <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScopeFactory.cs" />
+    <Compile Include="UnitOfWork\UnitOfWorkScope.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWorkScopeFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Configuration\Configuration.csproj">
-      <Project>{A7C451BA-6138-489D-B91C-D66DF03BE3D3}</Project>
-      <Name>Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data\Data.Model\Data.Model.csproj">
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
       <Name>Data.Model</Name>
     </ProjectReference>
@@ -80,32 +72,17 @@
       <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
       <Name>NetFx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Data\Data.Repositories\Data.Repositories.csproj">
-      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
-      <Name>Data.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AmazonS3\Screenshots.AmazonS3.csproj">
-      <Project>{343976EF-889A-4A32-8135-EBF2A96C38F6}</Project>
-      <Name>Screenshots.AmazonS3</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AwesomiumScreenshotMaker\Screenshots.AwesomiumScreenshotMaker.csproj">
-      <Project>{7F6CC474-040D-4A51-BF99-12C0B2A0C014}</Project>
-      <Name>Screenshots.AwesomiumScreenshotMaker</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Screenshots.Common\Screenshots.Common.csproj">
-      <Project>{AE493EBA-BAD6-4C27-AC36-D0359B256CB0}</Project>
-      <Name>Screenshots.Common</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EntityRepositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

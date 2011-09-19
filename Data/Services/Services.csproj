@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4126E87A-FDD0-4AC9-813F-9D752631071B}</ProjectGuid>
+    <ProjectGuid>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.Gui.Tests</RootNamespace>
-    <AssemblyName>BetTeamsBattle.Gui.Tests</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Data.Services</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Data.Services</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,20 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject">
-      <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.mocks">
-      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="pnunit.framework">
-      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+    <Reference Include="Ninject, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,25 +44,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattlesService.cs" />
+    <Compile Include="DI\DataServicesNinjectModule.cs" />
+    <Compile Include="Interfaces\IBattlesService.cs" />
+    <Compile Include="Interfaces\ITeamsService.cs" />
+    <Compile Include="Interfaces\IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DI\ScreenshotsMakerWinFormsNinjectKernelTests.cs" />
+    <Compile Include="TeamsService.cs" />
+    <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Configs\Testing\App.config">
-      <Link>App.config</Link>
-      <SubType>Designer</SubType>
-    </None>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
+      <Name>Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NetFx\NetFx.csproj">
+      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
+      <Name>NetFx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
+      <Name>Data.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BetScreenshotsManager\Screenshots.BetScreenshotsManager.csproj">
-      <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
-      <Name>Screenshots.BetScreenshotsManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gui\Screenshots.Gui.csproj">
-      <Project>{B1F6BE11-C141-453F-A302-CD0C543C4820}</Project>
-      <Name>Screenshots.Gui</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

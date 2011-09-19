@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B386F5A3-D586-41D3-A7C1-214C4E514F31}</ProjectGuid>
+    <ProjectGuid>{4126E87A-FDD0-4AC9-813F-9D752631071B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.Data.Services.Tests</RootNamespace>
-    <AssemblyName>BetTeamsBattle.Data.Services.Tests</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Gui.Tests</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Gui.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
@@ -48,8 +46,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,13 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattlesServiceTests.cs" />
-    <Compile Include="DI\TestNinjectKernel.cs" />
-    <Compile Include="Helpers\Creator.cs" />
-    <Compile Include="Helpers\EntityAssert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeamsServiceTests.cs" />
-    <Compile Include="UsersServiceTests.cs" />
+    <Compile Include="DI\ScreenshotsMakerWinFormsNinjectKernelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Configs\Testing\App.config">
@@ -73,21 +64,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.Model\Data.Model.csproj">
-      <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
-      <Name>Data.Model</Name>
+    <ProjectReference Include="..\BetScreenshotsManager\BetScreenshotsManager.csproj">
+      <Project>{668A5B28-216A-4DA8-9B58-BB904B9C0472}</Project>
+      <Name>Screenshots.BetScreenshotsManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\NetFx\NetFx.csproj">
-      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
-      <Name>NetFx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data.Repositories\Data.Repositories.csproj">
-      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
-      <Name>Data.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data.Services\Data.Services.csproj">
-      <Project>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</Project>
-      <Name>Data.Services</Name>
+    <ProjectReference Include="..\Gui\Gui.csproj">
+      <Project>{B1F6BE11-C141-453F-A302-CD0C543C4820}</Project>
+      <Name>Screenshots.Gui</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

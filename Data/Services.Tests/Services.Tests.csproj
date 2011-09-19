@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</ProjectGuid>
+    <ProjectGuid>{B386F5A3-D586-41D3-A7C1-214C4E514F31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.Data.Services</RootNamespace>
-    <AssemblyName>BetTeamsBattle.Data.Services</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Data.Services.Tests</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Data.Services.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,11 +31,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,17 +57,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattlesService.cs" />
-    <Compile Include="DI\DataServicesNinjectModule.cs" />
-    <Compile Include="Interfaces\IBattlesService.cs" />
-    <Compile Include="Interfaces\ITeamsService.cs" />
-    <Compile Include="Interfaces\IUsersService.cs" />
+    <Compile Include="BattlesServiceTests.cs" />
+    <Compile Include="DI\TestNinjectKernel.cs" />
+    <Compile Include="Helpers\Creator.cs" />
+    <Compile Include="Helpers\EntityAssert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeamsService.cs" />
-    <Compile Include="UsersService.cs" />
+    <Compile Include="TeamsServiceTests.cs" />
+    <Compile Include="UsersServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.Model\Data.Model.csproj">
+    <None Include="..\..\Configs\Testing\App.config">
+      <Link>App.config</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
       <Name>Data.Model</Name>
     </ProjectReference>
@@ -62,13 +81,14 @@
       <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
       <Name>NetFx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Data.Repositories\Data.Repositories.csproj">
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
       <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
       <Name>Data.Repositories</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{437DF1D4-B06C-48C8-AC92-E18FAB8ABBF5}</Project>
+      <Name>Data.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

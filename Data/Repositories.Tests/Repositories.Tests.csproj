@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</ProjectGuid>
+    <ProjectGuid>{31EE08FA-D22B-4FF3-AF38-5C09C757234D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetTeamsBattle.Data.Repositories</RootNamespace>
-    <AssemblyName>BetTeamsBattle.Data.Repositories</AssemblyName>
+    <RootNamespace>BetTeamsBattle.Data.Repositories.Tests</RootNamespace>
+    <AssemblyName>BetTeamsBattle.Data.Repositories.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,16 +31,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\..\packages\FluentAssertions.1.5.0.0\Lib\.NetFramework 4.0\FluentAssertions.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,38 +57,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\ContextManagerBase.cs" />
-    <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
-    <Compile Include="Base\Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Base\Repository.cs" />
-    <Compile Include="TransactionScope\Interfaces\ITransactionScopeFactory.cs" />
-    <Compile Include="TransactionScope\TransactionScopeFactory.cs" />
-    <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
-    <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScope.cs" />
-    <Compile Include="UnitOfWork\Interfaces\IUnitOfWorkScopeFactory.cs" />
-    <Compile Include="UnitOfWork\UnitOfWorkScope.cs" />
-    <Compile Include="UnitOfWork\UnitOfWork.cs" />
-    <Compile Include="UnitOfWork\UnitOfWorkScopeFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data.Model\Data.Model.csproj">
+    <None Include="..\..\Configs\Testing\App.config">
+      <Link>App.config</Link>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{88B06194-D4B3-4504-B688-6314D5D7FE18}</Project>
       <Name>Data.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\NetFx\NetFx.csproj">
-      <Project>{1FC3176B-A5DD-4626-B0B3-E6599B138B57}</Project>
-      <Name>NetFx</Name>
+    <ProjectReference Include="..\Repositories\Repositories.csproj">
+      <Project>{3C778D2D-88DA-4EC4-A637-E7FE298F75FE}</Project>
+      <Name>Data.Repositories</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntityRepositories\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
