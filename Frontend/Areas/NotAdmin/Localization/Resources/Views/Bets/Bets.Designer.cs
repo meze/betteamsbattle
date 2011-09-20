@@ -124,7 +124,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bet should be more that zero.
+        ///   Looks up a localized string similar to Bet should be more than zero.
         /// </summary>
         public static string BetShouldBeMoreThanZero {
             get {
@@ -142,7 +142,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Url on bookmaker&apos;s site.
+        ///   Looks up a localized string similar to Bookmaker&apos;s site url.
         /// </summary>
         public static string BookmakerUrl {
             get {
@@ -169,7 +169,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title.
+        ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description {
             get {

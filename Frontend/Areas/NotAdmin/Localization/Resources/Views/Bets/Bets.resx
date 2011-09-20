@@ -139,13 +139,13 @@
     <value>Bet should be less than {0}</value>
   </data>
   <data name="BetShouldBeMoreThanZero" xml:space="preserve">
-    <value>Bet should be more that zero</value>
+    <value>Bet should be more than zero</value>
   </data>
   <data name="BetStarted" xml:space="preserve">
     <value>Bet started</value>
   </data>
   <data name="BookmakerUrl" xml:space="preserve">
-    <value>Url on bookmaker's site</value>
+    <value>Bookmaker's site url</value>
   </data>
   <data name="CanceledByBookmaker" xml:space="preserve">
     <value>Canceled by bookmaker</value>
@@ -154,7 +154,7 @@
     <value>Choose</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Title</value>
+    <value>Description</value>
   </data>
   <data name="DescriptionHelpMessage" xml:space="preserve">
     <value>Description should uniquely identify your bet. For example: "Barcelona - Real Madrid, draw"</value>
