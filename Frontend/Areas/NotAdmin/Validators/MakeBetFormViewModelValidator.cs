@@ -29,8 +29,8 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
             _battlesService = battlesService;
             _repositoryOfBattle = repositoryOfBattle;
 
-            RuleFor(mb => mb.Title).NotEmpty().WithMessage(Bets.TitleShouldNotBeEmpty);
-            RuleFor(mb => mb.Title).Length(1, 200).WithMessage(Bets.TitleIsTooLong);
+            RuleFor(mb => mb.Title).NotEmpty().WithMessage(Bets.DescriptionShouldNotBeEmpty);
+            RuleFor(mb => mb.Title).Length(1, 200).WithMessage(Bets.DescriptionIsTooLong);
 
             RuleFor(mb => mb.AmountString).NotNull().WithMessage(Bets.PleaseInputCorrectFloatingNumber);
             RuleFor(mb => mb.AmountString).Must((mb, amountString) => mb.Amount.Value > 0).WithMessage(Bets.BetShouldBeMoreThanZero);
@@ -45,7 +45,7 @@ namespace BetTeamsBattle.Frontend.Areas.NotAdmin.Validators
                 }).WithMessage(Bets.BetShouldBeLessThan, mb => mb.BetLimit);
 
             RuleFor(mb => mb.CoefficientString).NotNull().WithMessage(Bets.PleaseInputCorrectFloatingNumber);
-            RuleFor(mb => mb.CoefficientString).Must((mb, coefficientString) => mb.Coefficient.Value > 1).WithMessage(Bets.CoefficientShouldBeGreaterThanOne);
+            RuleFor(mb => mb.CoefficientString).Must((mb, coefficientString) => mb.Coefficient.Value > 1).WithMessage(Bets.OddsShouldBeGreaterThanOne);
 
             RuleFor(mb => mb.Url).Must(url => Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute)).WithMessage(Bets.UrlIsIncorrect);
         }

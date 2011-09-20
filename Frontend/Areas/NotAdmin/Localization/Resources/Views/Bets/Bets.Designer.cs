@@ -169,29 +169,38 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coefficient.
+        ///   Looks up a localized string similar to Title.
         /// </summary>
-        public static string Coefficient {
+        public static string Description {
             get {
-                return ResourceManager.GetString("Coefficient", resourceCulture);
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coefficient should correspond to the value on bookmaker&apos;s site.
+        ///   Looks up a localized string similar to Description should uniquely identify your bet. For example: &quot;Barcelona - Real Madrid, draw&quot;.
         /// </summary>
-        public static string CoefficientHelpMessage {
+        public static string DescriptionHelpMessage {
             get {
-                return ResourceManager.GetString("CoefficientHelpMessage", resourceCulture);
+                return ResourceManager.GetString("DescriptionHelpMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Coefficient should be greater than 1.
+        ///   Looks up a localized string similar to Description is too long.
         /// </summary>
-        public static string CoefficientShouldBeGreaterThanOne {
+        public static string DescriptionIsTooLong {
             get {
-                return ResourceManager.GetString("CoefficientShouldBeGreaterThanOne", resourceCulture);
+                return ResourceManager.GetString("DescriptionIsTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description should not be empty.
+        /// </summary>
+        public static string DescriptionShouldNotBeEmpty {
+            get {
+                return ResourceManager.GetString("DescriptionShouldNotBeEmpty", resourceCulture);
             }
         }
         
@@ -277,6 +286,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Odds.
+        /// </summary>
+        public static string Odds {
+            get {
+                return ResourceManager.GetString("Odds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odds should correspond to the value on bookmaker&apos;s site.
+        /// </summary>
+        public static string OddsHelpMessage {
+            get {
+                return ResourceManager.GetString("OddsHelpMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odds should be greater than 1.
+        /// </summary>
+        public static string OddsShouldBeGreaterThanOne {
+            get {
+                return ResourceManager.GetString("OddsShouldBeGreaterThanOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team.
         /// </summary>
         public static string OfTeam {
@@ -349,43 +385,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Title.
-        /// </summary>
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title should uniquely identify your bet. For example: &quot;Barcelona - Real Madrid, draw&quot;.
-        /// </summary>
-        public static string TitleHelpMessage {
-            get {
-                return ResourceManager.GetString("TitleHelpMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title is too long.
-        /// </summary>
-        public static string TitleIsTooLong {
-            get {
-                return ResourceManager.GetString("TitleIsTooLong", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title should not be empty.
-        /// </summary>
-        public static string TitleShouldNotBeEmpty {
-            get {
-                return ResourceManager.GetString("TitleShouldNotBeEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Url should lead to bookmaker&apos;s site page where your bet is described. To prevent cheating system will make this page screenshot..
+        ///   Looks up a localized string similar to Url should lead to bookmaker&apos;s site (e. g. http://bookmaker.org) or ideally to the page where your bet is described (e. g. http://bookmaker.org/tennis/today) .
         /// </summary>
         public static string UrlHelpMessage {
             get {
