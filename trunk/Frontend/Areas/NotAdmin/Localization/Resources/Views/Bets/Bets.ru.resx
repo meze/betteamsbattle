@@ -154,7 +154,7 @@
     <value>Коэффициент должен быть больше 1</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Название</value>
+    <value>Описание</value>
   </data>
   <data name="DescriptionHelpMessage" xml:space="preserve">
     <value>Описание должно идентифицировать ставку. Например, "Барселона - Реал, ничья"</value>
