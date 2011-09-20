@@ -18,10 +18,10 @@
     @Html.ValidationSummary(true, Common.ValidationSummaryCaption)
     
     @Forms.HideableDropDownList(Html, m => m.MakeBetForm.TeamId, Bets.MakeBetOnBehalfOf, Model.Teams)
-    @Forms.TextBox(Html, m => m.MakeBetForm.Title, Bets.Title, Bets.TitleHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.Title, Bets.Description, Bets.DescriptionHelpMessage)
     @Forms.TextBox(Html, m => m.MakeBetForm.Url, Bets.BookmakerUrl, Bets.UrlHelpMessage)
     @Forms.TextBox(Html, m => m.MakeBetForm.AmountString, Bets.Amount + ", $", Bets.AmountHelpMessage)
-    @Forms.TextBox(Html, m => m.MakeBetForm.CoefficientString, Bets.Coefficient, Bets.CoefficientHelpMessage)
+    @Forms.TextBox(Html, m => m.MakeBetForm.CoefficientString, Bets.Odds, Bets.OddsHelpMessage)
     @Forms.CheckBox(Html, m => m.MakeBetForm.IsPrivate, Bets.PrivateBet, Bets.IsPrivateHelpMessage)
     
     @Forms.SubmitButton(Bets.MakeBet)
