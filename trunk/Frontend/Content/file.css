@@ -22,6 +22,27 @@ h1{
 	color:#FFF;
 }
 
+.gg{
+	border:0;
+	text-decoration:none;
+	color:#FFF;
+	
+}
+
+.gg a:hover{
+	border:0;
+	text-decoration:none;
+	color:#FF0;
+	display:inline-table;
+	
+}
+
+.ff{
+	color:#FF0;
+	
+}
+
+
 .tittle_aut{
  padding-left:20px;
  
@@ -235,7 +256,7 @@ background-image:url("images/fon.png");
 		padding-right:8px;
 		font-weight:bold;
 		color:#333;
-		padding-top:6px;
+		padding-top:4px;
 }
 
 
@@ -725,18 +746,35 @@ margin:0 auto;
 width:1024px;
 }
 
-.knopka_st{
+ .knopka_st{
 background-image:url("images/sprite.png");
-
+background-position:-344px 0;
+background-repeat:no-repeat;
+cursor:pointer;
+font-size:19px;
 height:36px;
+list-style:none outside none;
 margin-left:19px;
 margin-top:6px;
+padding-top:7px;
+text-align:center;
 width:168px;
-cursor:pointer;
-background-repeat:no-repeat;
-background-position:-344px 0px;
+display:inline-table;
 
 }
+
+
+ .knopka_st a{
+	 color:#FFF;
+	 display:inline-table;
+
+}
+ .knopka_st  a:hover{
+	color:#FF0;
+	display:inline-table;
+
+}
+
 .knopka_st_blok{
 	height:100px;
 	
@@ -1558,27 +1596,15 @@ width:1024px;
 
 
 
- .validation-summary {
-	 color:#F00;
-    width: 300px;
-    }
-	
-	
+
+.validation-summary-errors {
+   color:#F00;
+   width: 300px;
+}
 	
 	 .field-validation-error {
 	color:#F00;
     width: 300px;
-    }
-	
-	
-span.validation-summary {
-    border-bottom-color: #D9FFB2;
-    display:block;
-    }
-ul.validation-summary{
-    margin:0;
-    padding:0;
-    border-top:none;
     }
 
 

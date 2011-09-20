@@ -142,7 +142,7 @@
     <value>Ставка начата</value>
   </data>
   <data name="BookmakerUrl" xml:space="preserve">
-    <value>Url на сайте букмекера</value>
+    <value>Url сайта букмекера</value>
   </data>
   <data name="CanceledByBookmaker" xml:space="preserve">
     <value>Отменена букмекером</value>
