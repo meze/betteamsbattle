@@ -49,11 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\ContextManagerBase.cs" />
+    <Compile Include="ContextManagerBase.cs" />
     <Compile Include="DI\DataRepositoriesNinjectModule.cs" />
-    <Compile Include="Base\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Base\Repository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="TransactionScope\Interfaces\ITransactionScopeFactory.cs" />
     <Compile Include="TransactionScope\TransactionScopeFactory.cs" />
     <Compile Include="UnitOfWork\Interfaces\IUnitOfWork.cs" />
@@ -74,7 +74,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntityRepositories\" />
+    <Folder Include="Repositories\EntityRepositories\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
