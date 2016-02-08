@@ -1,0 +1,1 @@
+This project is intended to create a web service for bet teams battle project
